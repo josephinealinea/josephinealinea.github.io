@@ -9,10 +9,30 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    id="bootstrap-css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
   <style>
+    h1 {
+      font-family: 'Brush Script MT', cursive;
+    }
+
+    h6 {
+      padding-top: 0px;
+      padding-right: 0px;
+      padding-bottom: 20px;
+      padding-left: 20px;
+    }
+
+    /* Make the image fully responsive */
+    .carousel-inner img {
+      width: 100%;
+      height: 100%;
+    }
+
     .fa {
       padding: 10px;
       font-size: 20px;
@@ -63,182 +83,249 @@
       height: 20px;
       z-index: 400;
     }
+
+    .hori-timeline .events {
+      border-top: 3px solid #e9ecef;
+    }
+
+    .hori-timeline .events .event-list {
+      display: block;
+      position: relative;
+      text-align: center;
+      padding-top: 70px;
+      margin-right: 0;
+    }
+
+    .hori-timeline .events .event-list:before {
+      content: "";
+      position: absolute;
+      height: 36px;
+      border-right: 2px dashed #dee2e6;
+      top: 0;
+    }
+
+    .hori-timeline .events .event-list .event-date {
+      position: absolute;
+      top: 38px;
+      left: 0;
+      right: 0;
+      width: 75px;
+      margin: 0 auto;
+      border-radius: 4px;
+      padding: 2px 4px;
+    }
+
+    .bg-soft-primary {
+      background-color: rgba(64, 144, 203, .3) !important;
+    }
+
+    .bg-soft-success {
+      background-color: rgba(71, 189, 154, .3) !important;
+    }
+
+    .bg-soft-danger {
+      background-color: rgba(231, 76, 94, .3) !important;
+    }
+
+    .bg-soft-warning {
+      background-color: rgba(249, 213, 112, .3) !important;
+    }
+
+    .card {
+      border: none;
+      margin-bottom: 24px;
+      -webkit-box-shadow: 0 0 13px 0 rgba(236, 236, 241, .44);
+      box-shadow: 0 0 13px 0 rgba(236, 236, 241, .44);
+    }
+
+    @media (min-width: 1140px) {
+      .hori-timeline .events .event-list {
+        display: inline-block;
+        width: 24%;
+        padding-top: 45px;
+      }
+
+      .hori-timeline .events .event-list .event-date {
+        top: -12px;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <div class="container mt-5">
+  <div class="container-fluid mt-5 pt-3">
     <div class="row">
-      <div class="col-6">
-        <h2>JOSEPHINE ALINEA</h2><p><small class="text-muted">Software Consultant, Technical Blogger</small></p>
-      </div>
-      <div class="col-6">
-        <div class="topnav-right">
-          <a href="https://www.linkedin.com/in/josephinealinea" class="fa fa-linkedin" target="_blank"
-            rel="noopener noreferrer"></a>
-          <a href="https://github.com/josephinealinea" class="fa fa-github" target="_blank"
-            rel="noopener noreferrer"></a>
-          <a href="https://twitter.com/maiajosipin" class="fa fa-twitter" target="_blank" rel="noopener noreferrer"></a>
-          <a href="https://www.instagram.com/joeyalinea" class="fa fa-instagram" target="_blank"
-            rel="noopener noreferrer"></a>
+      <div class="d-flex align-items-start">
+        <div class="col-sm-3">
+          <div class="text-center">
+            <img src="img/me.jpg" class="img-fluid rounded-circle img-thumbnail mx-auto d-block" width="150"
+              height="150">
+            <h1>Josephine Alinea</h1>
+            <p><small class="text-muted">IT Software Consultant, Technical Blogger</small></p>
+          </div>
+          <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link active initialism" id="v-pills-home-tab" data-bs-toggle="pill"
+              data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+              aria-selected="true">Blogs</button>
+            <button class="nav-link initialism" id="v-pills-profile-tab" data-bs-toggle="pill"
+              data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
+              aria-selected="false">About Me</button>
+            <button class="nav-link initialism" id="v-pills-messages-tab" data-bs-toggle="pill"
+              data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages"
+              aria-selected="false">Resume</button>
+            <button class="nav-link initialism" id="v-pills-settings-tab" data-bs-toggle="pill"
+              data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings"
+              aria-selected="false">Contact</button>
+          </div>
+          <div class="container mt-3 text-center">
+            <a href="https://www.linkedin.com/in/josephinealinea" class="fa fa-linkedin" target="_blank"
+              rel="noopener noreferrer"></a>
+            <a href="https://github.com/josephinealinea" class="fa fa-github" target="_blank"
+              rel="noopener noreferrer"></a>
+            <a href="https://twitter.com/maiajosipin" class="fa fa-twitter" target="_blank"
+              rel="noopener noreferrer"></a>
+            <a href="https://www.instagram.com/joeyalinea" class="fa fa-instagram" target="_blank"
+              rel="noopener noreferrer"></a>
+            <a href="https://steemit.com/@maiajosipin" class="fa fa-rss" target="_blank" rel="noopener noreferrer"></a>
+          </div>
+
+        </div>
+        <div class="tab-content col-sm-9" id="v-pills-tabContent">
+          <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <div class="row">
+              <div class="col-sm-10">
+                <h1>Programming Diaries</h1>
+              </div>
+            </div>
+            <div id="demo" class="carousel slide" data-ride="carousel">
+              <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+              </ul>
+              <div class="carousel-inner ">
+                <div class="carousel-item text-white bg-dark active">
+                  <a href="https://maiajosipin.wordpress.com/2020/11/24/docker-creating-and-running-your-first-container-application/"
+                    target="_blank">
+                    <img src="1.jpg" width="1100" height="500">
+                    <div class="carousel-caption">
+                      <h3>[DOCKER] Creating and Running your first container application</h3>
+                      <p>[DOCKER]</p>
+                    </div>
+                  </a>
+                </div>
+                <div class="carousel-item text-white bg-dark">
+                  <a href="https://maiajosipin.wordpress.com/2020/11/24/k8s-using-helm-for-deployment-of-your-first-container-application/"
+                    target="_blank">
+                    <img src="1.jpg" width="1100" height="500">
+                    <div class="carousel-caption">
+                      <h3>[K8s] Using Helm for deployment of your first container application</h3>
+                      <p>[Kubernetes]</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </a>
+              <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </a>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <h1>About Me</h1>
+            <div class="text-justify container p-2">
+              <p>Filipino - current location in Singapore.</p>
+              <p>
+                I started my working career in an Australian IT-solution company in the Philippines.
+                The company specilized on banking-solution applications for retail consumers.
+                I did programming and have used:
+              <ul>
+                <li>Smalltalk, (an object oriented language developed by Alan Kay, the father of OOP);</li>
+                <li>Java (it was also called J2EE back then) for building web applications.</li>
+              </ul>
+              As a fresh graduate, I've learned not just technical skills - but I've also developed critical
+              functional
+              analysis and thinking outside the box.
+              </p>
+              <p>After three years, I left home and accepted a job offer in Singapore. The employer is a French
+                bank and I was assigned to work on the core corporate banking systems.
+                My experience there has taught me how to be agile and that business requirements will always evolve,
+                it will always change. Technology is changing too rapidly and thanks to the open source community, I was
+                learning the latest Tech stack.
+                <br />As a Technical lead, I'm proud to have experience the following:
+              <ul>
+                <li>Migrated Monolithic applications into Microservices.</li>
+                <li>Successfully implemented CI/CD pipeline.</li>
+                <li>The magic of Test driven development and the beauty of Cloud.</li>
+                <li>A lit bit of Project Management for Technical deliverables.</li>
+              </ul>
+              </p>
+              <p>Fast forward to today, I currently work in Telecommunications industry in Singapore.
+                Our mission is to be the best Telecommunication company in Asia.
+                I am involved on system design and architecture of Network services and I currently lead the Test
+                Strategy
+                of an orchestration system for 5G.
+                I'm learning new things related to 5G Technology and it's use cases and I can't wait to journal these
+                too..
+                <br />
+                <br />Let me know if you want me to cover any particular topic!
+              </p>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+            <h1>Resume</h1>
+            <div class="card">
+              <div class="card-body">
+                <h6 class="initialism">Professional History</h6>
+                <div class="hori-timeline" dir="ltr">
+                  <ul class="list-inline events">
+                    <li class="list-inline-item event-list">
+                      <div class="px-4">
+                        <div class="event-date bg-soft-primary text-primary">2003</div>
+                        <small class="text-muted">Started studying at the Polytechnic University of the Phils.,
+                          taking up Bachelor of Science in Information Technology
+                        </small>
+                      </div>
+                    </li>
+                    <li class="list-inline-item event-list">
+                      <div class="px-4">
+                        <div class="event-date bg-soft-primary text-primary">2007</div>
+                        <small class="text-muted">Started working as Application Programmer
+                          in an Australian IT-solution company in the Philippines<br />&nbsp;
+                        </small>
+                      </div>
+                    </li>
+                    <li class="list-inline-item event-list">
+                      <div class="px-4">
+                        <div class="event-date bg-soft-primary text-primary">2011</div>
+                        <small class="text-muted">Flew to Singapore and worked as Software Developer
+                          / Technical lead in a French bank<br />&nbsp;
+                        </small>
+                      </div>
+                    </li>
+                    <li class="list-inline-item event-list">
+                      <div class="px-4">
+                        <div class="event-date bg-soft-primary text-primary">2021</div>
+                        <small class="text-muted">Moved to a Telecommunication company in Singapore<br /><br />&nbsp;
+                        </small>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <br />
+                <h6 class="initialism">Tech Stack</h6>
+                <img src="img/techstack.jpg" class="img-fluid">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+            <h1>Contact</h1>
+            <span>Say Hi to me</span>
+          </div>
         </div>
       </div>
     </div>
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-      <li class="nav-item">
-        <a class="initialism nav-link active" data-bs-toggle="tab" href="#home">Blogs</a>
-      </li>
-      <li class="nav-item">
-        <a class="initialism nav-link" data-bs-toggle="tab" href="#aboutme">About Me</a>
-      </li>
-      <li class="nav-item">
-        <a class="initialism nav-link" data-bs-toggle="tab" href="#resume">Resume</a>
-      </li>
-      <li class="nav-item">
-        <a class="initialism nav-link" data-bs-toggle="tab" href="#contactme">Contact</a>
-      </li>
-    </ul>
-
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <div id="home" class="container tab-pane active"><br>
-        <div class="row">
-          <div class="col-sm-10">
-            <h5>Programming Diaries</h5>
-          </div>
-        </div>
-        <div class="row">
-          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <span>1</span>
-              </div>
-              <div class="carousel-item">
-                <span>2</span>
-              </div>
-              <div class="carousel-item">
-                <span>3</span>
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div id="aboutme" class="container tab-pane fade"><br>
-        <div class="row">
-          <div class="col-sm-8">
-            <p>Filipino - current location in Singapore.</p>
-            <p>
-              I started my working career in an Australian IT-solution company in the Philippines.
-              The company specilized on banking-solution applications for retail consumers.
-              I did programming and have used:
-            <ul>
-              <li>Smalltalk, (an object oriented language developed by Alan Kay, the father of OOP);</li>
-              <li>Java (it was also called J2EE back then) for building web applications.</li>
-            </ul>
-            As a fresh graduate, I've learned not just technical skills - but I've also developed critical functional
-            analysis and thinking outside the box.
-            </p>
-            <p>After three years, I left home and accepted a job offer in Singapore. The employer is a French
-              bank and I was assigned to work on the core corporate banking systems.
-              My experience there has taught me how to be agile and that business requirements will always evolve, it will always change.
-              <br />Technology is changing too rapidly and thanks to the open source community, I was learning the latest Tech stack. 
-              As a Technical lead, I'm proud to have experience the following:
-            <ul>
-              <li>Migrated Monolithic applications into Microservices.</li>
-              <li>Successfully implemented CI/CD pipeline.</li>
-              <li>The magic of Test driven development and the beauty of Cloud.</li>
-              <li>A lit bit of Project Management for Technical deliverables.</li>
-            </ul>
-            </p>
-            <p>Fast forward to today, I currently work in Telecommunications industry in Singapore.
-              Our mission is to be the best Telecommunication company in Asia.
-              I am involved on system design and architecture of Network services and I currently lead the Test Strategy
-              of an orchestration system for 5G.
-              I'm learning new things related to 5G Technology and it's use cases and I can't wait to journal these
-              too..
-              <br />
-              <br />Let me know if you want me to cover any particular topic!
-            </p>
-          </div>
-          <div class="col-sm-4">
-            <img src="img/me.jpg" class="img-fluid rounded-circle">
-          </div>
-        </div>
-      </div>
-
-      <div id="resume" class="container tab-pane fade"><br>
-        <div class="row">
-          <div class="col-sm-6">
-            <s><h3 class="initialism">Tech Stack</h3></s>
-            <img src="img/techstack.jpg" class="img-fluid">
-          </div>
-          <div class="col-md-6">
-            <s><h3 class="initialism">Professional History</h3></s>
-            <ul class="timeline">
-              <li>
-                <a href="#">Present</a><br />
-                <small class="text-muted">Telecommunication company in Singapore</small>
-                <br />
-              </li>
-              <li>
-                <a href="#">2021</a><br />
-                <small class="text-muted">French Bank in Singapore</small>
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-              </li>
-              <li>
-                <a href="#">2011</a><br />
-                <small class="text-muted">Australian IT-solution company in the Philippines</small>
-                <br />
-                <br />
-                <br />
-              </li>
-              <li>
-                <a href="#">2007</a><br />
-                <small class="text-muted">Graduated from Polytechnic University of the Philippines <br />
-                  Bachelor's Degree in Information Technology
-                </small>
-                <br />
-                <br />
-              </li>
-              <li>
-                <a href="#">2003</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div id="contactme" class="container tab-pane fade"><br>
-        <h6>Say Hi to Me</h6>
-        <p>If you have any question, consultation or feedback, I'm happy to receive your email.</p>
-      </div>
-    </div>
-
-  </div>
   </div>
 </body>
 
