@@ -44,9 +44,7 @@
       font-size: 25px;
     }
 
-
-    .nav-pills > .active {
-    /*.nav-pills .nav-link {*/
+    .nav-pills>.active {
       background-color: transparent !important;
       color: grey !important;
       font-size: 23px;
@@ -77,39 +75,16 @@
       position: relative;
     }
 
-    ul.timeline:before {
-      content: ' ';
-      background: #d4d9df;
-      display: inline-block;
-      position: absolute;
-      left: 29px;
-      width: 2px;
-      height: 100%;
-      z-index: 400;
-    }
-
     ul.timeline>li {
       margin: 20px 0;
       padding-left: 20px;
-    }
-
-    ul.timeline>li:before {
-      content: ' ';
-      background: white;
-      display: inline-block;
-      position: absolute;
-      border-radius: 50%;
-      border: 3px solid #22c0e8;
-      left: 20px;
-      width: 20px;
-      height: 20px;
-      z-index: 400;
     }
 
     .hori-timeline .events {
       border-top: 3px solid #e9ecef;
     }
 
+    /* line to year*/
     .hori-timeline .events .event-list {
       display: block;
       position: relative;
@@ -145,7 +120,9 @@
       color: black !important;
     }
 
+    /* each tab page has card div*/
     .card {
+      background-color: transparent !important;
       border: none;
       margin-bottom: 24px;
       -webkit-box-shadow: 0 0 13px 0 rgba(236, 236, 241, .44);
@@ -178,18 +155,14 @@
             <p><small class="text-muted">IT Software Consultant, Technical Blogger</small></p>
           </div>
           <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
-              data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
-              aria-selected="true">Blogs</button>
-            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
-              data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
-              aria-selected="false">About Me</button>
-            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
-              data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages"
-              aria-selected="false">Resume</button>
-            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
-              data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings"
-              aria-selected="false">Contact</button>
+            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home"
+              type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Blogs</button>
+            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile"
+              type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">About Me</button>
+            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages"
+              type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Resume</button>
+            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings"
+              type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Contact</button>
           </div>
           <div class="container mt-3 text-center">
             <a href="https://www.linkedin.com/in/josephinealinea" class="fa fa-linkedin" target="_blank"
@@ -211,31 +184,35 @@
                 <h1>Programming Diaries</h1>
               </div>
             </div>
-            <div id="demo" class="carousel slide" data-ride="carousel">
-              <ul class="carousel-indicators">
-                <li data-target="#demo" data-slide-to="0" class="active"></li>
-                <li data-target="#demo" data-slide-to="1"></li>
-              </ul>
-              <div class="carousel-inner ">
-                <div class="carousel-item text-white bg-dark active">
-                  <a href="https://maiajosipin.wordpress.com/2020/11/24/docker-creating-and-running-your-first-container-application/"
-                    target="_blank">
-                    <img src="1.jpg" width="1100" height="500">
-                    <div class="carousel-caption">
-                      <h3>[DOCKER] Creating and Running your first container application</h3>
-                      <p>November 2020</p>
+            <div class="card">
+              <div class="card-body">
+                <div id="demo" class="carousel slide" data-ride="carousel">
+                  <ul class="carousel-indicators">
+                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                    <li data-target="#demo" data-slide-to="1"></li>
+                  </ul>
+                  <div class="carousel-inner ">
+                    <div class="carousel-item text-white bg-dark active">
+                      <a href="https://maiajosipin.wordpress.com/2020/11/24/docker-creating-and-running-your-first-container-application/"
+                        target="_blank">
+                        <img src="1.jpg" width="1100" height="500">
+                        <div class="carousel-caption">
+                          <h3>[DOCKER] Creating and Running your first container application</h3>
+                          <p>November 2020</p>
+                        </div>
+                      </a>
                     </div>
-                  </a>
-                </div>
-                <div class="carousel-item text-white bg-dark">
-                  <a href="https://maiajosipin.wordpress.com/2020/11/24/k8s-using-helm-for-deployment-of-your-first-container-application/"
-                    target="_blank">
-                    <img src="1.jpg" width="1100" height="500">
-                    <div class="carousel-caption">
-                      <h3>[K8s] Using Helm for deployment of your first container application</h3>
-                      <p>November 2020</p>
+                    <div class="carousel-item text-white bg-dark">
+                      <a href="https://maiajosipin.wordpress.com/2020/11/24/k8s-using-helm-for-deployment-of-your-first-container-application/"
+                        target="_blank">
+                        <img src="1.jpg" width="1100" height="500">
+                        <div class="carousel-caption">
+                          <h3>[K8s] Using Helm for deployment of your first container application</h3>
+                          <p>November 2020</p>
+                        </div>
+                      </a>
                     </div>
-                  </a>
+                  </div>
                 </div>
               </div>
               <a class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -248,41 +225,48 @@
           </div>
           <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
             <h1>About Me</h1>
-            <div class="text-justify container p-2">
-              <p>Filipino - current location in Singapore.</p>
-              <p>
-                I started my professional career in an Australian IT-solution company in the Philippines.
-                The company specializes on banking softwares for the retail consumers in Australia and UK.
-                I did programming and have used:
-              <ul>
-                <li>Smalltalk, (an object oriented language developed by Alan Kay, the father of OOP);</li>
-                <li>Java (it was also called J2EE back then) for building web applications.</li>
-              </ul>
-              As a fresh graduate, I have not only learnt technical skills - but business analysis and thinking outside
-              the box.
-              </p>
-              <p>After three years of experience, I left my homeland and accepted a job offer overseas.
-                I worked on in-house banking applications of a French bank based in Singapore.
-                My experience there has taught me agile development, SOLID principle concepts, and the 12 Factors app -
-                all that I have brought with me.
-              </p>
-              <p>As a Technical lead, below are some of my proud achievements and learnings:
-              <ul>
-                <li>Migrated Monolithic applications into Microservices.</li>
-                <li>Successfully implemented CI/CD pipeline.</li>
-                <li>The test driven development and automation.</li>
-                <li>Migration into Cloud.</li>
-                <li>A lit bit of Project Management for Technical deliverables.</li>
-              </ul>
-              </p>
-              <p>Fast forward to today, I have moved to a Telecommunication company in Singapore.
-                What I enjoyed the most is learning the latest technologies not just bound to softwares.
-                Embracing the open source community, participating virtual events and technical forums
-                are feeding my curiousity about the future. I'll be sharing these interest through technical blogging
-                and hoping that I could also contribute to the open source community. :)
-                <br />
-                <br />Let me know if you want me to cover any particular topic.
-              </p>
+            <div class="card">
+              <div class="card-body">
+                <div class="text-justify container p-2">
+                  <p>Filipino - current location in Singapore.</p>
+                  <p>
+                    I started my professional career in an Australian IT-solution company in the Philippines.
+                    The company specializes on banking softwares for the retail consumers in Australia and UK.
+                    I did programming and have used:
+                  <ul>
+                    <li>Smalltalk, (an object oriented language developed by Alan Kay, the father of OOP);</li>
+                    <li>Java (it was also called J2EE back then) for building web applications.</li>
+                  </ul>
+                  As a fresh graduate, I have not only learnt technical skills - but business analysis and thinking
+                  outside
+                  the box.
+                  </p>
+                  <p>After three years of experience, I left my homeland and accepted a job offer overseas.
+                    I worked on in-house banking applications of a French bank based in Singapore.
+                    My experience there has taught me agile development, SOLID principle concepts, and the 12 Factors
+                    app -
+                    all that I have brought with me.
+                  </p>
+                  <p>As a Technical lead, below are some of my proud achievements and learnings:
+                  <ul>
+                    <li>Migrated Monolithic applications into Microservices.</li>
+                    <li>Successfully implemented CI/CD pipeline.</li>
+                    <li>The test driven development and automation.</li>
+                    <li>Migration into Cloud.</li>
+                    <li>A lit bit of Project Management for Technical deliverables.</li>
+                  </ul>
+                  </p>
+                  <p>Fast forward to today, I have moved to a Telecommunication company in Singapore.
+                    What I enjoyed the most is learning the latest technologies not just bound to softwares.
+                    Embracing the open source community, participating virtual events and technical forums
+                    are feeding my curiousity about the future. I'll be sharing these interest through technical
+                    blogging
+                    and hoping that I could also contribute to the open source community. :)
+                    <br />
+                    <br />Let me know if you want me to cover any particular topic.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
           <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
@@ -342,25 +326,29 @@
           </div>
           <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
             <h1>Contact</h1>
-            <span><a href="mailto:cudberry_maia@hotmail.com">
-                <h1>📧 Say Hi to me</h1>
-              </a></span>
-            <img src="img/vl.jpg" class="img-fluid">
-            <br /><br />
-            <h1>or reach me thru these channels:</h1>
-            <div class="container mt-3 text-center">
-              <a href="https://www.linkedin.com/in/josephinealinea" class="fa fa-linkedin" target="_blank"
-                rel="noopener noreferrer"></a>
-              <a href="https://github.com/josephinealinea" class="fa fa-github" target="_blank"
-                rel="noopener noreferrer"></a>
-              <a href="https://twitter.com/maiajosipin" class="fa fa-twitter" target="_blank"
-                rel="noopener noreferrer"></a>
-              <a href="https://www.instagram.com/joeyalinea" class="fa fa-instagram" target="_blank"
-                rel="noopener noreferrer"></a>
-              <a href="https://steemit.com/@maiajosipin" class="fa fa-rss" target="_blank"
-                rel="noopener noreferrer"></a>
+            <div class="card">
+              <div class="card-body">
+                <span><a href="mailto:cudberry_maia@hotmail.com">
+                    <h1>📧 Say Hi to me</h1>
+                  </a></span>
+                <img src="img/vl.jpg" class="img-fluid">
+                <br /><br />
+                <h1>or reach me thru these channels:</h1>
+                <div class="container mt-3 text-center">
+                  <a href="https://www.linkedin.com/in/josephinealinea" class="fa fa-linkedin" target="_blank"
+                    rel="noopener noreferrer"></a>
+                  <a href="https://github.com/josephinealinea" class="fa fa-github" target="_blank"
+                    rel="noopener noreferrer"></a>
+                  <a href="https://twitter.com/maiajosipin" class="fa fa-twitter" target="_blank"
+                    rel="noopener noreferrer"></a>
+                  <a href="https://www.instagram.com/joeyalinea" class="fa fa-instagram" target="_blank"
+                    rel="noopener noreferrer"></a>
+                  <a href="https://steemit.com/@maiajosipin" class="fa fa-rss" target="_blank"
+                    rel="noopener noreferrer"></a>
+                </div>
+                <br />
+              </div>
             </div>
-            <br />
           </div>
         </div>
       </div>
