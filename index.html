@@ -16,6 +16,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <style>
+    a {
+      color: grey !important;
+    }
+
     h1 {
       font-family: 'Brush Script MT', cursive;
     }
@@ -31,6 +35,24 @@
     .carousel-inner img {
       width: 100%;
       height: 100%;
+    }
+
+    .nav-pills .nav-link:not(.active) {
+      background-color: transparent;
+      color: black;
+      font-family: 'Brush Script MT', cursive;
+      font-size: 25px;
+    }
+
+
+    .nav-pills > .active {
+    /*.nav-pills .nav-link {*/
+      background-color: transparent !important;
+      color: grey !important;
+      font-size: 23px;
+      text-transform: uppercase;
+      text-decoration: line-through;
+
     }
 
     .fa {
@@ -116,19 +138,11 @@
     }
 
     .bg-soft-primary {
-      background-color: rgba(64, 144, 203, .3) !important;
+      background-color: rgba(62, 102, 129, 0.3) !important;
     }
 
-    .bg-soft-success {
-      background-color: rgba(71, 189, 154, .3) !important;
-    }
-
-    .bg-soft-danger {
-      background-color: rgba(231, 76, 94, .3) !important;
-    }
-
-    .bg-soft-warning {
-      background-color: rgba(249, 213, 112, .3) !important;
+    .text-primary {
+      color: black !important;
     }
 
     .card {
@@ -152,8 +166,8 @@
   </style>
 </head>
 
-<body>
-  <div class="container-fluid mt-5 pt-3">
+<body oncontextmenu="return false;" data-bs-spy="scroll" data-bs-target="#v-pills-tab">
+  <div class="container-fluid mt-5">
     <div class="row">
       <div class="d-flex align-items-start">
         <div class="col-sm-3">
@@ -164,16 +178,16 @@
             <p><small class="text-muted">IT Software Consultant, Technical Blogger</small></p>
           </div>
           <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <button class="nav-link active initialism" id="v-pills-home-tab" data-bs-toggle="pill"
+            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
               data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
               aria-selected="true">Blogs</button>
-            <button class="nav-link initialism" id="v-pills-profile-tab" data-bs-toggle="pill"
+            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
               data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
               aria-selected="false">About Me</button>
-            <button class="nav-link initialism" id="v-pills-messages-tab" data-bs-toggle="pill"
+            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
               data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages"
               aria-selected="false">Resume</button>
-            <button class="nav-link initialism" id="v-pills-settings-tab" data-bs-toggle="pill"
+            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
               data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings"
               aria-selected="false">Contact</button>
           </div>
@@ -188,8 +202,8 @@
               rel="noopener noreferrer"></a>
             <a href="https://steemit.com/@maiajosipin" class="fa fa-rss" target="_blank" rel="noopener noreferrer"></a>
           </div>
-
         </div>
+
         <div class="tab-content col-sm-9" id="v-pills-tabContent">
           <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
             <div class="row">
@@ -248,9 +262,9 @@
               the box.
               </p>
               <p>After three years of experience, I left my homeland and accepted a job offer overseas.
-                I worked on in-house banking applications of a French bank with customers across different continents.
-                My experience there taught me agile development, SOLID principle concepts, and the 12 Factor app - 
-                that I have brought with me.
+                I worked on in-house banking applications of a French bank based in Singapore.
+                My experience there has taught me agile development, SOLID principle concepts, and the 12 Factors app -
+                all that I have brought with me.
               </p>
               <p>As a Technical lead, below are some of my proud achievements and learnings:
               <ul>
@@ -261,13 +275,13 @@
                 <li>A lit bit of Project Management for Technical deliverables.</li>
               </ul>
               </p>
-              <p>Fast forward to today, I have moved to a Telecommunication company in Singapore. 
-                What I enjoyed the most is learning the latest technologies not just bound to softwares. 
-                Embracing the open source community, participating virtual events and technical forums 
-                is feeding my curiousity about the future. I'll be sharing these interest through technical blogging and 
-                hoping that I could also contribute to the open source community.
+              <p>Fast forward to today, I have moved to a Telecommunication company in Singapore.
+                What I enjoyed the most is learning the latest technologies not just bound to softwares.
+                Embracing the open source community, participating virtual events and technical forums
+                are feeding my curiousity about the future. I'll be sharing these interest through technical blogging
+                and hoping that I could also contribute to the open source community. :)
                 <br />
-                <br />Let me know if you want me to cover any particular topic. :)
+                <br />Let me know if you want me to cover any particular topic.
               </p>
             </div>
           </div>
@@ -329,7 +343,7 @@
           <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
             <h1>Contact</h1>
             <span><a href="mailto:cudberry_maia@hotmail.com">
-                <h1>📧  Say Hi to me</h1>
+                <h1>📧 Say Hi to me</h1>
               </a></span>
             <img src="img/vl.jpg" class="img-fluid">
             <br /><br />
@@ -343,7 +357,8 @@
                 rel="noopener noreferrer"></a>
               <a href="https://www.instagram.com/joeyalinea" class="fa fa-instagram" target="_blank"
                 rel="noopener noreferrer"></a>
-              <a href="https://steemit.com/@maiajosipin" class="fa fa-rss" target="_blank" rel="noopener noreferrer"></a>
+              <a href="https://steemit.com/@maiajosipin" class="fa fa-rss" target="_blank"
+                rel="noopener noreferrer"></a>
             </div>
             <br />
           </div>
