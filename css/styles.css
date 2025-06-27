@@ -1,0 +1,273 @@
+/* Reset and base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+  color: #1f1f3e;
+  line-height: 1.6;
+}
+
+/* Navigation */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+}
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+}
+.logo span {
+  font-weight: 300;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #1f1f3e;
+  font-weight: 500;
+}
+nav ul li a.active {
+  color: #ff4081; /* highlight color */
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  background: url('../img/vl.jpg') center/cover no-repeat;
+  padding: 60px 40px 0px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-hero {
+  background-color: #f0f0f0;
+  display: flex;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0px;
+}
+.card {
+  background-color: #f0f0f0;
+  display: flex;
+  max-width: 900px;
+  margin: 0 auto 24px auto; /* Top/Bottom margin & auto horizontal centering */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.card-img img {
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.card-hero-img img {
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  max-width: 400px;
+}
+.card-info {
+  background-color: #f0f0f0;
+  padding: 20px;
+  flex: 1;
+}
+.card-hero-info {
+  background-color: #f0f0f0;
+  padding: 50px;
+  min-width: 500px;
+}
+.card-info h2 {
+  margin-bottom: 10px;
+  color: #1f1f3e;
+}
+.subtitle {
+  font-style: italic;
+  color: #333;
+  margin-bottom: 15px;
+}
+.card-info p {
+  margin-bottom: 10px;
+}
+
+/* Social Icons */
+.social-bar {
+  background-color: #1f1f3e;
+  padding: 15px 0;
+  text-align: center;
+  margin: 0 auto;
+  width: 900px;
+}
+.social-bar a {
+  color: white;
+  margin: 0 15px;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+/* Welcome Section */
+.welcome-div {
+  padding: 60px 20px 0px 20px;
+}
+.welcome-text {
+  background: #dfe4eb;
+  text-align: center;
+  padding: 0px 0px;
+}
+.welcome-text h2 {
+  margin-bottom: 5px;
+  color: #1f1f3e;
+}
+.welcome-text p {
+  font-size: 16px;
+  color: #444;
+  padding: 40px;
+  margin-bottom: 0px;
+}
+/* blog */
+.blog {
+  background: #fff;
+}
+
+/* Section Title */
+.section-title {
+  text-align: center;
+  font-size: 24px;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  color: #1f1f3e;
+  padding: 25px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.section-title.light {
+  color: white;
+}
+
+/* Skills Grid - Tech Stack */
+.skills-section {
+  background: url('../img/vl.jpg') center/cover no-repeat;
+  padding: 60px 20px;
+}
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.skill {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  padding: 16px;
+  text-align: center;
+  font-size: 16px;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+.skill:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Contact Section */
+.contact-section {
+  background-color: #f1f1f1;
+  padding: 60px 20px;
+}
+.contact-title {
+  text-align: center;
+  font-size: 24px;
+  color: #1f1f3e;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 40px;
+  padding: 60px 40px;
+}
+.contact-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border: 1px solid #1f1f3e;
+  background: white;
+  font-size: 14px;
+}
+.contact-form textarea {
+  min-height: 100px;
+}
+.contact-form button {
+  padding: 12px;
+  background-color: #1f1f3e;
+  color: white;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+.contact-info {
+  flex: 1;
+  padding-top: 10px;
+}
+.contact-info h1 {
+  font-size: 25px;
+  color: #1f1f3e;
+  margin-bottom: 5px;
+}
+.contact-info p {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.contact-social a {
+  margin-right: 15px;
+  color: #1f1f3e;
+  font-size: 18px;
+}
+/* Chat Button */
+.chat-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #1f1f3e;
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.chat-btn:hover {
+  background-color: #35357a;
+}
+/* Footer */
+.footer {
+  background-color: #f9f9f9;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #666;
+  border-top: 1px solid #ccc;
+}
