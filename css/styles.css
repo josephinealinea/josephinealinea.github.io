@@ -4,12 +4,37 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
+html, body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f4f4f4;
   color: #1f1f3e;
-  line-height: 1.6;
+  line-height: 1;
 }
+.two-columns {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  column-gap: 40px; /* spacing between columns */
+  list-style-position: inside;
+  line-height: 1.1; /* Single spacing */
+  /*margin: 0.2em 0 0 0;*/
+}
+.three-columns-no-bullets {
+  list-style: none;
+  padding: 0;
+  /*margin: 0;*/
+  /*margin: 0.2em 0 0 0;*/
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  gap: 10px;
+  text-align: center;
+  line-height: 1.5; 
+}
+/* reduce gap between <p> and <ul> 
+.tight-list {
+  margin-top: 0.2em;
+  line-height: 1;   
+}*/
 
 /* Navigation */
 .top-nav {
@@ -87,7 +112,7 @@ nav ul li a.active {
 }
 .card-hero-info {
   background-color: #f0f0f0;
-  padding: 50px;
+  padding: 30px;
   min-width: 500px;
 }
 .card-info h2 {
@@ -97,7 +122,8 @@ nav ul li a.active {
 .subtitle {
   font-style: italic;
   color: #333;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
+  line-height: 0.75; /* 0.75 spacing */
 }
 .card-info p {
   margin-bottom: 10px;
@@ -120,7 +146,7 @@ nav ul li a.active {
 
 /* Welcome Section */
 .welcome-div {
-  padding: 60px 20px 0px 20px;
+  padding: 70px 20px 50px 20px;
 }
 .welcome-text {
   background: #dfe4eb;
@@ -128,13 +154,13 @@ nav ul li a.active {
   padding: 0px 0px;
 }
 .welcome-text h2 {
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   color: #1f1f3e;
 }
 .welcome-text p {
   font-size: 16px;
   color: #444;
-  padding: 40px;
+  padding: 30px;
   margin-bottom: 0px;
 }
 /* blog */
@@ -160,7 +186,7 @@ nav ul li a.active {
 /* Skills Grid - Tech Stack */
 .skills-section {
   background: url('../img/vl.jpg') center/cover no-repeat;
-  padding: 60px 20px;
+  padding: 0px 20px 40px 20px;
 }
 .skills-grid {
   display: grid;
@@ -217,7 +243,7 @@ nav ul li a.active {
   font-size: 14px;
 }
 .contact-form textarea {
-  min-height: 100px;
+  min-height: 130px;
 }
 .contact-form button {
   padding: 12px;
@@ -270,4 +296,61 @@ nav ul li a.active {
   font-size: 14px;
   color: #666;
   border-top: 1px solid #ccc;
+}
+@media (max-width: 375px) {
+  /* iPhone SE and very small screens */
+  .card-hero {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .card-hero-info {
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .welcome-text p {
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .social-bar a {
+    margin: 0 8px;
+  }
+}
+@media (max-width: 400px) {
+  .card-hero-img img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .contact-info h1 {
+    font-size: 22px;
+  }
+}
+@media (max-width: 430px) {
+  .card-info,
+  .card-hero-info {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 13px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .contact-container {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
 }
