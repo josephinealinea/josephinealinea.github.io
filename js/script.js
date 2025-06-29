@@ -51,3 +51,13 @@ form.addEventListener('submit', async function (e) {
       alert("Oops! Something went wrong.");
     }
   });
+
+fetch('md/aboutme.md')
+    .then(res => res.text())
+    .then(md => {
+      document.getElementById('about-content').innerHTML = marked.parse(md);
+    })
+    .catch(err => {
+      document.getElementById('about-content').innerHTML = 'Failed to load content.';
+      console.error(err);
+    });
