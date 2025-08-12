@@ -1,0 +1,45 @@
+title: Programming Diaries
+author: Josephine Alinea
+email: josephinecodes@gmail.com
+description: >- 
+  Josephine Alinea | Freelance, Problem Solver & your go-to Software Ninja. 
+  © 2025 Josephine Alinea. All rights reserved.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://josephinealinea.github.io" # the base hostname & protocol for your site
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:collection/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Josephine Alinea"
+      comments: false
+      share: true
+
+# Social media
+twitter_username: maiajosipin
+github_username: josephinealinea
+linkedin_username: josephinealinea
+instagram_username: joeyalinea
+
+# Exclude from processing
+exclude:
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

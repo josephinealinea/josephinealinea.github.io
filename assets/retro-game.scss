@@ -1,0 +1,1142 @@
+---
+---
+
+// Retro-Game Theme
+// A nostalgic gaming aesthetic with pixel fonts and retro colors
+
+// Import base Jekyll styles
+@import "minima";
+
+// Base Theme Selector Styles (always available)
+.theme-selector {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-toggle {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.theme-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e9ecef;
+  min-width: 180px;
+  display: none;
+  overflow: hidden;
+  
+  &.show {
+    display: block;
+  }
+}
+
+.theme-option {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: white;
+  color: #333;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background: #f8f9fa;
+  }
+  
+  &.active {
+    background: #e3f2fd;
+    color: #1976d2;
+    font-weight: 600;
+  }
+}
+
+// Responsive design for theme selector
+@media (max-width: 768px) {
+  .theme-selector {
+    top: 10px;
+    right: 10px;
+  }
+  
+  .theme-toggle {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+}
+
+// Retro-Game Theme Variables (Final Fantasy 7 inspired)
+:root {
+  --retro-bg: #0a0a0a;
+  --retro-primary: #4a9eff;
+  --retro-secondary: #ff6b9d;
+  --retro-accent: #ffd700;
+  --retro-text: #ffffff;
+  --retro-border: #4a9eff;
+  --retro-highlight: #ff8800;
+  --retro-shadow: #1a4a8a;
+}
+
+// Global Retro-Game Styles
+body.theme-retro-game {
+  background-color: var(--retro-bg);
+  color: var(--retro-text);
+  font-family: 'Courier New', monospace;
+  line-height: 1.6;
+  text-shadow: 0 0 5px var(--retro-primary);
+  padding-top: 80px;
+}
+
+// Typography
+body.theme-retro-game h1, 
+body.theme-retro-game h2, 
+body.theme-retro-game h3, 
+body.theme-retro-game h4, 
+body.theme-retro-game h5, 
+body.theme-retro-game h6 {
+  color: var(--retro-primary);
+  text-shadow: 2px 2px 0px var(--retro-shadow);
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+body.theme-retro-game h1 {
+  font-size: 2em;
+  border-bottom: 3px solid var(--retro-primary);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+body.theme-retro-game h2 {
+  font-size: 1.5em;
+  border-left: 5px solid var(--retro-secondary);
+  padding-left: 15px;
+}
+
+body.theme-retro-game h3 {
+  font-size: 1.25em;
+  color: var(--retro-accent);
+}
+
+// Links
+body.theme-retro-game a {
+  color: var(--retro-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: var(--retro-accent);
+    text-shadow: 0 0 10px var(--retro-accent);
+    transform: scale(1.05);
+  }
+}
+
+// Site Header
+body.theme-retro-game .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(45deg, var(--retro-bg), var(--retro-shadow));
+  border-bottom: 3px solid var(--retro-primary);
+  box-shadow: 0 0 20px var(--retro-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2em;
+}
+
+body.theme-retro-game .site-title {
+  color: var(--retro-primary);
+  font-size: 1.625rem;
+  font-weight: bold;
+  text-shadow: 3px 3px 0px var(--retro-shadow);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  display: inline-block;
+  margin-right: 2em;
+}
+
+.site-nav {
+  display: inline-block;
+  vertical-align: middle;
+  
+  .page-link {
+    color: var(--retro-text);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid transparent;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 0 0.5em;
+    
+    &:hover {
+      color: var(--retro-accent);
+      border-color: var(--retro-accent);
+      background-color: rgba(255, 255, 0, 0.1);
+      box-shadow: 0 0 15px var(--retro-accent);
+    }
+  }
+}
+
+// Main Content
+.page-content {
+  background-color: rgba(10, 10, 10, 0.9);
+  border: 2px solid var(--retro-border);
+  border-radius: 10px;
+  padding: 30px;
+  margin: 20px 0;
+  box-shadow: 0 0 30px var(--retro-primary);
+}
+
+// Posts
+.post-list {
+  .post-meta {
+    color: var(--retro-secondary);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .post-link {
+    color: var(--retro-primary);
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    &:hover {
+      color: var(--retro-accent);
+      text-shadow: 0 0 15px var(--retro-accent);
+    }
+  }
+}
+
+.post-header {
+  border-bottom: 2px solid var(--retro-secondary);
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  
+  .post-title {
+    color: var(--retro-primary);
+    text-shadow: 3px 3px 0px var(--retro-shadow);
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .post-meta {
+    color: var(--retro-accent);
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+.post-content {
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  
+  p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+  }
+  
+  code {
+    background-color: var(--retro-shadow);
+    color: var(--retro-primary);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    border: 1px solid var(--retro-primary);
+  }
+  
+  pre {
+    background-color: var(--retro-shadow);
+    border: 2px solid var(--retro-primary);
+    border-radius: 5px;
+    padding: 20px;
+    overflow-x: auto;
+    
+    code {
+      background: none;
+      border: none;
+      padding: 0;
+    }
+  }
+  
+  blockquote {
+    border-left: 5px solid var(--retro-secondary);
+    padding-left: 20px;
+    margin: 20px 0;
+    font-style: italic;
+    color: var(--retro-accent);
+  }
+}
+
+// Navigation
+.post-navigation {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 2px solid var(--retro-primary);
+  
+  .prev, .next {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 10px;
+    background: linear-gradient(45deg, var(--retro-primary), var(--retro-shadow));
+    color: var(--retro-bg);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid var(--retro-primary);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: linear-gradient(45deg, var(--retro-accent), var(--retro-highlight));
+      color: var(--retro-bg);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px var(--retro-accent);
+    }
+  }
+  
+  .prev {
+    float: left;
+  }
+  
+  .next {
+    float: right;
+  }
+  
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Footer
+.site-footer {
+  background: linear-gradient(45deg, var(--retro-bg), var(--retro-shadow));
+  border-top: 3px solid var(--retro-primary);
+  padding: 20px 0;
+  margin-top: 50px;
+  text-align: center;
+  
+  .footer-col {
+    color: var(--retro-text);
+    
+    h3 {
+      color: var(--retro-primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      font-size: 1em;
+    }
+    
+    p, li {
+      color: var(--retro-text);
+      margin-bottom: 8px;
+      font-size: 0.95em;
+    }
+  }
+}
+
+// Animations
+@keyframes scanline {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .site-title {
+    font-size: 1.5em;
+  }
+  
+  h1 {
+    font-size: 2em;
+  }
+  
+  .page-content {
+    padding: 20px;
+    margin: 10px 0;
+  }
+  
+  .post-navigation {
+    .prev, .next {
+      display: block;
+      float: none;
+      text-align: center;
+      margin: 10px 0;
+    }
+  }
+  
+  .welcome-section,
+  .blog-section,
+  .about-section,
+  .skills-section,
+  .contact-section {
+    padding: 1.5em 0 !important;
+  }
+  
+  .welcome-section .section-heading {
+    font-size: 2.5em;
+  }
+  
+  .welcome-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1em;
+  }
+  
+  .welcome-text-content {
+    text-align: center;
+    min-width: auto;
+  }
+  
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .mission-statement {
+    margin: 1.5em 0;
+    padding: 1em;
+  }
+  
+  .mission-heading {
+    font-size: 1.5em;
+  }
+  
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 2em;
+  }
+  
+  .post-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .blog-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .blog-button {
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+  }
+  
+  .contact-form {
+    margin-bottom: 2em;
+  }
+  
+  .contact-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Special Effects
+.retro-glow {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.pixel-border {
+  border: 2px solid var(--retro-primary);
+  border-radius: 0;
+  box-shadow: 
+    0 0 0 2px var(--retro-bg),
+    0 0 0 4px var(--retro-primary);
+}
+
+// Gaming-inspired elements
+.game-button {
+  background: linear-gradient(45deg, var(--retro-primary), var(--retro-shadow));
+  color: var(--retro-bg);
+  border: 3px solid var(--retro-primary);
+  padding: 15px 30px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: linear-gradient(45deg, var(--retro-accent), var(--retro-highlight));
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--retro-accent);
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// Theme selector positioning for retro-game theme
+body.theme-retro-game .theme-selector {
+  top: 100px;
+  
+  .theme-toggle {
+    background: #4a9eff;
+    color: #000;
+    
+    &:hover {
+      background: #3a8eef;
+    }
+  }
+  
+  .theme-dropdown {
+    background: var(--retro-bg);
+    border: 2px solid var(--retro-primary);
+    box-shadow: 0 0 15px var(--retro-primary);
+  }
+  
+  .theme-option {
+    background: var(--retro-bg);
+    color: var(--retro-text);
+    border-bottom: 1px solid var(--retro-border);
+    
+    &:hover {
+      background: var(--retro-shadow);
+      color: var(--retro-primary);
+    }
+    
+    &.active {
+      background: var(--retro-primary);
+      color: var(--retro-bg);
+      font-weight: bold;
+    }
+  }
+}
+
+// Contact Section Styles for Retro-Game Theme
+body.theme-retro-game .contact-section {
+  margin-top: 3em;
+  padding: 2em;
+  background: linear-gradient(135deg, var(--retro-bg), var(--retro-shadow));
+  border-radius: 12px;
+  border: 3px solid var(--retro-primary);
+  box-shadow: 0 0 20px var(--retro-primary);
+  position: relative;
+  overflow: hidden;
+  padding: 2em 0 !important;
+  min-height: auto !important;
+}
+
+body.theme-retro-game .contact-heading {
+  color: var(--retro-primary);
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  text-align: center;
+  border-bottom: 3px solid var(--retro-secondary);
+  padding-bottom: 0.5em;
+  text-shadow: 2px 2px 0px var(--retro-shadow);
+}
+
+body.theme-retro-game .contact-content p {
+  font-size: 1.1em;
+  color: var(--retro-text);
+  margin-bottom: 2em;
+  line-height: 1.6;
+  text-shadow: 0 0 5px var(--retro-primary);
+}
+
+body.theme-retro-game .contact-button.primary {
+  background: linear-gradient(135deg, var(--retro-primary), var(--retro-shadow));
+  color: var(--retro-bg);
+  border-color: var(--retro-primary);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+body.theme-retro-game .contact-button.primary:hover {
+  background: linear-gradient(135deg, var(--retro-accent), var(--retro-highlight));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--retro-primary);
+}
+
+body.theme-retro-game .contact-button.secondary {
+  background: transparent;
+  color: var(--retro-secondary);
+  border-color: var(--retro-secondary);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+body.theme-retro-game .contact-button.secondary:hover {
+  background: var(--retro-secondary);
+  color: var(--retro-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--retro-secondary);
+}
+
+body.theme-retro-game .contact-item {
+  background: var(--retro-bg);
+  border: 2px solid var(--retro-border);
+  box-shadow: 0 0 10px var(--retro-primary);
+  color: var(--retro-text);
+}
+
+body.theme-retro-game .contact-item:hover {
+  border-color: var(--retro-accent);
+  box-shadow: 0 0 15px var(--retro-accent);
+  transform: translateY(-2px);
+}
+
+// Welcome Section for Retro-Game Theme
+body.theme-retro-game .welcome-section {
+  background: linear-gradient(135deg, var(--retro-bg) 0%, var(--retro-shadow) 100%);
+  color: var(--retro-text);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 2em 0 !important;
+  min-height: auto !important;
+}
+
+// Welcome Header Layout (same as minima)
+body.theme-retro-game .welcome-header {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  margin-bottom: 2em;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+body.theme-retro-game .profile-image {
+  flex-shrink: 0;
+}
+
+body.theme-retro-game .profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--retro-primary);
+  box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+}
+
+body.theme-retro-game .welcome-text-content {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+}
+
+body.theme-retro-game .welcome-intro {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 1em;
+  color: var(--retro-text);
+  text-shadow: 0 0 5px var(--retro-primary);
+}
+
+body.theme-retro-game .mission-statement {
+  margin: 2em 0;
+  padding: 1.5em;
+  background: rgba(0, 255, 0, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--retro-primary);
+}
+
+body.theme-retro-game .mission-heading {
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  color: var(--retro-primary);
+  text-shadow: 2px 2px 0px var(--retro-shadow);
+}
+
+body.theme-retro-game .mission-text {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: var(--retro-text);
+  text-shadow: 0 0 3px var(--retro-primary);
+}
+
+body.theme-retro-game .welcome-section .section-heading {
+  color: var(--retro-primary);
+  text-shadow: 2px 2px 0px var(--retro-shadow);
+  font-size: 3.5em;
+  margin-bottom: 0.5em;
+  
+  &::after {
+    background: var(--retro-secondary);
+  }
+}
+
+body.theme-retro-game .welcome-text {
+  color: var(--retro-text);
+  text-shadow: 0 0 5px var(--retro-primary);
+}
+
+body.theme-retro-game .welcome-button.primary {
+  background: var(--retro-primary);
+  color: var(--retro-bg);
+  border-color: var(--retro-primary);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+body.theme-retro-game .welcome-button.primary:hover {
+  background: transparent;
+  color: var(--retro-primary);
+  border-color: var(--retro-primary);
+  box-shadow: 0 0 20px var(--retro-primary);
+}
+
+body.theme-retro-game .welcome-button.secondary {
+  background: transparent;
+  color: var(--retro-text);
+  border-color: var(--retro-text);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+body.theme-retro-game .welcome-button.secondary:hover {
+  background: var(--retro-text);
+  color: var(--retro-bg);
+  box-shadow: 0 0 20px var(--retro-text);
+}
+
+// Blog Section for Retro-Game Theme
+body.theme-retro-game .blog-section {
+  background: var(--retro-bg);
+  padding: 2em 0 !important;
+  min-height: auto !important;
+}
+
+// Blog Layout (single column for retro-game)
+body.theme-retro-game .post-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2em;
+  margin-bottom: 2em;
+}
+
+body.theme-retro-game .post-card {
+  background: var(--retro-bg);
+  border: 2px solid var(--retro-border);
+  box-shadow: 0 0 15px var(--retro-primary);
+  color: var(--retro-text);
+  border-radius: 12px;
+  padding: 1.5em;
+  transition: all 0.3s ease;
+}
+
+body.theme-retro-game .post-card:hover {
+  border-color: var(--retro-accent);
+  box-shadow: 0 0 25px var(--retro-accent);
+  transform: translateY(-5px);
+}
+
+body.theme-retro-game .post-meta {
+  margin-bottom: 1em;
+}
+
+body.theme-retro-game .post-date {
+  color: var(--retro-text);
+  font-size: 0.9em;
+}
+
+body.theme-retro-game .post-title {
+  margin-bottom: 1em;
+}
+
+body.theme-retro-game .post-title .post-link {
+  color: var(--retro-primary);
+  text-shadow: 0 0 5px var(--retro-primary);
+  text-decoration: none;
+}
+
+body.theme-retro-game .post-title .post-link:hover {
+  color: var(--retro-accent);
+  text-shadow: 0 0 10px var(--retro-accent);
+}
+
+body.theme-retro-game .post-excerpt {
+  color: var(--retro-text);
+  line-height: 1.6;
+  margin-bottom: 1em;
+}
+
+body.theme-retro-game .read-more {
+  color: var(--retro-text);
+  text-shadow: 0 0 5px var(--retro-text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+body.theme-retro-game .read-more:hover {
+  text-decoration: underline;
+}
+
+body.theme-retro-game .blog-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+// About Section Layout (same as minima)
+body.theme-retro-game .about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3em;
+  align-items: center;
+}
+
+body.theme-retro-game .about-text p {
+  font-size: 1.1em;
+  line-height: 1.8;
+  margin-bottom: 1.5em;
+  color: var(--retro-text);
+  text-shadow: 0 0 5px var(--retro-primary);
+  padding-left: 1em;
+}
+
+body.theme-retro-game .about-highlights {
+  display: grid;
+  gap: 1.5em;
+}
+
+body.theme-retro-game .highlight-item {
+  text-align: center;
+  padding: 1.5em;
+  background: var(--retro-bg);
+  border-radius: 12px;
+  border: 2px solid var(--retro-border);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px var(--retro-primary);
+}
+
+body.theme-retro-game .highlight-item:hover {
+  border-color: var(--retro-accent);
+  box-shadow: 0 0 20px var(--retro-accent);
+  transform: translateY(-3px);
+}
+
+body.theme-retro-game .highlight-icon {
+  font-size: 3em;
+  display: block;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+body.theme-retro-game .highlight-item h3 {
+  color: var(--retro-primary);
+  margin-bottom: 0.5em;
+  text-shadow: 0 0 5px var(--retro-primary);
+}
+
+body.theme-retro-game .highlight-item p {
+  color: var(--retro-text);
+  line-height: 1.6;
+  text-shadow: 0 0 3px var(--retro-primary);
+}
+
+body.theme-retro-game .post-title .post-link:hover {
+  color: var(--retro-accent);
+  text-shadow: 0 0 10px var(--retro-accent);
+}
+
+body.theme-retro-game .post-excerpt {
+  color: var(--retro-text);
+}
+
+body.theme-retro-game .read-more {
+  color: var(--retro-secondary);
+  text-shadow: 0 0 5px var(--retro-secondary);
+}
+
+body.theme-retro-game .blog-button:not(.secondary) {
+  background: var(--retro-primary);
+  color: var(--retro-bg);
+  border-color: var(--retro-primary);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+body.theme-retro-game .blog-button:not(.secondary):hover {
+  background: var(--retro-accent);
+  color: var(--retro-bg);
+  box-shadow: 0 0 20px var(--retro-accent);
+}
+
+body.theme-retro-game .blog-button.secondary {
+  background: transparent;
+  color: var(--retro-text);
+  border-color: var(--retro-text);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+body.theme-retro-game .blog-button.secondary:hover {
+  background: var(--retro-text);
+  color: var(--retro-bg);
+  box-shadow: 0 0 20px var(--retro-text);
+}
+
+// About Section for Retro-Game Theme
+body.theme-retro-game .about-section {
+  background: var(--retro-bg);
+  padding: 2em 0 !important;
+  min-height: auto !important;
+}
+
+body.theme-retro-game .about-text p {
+  color: var(--retro-text);
+  text-shadow: 0 0 5px var(--retro-primary);
+}
+
+body.theme-retro-game .highlight-item {
+  background: var(--retro-bg);
+  border: 2px solid var(--retro-border);
+  box-shadow: 0 0 10px var(--retro-primary);
+  color: var(--retro-text);
+}
+
+body.theme-retro-game .highlight-item:hover {
+  border-color: var(--retro-accent);
+  box-shadow: 0 0 20px var(--retro-accent);
+}
+
+body.theme-retro-game .highlight-item h3 {
+  color: var(--retro-primary);
+  text-shadow: 0 0 5px var(--retro-primary);
+}
+
+body.theme-retro-game .highlight-item p {
+  color: var(--retro-text);
+  text-shadow: 0 0 3px var(--retro-primary);
+}
+
+// Skills Section for Retro-Game Theme
+body.theme-retro-game .skills-section {
+  background: var(--retro-bg);
+  padding: 2em 0 !important;
+  min-height: auto !important;
+}
+
+// Skills Layout (same as minima)
+body.theme-retro-game .skills-content {
+  display: grid;
+  gap: 3em;
+}
+
+body.theme-retro-game .skills-category {
+  background: var(--retro-bg);
+  border: 2px solid var(--retro-border);
+  box-shadow: 0 0 15px var(--retro-primary);
+  padding: 0;
+  border-radius: 12px;
+  text-align: center;
+}
+
+body.theme-retro-game .skills-category {
+  background: var(--retro-bg);
+  border: 2px solid var(--retro-border);
+  box-shadow: 0 0 15px var(--retro-primary);
+}
+
+body.theme-retro-game .category-title {
+  color: var(--retro-primary);
+  text-shadow: 0 0 5px var(--retro-primary);
+  border-bottom-color: var(--retro-secondary);
+}
+
+body.theme-retro-game .skill-name {
+  color: var(--retro-primary);
+  text-shadow: 0 0 3px var(--retro-primary);
+}
+
+body.theme-retro-game .skill-level {
+  background: var(--retro-shadow);
+  border: 1px solid var(--retro-border);
+}
+
+body.theme-retro-game .skill-bar {
+  background: linear-gradient(135deg, var(--retro-primary), var(--retro-accent));
+  box-shadow: 0 0 10px var(--retro-primary);
+}
+
+// Contact Section for Retro-Game Theme
+body.theme-retro-game .contact-section {
+  background: var(--retro-bg);
+  padding: 2em 0 !important;
+  min-height: auto !important;
+}
+
+// Contact Layout (same as minima)
+body.theme-retro-game .contact-intro {
+  font-size: 1.1em;
+  color: var(--retro-text);
+  margin-bottom: 2em;
+  line-height: 1.6;
+  text-align: center;
+  text-shadow: 0 0 5px var(--retro-primary);
+}
+
+body.theme-retro-game .contact-form {
+  max-width: 700px;
+  margin: 0 auto 3em;
+  display: grid;
+  gap: 1.5em;
+}
+
+body.theme-retro-game .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+body.theme-retro-game .contact-form input,
+body.theme-retro-game .contact-form textarea {
+  padding: 15px;
+  border: 2px solid var(--retro-border);
+  border-radius: 8px;
+  font-size: 1em;
+  transition: all 0.3s ease;
+  font-family: 'Courier New', monospace;
+  background: var(--retro-bg);
+  color: var(--retro-text);
+}
+
+body.theme-retro-game .contact-form input:focus,
+body.theme-retro-game .contact-form textarea:focus {
+  outline: none;
+  border-color: var(--retro-accent);
+  box-shadow: 0 0 15px var(--retro-accent);
+}
+
+body.theme-retro-game .contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+body.theme-retro-game .submit-button {
+  background: linear-gradient(135deg, var(--retro-primary), var(--retro-shadow));
+  color: var(--retro-bg);
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
+}
+
+body.theme-retro-game .submit-button:hover {
+  background: linear-gradient(135deg, var(--retro-accent), var(--retro-highlight));
+  box-shadow: 0 0 20px var(--retro-accent);
+  transform: translateY(-2px);
+}
+
+body.theme-retro-game .contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5em;
+  margin-top: 2em;
+}
+
+body.theme-retro-game .contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 1em;
+  background: var(--retro-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 255, 0, 0.2);
+  transition: transform 0.3s ease;
+  border: 2px solid var(--retro-border);
+  color: var(--retro-text);
+}
+
+body.theme-retro-game .contact-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+  border-color: var(--retro-accent);
+}
+
+body.theme-retro-game .contact-icon {
+  font-size: 1.5em;
+  filter: drop-shadow(0 1px 2px rgba(0, 255, 0, 0.3));
+}
+
+// Section Headings for Retro-Game Theme
+body.theme-retro-game .section-heading {
+  color: var(--retro-primary);
+  text-shadow: 2px 2px 0px var(--retro-shadow);
+  font-size: 2.8em;
+  
+  &::after {
+    background: var(--retro-secondary);
+  }
+}
+
+// Active Menu Highlighting for Retro-Game Theme
+body.theme-retro-game .site-nav .page-link.active {
+  color: var(--retro-accent);
+  border-bottom-color: var(--retro-accent);
+  text-shadow: 0 0 5px var(--retro-accent);
+}
