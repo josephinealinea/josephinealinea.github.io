@@ -10,7 +10,6 @@ title: Contact Me
       <p class="contact-intro">
         Interested in working together or just want to say hello? I'd love to hear from you!
       </p>
-      
       <!-- Contact Form -->
       <form action="https://formspree.io/f/manjvnwy" method="POST" class="contact-form">
         <div class="form-group">
@@ -27,7 +26,6 @@ title: Contact Me
           <button type="submit" class="submit-button">Submit</button>
         </div>
       </form>
-      
       <div class="contact-info">
         <div class="contact-item">
           <span class="contact-icon">📍</span>
@@ -37,6 +35,11 @@ title: Contact Me
           <span class="contact-icon">💼</span>
           <span>Available for opportunities</span>
         </div>
+      </div>
+      <div class="post-navigation">
+        <a href="https://ko-fi.com/P5P1U54E8" target="_blank" rel="noopener">
+          <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" />
+        </a>
       </div>
     </div>
   </div>
