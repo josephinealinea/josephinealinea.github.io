@@ -42,7 +42,8 @@ Look for the **🎨 Theme** button in the **top right corner** of your screen. C
 - Responsive design
 - Perfect for business or personal blogs
 
-### Retro-Game Theme
+### Retro-Game FF7 Theme
+- Final Fantasy 7 inspired
 - Dark background with neon accents
 - Animated scanlines
 - Glitch effects on hover

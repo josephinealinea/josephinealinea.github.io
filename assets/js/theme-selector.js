@@ -236,9 +236,9 @@ if (document.readyState === 'loading') {
            const currentThemeSpan = document.getElementById('current-theme');
            if (currentThemeSpan) {
                if (theme === 'retro-game') {
-                   currentThemeSpan.textContent = 'Retro-Game';
+                   currentThemeSpan.textContent = 'Retro-Game-FF7';
                } else {
-                   currentThemeSpan.textContent = 'Jekyll-Minima';
+                   currentThemeSpan.textContent = 'Jekyll-Minima-Theme';
                }
            }
        }

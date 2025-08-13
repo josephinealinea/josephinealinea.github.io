@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  "Getting Started with Markdown"
+title:  "🚧 Markdown files - for your blog posts"
 date:   2025-08-09 14:30:00 +0000
 categories: markdown tutorial
+tags: [markdown]
 ---
 
 Markdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents. Created by John Gruber in 2004, Markdown is now one of the world's most popular markup languages.

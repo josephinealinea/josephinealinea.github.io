@@ -2,10 +2,15 @@
 layout: default
 ---
 
-<div class="home">
+<div id="protected" class="home">
   {% include sections/welcome.md %}
   {% include sections/blog.md %}
   {% include sections/about.md %}
   {% include sections/skills.md %}
   {% include sections/contact.md %}
 </div>
+<script>
+  document.getElementById('protected').addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  });
+</script>
