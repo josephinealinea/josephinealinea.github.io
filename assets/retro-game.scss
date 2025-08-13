@@ -421,7 +421,7 @@ body.theme-retro-game .site-title {
   }
   
   .welcome-section,
-  .blog-section,
+  .latest-posts-section,
   .about-section,
   .skills-section,
   .contact-section {
@@ -466,12 +466,12 @@ body.theme-retro-game .site-title {
     grid-template-columns: 1fr;
   }
   
-  .blog-actions {
+  .latest-posts-actions {
     flex-direction: column;
     align-items: center;
   }
   
-  .blog-button {
+  .latest-posts-button {
     width: 100%;
     max-width: 250px;
     text-align: center;
@@ -520,43 +520,6 @@ body.theme-retro-game .site-title {
   
   &:active {
     transform: scale(0.95);
-  }
-}
-
-// Theme selector positioning for retro-game theme
-body.theme-retro-game .theme-selector {
-  top: 100px;
-  
-  .theme-toggle {
-    background: #4a9eff;
-    color: #000;
-    
-    &:hover {
-      background: #3a8eef;
-    }
-  }
-  
-  .theme-dropdown {
-    background: var(--retro-bg);
-    border: 2px solid var(--retro-primary);
-    box-shadow: 0 0 15px var(--retro-primary);
-  }
-  
-  .theme-option {
-    background: var(--retro-bg);
-    color: var(--retro-text);
-    border-bottom: 1px solid var(--retro-border);
-    
-    &:hover {
-      background: var(--retro-shadow);
-      color: var(--retro-primary);
-    }
-    
-    &.active {
-      background: var(--retro-primary);
-      color: var(--retro-bg);
-      font-weight: bold;
-    }
   }
 }
 
@@ -755,7 +718,7 @@ body.theme-retro-game .welcome-button.secondary:hover {
 }
 
 // Blog Section for Retro-Game Theme
-body.theme-retro-game .blog-section {
+body.theme-retro-game .latest-posts-section {
   background: var(--retro-bg);
   padding: 2em 0 !important;
   min-height: auto !important;
@@ -826,7 +789,7 @@ body.theme-retro-game .read-more:hover {
   text-decoration: underline;
 }
 
-body.theme-retro-game .blog-actions {
+body.theme-retro-game .latest-posts-actions {
   display: flex;
   justify-content: center;
   gap: 1em;
@@ -904,7 +867,7 @@ body.theme-retro-game .read-more {
   text-shadow: 0 0 5px var(--retro-secondary);
 }
 
-body.theme-retro-game .blog-button:not(.secondary) {
+body.theme-retro-game .latest-posts-button:not(.secondary) {
   background: var(--retro-primary);
   color: var(--retro-bg);
   border-color: var(--retro-primary);
@@ -913,13 +876,13 @@ body.theme-retro-game .blog-button:not(.secondary) {
   letter-spacing: 1px;
 }
 
-body.theme-retro-game .blog-button:not(.secondary):hover {
+body.theme-retro-game .latest-posts-button:not(.secondary):hover {
   background: var(--retro-accent);
   color: var(--retro-bg);
   box-shadow: 0 0 20px var(--retro-accent);
 }
 
-body.theme-retro-game .blog-button.secondary {
+body.theme-retro-game .latest-posts-button.secondary {
   background: transparent;
   color: var(--retro-text);
   border-color: var(--retro-text);
@@ -928,7 +891,7 @@ body.theme-retro-game .blog-button.secondary {
   letter-spacing: 1px;
 }
 
-body.theme-retro-game .blog-button.secondary:hover {
+body.theme-retro-game .latest-posts-button.secondary:hover {
   background: var(--retro-text);
   color: var(--retro-bg);
   box-shadow: 0 0 20px var(--retro-text);

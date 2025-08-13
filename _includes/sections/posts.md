@@ -3,7 +3,7 @@ title: Blog
 --->
 
 <!-- Blog Section -->
-<section id="blog" class="section blog-section">
+<section id="posts" class="section latest-posts-section">
   <div class="section-content">
     <h2 class="section-heading">Latest Posts</h2>
     {%- if site.posts.size > 0 -%}
@@ -26,9 +26,9 @@ title: Blog
         </article>
         {%- endfor -%}
       </div>
-      <div class="blog-actions">
-        <a href="{{ "/feed.xml" | relative_url }}" class="blog-button">Subscribe via RSS</a>
-        <a href="#contact-me" class="blog-button secondary">Share Your Thoughts</a>
+      <div class="latest-posts-actions">
+        <a href="{{ "/feed.xml" | relative_url }}" class="latest-posts-button">Subscribe via RSS</a>
+        <a href="#contact-me" class="latest-posts-button secondary">Share Your Thoughts</a>
       </div>
     {%- else -%}
       <p class="no-posts">No posts yet. Check back soon!</p>

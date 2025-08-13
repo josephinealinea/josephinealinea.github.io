@@ -13,6 +13,7 @@ body.theme-minima {
 body.theme-retro-game {
   // Retro-game theme will be loaded via separate CSS file
   // This class is added by JavaScript when switching themes
+  display: block;
 }
 
 // Smooth scrolling
@@ -42,11 +43,32 @@ body {
 // Theme selector positioning adjustment for fixed header
 // Note: Theme selector positioning is handled in theme-selector.html
 
+.site-nav {
+  display: inline-block;
+  vertical-align: middle;
+  .page-link {
+    font-weight: bold;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 0 0.5em;
+    text-transform: uppercase !important;
+    letter-spacing: 1px;
+  }
+}
+
 // Active menu highlighting
 .site-nav .page-link.active {
   color: #007bff;
-  font-weight: 600;
+  font-weight: bold;
   border-bottom: 2px solid #007bff;
+  text-transform: underline !important;
+  padding: 8px 16px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin: 0 0.5em;
+  text-transform: uppercase !important;
+  letter-spacing: 1px;
 }
 
 // Section Styles
@@ -212,7 +234,7 @@ body {
 }
 
 // Blog Section
-.blog-section {
+.latest-posts-section {
   background-color: #f8f9fa;
   padding: 2em 0 !important;
   min-height: auto !important;
@@ -277,14 +299,14 @@ body {
   }
 }
 
-.blog-actions {
+.latest-posts-actions {
   display: flex;
   justify-content: center;
   gap: 1em;
   flex-wrap: wrap;
 }
 
-.blog-button {
+.latest-posts-button {
   display: inline-block;
   padding: 12px 24px;
   border-radius: 25px;
@@ -294,23 +316,23 @@ body {
   border: 2px solid #007bff;
 }
 
-.blog-button:not(.secondary) {
+.latest-posts-button:not(.secondary) {
   background: #007bff;
   color: white;
 }
 
-.blog-button:not(.secondary):hover {
+.latest-posts-button:not(.secondary):hover {
   background: #0056b3;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
 }
 
-.blog-button.secondary {
+.latest-posts-button.secondary {
   background: transparent;
   color: #007bff;
 }
 
-.blog-button.secondary:hover {
+.latest-posts-button.secondary:hover {
   background: #007bff;
   color: white;
   transform: translateY(-2px);
@@ -594,7 +616,7 @@ body {
     align-items: center;
   }
   
-  .blog-section,
+  .latest-posts-section,
   .about-section,
   .skills-section,
   .contact-section {
@@ -616,12 +638,12 @@ body {
     grid-template-columns: 1fr;
   }
   
-  .blog-actions {
+  .latest-posts-actions {
     flex-direction: column;
     align-items: center;
   }
   
-  .blog-button {
+  .latest-posts-button {
     width: 100%;
     max-width: 250px;
     text-align: center;
@@ -694,6 +716,7 @@ body {
 .site-title {
   font-weight: bold;
   color: #333;
+  text-transform: uppercase;
 }
 
 .page-content {
