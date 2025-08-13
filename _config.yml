@@ -6,6 +6,8 @@ description: >-
   © 2025 Josephine Alinea. All rights reserved.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://josephinealinea.github.io" # the base hostname & protocol for your site
+bot_name: josibot
+nickname: Josephine
 
 # Build settings
 theme: minima

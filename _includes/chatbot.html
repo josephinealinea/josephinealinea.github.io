@@ -1,0 +1,79 @@
+<!-- Avatar Chatbot -->
+<div id="chatbot-icon">
+  <img src="/assets/img/avatar.png" alt="josibot">
+</div>
+
+<div id="chatbot-window">
+<div id="chatbot-header">💬 ask {{ site.bot_name | escape }}</div>
+<div id="chatbot-messages"></div>
+  <input id="chatbot-input" type="text" placeholder="Type your message...">
+</div>
+
+
+<!-- Chatbot -->
+<!-- <script src="//code.tidio.co/1zhyzmtbjaz2cakzamdxg9swquww11le.js" async></script> -->
+<script>
+const chatbotIcon = document.getElementById('chatbot-icon');
+const chatbotWindow = document.getElementById('chatbot-window');
+const chatbotMessages = document.getElementById('chatbot-messages');
+const chatbotInput = document.getElementById('chatbot-input');
+
+let botResponses = {
+  "hi": "Hello! I'm {{ site.bot_name | escape }}. Ask me about {{ site.nickname | escape }}'s experience, skills, projects, or services.",
+  "hello": "Hi! I'm {{ site.bot_name | escape }}. Ask me about {{ site.nickname | escape }}'s experience, skills, projects, or services.",
+  "experience": "{{ site.nickname | escape }} is a versatile engineer who has cross-functional experience in FinTech, Banking, Telco, and iGaming. {{ site.nickname | escape }} builds website, web apps, APIs, name it.",
+  "skill": "{{ site.nickname | escape }} specializes in Java and she also has experience in Dev Operations. She can help with production-grade web development, API design, automation, and even support. Name it!",
+  "project": "You can check {{ site.nickname | escape }}'s' portfolio section for details.",
+  "service": "{{ site.nickname | escape }} can build you website, web app, APIs, automation scripts, name it. She also provides support with technical coaching and mentoring. Please check About section and Contact to get in touch",
+  "contact": "You can reach via contact form on this site or her LinkedIn.",
+  "live": "{{ site.nickname | escape }} is currently based in Tallinn, Estonia.",
+  "nationality": "{{ site.nickname | escape }} was born in Philippines and a Filipino citizen.",
+  "age": "Let's not talk about age :)",
+  "old": "Let's not talk about age :)",
+  "thank": "You're welcome!",
+  "bye": "See you soon!"
+};
+
+function addMessage(sender, text) {
+  let msg = document.createElement('div');
+  msg.className = 'chatbot-message-collapsible';
+  msg.innerHTML = `
+    <div class="chatbot-message-header"><strong>${sender}:</strong></div>
+    <div class="chatbot-message-body">${text}</div>
+  `;
+  msg.querySelector('.chatbot-message-header').addEventListener('click', function() {
+    const body = msg.querySelector('.chatbot-message-body');
+    body.style.display = body.style.display === 'none' ? 'block' : 'none';
+  });
+  chatbotMessages.appendChild(msg);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+chatbotIcon.addEventListener('click', () => {
+  chatbotWindow.style.display = chatbotWindow.style.display === 'block' ? 'none' : 'block';
+});
+
+chatbotInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    let userMsg = chatbotInput.value.trim().toLowerCase();
+    if (!userMsg) return;
+    addMessage("You", chatbotInput.value);
+    chatbotInput.value = "";
+
+    let reply = "Sorry, I am still learning. Please ask something else or Contact via form to get in touch";
+    for (let key in botResponses) {
+      if (userMsg.includes(key)) {
+        reply = botResponses[key];
+        break;
+      }
+    }
+    setTimeout(() => addMessage("{{ site.bot_name | escape }}", reply), 500);
+  }
+});
+
+// Initial welcome message
+setTimeout(() => {
+  chatbotWindow.style.display = 'block';
+  addMessage("{{ site.bot_name | escape }}", "👋 Hi! I’m {{ site.bot_name | escape }}. Ask me {{ site.nickname | escape }}'s experiences, skills, projects, or services!");
+}, 1000);
+</script>
