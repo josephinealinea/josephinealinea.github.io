@@ -17,17 +17,21 @@ const chatbotIcon = document.getElementById('chatbot-icon');
 const chatbotWindow = document.getElementById('chatbot-window');
 const chatbotMessages = document.getElementById('chatbot-messages');
 const chatbotInput = document.getElementById('chatbot-input');
+const chatbotHeader = document.getElementById('chatbot-header');
 
 let botResponses = {
   "hi": "Hello! I'm {{ site.bot_name | escape }}. Ask me about {{ site.nickname | escape }}'s experience, skills, projects, or services.",
   "hello": "Hi! I'm {{ site.bot_name | escape }}. Ask me about {{ site.nickname | escape }}'s experience, skills, projects, or services.",
+  "hey": "Hey! I'm {{ site.bot_name | escape }}. Ask me about {{ site.nickname | escape }}'s experience, skills, projects, or services.",
+  "hola": "Hola! I'm {{ site.bot_name | escape }}. Ask me about {{ site.nickname | escape }}'s experience, skills, projects, or services.",
   "experience": "{{ site.nickname | escape }} is a versatile engineer who has cross-functional experience in FinTech, Banking, Telco, and iGaming. {{ site.nickname | escape }} builds website, web apps, APIs, name it.",
-  "skill": "{{ site.nickname | escape }} specializes in Java and she also has experience in Dev Operations. She can help with production-grade web development, API design, automation, and even support. Name it!",
+  "skill": "{{ site.nickname | escape }} is full stack but she mostly specializes in Java. She also has experience in Dev Operations. She can help with production-grade web development, API design, automation, and even support. Name it!",
   "project": "You can check {{ site.nickname | escape }}'s' portfolio section for details.",
-  "service": "{{ site.nickname | escape }} can build you website, web app, APIs, automation scripts, name it. She also provides support with technical coaching and mentoring. Please check About section and Contact to get in touch",
+  "service": "{{ site.nickname | escape }} can build you website, web apps, APIs, automation scripts, name it. She also provides support with technical coaching and mentoring. Please check About section and Contact to get in touch",
   "contact": "You can reach via contact form on this site or her LinkedIn.",
   "live": "{{ site.nickname | escape }} is currently based in Tallinn, Estonia.",
   "nationality": "{{ site.nickname | escape }} was born in Philippines and a Filipino citizen.",
+  "zodiac": "{{ site.nickname | escape }}'s astronomical sign is Pisces, (the fish), a water sign. Let's get back to business.",
   "age": "Let's not talk about age :)",
   "old": "Let's not talk about age :)",
   "thank": "You're welcome!",
@@ -50,7 +54,66 @@ function addMessage(sender, text) {
 }
 
 chatbotIcon.addEventListener('click', () => {
-  chatbotWindow.style.display = chatbotWindow.style.display === 'block' ? 'none' : 'block';
+  if (chatbotWindow.style.display === 'none' || chatbotWindow.style.display === '') {
+    chatbotWindow.style.display = 'block';
+    chatbotWindow.classList.add('collapsed');
+  } else if (chatbotWindow.classList.contains('collapsed')) {
+    chatbotWindow.classList.remove('collapsed');
+  } else {
+    chatbotWindow.style.display = 'none';
+  }
+});
+
+let isDragging = false;
+let dragOffset = { x: 0, y: 0 };
+let clickTimeout;
+
+/*chatbotHeader.addEventListener('click', () => {
+  chatbotWindow.classList.toggle('collapsed');
+});*/
+
+chatbotHeader.addEventListener('mousedown', (e) => {
+  clearTimeout(clickTimeout);
+
+  const rect = chatbotWindow.getBoundingClientRect();
+  dragOffset.x = e.clientX - rect.left;
+  dragOffset.y = e.clientY - rect.top;
+
+  isDragging = false;
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) {
+      isDragging = true;
+      chatbotWindow.classList.add('dragging');
+    }
+
+    const newX = window.innerWidth - (e.clientX - dragOffset.x) - chatbotWindow.offsetWidth;
+    const newY = window.innerHeight - (e.clientY - dragOffset.y) - chatbotWindow.offsetHeight;
+
+    const boundedX = Math.max(0, Math.min(newX, window.innerWidth - chatbotWindow.offsetWidth));
+    const boundedY = Math.max(0, Math.min(newY, window.innerHeight - chatbotWindow.offsetHeight));
+
+    chatbotWindow.style.right = boundedX + 'px';
+    chatbotWindow.style.bottom = boundedY + 'px';
+  };
+
+  const handleMouseUp = () => {
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseup', handleMouseUp);
+
+    if (isDragging) {
+      isDragging = false;
+      chatbotWindow.classList.remove('dragging');
+    } else {
+      clickTimeout = setTimeout(() => {
+        chatbotWindow.classList.toggle('collapsed');
+      }, 10);
+    }
+  };
+  document.addEventListener('mousemove', handleMouseMove);
+  document.addEventListener('mouseup', handleMouseUp);
+
+  e.preventDefault(); // Prevent text selection
 });
 
 chatbotInput.addEventListener('keypress', (e) => {
@@ -74,6 +137,7 @@ chatbotInput.addEventListener('keypress', (e) => {
 // Initial welcome message
 setTimeout(() => {
   chatbotWindow.style.display = 'block';
+  chatbotWindow.classList.add('collapsed');
   addMessage("{{ site.bot_name | escape }}", "👋 Hi! I’m {{ site.bot_name | escape }}. Ask me {{ site.nickname | escape }}'s experiences, skills, projects, or services!");
 }, 1000);
 </script>

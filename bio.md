@@ -5,8 +5,9 @@ permalink: /bio/
 
 ## Biography
 
-# TLDR; (˶ᵔ ᵕ ᵔ˶)
-From Manila’s 🇵🇭 hustle to Singapore’s 🇸🇬 skyline to Tallinn’s 🇪🇪 tech scene — I build, automate, and deliver production-grade software that works. Experienced across FinTech 📈, Banking 🏦, Telco 📡, and iGaming 🎲, I bring cross-functional skills from analysis to development to modern day delivery.
+# TL;DR (˶ᵔ ᵕ ᵔ˶)
+
+From Manila’s 🇵🇭 hustle -> to Singapore’s 🇸🇬 skyline -> to Tallinn’s 🇪🇪 tech scene — I gathered requirements, analyse, build, automate, test, and deliver software that works. With experienced across FinTech 📈, Banking 🏦, Telco 📡, and iGaming 🎲 industries, I bring cross-functional skills from concept to production.
 
 # Long version ٩(ˊᗜˋ*)و
 

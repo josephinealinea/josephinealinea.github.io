@@ -23,19 +23,43 @@
   display: none;
   position: fixed;
   bottom: 140px;
+  //bottom: 20px;
   right: 20px;
+  //right: 140px;
   width: 300px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   overflow: hidden;
   font-family: sans-serif;
+  transition: height 0.3s ease;
 }
+/* Collapsed state */
+#chatbot-window.collapsed {
+  height: auto;
+}
+#chatbot-window.collapsed #chatbot-messages,
+#chatbot-window.collapsed #chatbot-input {
+  display: none;
+}
+
 #chatbot-header {
   background: #2b6cb0;
   color: white;
   padding: 10px;
   font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+#chatbot-header:hover {
+  background: #2563eb;
+}
+#chatbot-window.dragging {
+  pointer-events: none;
+}
+#chatbot-window.dragging #chatbot-header {
+  pointer-events: all;
 }
 #chatbot-messages {
   height: 250px;
