@@ -1,53 +1,163 @@
 # Josephine Alinea's Personal Website
 
-Welcome to my personal website built with Jekyll! This is a clean, modern site that showcases my work and thoughts.
+A personal portfolio site built with Jekyll and published to GitHub Pages.
 
-## 🚀 Quick Start
+## Prerequisites
 
-### Option 1: One-Click Start (Recommended)
-Click this link to open your site in the browser:
-**[http://localhost:4000](http://localhost:4000)**
+You need Ruby and Bundler installed before anything else.
 
-### Option 2: Manual Start
-If the link above doesn't work, follow these steps:
+⚠️ If Ruby is pre-installed — use a version manager so you don't run into system permission issues.
 
-1. **Open Terminal** (⌘ + Space, type "Terminal")
-2. **Navigate to project folder:**
-   ```bash
-   cd /Users/maiajosipin-mac/Documents/GeekPOC/josephinealinea.github.io
-   ```
-3. **Start Jekyll server:**
-   ```bash
-   jekyll serve --host 0.0.0.0 --port 4000
-   ```
-4. **Open in browser:** [http://localhost:4000](http://localhost:4000)
+<details>
+<summary><strong>macOS</strong></summary>
 
-## 🛠️ Development
+#### Install Homebrew if you don't have it
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+#### Install rbenv (Ruby version manager)
+```bash
+brew install rbenv ruby-build
+```
+#### Add rbenv to your shell (then restart your terminal)
+```bash
+echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+```
+#### Install Ruby 3.3
+```bash
+rbenv install 3.3.0
+```
+#### Set it as the default
+```bash
+rbenv global 3.3.0
+```
+#### Verify
+```bash
+ruby --version   # should show 3.3.0
+```
+#### Install Bundler
+```bash
+gem install bundler
+```
 
-### Prerequisites
-- Ruby (already installed)
-- Jekyll 4.2.2 (already installed)
-- Bundler (for gem management)
+</details>
+
+<details>
+<summary><strong>Linux (Ubuntu/Debian)</strong></summary>
+
+#### Install rbenv dependencies
+```bash
+sudo apt-get update && sudo apt-get install -y git curl libssl-dev libreadline-dev zlib1g-dev
+```
+#### Install rbenv
+```bash
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+```
+#### Add rbenv to your PATH
+```bash
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+```
+#### Add rbenv init to your shell (then restart your terminal)
+```bash
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+```
+#### Install Ruby 3.3
+```bash
+rbenv install 3.3.0
+```
+#### Set it as the default
+```bash
+rbenv global 3.3.0
+```
+#### Verify
+```bash
+ruby --version   # should show 3.3.0
+```
+#### Install Bundler
+```bash
+gem install bundler
+```
+
+</details>
+
+<details>
+<summary><strong>Windows</strong></summary>
+
+#### Install Ruby via RubyInstaller
+Download the **Ruby+Devkit 3.3.x (x64)** installer from [rubyinstaller.org](https://rubyinstaller.org/), run it, and make sure to tick **"Add Ruby executables to your PATH"**. Restart your terminal after installation.
+
+#### Verify
+```bash
+ruby --version   # should show 3.3.x
+```
+#### Install Bundler
+```bash
+gem install bundler
+```
+
+</details>
+
+---
+
+## Quick Start
+
+Once Ruby and Bundler are installed, run these commands.
+
+#### Clone the repository
+```bash
+git clone https://github.com/josephinealinea/josephinealinea.github.io.git
+```
+#### Navigate into the project folder
+```bash
+cd josephinealinea.github.io
+```
+#### Install project dependencies (only needed once, or after Gemfile changes)
+```bash
+bundle install
+```
+#### Start the local dev server
+```bash
+bundle exec jekyll serve
+```
+#### Open in your browser
+```
+http://localhost:4000
+```
+
+#### Network access (optional — to test on a phone or other device)
+```bash
+bundle exec jekyll serve --host 0.0.0.0 --port 4000
+```
+
+---
+
+## Development
 
 ### File Structure
+
 ```
 josephinealinea.github.io/
-├── _config.yml          # Site configuration
-├── _includes/           # Reusable HTML components
-│   ├── header.html      # Site header with navigation
-│   ├── footer.html      # Site footer
-│   └── theme-selector.html  # Theme switching component
-├── _layouts/            # Page templates
-├── _posts/              # Blog posts
-├── assets/              # CSS, JS, images
-│   ├── main.scss        # Jekyll Minima theme (default)
-│   └── retro-game.scss  # Retro-Game theme
-├── about.md             # About page
-└── index.html           # Homepage
+├── _config.yml              # Site configuration and chatbot settings
+├── _includes/
+│   ├── sections/            # Page section partials (welcome, about, skills, posts, contact)
+│   ├── chatbot.html         # Keyword-matching chatbot widget
+│   ├── header.html
+│   └── footer.html
+├── _layouts/
+│   ├── default.html         # Wraps every page
+│   └── post.html            # Wraps blog posts
+├── _posts/                  # Blog posts (YYYY-MM-DD-slug.md)
+├── assets/
+│   ├── main.scss            # Primary stylesheet (Minima theme + custom CSS)
+│   ├── retro-game.scss      # Alternate Retro-Game theme
+│   └── js/theme-selector.js # Theme switching logic
+└── index.html               # Single-page homepage
 ```
 
 ### Adding New Posts
-Create new markdown files in `_posts/` with the format:
+
+Create a file in `_posts/` named `YYYY-MM-DD-your-slug.md`:
+
 ```markdown
 ---
 layout: post
@@ -60,67 +170,49 @@ Your post content here...
 ```
 
 ### Customizing
-- **Theme:** Edit `_config.yml` to change site settings
-- **Styling:** Modify `assets/main.scss` for custom CSS
+
+- **Site settings / chatbot:** Edit `_config.yml`
+- **Styling:** Modify `assets/main.scss`
+- **Page sections:** Edit files in `_includes/sections/`
 - **Layouts:** Customize templates in `_layouts/`
-- **Components:** Add reusable HTML in `_includes/`
 
-### 🎨 Theme Selector
-Your site now includes a **floating theme selector** in the top right corner:
-- **Jekyll Minima** (Default): Clean, modern design
-- **Retro-Game**: Nostalgic gaming aesthetic with neon colors and pixel fonts
+### Theme Selector
 
-Click the 🎨 button to switch between themes instantly!
-
-## 🌐 Access Your Site
-
-- **Local Development:** [http://localhost:4000](http://localhost:4000)
-- **Network Access:** [http://YOUR_IP:4000](http://YOUR_IP:4000) (for testing on other devices)
-
-## 📝 Current Status
-
-✅ **Server Status:** Running on port 4000  
-✅ **Site Accessible:** [http://localhost:4000](http://localhost:4000)  
-✅ **Jekyll Version:** 4.2.2  
-✅ **Ruby Version:** 3.0.0  
-
-## 🚨 Troubleshooting
-
-### Server Won't Start?
-```bash
-# Check if Jekyll is installed
-jekyll --version
-
-# Install dependencies
-bundle install
-
-# Start server with verbose output
-jekyll serve --verbose
-```
-
-### Port Already in Use?
-```bash
-# Kill existing Jekyll processes
-pkill -f jekyll
-
-# Or use a different port
-jekyll serve --port 4001
-```
-
-### Permission Issues?
-```bash
-# Fix gem permissions
-sudo chown -R $(whoami) ~/.gem
-```
-
-## 📚 Resources
-
-- [Jekyll Documentation](https://jekyllrb.com/docs/)
-- [Jekyll Themes](https://jekyllthemes.io/)
-- [GitHub Pages](https://pages.github.com/)
+A floating theme selector sits in the top-right corner with two options:
+- **Jekyll Minima** (default) — clean, modern design
+- **Retro-Game** — neon colors and pixel fonts
 
 ---
 
-**Happy coding! 🎉**
+## Troubleshooting
 
-*Last updated: $(date)*
+### `bundle install` fails
+
+Make sure you installed Ruby via rbenv (not the system Ruby). Run `ruby --version` — if it shows `/usr/bin/ruby` as the path, your shell isn't picking up rbenv yet. Restart your terminal or re-run `eval "$(rbenv init -)"`.
+
+### Port already in use
+
+#### Kill any existing Jekyll process
+```bash
+pkill -f jekyll
+```
+#### Or use a different port
+```bash
+bundle exec jekyll serve --port 4001
+```
+
+### Sass deprecation warnings on startup
+
+You will see a wall of `DEPRECATION WARNING` messages about `@import` and color functions when starting the server. These come from the Minima theme gem (not your code) and are **harmless** — the site builds and runs correctly. You can safely ignore them.
+
+### Permission errors on `gem install`
+
+You are likely using the system Ruby. Switch to rbenv-managed Ruby (see Prerequisites above) — never use `sudo gem install`.
+
+---
+
+## Resources
+
+- [Jekyll Documentation](https://jekyllrb.com/docs/)
+- [GitHub Pages](https://pages.github.com/)
+- [rbenv](https://github.com/rbenv/rbenv)

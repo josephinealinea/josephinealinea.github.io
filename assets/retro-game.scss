@@ -1103,3 +1103,12 @@ body.theme-retro-game .site-nav .page-link.active {
   border-bottom-color: var(--retro-accent);
   text-shadow: 0 0 5px var(--retro-accent);
 }
+
+// Mobile overrides — must use body.theme-retro-game scope to beat the
+// desktop theme-scoped rules which have higher specificity than plain selectors
+@media (max-width: 768px) {
+  body.theme-retro-game .about-content {
+    grid-template-columns: 1fr;
+    gap: 2em;
+  }
+}
