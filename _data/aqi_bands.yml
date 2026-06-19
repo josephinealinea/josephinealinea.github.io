@@ -1,0 +1,17 @@
+# European AQI bands (the scale Open-Meteo's air quality API reports
+# against). Lower is better — 0-20 is the cleanest air, 100+ is the worst.
+#
+# Used to label the AQI number shown on trip pages (per-day forecast cards
+# and the "Right Now" current-conditions section). Edit here and both
+# scripts (travel-weather.js, travel-today.js) pick it up automatically —
+# no need to touch the JS.
+#
+# "max" is the upper bound (inclusive) of the band. Keep these in ascending
+# order; the last entry should have a very high max to act as a catch-all.
+
+- { max: 20, label: "Good", emoji: "🟢" }
+- { max: 40, label: "Fair", emoji: "🟡" }
+- { max: 60, label: "Moderate", emoji: "🟠" }
+- { max: 80, label: "Poor", emoji: "🔴" }
+- { max: 100, label: "Very Poor", emoji: "🟣" }
+- { max: 999999, label: "Extremely Poor", emoji: "⚫" }

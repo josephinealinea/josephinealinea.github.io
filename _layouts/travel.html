@@ -13,7 +13,7 @@ layout: default
   {% endif %}
 
   <div id="today-section" class="today-section" style="display:none;">
-    <h2>🌡️ Right Now . . .</h2>
+    <h2>📍️ Weather Right Now 🌡</h2>
     <div class="today-locations"></div>
   </div>
 
@@ -35,6 +35,15 @@ layout: default
   </div>
 </div>
 
+<script>
+  // Sourced from _data/aqi_bands.yml so the AQI scale can be tweaked in one
+  // place instead of duplicated across travel-weather.js and travel-today.js.
+  window.AQI_BANDS = [
+    {% for band in site.data.aqi_bands %}
+    { max: {{ band.max }}, label: "{{ band.label }}", emoji: "{{ band.emoji }}" }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+</script>
 <script src="{{ '/assets/js/travel-weather.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-day-order.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-today.js' | relative_url }}"></script>
@@ -55,6 +64,7 @@ layout: default
   .location-card .weather-widget { margin-top: 0.4rem; font-size: 0.9rem; color: #444; }
   .weather-line { margin-top: 0.15rem; }
   .weather-sun { color: #777; font-size: 0.85rem; }
+  .weather-aqi { color: #555; font-size: 0.85rem; }
   .weather-note { margin-top: 0.35rem; font-size: 0.82rem; color: #555; font-style: italic; }
   .weather-recorded-label { font-size: 0.78rem; color: #888; text-transform: uppercase; letter-spacing: 0.02em; }
   .back-link { display: inline-block; margin-bottom: 1rem; }
@@ -79,6 +89,7 @@ layout: default
   body.theme-retro-game .location-card strong { color: var(--retro-accent); }
   body.theme-retro-game .location-card .weather-widget { color: var(--retro-text); }
   body.theme-retro-game .weather-sun { color: var(--retro-primary); }
+  body.theme-retro-game .weather-aqi { color: var(--retro-text); }
   body.theme-retro-game .weather-note { color: #e0c9ff; }
   body.theme-retro-game .weather-recorded-label { color: var(--retro-secondary); }
   body.theme-retro-game .back-link { color: var(--retro-primary); }

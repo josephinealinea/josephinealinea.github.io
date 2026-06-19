@@ -73,7 +73,33 @@
     return idx >= 0 ? isoString.slice(idx + 1) : isoString;
   }
 
-  function renderLocation(container, name, country, data) {
+  // European AQI bands (0-20 Good ... 100+ Extremely Poor), per the EEA scale
+  // that Open-Meteo's air quality API reports against. Bands are defined in
+  // _data/aqi_bands.yml and injected as window.AQI_BANDS by the layout, so
+  // they only need to be edited in one place (kept in sync with the same
+  // helper in travel-weather.js). The list below is just a fallback in case
+  // that global isn't available for some reason.
+  var FALLBACK_AQI_BANDS = [
+    { max: 20, label: "Good", emoji: "🟢" },
+    { max: 40, label: "Fair", emoji: "🟡" },
+    { max: 60, label: "Moderate", emoji: "🟠" },
+    { max: 80, label: "Poor", emoji: "🔴" },
+    { max: 100, label: "Very Poor", emoji: "🟣" },
+    { max: Infinity, label: "Extremely Poor", emoji: "⚫" }
+  ];
+
+  function aqiCategory(value) {
+    if (value === null || value === undefined) return null;
+    var bands = (typeof window !== "undefined" && window.AQI_BANDS && window.AQI_BANDS.length)
+      ? window.AQI_BANDS
+      : FALLBACK_AQI_BANDS;
+    for (var i = 0; i < bands.length; i++) {
+      if (value <= bands[i].max) return { label: bands[i].label, emoji: bands[i].emoji };
+    }
+    return bands[bands.length - 1];
+  }
+
+  function renderLocation(container, name, country, data, aqi) {
     var card = document.createElement("div");
     card.className = "today-location-card";
 
@@ -122,11 +148,14 @@
 
     var note = quickNote(code, temp, wind);
 
+    var aqiCat = aqiCategory(aqi);
+
     var flag = COUNTRY_FLAGS[country];
     var nameLabel = (flag ? flag + " " : "") + name + (country ? ", " + country : "");
     var html = "<strong>" + nameLabel + "</strong>";
     html += "<div class=\"today-widget\">" + line1 + "</div>";
     if (line2parts.length) html += "<div class=\"today-widget\">" + line2parts.join(" · ") + "</div>";
+    if (aqiCat) html += "<div class=\"today-widget\">" + aqiCat.emoji + " Air quality: " + aqiCat.label + " (AQI " + aqi + ")</div>";
     html += "<div class=\"today-note\">" + note + "</div>";
     card.innerHTML = html;
     container.appendChild(card);
@@ -162,13 +191,31 @@
         "&start_date=" + today +
         "&end_date=" + today;
 
+      var aqiUrl = "https://air-quality-api.open-meteo.com/v1/air-quality" +
+        "?latitude=" + encodeURIComponent(lat) +
+        "&longitude=" + encodeURIComponent(lon) +
+        "&current=european_aqi" +
+        "&timezone=auto";
+
+      // Air quality forecasts have a shorter window than regular weather, so
+      // a failure here just means no AQI line — it shouldn't block the rest
+      // of the "right now" card from rendering.
+      var aqiPromise = fetch(aqiUrl)
+        .then(function (res) { return res.ok ? res.json() : null; })
+        .then(function (data) {
+          return data && data.current ? data.current.european_aqi : null;
+        })
+        .catch(function () { return null; });
+
       fetch(url)
         .then(function (res) {
           if (!res.ok) throw new Error("Current weather request failed");
           return res.json();
         })
         .then(function (data) {
-          renderLocation(listEl, name, country, data);
+          return aqiPromise.then(function (aqi) {
+            renderLocation(listEl, name, country, data, aqi);
+          });
         })
         .catch(function () {
           var card2 = document.createElement("div");

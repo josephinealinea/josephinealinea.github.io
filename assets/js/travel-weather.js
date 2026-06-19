@@ -76,6 +76,40 @@
     return conditionNote + tempNote + rainNote;
   }
 
+  // European AQI bands (0-20 Good ... 100+ Extremely Poor), per the EEA scale
+  // that Open-Meteo's air quality API reports against. Bands are defined in
+  // _data/aqi_bands.yml and injected as window.AQI_BANDS by the layout, so
+  // they only need to be edited in one place. The list below is just a
+  // fallback in case that global isn't available for some reason.
+  var FALLBACK_AQI_BANDS = [
+    { max: 20, label: "Good", emoji: "🟢" },
+    { max: 40, label: "Fair", emoji: "🟡" },
+    { max: 60, label: "Moderate", emoji: "🟠" },
+    { max: 80, label: "Poor", emoji: "🔴" },
+    { max: 100, label: "Very Poor", emoji: "🟣" },
+    { max: Infinity, label: "Extremely Poor", emoji: "⚫" }
+  ];
+
+  function aqiCategory(value) {
+    if (value === null || value === undefined) return null;
+    var bands = (typeof window !== "undefined" && window.AQI_BANDS && window.AQI_BANDS.length)
+      ? window.AQI_BANDS
+      : FALLBACK_AQI_BANDS;
+    for (var i = 0; i < bands.length; i++) {
+      if (value <= bands[i].max) return { label: bands[i].label, emoji: bands[i].emoji };
+    }
+    return bands[bands.length - 1];
+  }
+
+  function averageAqi(hourlyAqi) {
+    if (!hourlyAqi || !hourlyAqi.length) return null;
+    var sum = 0, count = 0;
+    hourlyAqi.forEach(function (v) {
+      if (v !== null && v !== undefined) { sum += v; count++; }
+    });
+    return count ? Math.round(sum / count) : null;
+  }
+
   function extractTime(isoString) {
     // e.g. "2026-06-23T05:42" -> "05:42"
     if (!isoString) return null;
@@ -109,9 +143,16 @@
       line2 = "🌅 " + snap.sunrise + " · 🌇 " + snap.sunset;
     }
 
+    var aqiLine = "";
+    var aqiCat = aqiCategory(snap.aqi);
+    if (aqiCat) {
+      aqiLine = aqiCat.emoji + " Air quality: " + aqiCat.label + " (AQI " + snap.aqi + ")";
+    }
+
     var html = "<div class=\"weather-line weather-recorded-label\">" + labelPrefix + "</div>";
     html += "<div class=\"weather-line\">" + line1 + "</div>";
     if (line2) html += "<div class=\"weather-line weather-sun\">" + line2 + "</div>";
+    if (aqiLine) html += "<div class=\"weather-line weather-aqi\">" + aqiLine + "</div>";
     html += "<div class=\"weather-note\">" + snap.note + "</div>";
     el.innerHTML = html;
   }
@@ -137,7 +178,7 @@
     }
   }
 
-  function renderForecast(el, daily, date, lat, lon) {
+  function renderForecast(el, daily, date, lat, lon, aqi) {
     if (!daily || !daily.time || daily.time.length === 0) {
       renderMessage(el, "Forecast unavailable for this date.");
       return;
@@ -159,10 +200,17 @@
       line2 = "🌅 " + sunrise + " · 🌇 " + sunset;
     }
 
+    var aqiLine = "";
+    var aqiCat = aqiCategory(aqi);
+    if (aqiCat) {
+      aqiLine = aqiCat.emoji + " Air quality: " + aqiCat.label + " (AQI " + aqi + ")";
+    }
+
     var note = summarize(code, hi, lo, rain);
 
     var html = "<div class=\"weather-line\">" + line1 + "</div>";
     if (line2) html += "<div class=\"weather-line weather-sun\">" + line2 + "</div>";
+    if (aqiLine) html += "<div class=\"weather-line weather-aqi\">" + aqiLine + "</div>";
     html += "<div class=\"weather-note\">" + note + "</div>";
     el.innerHTML = html;
 
@@ -171,7 +219,7 @@
     // blank.
     saveSnapshot(date, lat, lon, {
       code: code, hi: hi, lo: lo, rain: rain,
-      sunrise: sunrise, sunset: sunset, note: note,
+      sunrise: sunrise, sunset: sunset, note: note, aqi: aqi,
       recordedAt: new Date().toISOString()
     });
   }
@@ -215,13 +263,33 @@
       "&start_date=" + date +
       "&end_date=" + date;
 
+    var aqiUrl = "https://air-quality-api.open-meteo.com/v1/air-quality" +
+      "?latitude=" + encodeURIComponent(lat) +
+      "&longitude=" + encodeURIComponent(lon) +
+      "&hourly=european_aqi" +
+      "&timezone=auto" +
+      "&start_date=" + date +
+      "&end_date=" + date;
+
+    // Air quality forecasts only cover a few days out (shorter window than
+    // the 16-day weather forecast), so a failure here shouldn't break the
+    // weather display — just fall back to no AQI line.
+    var aqiPromise = fetch(aqiUrl)
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .then(function (data) {
+        return data && data.hourly ? averageAqi(data.hourly.european_aqi) : null;
+      })
+      .catch(function () { return null; });
+
     fetch(url)
       .then(function (res) {
         if (!res.ok) throw new Error("Weather request failed");
         return res.json();
       })
       .then(function (data) {
-        renderForecast(weatherEl, data.daily, date, lat, lon);
+        return aqiPromise.then(function (aqi) {
+          renderForecast(weatherEl, data.daily, date, lat, lon, aqi);
+        });
       })
       .catch(function () {
         // Fall back to the last good snapshot if the live fetch fails.
