@@ -104,20 +104,34 @@ function initializeNavigation() {
     // Smooth scroll to sections
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            
-            if (targetSection) {
-                const headerHeight = document.querySelector('.site-header')?.offsetHeight || 60;
-                const targetPosition = targetSection.offsetTop - headerHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+            const href = this.getAttribute('href');
+
+            // Links without a "#" (e.g. /travel/, /projects/) are plain
+            // page links — never intercept those.
+            if (!href || href.indexOf('#') === -1) {
+                return;
             }
+
+            const targetId = href.split('#')[1];
+            const targetSection = document.getElementById(targetId);
+
+            // If the target section exists on THIS page, smooth-scroll to
+            // it. Otherwise (e.g. clicking "About Me" while on /travel/),
+            // let the browser navigate normally — the href already points
+            // to "/#about-me", so it'll load the homepage and jump there.
+            if (!targetSection) {
+                return;
+            }
+
+            e.preventDefault();
+
+            const headerHeight = document.querySelector('.site-header')?.offsetHeight || 60;
+            const targetPosition = targetSection.offsetTop - headerHeight;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
         });
     });
     

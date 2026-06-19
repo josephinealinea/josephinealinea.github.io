@@ -1,0 +1,110 @@
+# Summer Europe Trip 2026 — itinerary data
+# Edit this file any time (even directly on GitHub.com) to update the trip.
+# Live weather on the page is fetched in the visitor's browser at view-time,
+# so you never need to rebuild the site just to "refresh" the forecast.
+#
+# Open-Meteo only forecasts ~16 days ahead. The page automatically shows:
+#   - "Trip day completed" for dates already in the past
+#   - "Forecast opens 16 days before this date" for dates too far out
+#   - Live temps/conditions once a date falls inside the 16-day window
+#
+# To add another day: copy a "- date:" block and fill in locations (name,
+# country, lat, lon). Lat/lon can be found by searching "<city> lat long".
+
+trip_name: "Summer Europe Trip 2026"
+start_date: 2026-06-23
+end_date: 2026-07-12
+
+days:
+  - date: 2026-06-23
+    locations:
+      - { name: "Zurich", country: "Switzerland", lat: 47.3769, lon: 8.5417 }
+      - { name: "Lucerne", country: "Switzerland", lat: 47.0502, lon: 8.3093 }
+      - { name: "Interlaken", country: "Switzerland", lat: 46.6863, lon: 7.8632 }
+
+  - date: 2026-06-24
+    locations:
+      - { name: "Interlaken", country: "Switzerland", lat: 46.6863, lon: 7.8632 }
+      - { name: "Bern", country: "Switzerland", lat: 46.9480, lon: 7.4474 }
+
+  - date: 2026-06-25
+    locations:
+      - { name: "Interlaken", country: "Switzerland", lat: 46.6863, lon: 7.8632 }
+      - { name: "Grindelwald", country: "Switzerland", lat: 46.6244, lon: 8.0411 }
+
+  - date: 2026-06-26
+    locations:
+      - { name: "Interlaken", country: "Switzerland", lat: 46.6863, lon: 7.8632 }
+      - { name: "Grindelwald", country: "Switzerland", lat: 46.6244, lon: 8.0411 }
+
+  - date: 2026-06-27
+    locations:
+      - { name: "Interlaken", country: "Switzerland", lat: 46.6863, lon: 7.8632 }
+      - { name: "Geneva", country: "Switzerland", lat: 46.2044, lon: 6.1432 }
+
+  - date: 2026-06-28
+    locations:
+      - { name: "Interlaken", country: "Switzerland", lat: 46.6863, lon: 7.8632 }
+      - { name: "Zermatt", country: "Switzerland", lat: 46.0207, lon: 7.7491 }
+
+  - date: 2026-06-29
+    locations:
+      - { name: "Interlaken", country: "Switzerland", lat: 46.6863, lon: 7.8632 }
+      - { name: "Triesenberg", country: "Liechtenstein", lat: 47.1167, lon: 9.5333 }
+
+  - date: 2026-06-30
+    locations:
+      - { name: "Triesenberg", country: "Liechtenstein", lat: 47.1167, lon: 9.5333 }
+      - { name: "Innsbruck", country: "Austria", lat: 47.2692, lon: 11.4041 }
+
+  - date: 2026-07-01
+    locations:
+      - { name: "Innsbruck", country: "Austria", lat: 47.2692, lon: 11.4041 }
+      - { name: "Falzes", country: "Italy (near Dolomites)", lat: 46.7836, lon: 11.7186 }
+
+  - date: 2026-07-02
+    locations:
+      - { name: "Dolomites (Falzes area)", country: "Italy", lat: 46.7836, lon: 11.7186 }
+
+  - date: 2026-07-03
+    locations:
+      - { name: "Dolomites (Falzes area)", country: "Italy", lat: 46.7836, lon: 11.7186 }
+
+  - date: 2026-07-04
+    locations:
+      - { name: "Dolomites (Falzes area)", country: "Italy", lat: 46.7836, lon: 11.7186 }
+
+  - date: 2026-07-05
+    locations:
+      - { name: "Venice", country: "Italy", lat: 45.4408, lon: 12.3155 }
+      - { name: "Malta (Valletta)", country: "Malta", lat: 35.8989, lon: 14.5146 }
+
+  - date: 2026-07-06
+    locations:
+      - { name: "Malta (Valletta)", country: "Malta", lat: 35.8989, lon: 14.5146 }
+
+  - date: 2026-07-07
+    locations:
+      - { name: "Malta (Valletta)", country: "Malta", lat: 35.8989, lon: 14.5146 }
+
+  - date: 2026-07-08
+    locations:
+      - { name: "Malta (Valletta)", country: "Malta", lat: 35.8989, lon: 14.5146 }
+
+  - date: 2026-07-09
+    locations:
+      - { name: "Sicily (Palermo)", country: "Italy", lat: 38.1157, lon: 13.3615 }
+
+  - date: 2026-07-10
+    locations:
+      - { name: "Nice", country: "France", lat: 43.7102, lon: 7.2620 }
+      - { name: "Monaco", country: "Monaco", lat: 43.7384, lon: 7.4246 }
+
+  - date: 2026-07-11
+    locations:
+      - { name: "Nice", country: "France", lat: 43.7102, lon: 7.2620 }
+
+  - date: 2026-07-12
+    locations:
+      - { name: "Nice", country: "France", lat: 43.7102, lon: 7.2620 }
+      - { name: "Tallinn", country: "Estonia", lat: 59.4370, lon: 24.7536 }

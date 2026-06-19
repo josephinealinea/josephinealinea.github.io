@@ -15,11 +15,13 @@
       </label>
 
       <div class="trigger">
-        <a class="page-link" href="#welcome">Welcome</a>
-        <a class="page-link" href="#about-me">About Me</a>
-        <a class="page-link" href="#skills">Skills</a>
-        <a class="page-link" href="#posts">Blog</a>
-        <a class="page-link" href="#contact-me">Contact Me</a>
+        <a class="page-link" href="{{ '/' | relative_url }}#welcome">Welcome</a>
+        <a class="page-link" href="{{ '/' | relative_url }}#about-me">About Me</a>
+        <a class="page-link" href="{{ '/' | relative_url }}#skills">Skills</a>
+        <a class="page-link" href="{{ '/' | relative_url }}#posts">Blog</a>
+        <a class="page-link" href="{{ '/projects/' | relative_url }}">Projects</a>
+        <a class="page-link" href="{{ '/travel/' | relative_url }}">Travel</a>
+        <a class="page-link" href="{{ '/' | relative_url }}#contact-me">Contact Me</a>
       </div>
     </nav>
 

@@ -1,0 +1,54 @@
+# Birthday Trip 2026 — already in the past, so no live weather is shown
+# (the layout/JS auto-detects past dates and just marks them "completed").
+#
+# Same format as _data/travels/2026-summer-europe-trip.yml: one "- date:"
+# block per day, with one or more locations (name, country, lat, lon).
+
+trip_name: "Birthday Trip 2026"
+start_date: 2026-02-14
+end_date: 2026-02-24
+
+days:
+  - date: 2026-02-14
+    locations:
+      - { name: "Budapest", country: "Hungary", lat: 47.4979, lon: 19.0402 }
+  - date: 2026-02-15
+    locations:
+      - { name: "Budapest", country: "Hungary", lat: 47.4979, lon: 19.0402 }
+  - date: 2026-02-16
+    locations:
+      - { name: "Budapest", country: "Hungary", lat: 47.4979, lon: 19.0402 }
+  - date: 2026-02-17
+    locations:
+      - { name: "Budapest", country: "Hungary", lat: 47.4979, lon: 19.0402 }
+      - { name: "Marrakech", country: "Morocco", lat: 31.6295, lon: -7.9811 }
+  - date: 2026-02-18
+    locations:
+      - { name: "Marrakech", country: "Morocco", lat: 31.6295, lon: -7.9811 }
+      - { name: "Aït Zineb", country: "Morocco", lat: 31.0833, lon: -6.8667 }
+      - { name: "Tinghir", country: "Morocco", lat: 31.5147, lon: -5.5328 }
+  - date: 2026-02-19
+    locations:
+      - { name: "Tinghir", country: "Morocco", lat: 31.5147, lon: -5.5328 }
+      - { name: "Todra Gorge", country: "Morocco", lat: 31.6500, lon: -5.5800 }
+      - { name: "Merzouga (Melaab)", country: "Morocco", lat: 31.0801, lon: -4.0133 }
+      - { name: "Sahara Desert (Erg Chebbi)", country: "Morocco", lat: 31.1500, lon: -4.0100 }
+  - date: 2026-02-20
+    locations:
+      - { name: "Sahara Desert (Erg Chebbi)", country: "Morocco", lat: 31.1500, lon: -4.0100 }
+      - { name: "Marrakech", country: "Morocco", lat: 31.6295, lon: -7.9811 }
+  - date: 2026-02-21
+    locations:
+      - { name: "Marrakech", country: "Morocco", lat: 31.6295, lon: -7.9811 }
+      - { name: "Bourros (Atlas Mountains)", country: "Morocco", lat: 31.0500, lon: -7.9167 }
+  - date: 2026-02-22
+    locations:
+      - { name: "Marrakech", country: "Morocco", lat: 31.6295, lon: -7.9811 }
+      - { name: "Seville", country: "Spain", lat: 37.3891, lon: -5.9845 }
+  - date: 2026-02-23
+    locations:
+      - { name: "Seville", country: "Spain", lat: 37.3891, lon: -5.9845 }
+  - date: 2026-02-24
+    locations:
+      - { name: "Seville", country: "Spain", lat: 37.3891, lon: -5.9845 }
+      - { name: "Tallinn", country: "Estonia", lat: 59.4370, lon: 24.7536 }

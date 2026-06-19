@@ -1,0 +1,14 @@
+# Portfolio entries for /projects/. Add a new "- title:" block for each
+# project. link and image are optional — leave as "" if you don't have one.
+
+- title: "Programming Diaries (this site)"
+  description: "Personal site & blog built with Jekyll and GitHub Pages, with a custom Minima/Retro-Game theme switcher."
+  tags: ["Jekyll", "Ruby", "JavaScript", "SCSS"]
+  link: "https://github.com/josephinealinea/josephinealinea.github.io"
+  image: ""
+
+- title: "Add your next project here"
+  description: "Edit _data/projects.yml — copy this block, fill in title, description, tags, link, and image."
+  tags: ["Example"]
+  link: ""
+  image: ""

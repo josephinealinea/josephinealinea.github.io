@@ -1,0 +1,69 @@
+---
+layout: default
+---
+<div class="travel-page">
+  <a href="{{ '/travel/' | relative_url }}" class="back-link">← All Trips</a>
+  <h1>{{ page.title }}</h1>
+  <p class="trip-dates">
+    {{ page.start_date | date: "%B %-d, %Y" }} – {{ page.end_date | date: "%B %-d, %Y" }}
+  </p>
+
+  {% if page.content and page.content != "" %}
+    <div class="trip-intro">{{ content }}</div>
+  {% endif %}
+
+  {% assign trip = site.data.travels[page.trip_key] %}
+  <div class="trip-days">
+    {% for day in trip.days %}
+    <div class="trip-day">
+      <h3>{{ day.date | date: "%-d %B" }}</h3>
+      <div class="locations">
+        {% for loc in day.locations %}
+        <div class="location-card" data-date="{{ day.date }}" data-lat="{{ loc.lat }}" data-lon="{{ loc.lon }}" data-name="{{ loc.name }}">
+          <strong>{{ loc.name }}</strong>{% if loc.country and loc.country != "" %}, {{ loc.country }}{% endif %}
+          <div class="weather-widget">Checking weather…</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script src="{{ '/assets/js/travel-weather.js' | relative_url }}"></script>
+
+<style>
+  .travel-page { max-width: 800px; margin: 0 auto; padding: 1rem 0 3rem; }
+  .travel-page .trip-dates { color: #666; margin-top: -0.5rem; }
+  .trip-day { margin: 1.75rem 0; }
+  .trip-day h3 { border-bottom: 2px solid #eee; padding-bottom: 0.25rem; margin-bottom: 0.75rem; }
+  .locations { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .location-card {
+    flex: 1 1 220px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+  }
+  .location-card strong { margin: 0 0 0.25rem; }
+  .location-card .weather-widget { margin-top: 0.4rem; font-size: 0.9rem; color: #444; }
+  .weather-line { margin-top: 0.15rem; }
+  .weather-sun { color: #777; font-size: 0.85rem; }
+  .weather-note { margin-top: 0.35rem; font-size: 0.82rem; color: #555; font-style: italic; }
+  .weather-recorded-label { font-size: 0.78rem; color: #888; text-transform: uppercase; letter-spacing: 0.02em; }
+  .back-link { display: inline-block; margin-bottom: 1rem; }
+
+  /* Retro-Game-FF7 theme: lighten the cards so they contrast against
+     the dark page background instead of staying near-invisible. */
+  body.theme-retro-game .travel-page .trip-dates { color: var(--retro-primary); }
+  body.theme-retro-game .trip-day h3 { border-bottom-color: var(--retro-border); color: var(--retro-text); }
+  body.theme-retro-game .location-card {
+    background: rgba(74, 158, 255, 0.12);
+    border-color: var(--retro-border);
+  }
+  body.theme-retro-game .location-card strong { color: var(--retro-accent); }
+  body.theme-retro-game .location-card .weather-widget { color: var(--retro-text); }
+  body.theme-retro-game .weather-sun { color: var(--retro-primary); }
+  body.theme-retro-game .weather-note { color: #e0c9ff; }
+  body.theme-retro-game .weather-recorded-label { color: var(--retro-secondary); }
+  body.theme-retro-game .back-link { color: var(--retro-primary); }
+</style>
