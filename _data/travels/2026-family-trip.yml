@@ -1,0 +1,49 @@
+# Siargao Family Trip 2026 — already in the past, so no live weather is
+# shown (the layout/JS auto-detects past dates and marks them "completed").
+#
+# Same format as the other files in this folder: one "- date:" block per
+# day, with one or more locations (name, country, lat, lon).
+
+trip_name: "Siargao Family Trip 2026"
+start_date: 2026-04-30
+end_date: 2026-05-10
+
+days:
+  - date: 2026-04-30
+    locations:
+      - { name: "Frankfurt", country: "Germany", lat: 50.1109, lon: 8.6821 }
+  - date: 2026-05-01
+    locations:
+      - { name: "Singapore", country: "Singapore", lat: 1.3521, lon: 103.8198 }
+      - { name: "Manila", country: "Philippines", lat: 14.5995, lon: 120.9842 }
+  - date: 2026-05-02
+    locations:
+      - { name: "Manila", country: "Philippines", lat: 14.5995, lon: 120.9842 }
+      - { name: "Cebu", country: "Philippines", lat: 10.3157, lon: 123.8854 }
+      - { name: "Siargao", country: "Philippines", lat: 9.8167, lon: 126.1167 }
+  - date: 2026-05-03
+    locations:
+      - { name: "Siargao", country: "Philippines", lat: 9.8167, lon: 126.1167 }
+  - date: 2026-05-04
+    locations:
+      - { name: "Siargao", country: "Philippines", lat: 9.8167, lon: 126.1167 }
+  - date: 2026-05-05
+    locations:
+      - { name: "Siargao", country: "Philippines", lat: 9.8167, lon: 126.1167 }
+      - { name: "Manila", country: "Philippines", lat: 14.5995, lon: 120.9842 }
+  - date: 2026-05-06
+    locations:
+      - { name: "Manila", country: "Philippines", lat: 14.5995, lon: 120.9842 }
+  - date: 2026-05-07
+    locations:
+      - { name: "Manila", country: "Philippines", lat: 14.5995, lon: 120.9842 }
+  - date: 2026-05-08
+    locations:
+      - { name: "Manila", country: "Philippines", lat: 14.5995, lon: 120.9842 }
+  - date: 2026-05-09
+    locations:
+      - { name: "Manila", country: "Philippines", lat: 14.5995, lon: 120.9842 }
+  - date: 2026-05-10
+    locations:
+      - { name: "Manila", country: "Philippines", lat: 14.5995, lon: 120.9842 }
+      - { name: "Tallinn", country: "Estonia", lat: 59.4370, lon: 24.7536 }
