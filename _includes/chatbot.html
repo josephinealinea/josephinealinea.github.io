@@ -135,9 +135,19 @@ chatbotInput.addEventListener('keypress', (e) => {
 });
 
 // Initial welcome message
+// On mobile, screen space is tight, so don't auto-open the title bar/header
+// — just leave the avatar icon visible. The welcome message is still queued
+// up so it's there as soon as the visitor taps the icon. On wider (web)
+// screens, keep auto-opening the collapsed header as before.
+function isMobileViewport() {
+  return window.matchMedia('(max-width: 600px)').matches;
+}
+
 setTimeout(() => {
-  chatbotWindow.style.display = 'block';
-  chatbotWindow.classList.add('collapsed');
+  if (!isMobileViewport()) {
+    chatbotWindow.style.display = 'block';
+    chatbotWindow.classList.add('collapsed');
+  }
   addMessage("{{ site.bot_name | escape }}", "👋 Hi! I’m {{ site.bot_name | escape }}. Ask me {{ site.nickname | escape }}'s experiences, skills, projects, or services!");
 }, 1000);
 </script>
