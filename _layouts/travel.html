@@ -12,14 +12,19 @@ layout: default
     <div class="trip-intro">{{ content }}</div>
   {% endif %}
 
+  <div id="today-section" class="today-section" style="display:none;">
+    <h2>🌡️ Right Now . . .</h2>
+    <div class="today-locations"></div>
+  </div>
+
   {% assign trip = site.data.travels[page.trip_key] %}
   <div class="trip-days">
     {% for day in trip.days %}
-    <div class="trip-day">
-      <h3>{{ day.date | date: "%-d %B" }}</h3>
+    <div class="trip-day" data-date="{{ day.date }}">
+      <h3>{{ day.date | date: "%-d %B" }}<span class="today-badge"></span></h3>
       <div class="locations">
         {% for loc in day.locations %}
-        <div class="location-card" data-date="{{ day.date }}" data-lat="{{ loc.lat }}" data-lon="{{ loc.lon }}" data-name="{{ loc.name }}">
+        <div class="location-card" data-date="{{ day.date }}" data-lat="{{ loc.lat }}" data-lon="{{ loc.lon }}" data-name="{{ loc.name }}" data-country="{{ loc.country }}">
           <strong>{{ loc.name }}</strong>{% if loc.country and loc.country != "" %}, {{ loc.country }}{% endif %}
           <div class="weather-widget">Checking weather…</div>
         </div>
@@ -31,6 +36,8 @@ layout: default
 </div>
 
 <script src="{{ '/assets/js/travel-weather.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/travel-day-order.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/travel-today.js' | relative_url }}"></script>
 
 <style>
   .travel-page { max-width: 800px; margin: 0 auto; padding: 1rem 0 3rem; }
@@ -52,6 +59,15 @@ layout: default
   .weather-recorded-label { font-size: 0.78rem; color: #888; text-transform: uppercase; letter-spacing: 0.02em; }
   .back-link { display: inline-block; margin-bottom: 1rem; }
 
+  .today-badge { margin-left: 0.5rem; }
+  .today-section { border: 1px solid #ddd; border-radius: 8px; padding: 0.75rem 1rem; margin: 1.25rem 0; background: #f6fffa; }
+  .today-section h2 { margin: 0 0 0.6rem; font-size: 1.05rem; }
+  .today-locations { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .today-location-card { flex: 1 1 220px; border: 1px solid #ddd; border-radius: 8px; padding: 0.6rem 0.85rem; background: #fff; }
+  .today-location-card strong { display: block; margin-bottom: 0.25rem; }
+  .today-location-card .today-widget { font-size: 0.9rem; color: #444; }
+  .today-note { margin-top: 0.3rem; font-size: 0.8rem; color: #555; font-style: italic; }
+
   /* Retro-Game-FF7 theme: lighten the cards so they contrast against
      the dark page background instead of staying near-invisible. */
   body.theme-retro-game .travel-page .trip-dates { color: var(--retro-primary); }
@@ -66,4 +82,16 @@ layout: default
   body.theme-retro-game .weather-note { color: #e0c9ff; }
   body.theme-retro-game .weather-recorded-label { color: var(--retro-secondary); }
   body.theme-retro-game .back-link { color: var(--retro-primary); }
+  body.theme-retro-game .today-section {
+    background: rgba(255, 136, 0, 0.10);
+    border-color: var(--retro-highlight);
+  }
+  body.theme-retro-game .today-section h2 { color: var(--retro-accent); }
+  body.theme-retro-game .today-location-card {
+    background: rgba(74, 158, 255, 0.12);
+    border-color: var(--retro-border);
+  }
+  body.theme-retro-game .today-location-card strong { color: var(--retro-accent); }
+  body.theme-retro-game .today-location-card .today-widget { color: var(--retro-text); }
+  body.theme-retro-game .today-note { color: #e0c9ff; }
 </style>
