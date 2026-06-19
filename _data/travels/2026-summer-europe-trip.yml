@@ -60,36 +60,48 @@ days:
   - date: 2026-07-01
     locations:
       - { name: "Innsbruck", country: "Austria", lat: 47.2692, lon: 11.4041 }
-      - { name: "Falzes", country: "Italy (near Dolomites)", lat: 46.7836, lon: 11.7186 }
+      - { name: "Falzes", country: "Italy", lat: 46.7836, lon: 11.7186 }
+      - { name: "Tre Cime di Lavaredo", country: "Italy", lat: 46.6193, lon: 12.2944 }
+      - { name: "Lake Braies", country: "Italy", lat: 46.6963, lon: 12.0859 }
+      - { name: "Cortina d'Ampezzo", country: "Italy", lat: 46.5404, lon: 12.1357 }
 
   - date: 2026-07-02
     locations:
-      - { name: "Dolomites (Falzes area)", country: "Italy", lat: 46.7836, lon: 11.7186 }
+      - { name: "Falzes", country: "Italy", lat: 46.7836, lon: 11.7186 }
+      - { name: "Rifugio Friedrich August", country: "Italy", lat: 46.5388, lon: 11.7269 }
+      - { name: "Langkofel - Sassolungo", country: "Italy", lat: 46.5333, lon: 11.7167 }
+      - { name: "Val di Funes", country: "Italy", lat: 46.640004, lon: 11.674180 }
 
   - date: 2026-07-03
     locations:
-      - { name: "Dolomites (Falzes area)", country: "Italy", lat: 46.7836, lon: 11.7186 }
+      - { name: "Falzes", country: "Italy", lat: 46.7836, lon: 11.7186 }
+      - { name: "Seceda", country: "Italy", lat: 46.5919, lon: 11.7372 }
+      - { name: "Alpe di Siusi", country: "Italy", lat: 46.5500, lon: 11.6167 }
+      - { name: "Gummer", country: "Italy", lat: 46.4521, lon: 11.4630 }
 
   - date: 2026-07-04
     locations:
-      - { name: "Dolomites (Falzes area)", country: "Italy", lat: 46.7836, lon: 11.7186 }
+      - { name: "Gummer", country: "Italy", lat: 46.4521, lon: 11.4630 }
 
   - date: 2026-07-05
     locations:
       - { name: "Venice", country: "Italy", lat: 45.4408, lon: 12.3155 }
-      - { name: "Malta (Valletta)", country: "Malta", lat: 35.8989, lon: 14.5146 }
+      - { name: "Cospicua", country: "Malta", lat: 35.8831, lon: 14.5209 }
+      - { name: "Valletta", country: "Malta", lat: 35.8989, lon: 14.5146 }
 
   - date: 2026-07-06
     locations:
-      - { name: "Malta (Valletta)", country: "Malta", lat: 35.8989, lon: 14.5146 }
+      - { name: "Cospicua", country: "Malta", lat: 35.8831, lon: 14.5209 }
+      - { name: "Gozo", country: "Malta", lat: 36.0443, lon: 14.2440 }
 
   - date: 2026-07-07
     locations:
-      - { name: "Malta (Valletta)", country: "Malta", lat: 35.8989, lon: 14.5146 }
+      - { name: "Cospicua", country: "Malta", lat: 35.8831, lon: 14.5209 }
+      - { name: "Mdina", country: "Malta", lat: 35.8872, lon: 14.4035 }
 
   - date: 2026-07-08
     locations:
-      - { name: "Malta (Valletta)", country: "Malta", lat: 35.8989, lon: 14.5146 }
+      - { name: "Cospicua", country: "Malta", lat: 35.8831, lon: 14.5209 }
 
   - date: 2026-07-09
     locations:

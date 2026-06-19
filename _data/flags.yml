@@ -1,0 +1,18 @@
+# Maps the "country" value used in _data/travels/*.yml to a flag emoji,
+# rendered before the city name on travel pages (e.g. "🇪🇪 Tallinn, Estonia").
+# Add an entry here any time a new country shows up in a trip's data file.
+
+Germany: "🇩🇪"
+Singapore: "🇸🇬"
+Philippines: "🇵🇭"
+Estonia: "🇪🇪"
+Hungary: "🇭🇺"
+Morocco: "🇲🇦"
+Spain: "🇪🇸"
+Switzerland: "🇨🇭"
+Liechtenstein: "🇱🇮"
+Austria: "🇦🇹"
+Italy: "🇮🇹"
+Malta: "🇲🇹"
+France: "🇫🇷"
+Monaco: "🇲🇨"

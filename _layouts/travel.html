@@ -25,7 +25,7 @@ layout: default
       <div class="locations">
         {% for loc in day.locations %}
         <div class="location-card" data-date="{{ day.date }}" data-lat="{{ loc.lat }}" data-lon="{{ loc.lon }}" data-name="{{ loc.name }}" data-country="{{ loc.country }}">
-          <strong>{{ loc.name }}</strong>{% if loc.country and loc.country != "" %}, {{ loc.country }}{% endif %}
+          <strong>{% assign flag = site.data.flags[loc.country] %}{% if flag %}{{ flag }} {% endif %}{{ loc.name }}</strong>{% if loc.country and loc.country != "" %}, {{ loc.country }}{% endif %}
           <div class="weather-widget">Checking weather…</div>
         </div>
         {% endfor %}

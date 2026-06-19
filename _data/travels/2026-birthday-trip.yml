@@ -31,7 +31,7 @@ days:
     locations:
       - { name: "Tinghir", country: "Morocco", lat: 31.5147, lon: -5.5328 }
       - { name: "Todra Gorge", country: "Morocco", lat: 31.6500, lon: -5.5800 }
-      - { name: "Merzouga (Melaab)", country: "Morocco", lat: 31.0801, lon: -4.0133 }
+      - { name: "Merzouga", country: "Morocco", lat: 31.0801, lon: -4.0133 }
       - { name: "Sahara Desert (Erg Chebbi)", country: "Morocco", lat: 31.1500, lon: -4.0100 }
   - date: 2026-02-20
     locations:
@@ -40,7 +40,7 @@ days:
   - date: 2026-02-21
     locations:
       - { name: "Marrakech", country: "Morocco", lat: 31.6295, lon: -7.9811 }
-      - { name: "Bourros (Atlas Mountains)", country: "Morocco", lat: 31.0500, lon: -7.9167 }
+      - { name: "Atlas Mountains", country: "Morocco", lat: 31.0500, lon: -7.9167 }
   - date: 2026-02-22
     locations:
       - { name: "Marrakech", country: "Morocco", lat: 31.6295, lon: -7.9811 }

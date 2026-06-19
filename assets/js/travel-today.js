@@ -28,6 +28,15 @@
     95: "Thunderstorm", 96: "Thunderstorm w/ light hail", 99: "Thunderstorm w/ heavy hail"
   };
 
+  // Kept in sync with _data/flags.yml — add an entry here too if a new
+  // country shows up in a trip's data file.
+  var COUNTRY_FLAGS = {
+    "Germany": "🇩🇪", "Singapore": "🇸🇬", "Philippines": "🇵🇭",
+    "Estonia": "🇪🇪", "Hungary": "🇭🇺", "Morocco": "🇲🇦", "Spain": "🇪🇸",
+    "Switzerland": "🇨🇭", "Liechtenstein": "🇱🇮", "Austria": "🇦🇹",
+    "Italy": "🇮🇹", "Malta": "🇲🇹", "France": "🇫🇷", "Monaco": "🇲🇨"
+  };
+
   var WMO_EMOJI = {
     0: "☀️", 1: "🌤️", 2: "⛅", 3: "☁️",
     45: "🌫️", 48: "🌫️",
@@ -113,7 +122,8 @@
 
     var note = quickNote(code, temp, wind);
 
-    var nameLabel = name + (country ? ", " + country : "");
+    var flag = COUNTRY_FLAGS[country];
+    var nameLabel = (flag ? flag + " " : "") + name + (country ? ", " + country : "");
     var html = "<strong>" + nameLabel + "</strong>";
     html += "<div class=\"today-widget\">" + line1 + "</div>";
     if (line2parts.length) html += "<div class=\"today-widget\">" + line2parts.join(" · ") + "</div>";

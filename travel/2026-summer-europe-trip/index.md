@@ -9,4 +9,4 @@ permalink: /travel/2026-summer-europe-trip/
 
 Zurich → Lucerne → Interlaken → Bern → Grindelwald → Geneva → Zermatt → Liechtenstein → Innsbruck → the Dolomites → Venice → Malta → Sicily → Nice/Monaco → back to Tallinn.
 
-Bookmark this page — weather updates live each time you open it.
+🔖 Bookmark this page — weather updates live each time you open it. ^_^
