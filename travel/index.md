@@ -6,6 +6,8 @@ permalink: /travel/
 
 <a href="/" class="back-link">← Back to Main Page</a>
 
+<p>🌈 Trip weather forecasts ✈️</p>
+
 {% assign trips = site.pages | where: "layout", "travel" | sort: "start_date" | reverse %}
 {% if trips.size > 0 %}
 <div class="post-grid" style="margin-top: 1.5rem;">
