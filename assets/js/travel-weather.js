@@ -13,94 +13,14 @@
 // shared across devices. A travel buddy who opens the page for the first
 // time after the date has passed will see "no recorded data" unless their
 // own browser had already cached it.
+//
+// WMO weather codes are loaded from _data/wmo_codes.yml via window.WMO_CODES.
+// Condition note text is loaded from _data/condition_notes.yml via window.CONDITION_NOTES.
+// Both are injected by the travel layout. Shared helpers (extractTime, aqiCategory,
+// daysFromToday, wmoDescription, wmoEmoji, forecastNote) live in travel-shared.js,
+// which is loaded before this file.
 
 (function () {
-  var WMO_DESCRIPTIONS = {
-    0: "Clear sky", 1: "Mainly clear", 2: "Partly cloudy", 3: "Overcast",
-    45: "Fog", 48: "Freezing fog",
-    51: "Light drizzle", 53: "Drizzle", 55: "Dense drizzle",
-    56: "Light freezing drizzle", 57: "Freezing drizzle",
-    61: "Light rain", 63: "Rain", 65: "Heavy rain",
-    66: "Light freezing rain", 67: "Freezing rain",
-    71: "Light snow", 73: "Snow", 75: "Heavy snow", 77: "Snow grains",
-    80: "Light rain showers", 81: "Rain showers", 82: "Violent rain showers",
-    85: "Light snow showers", 86: "Heavy snow showers",
-    95: "Thunderstorm", 96: "Thunderstorm w/ light hail", 99: "Thunderstorm w/ heavy hail"
-  };
-
-  var WMO_EMOJI = {
-    0: "☀️", 1: "🌤️", 2: "⛅", 3: "☁️",
-    45: "🌫️", 48: "🌫️",
-    51: "🌦️", 53: "🌦️", 55: "🌧️",
-    56: "🌧️", 57: "🌧️",
-    61: "🌧️", 63: "🌧️", 65: "🌧️",
-    66: "🌧️", 67: "🌧️",
-    71: "🌨️", 73: "🌨️", 75: "❄️", 77: "❄️",
-    80: "🌦️", 81: "🌧️", 82: "⛈️",
-    85: "🌨️", 86: "❄️",
-    95: "⛈️", 96: "⛈️", 99: "⛈️"
-  };
-
-  // Short plain-language summary, layered: condition note + temp note.
-  function summarize(code, hi, lo, rain) {
-    var conditionNote;
-    if (code === 0 || code === 1) {
-      conditionNote = "Sunny and clear — great day to be outdoors.";
-    } else if (code === 2) {
-      conditionNote = "Partly cloudy, generally pleasant.";
-    } else if (code === 3) {
-      conditionNote = "Overcast skies, but dry.";
-    } else if (code === 45 || code === 48) {
-      conditionNote = "Foggy — visibility may be reduced, especially for driving.";
-    } else if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) {
-      conditionNote = "Rain expected — bring a jacket or umbrella.";
-    } else if ((code >= 71 && code <= 77) || code === 85 || code === 86) {
-      conditionNote = "Snow expected — dress warmly and check road/trail conditions.";
-    } else if (code === 95 || code === 96 || code === 99) {
-      conditionNote = "Thunderstorms possible — plan indoor backups.";
-    } else {
-      conditionNote = "Check conditions closer to the day.";
-    }
-
-    var tempNote = "";
-    if (hi <= 5) tempNote = " Very cold — pack heavy layers.";
-    else if (hi <= 12) tempNote = " Cold — a warm coat is a good idea.";
-    else if (hi >= 30) tempNote = " Hot — stay hydrated.";
-    else if (hi >= 25) tempNote = " Warm — light clothing should be fine.";
-
-    var rainNote = "";
-    if (rain !== null && rain >= 50 && !(code >= 51)) {
-      rainNote = " High chance of rain (" + rain + "%).";
-    }
-
-    return conditionNote + tempNote + rainNote;
-  }
-
-  // European AQI bands (0-20 Good ... 100+ Extremely Poor), per the EEA scale
-  // that Open-Meteo's air quality API reports against. Bands are defined in
-  // _data/aqi_bands.yml and injected as window.AQI_BANDS by the layout, so
-  // they only need to be edited in one place. The list below is just a
-  // fallback in case that global isn't available for some reason.
-  var FALLBACK_AQI_BANDS = [
-    { max: 20, label: "Good", emoji: "🟢" },
-    { max: 40, label: "Fair", emoji: "🟡" },
-    { max: 60, label: "Moderate", emoji: "🟠" },
-    { max: 80, label: "Poor", emoji: "🔴" },
-    { max: 100, label: "Very Poor", emoji: "🟣" },
-    { max: Infinity, label: "Extremely Poor", emoji: "⚫" }
-  ];
-
-  function aqiCategory(value) {
-    if (value === null || value === undefined) return null;
-    var bands = (typeof window !== "undefined" && window.AQI_BANDS && window.AQI_BANDS.length)
-      ? window.AQI_BANDS
-      : FALLBACK_AQI_BANDS;
-    for (var i = 0; i < bands.length; i++) {
-      if (value <= bands[i].max) return { label: bands[i].label, emoji: bands[i].emoji };
-    }
-    return bands[bands.length - 1];
-  }
-
   function averageAqi(hourlyAqi) {
     if (!hourlyAqi || !hourlyAqi.length) return null;
     var sum = 0, count = 0;
@@ -108,20 +28,6 @@
       if (v !== null && v !== undefined) { sum += v; count++; }
     });
     return count ? Math.round(sum / count) : null;
-  }
-
-  function extractTime(isoString) {
-    // e.g. "2026-06-23T05:42" -> "05:42"
-    if (!isoString) return null;
-    var idx = isoString.indexOf("T");
-    return idx >= 0 ? isoString.slice(idx + 1) : isoString;
-  }
-
-  function daysFromToday(dateStr) {
-    var today = new Date();
-    today.setHours(0, 0, 0, 0);
-    var target = new Date(dateStr + "T00:00:00");
-    return Math.round((target - today) / 86400000);
   }
 
   function renderMessage(el, text) {
@@ -132,8 +38,8 @@
   // object instead of the raw Open-Meteo "daily" arrays, and tags it with a
   // "Last recorded" label so it's clear this isn't a fresh fetch.
   function renderSnapshot(el, snap, labelPrefix) {
-    var emoji = WMO_EMOJI[snap.code] || "🌡️";
-    var desc = WMO_DESCRIPTIONS[snap.code] || "—";
+    var emoji = TravelShared.wmoEmoji(snap.code);
+    var desc = TravelShared.wmoDescription(snap.code);
 
     var line1 = emoji + " " + desc + " · " + snap.lo + "°-" + snap.hi + "°C";
     if (snap.rain !== null && snap.rain !== undefined) line1 += " · " + snap.rain + "% rain";
@@ -144,7 +50,7 @@
     }
 
     var aqiLine = "";
-    var aqiCat = aqiCategory(snap.aqi);
+    var aqiCat = TravelShared.aqiCategory(snap.aqi);
     if (aqiCat) {
       aqiLine = aqiCat.emoji + " Air quality: " + aqiCat.label + " (AQI " + snap.aqi + ")";
     }
@@ -187,10 +93,10 @@
     var hi = Math.round(daily.temperature_2m_max[0]);
     var lo = Math.round(daily.temperature_2m_min[0]);
     var rain = daily.precipitation_probability_max ? daily.precipitation_probability_max[0] : null;
-    var sunrise = daily.sunrise ? extractTime(daily.sunrise[0]) : null;
-    var sunset = daily.sunset ? extractTime(daily.sunset[0]) : null;
-    var emoji = WMO_EMOJI[code] || "🌡️";
-    var desc = WMO_DESCRIPTIONS[code] || "—";
+    var sunrise = daily.sunrise ? TravelShared.extractTime(daily.sunrise[0]) : null;
+    var sunset = daily.sunset ? TravelShared.extractTime(daily.sunset[0]) : null;
+    var emoji = TravelShared.wmoEmoji(code);
+    var desc = TravelShared.wmoDescription(code);
 
     var line1 = emoji + " " + desc + " · " + lo + "°-" + hi + "°C";
     if (rain !== null) line1 += " · " + rain + "% rain";
@@ -201,12 +107,12 @@
     }
 
     var aqiLine = "";
-    var aqiCat = aqiCategory(aqi);
+    var aqiCat = TravelShared.aqiCategory(aqi);
     if (aqiCat) {
       aqiLine = aqiCat.emoji + " Air quality: " + aqiCat.label + " (AQI " + aqi + ")";
     }
 
-    var note = summarize(code, hi, lo, rain);
+    var note = TravelShared.forecastNote(code, hi, lo, rain);
 
     var html = "<div class=\"weather-line\">" + line1 + "</div>";
     if (line2) html += "<div class=\"weather-line weather-sun\">" + line2 + "</div>";
@@ -230,7 +136,7 @@
     var date = card.getAttribute("data-date");
     var lat = card.getAttribute("data-lat");
     var lon = card.getAttribute("data-lon");
-    var diff = daysFromToday(date);
+    var diff = TravelShared.daysFromToday(date);
 
     if (!lat || !lon || Number(lat) === 0) {
       renderMessage(weatherEl, "Add lat/lon in the data file to enable live weather.");

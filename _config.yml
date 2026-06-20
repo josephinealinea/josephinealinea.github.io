@@ -31,6 +31,8 @@ defaults:
       comments: false
       share: true
 
+google_analytics: "G-371ZMP41HJ"
+
 # Social media
 twitter_username: maiajosipin
 github_username: josephinealinea

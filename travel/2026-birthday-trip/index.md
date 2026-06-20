@@ -7,4 +7,6 @@ end_date: 2026-02-24
 permalink: /travel/2026-birthday-trip/
 ---
 
+Budapest → Marrakech → Sahara Dessert → Atlas Mountain → Seville → back to Tallinn.
+
 This trip already happened — no live weather needed, just keeping it here for the record.

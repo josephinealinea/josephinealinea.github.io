@@ -18,14 +18,15 @@
   height: 100%;
 }
 
-/* Chatbot window */
+/* Chatbot window — sits to the left of the avatar icon.
+   Avatar: right: 20px, width: 105px → left edge at right: 125px.
+   We add a 10px gap: right: 135px. On mobile the window shrinks to
+   fit in the available space to the left of the avatar. */
 #chatbot-window {
   display: none;
   position: fixed;
-  bottom: 140px;
-  //bottom: 20px;
-  right: 20px;
-  //right: 140px;
+  bottom: 20px;
+  right: 100px;
   width: 300px;
   background: #fff;
   border-radius: 10px;
@@ -92,4 +93,42 @@
   background: #fff;
   display: block;
   color: #000 !important;
+}
+
+/* On mobile (≤600px), the 300px window won't fit to the left of the
+   avatar on a ~375px screen. Shrink to 210px so it clears the avatar. */
+@media (max-width: 600px) {
+  #chatbot-window {
+    width: 210px;
+    right: 130px;
+  }
+}
+
+/* ── Shared mobile layout ────────────────────────────────────────────
+   These rules must work for BOTH the Minima and FF7 themes. Because
+   theme switching disables main.css OR retro-game.css, any structural
+   rule that needs to survive both themes lives here in chatbot.css,
+   which is always loaded regardless of the active theme.
+   ─────────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Tall enough to hold the title row AND the hamburger row underneath */
+  .site-header {
+    min-height: 90px;
+  }
+
+  /* Allow the site title to wrap rather than be clipped */
+  .site-title {
+    white-space: normal;
+    word-break: break-word;
+    max-width: calc(100% - 110px);
+    display: inline-block;
+    vertical-align: top;
+    line-height: 1.4;
+    padding-top: 4px;
+  }
+
+  /* Push the hamburger below the theme-selector button (~48px tall at top:10px) */
+  .site-nav {
+    top: 52px !important;
+  }
 }

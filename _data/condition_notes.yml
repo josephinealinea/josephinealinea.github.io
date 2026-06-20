@@ -1,0 +1,33 @@
+# Human-readable notes shown on travel pages.
+# Edit here; travel-shared.js picks them up automatically via
+# window.CONDITION_NOTES, injected by the travel layout.
+#
+# forecast.*  — shown on per-day forecast cards (daily high/low context)
+# current.*   — shown on the "Right Now" today section (live conditions context)
+# {rain} in rain_chance is replaced at runtime with the rain probability %.
+
+forecast:
+  condition:
+    clear:         "Sunny and clear — great day to be outdoors."
+    partly_cloudy: "Partly cloudy, generally pleasant."
+    overcast:      "Overcast skies, but dry."
+    fog:           "Foggy — visibility may be reduced, especially for driving."
+    rain:          "Rain expected — bring a jacket or umbrella."
+    snow:          "Snow expected — dress warmly and check road/trail conditions."
+    thunderstorm:  "Thunderstorms possible — plan indoor backups."
+    unknown:       "Check conditions closer to the day."
+  temp:
+    very_cold: " Very cold — pack heavy layers."
+    cold:      " Cold — a warm coat is a good idea."
+    warm:      " Warm — light clothing should be fine."
+    hot:       " Hot — stay hydrated."
+  rain_chance: " High chance of rain ({rain}%)."
+
+current:
+  thunderstorm: "Thunderstorms right now — best to head indoors."
+  rain:         "Raining right now — grab a jacket or umbrella."
+  snow:         "Snowing right now — dress warmly."
+  cold:         "Quite cold right now — bundle up."
+  hot:          "Quite hot right now — stay hydrated."
+  windy:        "Windy right now — secure loose items."
+  good:         "Good conditions right now."

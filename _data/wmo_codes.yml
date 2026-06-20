@@ -1,0 +1,33 @@
+# WMO weather interpretation codes used by the Open-Meteo API.
+# Edit descriptions or emojis here; both travel-weather.js and travel-today.js
+# pick them up automatically via window.WMO_CODES, injected by the travel layout.
+# Reference: https://open-meteo.com/en/docs (weathercode field)
+
+- { code: 0,  description: "Clear sky",                    emoji: "☀️"  }
+- { code: 1,  description: "Mainly clear",                 emoji: "🌤️" }
+- { code: 2,  description: "Partly cloudy",                emoji: "⛅"  }
+- { code: 3,  description: "Overcast",                     emoji: "☁️"  }
+- { code: 45, description: "Fog",                          emoji: "🌫️" }
+- { code: 48, description: "Freezing fog",                 emoji: "🌫️" }
+- { code: 51, description: "Light drizzle",                emoji: "🌦️" }
+- { code: 53, description: "Drizzle",                      emoji: "🌦️" }
+- { code: 55, description: "Dense drizzle",                emoji: "🌧️" }
+- { code: 56, description: "Light freezing drizzle",       emoji: "🌧️" }
+- { code: 57, description: "Freezing drizzle",             emoji: "🌧️" }
+- { code: 61, description: "Light rain",                   emoji: "🌧️" }
+- { code: 63, description: "Rain",                         emoji: "🌧️" }
+- { code: 65, description: "Heavy rain",                   emoji: "🌧️" }
+- { code: 66, description: "Light freezing rain",          emoji: "🌧️" }
+- { code: 67, description: "Freezing rain",                emoji: "🌧️" }
+- { code: 71, description: "Light snow",                   emoji: "🌨️" }
+- { code: 73, description: "Snow",                         emoji: "🌨️" }
+- { code: 75, description: "Heavy snow",                   emoji: "❄️"  }
+- { code: 77, description: "Snow grains",                  emoji: "❄️"  }
+- { code: 80, description: "Light rain showers",           emoji: "🌦️" }
+- { code: 81, description: "Rain showers",                 emoji: "🌧️" }
+- { code: 82, description: "Violent rain showers",         emoji: "⛈️"  }
+- { code: 85, description: "Light snow showers",           emoji: "🌨️" }
+- { code: 86, description: "Heavy snow showers",           emoji: "❄️"  }
+- { code: 95, description: "Thunderstorm",                 emoji: "⛈️"  }
+- { code: 96, description: "Thunderstorm w/ light hail",   emoji: "⛈️"  }
+- { code: 99, description: "Thunderstorm w/ heavy hail",   emoji: "⛈️"  }

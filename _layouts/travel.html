@@ -24,7 +24,7 @@ layout: default
       <h3>{{ day.date | date: "%-d %B" }}<span class="today-badge"></span></h3>
       <div class="locations">
         {% for loc in day.locations %}
-        <div class="location-card" data-date="{{ day.date }}" data-lat="{{ loc.lat }}" data-lon="{{ loc.lon }}" data-name="{{ loc.name }}" data-country="{{ loc.country }}">
+        <div class="location-card" data-date="{{ day.date }}" data-lat="{{ loc.lat }}" data-lon="{{ loc.lon }}" data-name="{{ loc.name }}" data-country="{{ loc.country }}" data-flag="{% assign _flag = site.data.flags[loc.country] %}{{ _flag }}">
           <strong>{% assign flag = site.data.flags[loc.country] %}{% if flag %}{{ flag }} {% endif %}{{ loc.name }}</strong>{% if loc.country and loc.country != "" %}, {{ loc.country }}{% endif %}
           <div class="weather-widget">Checking weather…</div>
         </div>
@@ -36,14 +36,55 @@ layout: default
 </div>
 
 <script>
-  // Sourced from _data/aqi_bands.yml so the AQI scale can be tweaked in one
-  // place instead of duplicated across travel-weather.js and travel-today.js.
+  // Sourced from _data/aqi_bands.yml — edit there to update both JS files.
   window.AQI_BANDS = [
     {% for band in site.data.aqi_bands %}
     { max: {{ band.max }}, label: "{{ band.label }}", emoji: "{{ band.emoji }}" }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   ];
+
+  // Sourced from _data/wmo_codes.yml — edit there to update both JS files.
+  window.WMO_CODES = {
+    {% for wmo in site.data.wmo_codes %}
+    {{ wmo.code }}: { description: "{{ wmo.description }}", emoji: "{{ wmo.emoji }}" }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  };
+
+  // Sourced from _data/condition_notes.yml — edit there to update both JS files.
+  {% assign fn = site.data.condition_notes.forecast %}
+  {% assign cn = site.data.condition_notes.current %}
+  window.CONDITION_NOTES = {
+    forecast: {
+      condition: {
+        clear:         "{{ fn.condition.clear | escape }}",
+        partly_cloudy: "{{ fn.condition.partly_cloudy | escape }}",
+        overcast:      "{{ fn.condition.overcast | escape }}",
+        fog:           "{{ fn.condition.fog | escape }}",
+        rain:          "{{ fn.condition.rain | escape }}",
+        snow:          "{{ fn.condition.snow | escape }}",
+        thunderstorm:  "{{ fn.condition.thunderstorm | escape }}",
+        unknown:       "{{ fn.condition.unknown | escape }}"
+      },
+      temp: {
+        very_cold: "{{ fn.temp.very_cold | escape }}",
+        cold:      "{{ fn.temp.cold | escape }}",
+        warm:      "{{ fn.temp.warm | escape }}",
+        hot:       "{{ fn.temp.hot | escape }}"
+      },
+      rain_chance: "{{ fn.rain_chance | escape }}"
+    },
+    current: {
+      thunderstorm: "{{ cn.thunderstorm | escape }}",
+      rain:         "{{ cn.rain | escape }}",
+      snow:         "{{ cn.snow | escape }}",
+      cold:         "{{ cn.cold | escape }}",
+      hot:          "{{ cn.hot | escape }}",
+      windy:        "{{ cn.windy | escape }}",
+      good:         "{{ cn.good | escape }}"
+    }
+  };
 </script>
+<script src="{{ '/assets/js/travel-shared.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-weather.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-day-order.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-today.js' | relative_url }}"></script>
@@ -74,7 +115,8 @@ layout: default
   .today-section h2 { margin: 0 0 0.6rem; font-size: 1.05rem; }
   .today-locations { display: flex; flex-wrap: wrap; gap: 0.75rem; }
   .today-location-card { flex: 1 1 220px; border: 1px solid #ddd; border-radius: 8px; padding: 0.6rem 0.85rem; background: #fff; }
-  .today-location-card strong { display: block; margin-bottom: 0.25rem; }
+  .today-card-header { display: block; margin-bottom: 0.25rem; }
+  .today-location-card strong { display: inline; }
   .today-location-card .today-widget { font-size: 0.9rem; color: #444; }
   .today-note { margin-top: 0.3rem; font-size: 0.8rem; color: #555; font-style: italic; }
 
@@ -88,21 +130,37 @@ layout: default
   }
   body.theme-retro-game .location-card strong { color: var(--retro-accent); }
   body.theme-retro-game .location-card .weather-widget { color: var(--retro-text); }
-  body.theme-retro-game .weather-sun { color: var(--retro-primary); }
+  body.theme-retro-game .weather-sun { color: #8ecfff; }
   body.theme-retro-game .weather-aqi { color: var(--retro-text); }
   body.theme-retro-game .weather-note { color: #e0c9ff; }
   body.theme-retro-game .weather-recorded-label { color: var(--retro-secondary); }
   body.theme-retro-game .back-link { color: var(--retro-primary); }
   body.theme-retro-game .today-section {
-    background: rgba(255, 136, 0, 0.10);
-    border-color: var(--retro-highlight);
+    background: rgba(0, 255, 0, 0.1);
+    border: 2px solid var(--retro-primary);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
   }
-  body.theme-retro-game .today-section h2 { color: var(--retro-accent); }
+  body.theme-retro-game .today-section h2 {
+    color: var(--retro-primary);
+    text-shadow: 2px 2px 0px var(--retro-shadow);
+  }
   body.theme-retro-game .today-location-card {
     background: rgba(74, 158, 255, 0.12);
-    border-color: var(--retro-border);
+    border: 2px solid var(--retro-primary);
   }
-  body.theme-retro-game .today-location-card strong { color: var(--retro-accent); }
-  body.theme-retro-game .today-location-card .today-widget { color: var(--retro-text); }
-  body.theme-retro-game .today-note { color: #e0c9ff; }
+  body.theme-retro-game .today-location-card strong {
+    color: var(--retro-accent);
+  }
+  body.theme-retro-game .today-country {
+    color: var(--retro-text);
+  }
+  body.theme-retro-game .today-location-card .today-widget {
+    color: var(--retro-text);
+    text-shadow: 0 0 3px var(--retro-primary);
+  }
+  body.theme-retro-game .today-note {
+    color: #e0c9ff;
+    text-shadow: 0 0 3px var(--retro-secondary);
+  }
 </style>

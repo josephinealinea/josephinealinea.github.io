@@ -13,43 +13,14 @@
 //
 // These are good candidates because they answer "what do I need to know if
 // I stepped outside right now," which a daily high/low doesn't.
+//
+// WMO weather codes are loaded from _data/wmo_codes.yml via window.WMO_CODES
+// (injected by the travel layout). Other shared helpers (extractTime,
+// aqiCategory, wmoDescription, wmoEmoji) live in travel-shared.js, which is
+// loaded before this file. Country flag emojis are read from the data-flag
+// attribute on each .location-card, set by the travel layout from _data/flags.yml.
 
 (function () {
-  var WMO_DESCRIPTIONS = {
-    0: "Clear sky", 1: "Mainly clear", 2: "Partly cloudy", 3: "Overcast",
-    45: "Fog", 48: "Freezing fog",
-    51: "Light drizzle", 53: "Drizzle", 55: "Dense drizzle",
-    56: "Light freezing drizzle", 57: "Freezing drizzle",
-    61: "Light rain", 63: "Rain", 65: "Heavy rain",
-    66: "Light freezing rain", 67: "Freezing rain",
-    71: "Light snow", 73: "Snow", 75: "Heavy snow", 77: "Snow grains",
-    80: "Light rain showers", 81: "Rain showers", 82: "Violent rain showers",
-    85: "Light snow showers", 86: "Heavy snow showers",
-    95: "Thunderstorm", 96: "Thunderstorm w/ light hail", 99: "Thunderstorm w/ heavy hail"
-  };
-
-  // Kept in sync with _data/flags.yml — add an entry here too if a new
-  // country shows up in a trip's data file.
-  var COUNTRY_FLAGS = {
-    "Germany": "🇩🇪", "Singapore": "🇸🇬", "Philippines": "🇵🇭",
-    "Estonia": "🇪🇪", "Hungary": "🇭🇺", "Morocco": "🇲🇦", "Spain": "🇪🇸",
-    "Switzerland": "🇨🇭", "Liechtenstein": "🇱🇮", "Austria": "🇦🇹",
-    "Italy": "🇮🇹", "Malta": "🇲🇹", "France": "🇫🇷", "Monaco": "🇲🇨"
-  };
-
-  var WMO_EMOJI = {
-    0: "☀️", 1: "🌤️", 2: "⛅", 3: "☁️",
-    45: "🌫️", 48: "🌫️",
-    51: "🌦️", 53: "🌦️", 55: "🌧️",
-    56: "🌧️", 57: "🌧️",
-    61: "🌧️", 63: "🌧️", 65: "🌧️",
-    66: "🌧️", 67: "🌧️",
-    71: "🌨️", 73: "🌨️", 75: "❄️", 77: "❄️",
-    80: "🌦️", 81: "🌧️", 82: "⛈️",
-    85: "🌨️", 86: "❄️",
-    95: "⛈️", 96: "⛈️", 99: "⛈️"
-  };
-
   function todayDateStr() {
     var d = new Date();
     var mm = String(d.getMonth() + 1).padStart(2, "0");
@@ -57,49 +28,7 @@
     return d.getFullYear() + "-" + mm + "-" + dd;
   }
 
-  function quickNote(code, temp, wind) {
-    if (code === 95 || code === 96 || code === 99) return "Thunderstorms right now — best to head indoors.";
-    if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) return "Raining right now — grab a jacket or umbrella.";
-    if ((code >= 71 && code <= 77) || code === 85 || code === 86) return "Snowing right now — dress warmly.";
-    if (temp <= 5) return "Quite cold right now — bundle up.";
-    if (temp >= 30) return "Quite hot right now — stay hydrated.";
-    if (wind !== null && wind >= 35) return "Windy right now — secure loose items.";
-    return "Good conditions right now.";
-  }
-
-  function extractTime(isoString) {
-    if (!isoString) return null;
-    var idx = isoString.indexOf("T");
-    return idx >= 0 ? isoString.slice(idx + 1) : isoString;
-  }
-
-  // European AQI bands (0-20 Good ... 100+ Extremely Poor), per the EEA scale
-  // that Open-Meteo's air quality API reports against. Bands are defined in
-  // _data/aqi_bands.yml and injected as window.AQI_BANDS by the layout, so
-  // they only need to be edited in one place (kept in sync with the same
-  // helper in travel-weather.js). The list below is just a fallback in case
-  // that global isn't available for some reason.
-  var FALLBACK_AQI_BANDS = [
-    { max: 20, label: "Good", emoji: "🟢" },
-    { max: 40, label: "Fair", emoji: "🟡" },
-    { max: 60, label: "Moderate", emoji: "🟠" },
-    { max: 80, label: "Poor", emoji: "🔴" },
-    { max: 100, label: "Very Poor", emoji: "🟣" },
-    { max: Infinity, label: "Extremely Poor", emoji: "⚫" }
-  ];
-
-  function aqiCategory(value) {
-    if (value === null || value === undefined) return null;
-    var bands = (typeof window !== "undefined" && window.AQI_BANDS && window.AQI_BANDS.length)
-      ? window.AQI_BANDS
-      : FALLBACK_AQI_BANDS;
-    for (var i = 0; i < bands.length; i++) {
-      if (value <= bands[i].max) return { label: bands[i].label, emoji: bands[i].emoji };
-    }
-    return bands[bands.length - 1];
-  }
-
-  function renderLocation(container, name, country, data, aqi) {
+  function renderLocation(container, name, country, flag, data, aqi) {
     var card = document.createElement("div");
     card.className = "today-location-card";
 
@@ -113,7 +42,7 @@
     var code = current.weathercode;
     var temp = Math.round(current.temperature);
     var wind = current.windspeed != null ? Math.round(current.windspeed) : null;
-    var localTime = extractTime(current.time);
+    var localTime = TravelShared.extractTime(current.time);
 
     var feels = null;
     var humidity = null;
@@ -132,8 +61,8 @@
       }
     }
 
-    var emoji = WMO_EMOJI[code] || "🌡️";
-    var desc = WMO_DESCRIPTIONS[code] || "—";
+    var emoji = TravelShared.wmoEmoji(code);
+    var desc = TravelShared.wmoDescription(code);
 
     var line1 = emoji + " " + desc + " · " + temp + "°C";
     if (feels !== null && feels !== temp) line1 += " (feels " + feels + "°C)";
@@ -146,13 +75,14 @@
       line2parts.push(current.is_day === 1 ? "☀️ Daytime" : "🌙 Nighttime");
     }
 
-    var note = quickNote(code, temp, wind);
+    var note = TravelShared.currentNote(code, temp, wind);
 
-    var aqiCat = aqiCategory(aqi);
+    var aqiCat = TravelShared.aqiCategory(aqi);
 
-    var flag = COUNTRY_FLAGS[country];
-    var nameLabel = (flag ? flag + " " : "") + name + (country ? ", " + country : "");
-    var html = "<strong>" + nameLabel + "</strong>";
+    var html = "<div class=\"today-card-header\">"
+             + "<strong>" + (flag ? flag + " " : "") + name + "</strong>"
+             + (country ? "<span class=\"today-country\">, " + country + "</span>" : "")
+             + "</div>";
     html += "<div class=\"today-widget\">" + line1 + "</div>";
     if (line2parts.length) html += "<div class=\"today-widget\">" + line2parts.join(" · ") + "</div>";
     if (aqiCat) html += "<div class=\"today-widget\">" + aqiCat.emoji + " Air quality: " + aqiCat.label + " (AQI " + aqi + ")</div>";
@@ -180,6 +110,7 @@
       var lon = card.getAttribute("data-lon");
       var name = card.getAttribute("data-name") || "—";
       var country = card.getAttribute("data-country") || "";
+      var flag = card.getAttribute("data-flag") || "";
       if (!lat || !lon || Number(lat) === 0) return;
 
       var url = "https://api.open-meteo.com/v1/forecast" +
@@ -214,7 +145,7 @@
         })
         .then(function (data) {
           return aqiPromise.then(function (aqi) {
-            renderLocation(listEl, name, country, data, aqi);
+            renderLocation(listEl, name, country, flag, data, aqi);
           });
         })
         .catch(function () {

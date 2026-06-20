@@ -16,6 +16,7 @@ start_date: 2026-06-23
 end_date: 2026-07-12
 
 days:
+
   - date: 2026-06-23
     locations:
       - { name: "Zurich", country: "Switzerland", lat: 47.3769, lon: 8.5417 }
@@ -35,12 +36,13 @@ days:
   - date: 2026-06-26
     locations:
       - { name: "Interlaken", country: "Switzerland", lat: 46.6863, lon: 7.8632 }
-      - { name: "Grindelwald", country: "Switzerland", lat: 46.6244, lon: 8.0411 }
+      - { name: "Spiez", country: "Switzerland", lat: 46.6885, lon: 7.6792 }
 
   - date: 2026-06-27
     locations:
       - { name: "Interlaken", country: "Switzerland", lat: 46.6863, lon: 7.8632 }
-      - { name: "Geneva", country: "Switzerland", lat: 46.2044, lon: 6.1432 }
+      - { name: "Lauterbrunnen", country: "Switzerland", lat: 46.5957, lon: 7.9077 }
+      - { name: "Brienz", country: "Switzerland", lat: 46.7545, lon: 8.0385 }
 
   - date: 2026-06-28
     locations:

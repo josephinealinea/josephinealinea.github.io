@@ -12,15 +12,10 @@
 // Example for a trip running 23 June – 12 July:
 //   - Visited on 22 or 23 June: order unchanged, 23 June -> 12 July.
 //   - Visited on 24 June: 24 June -> 12 July, then 23 June at the very end.
+//
+// daysFromToday lives in travel-shared.js, loaded before this.
 
 (function () {
-  function daysFromToday(dateStr) {
-    var today = new Date();
-    today.setHours(0, 0, 0, 0);
-    var target = new Date(dateStr + "T00:00:00");
-    return Math.round((target - today) / 86400000);
-  }
-
   function reorderTripDays() {
     var container = document.querySelector(".trip-days");
     if (!container) return;
@@ -38,7 +33,7 @@
         return;
       }
 
-      var diff = daysFromToday(date);
+      var diff = TravelShared.daysFromToday(date);
 
       var badge = el.querySelector(".today-badge");
       if (badge) badge.textContent = diff === 0 ? " (Today)" : "";

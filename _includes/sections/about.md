@@ -42,8 +42,7 @@ title: About Me
         </div>
       </div>
     </div>
-    <div class="about-content">
-      <br /><br /><br />
+    <div class="about-bio-link">
       <a href="/bio/" class="latest-posts-button secondary">Read My Bio →</a>
     </div>
   </div>

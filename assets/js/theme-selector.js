@@ -96,7 +96,22 @@ function initializeThemeSelector() {
            };
 }
 
+function updateBodyPadding() {
+    var header = document.querySelector('.site-header');
+    if (header) {
+        document.body.style.paddingTop = header.offsetHeight + 'px';
+    }
+}
+
 function initializeNavigation() {
+    updateBodyPadding();
+    window.addEventListener('resize', function() {
+        updateBodyPadding();
+        // Re-render toggle label when viewport crosses the mobile breakpoint
+        var savedTheme = localStorage.getItem('selectedTheme') || 'jekyll-minima';
+        updateThemeDisplay(savedTheme);
+    });
+
     // Smooth Scrolling and Active Menu Highlighting
     const navLinks = document.querySelectorAll('.site-nav .page-link');
     const sections = document.querySelectorAll('.section');
@@ -218,7 +233,10 @@ if (document.readyState === 'loading') {
            
            // Update theme display
            updateThemeDisplay(theme);
-           
+
+           // Recalculate body padding — retro header may have different height
+           setTimeout(updateBodyPadding, 50);
+
            // Update CSS file loading - enable/disable appropriate CSS files
            const mainCss = document.getElementById('main-css');
            const retroGameCss = document.getElementById('retro-game-css');
@@ -245,14 +263,16 @@ if (document.readyState === 'loading') {
            }
        }
        
-       // Function to update theme display name
+       // Function to update theme display name in the toggle button.
+       // Uses short labels on mobile (≤768px) to match the dropdown options.
        function updateThemeDisplay(theme) {
            const currentThemeSpan = document.getElementById('current-theme');
            if (currentThemeSpan) {
+               const isMobile = window.innerWidth <= 768;
                if (theme === 'retro-game') {
-                   currentThemeSpan.textContent = 'Retro-Game-FF7';
+                   currentThemeSpan.textContent = isMobile ? 'FF7' : 'Retro-Game FF7';
                } else {
-                   currentThemeSpan.textContent = 'Jekyll-Minima-Theme';
+                   currentThemeSpan.textContent = isMobile ? 'Minima' : 'Minima Theme';
                }
            }
        }

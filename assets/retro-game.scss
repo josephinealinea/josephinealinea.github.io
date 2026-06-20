@@ -76,17 +76,23 @@
   }
 }
 
+// Theme dropdown label visibility (full on desktop, short on mobile)
+.label-short { display: none; }
+
 // Responsive design for theme selector
 @media (max-width: 768px) {
   .theme-selector {
     top: 10px;
     right: 10px;
   }
-  
+
   .theme-toggle {
     padding: 10px 14px;
     font-size: 12px;
   }
+
+  .label-full  { display: none; }
+  .label-short { display: inline; }
 }
 
 // Retro-Game Theme Variables (Final Fantasy 7 inspired)
@@ -456,7 +462,22 @@ body.theme-retro-game .site-title {
   .mission-heading {
     font-size: 1.5em;
   }
-  
+
+  body.theme-retro-game .welcome-actions {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1em;
+  }
+
+  body.theme-retro-game .welcome-button {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 240px;
+    padding: 11px 16px;
+    font-size: 0.95em;
+    text-align: center;
+  }
+
   .about-content {
     grid-template-columns: 1fr;
     gap: 2em;
@@ -686,6 +707,13 @@ body.theme-retro-game .welcome-text {
   text-shadow: 0 0 5px var(--retro-primary);
 }
 
+body.theme-retro-game .welcome-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
 body.theme-retro-game .welcome-button.primary {
   background: var(--retro-primary);
   color: var(--retro-bg);
@@ -715,6 +743,12 @@ body.theme-retro-game .welcome-button.secondary:hover {
   background: var(--retro-text);
   color: var(--retro-bg);
   box-shadow: 0 0 20px var(--retro-text);
+}
+
+// About bio link — must be centered in retro theme too (main.css is disabled)
+.about-bio-link {
+  text-align: center;
+  padding-top: 1.5em;
 }
 
 // Blog Section for Retro-Game Theme
@@ -1110,5 +1144,13 @@ body.theme-retro-game .site-nav .page-link.active {
   body.theme-retro-game .about-content {
     grid-template-columns: 1fr;
     gap: 2em;
+  }
+
+  // Reduce the large retro title font so it wraps to 2 lines (not 3+)
+  // on narrow screens. The base is 1.625rem with letter-spacing: 3px,
+  // which is far too wide for a 375px viewport.
+  body.theme-retro-game .site-title {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
   }
 }
