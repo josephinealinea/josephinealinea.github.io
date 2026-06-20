@@ -1,5 +1,5 @@
 <!---
-title: Blog
+title: Tech Blogs
 --->
 
 <!-- Blog Section -->

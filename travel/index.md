@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Travel
+title: Travels
 permalink: /travel/
 ---
 
 <a href="/" class="back-link">← Back to Main Page</a>
 
-<p>🌈 Trip weather forecasts ✈️</p>
+<p>🌈 Trip - Weather forecasts ✈️</p>
 
 {% assign trips = site.pages | where: "layout", "travel" | sort: "start_date" | reverse %}
 {% if trips.size > 0 %}

@@ -1,10 +1,12 @@
 ---
 layout: page
-title: Blog
+title: Technical Blogs
 permalink: /posts/
 ---
 
 <a href="/" class="back-link">← Back to Main Page</a>
+
+<p>..will try to journal as much as possible 👩‍💻 please bear with me </p>
 
 {% if site.posts.size > 0 %}
 <div class="post-grid" style="margin-top: 1.5rem;">
