@@ -37,6 +37,7 @@ days:
     locations:
       - { name: "Interlaken", country: "Switzerland", lat: 46.6863, lon: 7.8632 }
       - { name: "Spiez", country: "Switzerland", lat: 46.6885, lon: 7.6792 }
+      - { name: "Thun", country: "Switzerland", lat: 46.7580, lon: 7.6280 }
 
   - date: 2026-06-27
     locations:
