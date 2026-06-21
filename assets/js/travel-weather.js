@@ -3,16 +3,13 @@
 // - Dates within the next 16 days (including today): live forecast fetched
 //   on every page load, and the result is snapshotted to localStorage.
 // - Dates more than 16 days out: shown as "forecast not open yet", no API call.
-// - Past dates: never re-fetched (Open-Meteo's free forecast endpoint can't
-//   look backwards anyway). Instead we show the last snapshot that was
-//   recorded while the date was still current/upcoming, so the value seen
-//   on the day doesn't change afterwards. If this browser never visited the
-//   page while the date was live, there's no snapshot to show.
+// - Past dates: fetches actual weather from the Open-Meteo Historical Archive
+//   API (archive-api.open-meteo.com). Falls back to the last localStorage
+//   snapshot if the archive has no data yet (the archive typically lags ~5
+//   days behind today), then shows "no data" if no snapshot exists either.
 //
-// Note: snapshots live in this browser's localStorage only — they aren't
-// shared across devices. A travel buddy who opens the page for the first
-// time after the date has passed will see "no recorded data" unless their
-// own browser had already cached it.
+// Note: localStorage snapshots from live forecast runs are kept as a fallback
+// and are browser-local — they aren't shared across devices.
 //
 // WMO weather codes are loaded from _data/wmo_codes.yml via window.WMO_CODES.
 // Condition note text is loaded from _data/condition_notes.yml via window.CONDITION_NOTES.
@@ -130,6 +127,63 @@
     });
   }
 
+  function renderHistorical(el, daily) {
+    var code    = daily.weathercode[0];
+    var hi      = Math.round(daily.temperature_2m_max[0]);
+    var lo      = Math.round(daily.temperature_2m_min[0]);
+    var precip  = (daily.precipitation_sum && daily.precipitation_sum[0] !== null)
+                    ? Math.round(daily.precipitation_sum[0] * 10) / 10
+                    : null;
+    var sunrise = daily.sunrise ? TravelShared.extractTime(daily.sunrise[0]) : null;
+    var sunset  = daily.sunset  ? TravelShared.extractTime(daily.sunset[0])  : null;
+    var emoji   = TravelShared.wmoEmoji(code);
+    var desc    = TravelShared.wmoDescription(code);
+
+    var line1 = emoji + " " + desc + " · " + lo + "°-" + hi + "°C";
+    if (precip !== null) line1 += " · " + precip + "mm rain";
+
+    var line2 = (sunrise && sunset) ? "🌅 " + sunrise + " · 🌇 " + sunset : "";
+    var note  = TravelShared.forecastNote(code, hi, lo, null);
+
+    var html = "<div class=\"weather-line weather-recorded-label\">📖 Actual weather on this day</div>";
+    html += "<div class=\"weather-line\">" + line1 + "</div>";
+    if (line2) html += "<div class=\"weather-line weather-sun\">" + line2 + "</div>";
+    if (note)  html += "<div class=\"weather-note\">" + note + "</div>";
+    el.innerHTML = html;
+  }
+
+  function loadHistorical(el, date, lat, lon) {
+    renderMessage(el, "Loading historical weather…");
+
+    var url = "https://archive-api.open-meteo.com/v1/archive" +
+      "?latitude="  + encodeURIComponent(lat) +
+      "&longitude=" + encodeURIComponent(lon) +
+      "&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode,sunrise,sunset" +
+      "&timezone=auto" +
+      "&start_date=" + date +
+      "&end_date="   + date;
+
+    fetch(url)
+      .then(function (res) {
+        if (!res.ok) throw new Error("Archive request failed");
+        return res.json();
+      })
+      .then(function (data) {
+        if (!data.daily || !data.daily.time || data.daily.time.length === 0) {
+          throw new Error("No data");
+        }
+        renderHistorical(el, data.daily);
+      })
+      .catch(function () {
+        var snap = loadSnapshot(date, lat, lon);
+        if (snap) {
+          renderSnapshot(el, snap, "✓ Last recorded weather");
+        } else {
+          renderMessage(el, "✓ Trip day completed (no historical data available)");
+        }
+      });
+  }
+
   function loadCard(card) {
     var weatherEl = card.querySelector(".weather-widget");
     if (!weatherEl) return;
@@ -144,14 +198,7 @@
     }
 
     if (diff < 0) {
-      // Date has passed — never re-fetch. Show whatever was last recorded
-      // (in this browser) while the date was still current/upcoming.
-      var snap = loadSnapshot(date, lat, lon);
-      if (snap) {
-        renderSnapshot(weatherEl, snap, "✓ Last recorded weather");
-      } else {
-        renderMessage(weatherEl, "✓ Trip day completed (no recorded weather)");
-      }
+      loadHistorical(weatherEl, date, lat, lon);
       return;
     }
 
