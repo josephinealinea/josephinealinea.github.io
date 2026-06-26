@@ -42,8 +42,9 @@ days:
   - date: 2026-06-27
     locations:
       - { name: "Interlaken", country: "Switzerland", lat: 46.6863, lon: 7.8632 }
-      - { name: "Lauterbrunnen", country: "Switzerland", lat: 46.5957, lon: 7.9077 }
       - { name: "Brienz", country: "Switzerland", lat: 46.7545, lon: 8.0385 }
+      - { name: "Wengen", country: "Switzerland", lat: 46.6089, lon: 7.9244 }
+      - { name: "Lauterbrunnen", country: "Switzerland", lat: 46.5957, lon: 7.9077 }
 
   - date: 2026-06-28
     locations:
