@@ -49,8 +49,9 @@ days:
   - date: 2026-06-28
     locations:
       - { name: "Interlaken", country: "Switzerland", lat: 46.6863, lon: 7.8632 }
-      - { name: "Kandersteg", country: "Switzerland", lat: 46.4980, lon: 7.6709 }
       - { name: "Zermatt", country: "Switzerland", lat: 46.0207, lon: 7.7491 }
+      - { name: "Brienz", country: "Switzerland", lat: 46.7545, lon: 8.0385 }
+      - { name: "Kandersteg", country: "Switzerland", lat: 46.4980, lon: 7.6709 }
 
   - date: 2026-06-29
     locations:
