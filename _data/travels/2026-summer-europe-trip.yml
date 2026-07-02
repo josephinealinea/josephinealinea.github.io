@@ -75,9 +75,8 @@ days:
     locations:
       - { name: "Falzes", country: "Italy", lat: 46.7836, lon: 11.7186 }
       - { name: "Rifugio Friedrich August", country: "Italy", lat: 46.5388, lon: 11.7269 }
-      - { name: "Langkofel - Sassolungo", country: "Italy", lat: 46.5333, lon: 11.7167 }
-      - { name: "Lupo Bianco", country: "Italy", lat: 46.5200, lon: 11.7500 }
       - { name: "Val di Funes", country: "Italy", lat: 46.640004, lon: 11.674180 }
+      - { name: "Bruneck", country: "Italy", lat: 46.7956, lon: 11.9371 }
 
   - date: 2026-07-03
     locations:
