@@ -83,11 +83,14 @@ days:
       - { name: "Falzes", country: "Italy", lat: 46.7836, lon: 11.7186 }
       - { name: "Seceda", country: "Italy", lat: 46.5919, lon: 11.7372 }
       - { name: "Alpe di Siusi", country: "Italy", lat: 46.5500, lon: 11.6167 }
+      - { name: "Ortisei", country: "Italy", lat: 46.5761, lon: 11.6722 }
       - { name: "Gummer", country: "Italy", lat: 46.4521, lon: 11.4630 }
 
   - date: 2026-07-04
     locations:
       - { name: "Gummer", country: "Italy", lat: 46.4521, lon: 11.4630 }
+      - { name: "Treviso", country: "Italy", lat: 45.6669, lon: 12.2431 }
+      - { name: "Venice", country: "Italy", lat: 45.4408, lon: 12.3155 }
 
   - date: 2026-07-05
     locations:
