@@ -102,15 +102,18 @@ days:
     locations:
       - { name: "Cospicua", country: "Malta", lat: 35.8831, lon: 14.5209 }
       - { name: "Gozo", country: "Malta", lat: 36.0443, lon: 14.2440 }
+      - { name: "Valletta", country: "Malta", lat: 35.8989, lon: 14.5146 }
 
   - date: 2026-07-07
     locations:
       - { name: "Cospicua", country: "Malta", lat: 35.8831, lon: 14.5209 }
       - { name: "Mdina", country: "Malta", lat: 35.8872, lon: 14.4035 }
+      - { name: "Valletta", country: "Malta", lat: 35.8989, lon: 14.5146 }
 
   - date: 2026-07-08
     locations:
       - { name: "Cospicua", country: "Malta", lat: 35.8831, lon: 14.5209 }
+      - { name: "Valletta", country: "Malta", lat: 35.8989, lon: 14.5146 }
 
   - date: 2026-07-09
     locations:
