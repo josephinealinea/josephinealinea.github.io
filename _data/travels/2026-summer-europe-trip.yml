@@ -115,10 +115,13 @@ days:
   - date: 2026-07-09
     locations:
       - { name: "Sicily (Palermo)", country: "Italy", lat: 38.1157, lon: 13.3615 }
+      - { name: "Catania", country: "Italy", lat: 37.5079, lon: 15.0830 }
+      - { name: "Taormina", country: "Italy", lat: 37.8523, lon: 15.2869 }
 
   - date: 2026-07-10
     locations:
       - { name: "Nice", country: "France", lat: 43.7102, lon: 7.2620 }
+      - { name: "Menton", country: "France", lat: 43.7750, lon: 7.5000 }
       - { name: "Monaco", country: "Monaco", lat: 43.7384, lon: 7.4246 }
 
   - date: 2026-07-11
