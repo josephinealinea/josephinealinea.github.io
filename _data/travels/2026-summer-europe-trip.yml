@@ -108,6 +108,7 @@ days:
     locations:
       - { name: "Cospicua", country: "Malta", lat: 35.8831, lon: 14.5209 }
       - { name: "Mdina", country: "Malta", lat: 35.8872, lon: 14.4035 }
+      - { name: "Sliema", country: "Malta", lat: 35.9122, lon: 14.5028 }
       - { name: "Valletta", country: "Malta", lat: 35.8989, lon: 14.5146 }
 
   - date: 2026-07-08
