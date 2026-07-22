@@ -1,0 +1,23 @@
+# Anniversary Trip 2026 — itinerary data
+# Same format as _data/travels/2026-summer-europe-trip.yml: one "- date:"
+# block per day, with one or more locations (name, country, lat, lon).
+
+trip_name: "Anniversary Trip 2026"
+start_date: 2026-07-25
+end_date: 2026-07-27
+
+days:
+
+  - date: 2026-07-25
+    locations:
+      - { name: "Tallinn", country: "Estonia", lat: 59.4370, lon: 24.7536 }
+      - { name: "Kuressaare", country: "Estonia", lat: 58.2529, lon: 22.4853 }
+
+  - date: 2026-07-26
+    locations:
+      - { name: "Kuressaare", country: "Estonia", lat: 58.2529, lon: 22.4853 }
+
+  - date: 2026-07-27
+    locations:
+      - { name: "Kuressaare", country: "Estonia", lat: 58.2529, lon: 22.4853 }
+      - { name: "Tallinn", country: "Estonia", lat: 59.4370, lon: 24.7536 }
