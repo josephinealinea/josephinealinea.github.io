@@ -1,0 +1,18 @@
+# Maps the "type" value used in _data/travels/itinerary/*.yml to an emoji.
+# Add an entry here any time a new type shows up in an itinerary file.
+
+airbnb: "🏠"
+hotel: "🏨"
+bus: "🚌"
+train: "🚆"
+flight: "✈️"
+ferry: "⛴️"
+bus_ferry: "🚌⛴️"
+car: "🚗"
+bike_rental: "🚲"
+activity: "🎟️"
+museum: "🏛️"
+hike: "🥾"
+spa: "🧖"
+pub: "🍺"
+restaurant: "🍽️"

@@ -21,19 +21,24 @@ layout: default
       <input type="checkbox" id="panel-toggle-weather-only">
       Show only weather forecast
     </label>
+    <label class="panel-toggle-option">
+      <input type="checkbox" id="panel-toggle-itinerary-only">
+      Show only itinerary
+    </label>
   </div>
 
-  <div id="today-section" class="today-section" style="display:none;">
+  <div id="today-section" class="today-section" data-panel="weather" style="display:none;">
     <h2>📍️ Weather Right Now 🌡</h2>
     <div class="today-locations"></div>
   </div>
 
   {% assign trip = site.data.travels.weather[page.trip_key] %}
+  {% assign itinerary = site.data.travels.itinerary[page.trip_key] %}
   <div class="trip-days">
     {% for day in trip.days %}
     <div class="trip-day" data-date="{{ day.date }}">
       <h3>{{ day.date | date: "%-d %B" }}<span class="today-badge"></span></h3>
-      <div class="locations">
+      <div class="locations" data-panel="weather">
         {% for loc in day.locations %}
         <div class="location-card" data-date="{{ day.date }}" data-lat="{{ loc.lat }}" data-lon="{{ loc.lon }}" data-name="{{ loc.name }}" data-country="{{ loc.country }}" data-flag="{% assign _flag = site.data.flags[loc.country] %}{{ _flag }}">
           <strong>{% assign flag = site.data.flags[loc.country] %}{% if flag %}{{ flag }} {% endif %}{{ loc.name }}</strong>{% if loc.country and loc.country != "" %}, {{ loc.country }}{% endif %}
@@ -41,6 +46,32 @@ layout: default
         </div>
         {% endfor %}
       </div>
+
+      {% if itinerary %}
+        {% assign itin_day = itinerary.days | where: "date", day.date | first %}
+        {% if itin_day %}
+        <div class="itinerary-items" data-panel="itinerary">
+          {% for item in itin_day.items %}
+          {% assign icon = site.data.itinerary_icons[item.type] %}
+          <div class="itinerary-item itinerary-item-{{ item.category }}">
+            <span class="itinerary-icon">{{ icon }}</span>
+            {% if item.category == "transport" %}
+              <span class="itinerary-name">{{ item.name }}</span>
+              <div class="itinerary-route">
+                {% for stop in item.travel %}
+                  {% if stop.link %}<a href="{{ stop.link }}" target="_blank" rel="noopener">{{ stop.name }}</a>{% else %}{{ stop.name }}{% endif %} ({{ stop.time }}){% unless forloop.last %} → {% endunless %}
+                {% endfor %}
+              </div>
+            {% elsif item.link %}
+              <a href="{{ item.link }}" target="_blank" rel="noopener" class="itinerary-name">{{ item.name }}</a>
+            {% else %}
+              <span class="itinerary-name">{{ item.name }}</span>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      {% endif %}
     </div>
     {% endfor %}
   </div>
@@ -136,6 +167,24 @@ layout: default
   .today-location-card .today-widget { font-size: 0.9rem; color: #444; }
   .today-note { margin-top: 0.3rem; font-size: 0.8rem; color: #555; font-style: italic; }
 
+  .itinerary-items { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.75rem; }
+  .itinerary-item {
+    flex: 1 1 220px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.6rem 0.85rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem;
+  }
+  .itinerary-item-transport { flex-basis: 100%; }
+  .itinerary-icon { font-size: 1.1rem; }
+  .itinerary-name { font-weight: 600; }
+  a.itinerary-name { text-decoration: underline; color: #1a73e8; }
+  .itinerary-route { flex-basis: 100%; font-size: 0.9rem; color: #555; }
+  .itinerary-route a { color: #1a73e8; text-decoration: underline; }
+
   /* Retro-Game-FF7 theme: lighten the cards so they contrast against
      the dark page background instead of staying near-invisible. */
   body.theme-retro-game .travel-page .trip-dates { color: var(--retro-primary); }
@@ -181,4 +230,12 @@ layout: default
     color: #e0c9ff;
     text-shadow: 0 0 3px var(--retro-secondary);
   }
+  body.theme-retro-game .itinerary-item {
+    background: rgba(74, 158, 255, 0.12);
+    border-color: var(--retro-border);
+  }
+  body.theme-retro-game .itinerary-name { color: var(--retro-accent); }
+  body.theme-retro-game a.itinerary-name { color: var(--retro-accent); }
+  body.theme-retro-game .itinerary-route { color: var(--retro-text); }
+  body.theme-retro-game .itinerary-route a { color: var(--retro-accent); }
 </style>

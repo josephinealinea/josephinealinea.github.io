@@ -1,0 +1,69 @@
+# Anniversary Trip 2026 — itinerary data (accommodation + travel legs).
+# One "- date:" block per day; "items" is an ordered list rendered top to bottom.
+# "type" must exactly match a key in _data/itinerary_icons.yml.
+
+trip_name: "Anniversary Trip 2026"
+
+days:
+
+  - date: 2026-07-25
+    items:
+      - category: accommodation
+        type: airbnb
+        name: "Airbnb flat in Kuressaare"
+        link: "https://maps.app.goo.gl/Fw7q2sFW1eD8MDAaA?g_st=ic"
+      - category: transport
+        type: bus_ferry
+        name: "Lux Express (with ferry️)"
+        travel:
+          - name: "Tallinna bussijaam"
+            link: "https://maps.app.goo.gl/yQFVKiqJh5Yf1mza8"
+            time: "09:55"
+          - name: "Kuresaare bussijaam"
+            link: "https://maps.app.goo.gl/11TUQr8H6qBdWfTK8"
+            time: "13:40"
+      - category: activity
+        type: museum
+        name: "Kuresaare Castle"
+        link: "https://maps.app.goo.gl/5NexjF1XxzoGhAjY8"
+      - category: food
+        type: pub
+        name: "Pritsumaja Pub"
+        link: "https://maps.app.goo.gl/tdqi9N66AKEuQ4CC9"
+
+  - date: 2026-07-26
+    items:
+      - category: accommodation
+        type: airbnb
+        name: "Airbnb flat in Kuressaare"
+        link: "https://maps.app.goo.gl/Fw7q2sFW1eD8MDAaA?g_st=ic"
+      - category: activity
+        type: hike
+        name: "Tori Sadam"
+        link: "https://maps.app.goo.gl/ZxS62pVrmqJqdLGd8"
+      - category: food
+        type: restaurant
+        name: "Sabba restoran Kuresaares"
+        link: "https://maps.app.goo.gl/PPSG8M2MUCzoeD7Y6"
+      - category: activity
+        type: spa
+        name: "Asa Spa Hotell"
+        link: "https://maps.app.goo.gl/DHUuVnj6J7UPc3yk6"
+
+  - date: 2026-07-27
+    items:
+      - category: accommodation
+        type: airbnb
+        name: "Airbnb flat in Kuressaare"
+        link: "https://maps.app.goo.gl/Fw7q2sFW1eD8MDAaA?g_st=ic"
+      - category: transport
+        type: bus_ferry
+        name: "Lux Express (with ferry️)"
+        travel:
+          - name: "Kuresaare bussijaam"
+            link: "https://maps.app.goo.gl/11TUQr8H6qBdWfTK8"
+            time: "10:35"
+          - name: "Tallinna bussijaam"
+            link: "https://maps.app.goo.gl/yQFVKiqJh5Yf1mza8"
+            time: "14:25"
+
