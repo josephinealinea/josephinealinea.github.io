@@ -1,0 +1,201 @@
+trip_name: "Birthday Trip 2026"
+
+days:
+  - date: 2026-02-14
+    items:
+      - category: transport
+        type: flight
+        name: "Wizz Air (W6 4656)"
+        travel:
+          - name: "Tallinna Lennujaam | Tallinn Airport"
+            link: "https://maps.app.goo.gl/hL7ZhTsFaaUdS7oQ8"
+            time: "16:29"
+          - name: "Budapest Ferenc Liszt International Airport"
+            link: "https://maps.app.goo.gl/Tas1EBsaeHg4KTpr8"
+            time: "17:40"
+      - category: accommodation
+        type: airbnb
+        name: "Airbnb flat in Budapest"
+        link: "https://maps.app.goo.gl/DzXacNdvLmJbYQE57?g_st=ic"
+        remarks: "airbnb with balcony and best view of the Parliament"
+
+  - date: 2026-02-15
+    items:
+      - category: accommodation
+        type: airbnb
+        name: "Airbnb flat in Budapest"
+        link: "https://maps.app.goo.gl/DzXacNdvLmJbYQE57?g_st=ic"
+      - category: food
+        type: restaurant
+        name: "Menza Étterem és Kávéház"
+        link: "https://maps.app.goo.gl/jAy3W829trBcphtN7"
+        remarks: "try out Hungarian local cuisine"
+
+  - date: 2026-02-16
+    items:
+      - category: accommodation
+        type: airbnb
+        name: "Airbnb flat in Budapest"
+        link: "https://maps.app.goo.gl/DzXacNdvLmJbYQE57?g_st=ic"
+      - category: food
+        type: cafe
+        name: "New York Café"
+        link: "https://maps.app.goo.gl/3meaqzqCQY4o498U9"
+        remarks: "prepare for long queue"
+      - category: activity
+        type: museum
+        name: "Fisherman's Bastion"
+        link: "https://maps.app.goo.gl/CvXZSZUR6wxLMWsKA"
+        remarks: "must see in Budapest"
+
+  - date: 2026-02-17
+    items:
+      - category: accommodation
+        type: airbnb
+        name: "Airbnb flat in Budapest"
+        link: "https://maps.app.goo.gl/DzXacNdvLmJbYQE57?g_st=ic"
+      - category: transport
+        type: flight
+        name: "Ryanair (FR 4656)"
+        travel:
+          - name: "Budapest Ferenc Liszt International Airport"
+            link: "https://maps.app.goo.gl/Tas1EBsaeHg4KTpr8"
+            time: "14:09"
+          - name: "Marrakesh Menara Airport"
+            link: "https://maps.app.goo.gl/nEJXnsVJhZp7w5rs6"
+            time: "17:32"
+      - category: accommodation
+        type: hotel
+        name: "Riad Palais Sebban"
+        link: "https://maps.app.goo.gl/YfwYUwwti7G6HdUG8"
+        remarks: "5 star riad in Marrakesh"
+
+  - date: 2026-02-18
+    items:
+      - category: accommodation
+        type: hotel
+        name: "Riad Palais Sebban"
+        link: "https://maps.app.goo.gl/YfwYUwwti7G6HdUG8"
+      - category: accommodation
+        type: hotel
+        name: "Hotel Saghro"
+        link: "https://www.google.com/maps/search/?api=1&query=Hotel+Saghro%2C+Av+Des+Far%2C+45800+Tinghir%2C+Morocco"
+
+  - date: 2026-02-19
+    items:
+      - category: accommodation
+        type: hotel
+        name: "Hotel Saghro"
+        link: "https://www.google.com/maps/search/?api=1&query=Hotel+Saghro%2C+Av+Des+Far%2C+45800+Tinghir%2C+Morocco"
+      - category: accommodation
+        type: camp
+        name: "Camping in Sahara Desert"
+        link: "https://www.google.com/maps/search/?api=1&query=Erg+Chebbi%2C+Sahara+Desert%2C+Morocco"
+
+  - date: 2026-02-20
+    items:
+      - category: accommodation
+        type: camp
+        name: "Camping in Sahara Desert"
+        link: "https://www.google.com/maps/search/?api=1&query=Erg+Chebbi%2C+Sahara+Desert%2C+Morocco"
+      - category: accommodation
+        type: hotel
+        name: "Riad El Noujoum"
+        link: "https://www.google.com/maps/search/?api=1&query=Riad+El+Noujoum%2C+50+Derb+Ben+Zina%2C+Kasbah%2C+Marrakech"
+
+  - date: 2026-02-21
+    items:
+      - category: accommodation
+        type: hotel
+        name: "Riad El Noujoum"
+        link: "https://www.google.com/maps/search/?api=1&query=Riad+El+Noujoum%2C+50+Derb+Ben+Zina%2C+Kasbah%2C+Marrakech"
+      - category: activity
+        type: spa
+        name: "Le bain de Kasbah Marrakech"
+        link: "https://maps.app.goo.gl/cqJGZL9NmkibZu8k6"
+      - category: activity
+        type: shopping
+        name: "Souk Market"
+        link: "https://maps.app.goo.gl/BvYc8LspqZXpeHrw8"
+      - category: food
+        type: restaurant
+        name: "Dar Essalam"
+        link: "https://maps.app.goo.gl/eUgGdHGatBspWgXt7"
+        remarks: "course meal dinner with belly dancing performance and show"
+
+  - date: 2026-02-22
+    items:
+      - category: accommodation
+        type: hotel
+        name: "Riad El Noujoum"
+        link: "https://www.google.com/maps/search/?api=1&query=Riad+El+Noujoum%2C+50+Derb+Ben+Zina%2C+Kasbah%2C+Marrakech"
+      - category: transport
+        type: flight
+        name: "Ryanair (FR 4009)"
+        travel:
+          - name: "Marrakesh Menara Airport"
+            link: "https://maps.app.goo.gl/nEJXnsVJhZp7w5rs6"
+            time: "04:30"
+          - name: "Sevilla SVQ Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Sevilla+Airport+SVQ"
+            time: "07:55"
+      - category: accommodation
+        type: hotel
+        name: "Hotel Giralda Center"
+        link: "https://www.google.com/maps/search/?api=1&query=Hotel+Giralda+Center%2C+Calle+Juan+de+Mata+Carriazo+7%2C+Seville%2C+Spain"
+        remarks: "spacious and nice hotel with good breakfast menu"
+      - category: activity
+        type: museum
+        name: "Plaza de España"
+        link: "https://maps.app.goo.gl/V5YvM5DiEY4HtgGJ9"
+        remarks: "beautiful plaza, a must see"
+      - category: food
+        type: restaurant
+        name: "Taberna Blanco Martín"
+        link: "https://maps.app.goo.gl/vd7oLfZ18n4oQNvh8"
+        remarks: "best rice and lechon in Seville"
+
+  - date: 2026-02-23
+    items:
+      - category: accommodation
+        type: hotel
+        name: "Hotel Giralda Center"
+        link: "https://www.google.com/maps/search/?api=1&query=Hotel+Giralda+Center%2C+Calle+Juan+de+Mata+Carriazo+7%2C+Seville%2C+Spain"
+      - category: food
+        type: cafe
+        name: "Bar El Comercio"
+        link: "https://maps.app.goo.gl/MeuCdq2D5Swbwhdm9"
+        remarks: "churros"
+      - category: activity
+        type: museum
+        name: "Santa Cruz"
+        link: "https://maps.app.goo.gl/Lqsbxv2CpvwZzmTRA"
+
+  - date: 2026-02-24
+    items:
+      - category: accommodation
+        type: hotel
+        name: "Hotel Giralda Center"
+        link: "https://www.google.com/maps/search/?api=1&query=Hotel+Giralda+Center%2C+Calle+Juan+de+Mata+Carriazo+7%2C+Seville%2C+Spain"
+      - category: transport
+        type: flight
+        name: "SAS (SK 2522)"
+        travel:
+          - name: "Sevilla Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Sevilla+Airport+SVQ"
+            time: "18:18"
+          - name: "Copenhagen Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Copenhagen+Airport+CPH+Kastrup"
+            time: "21:47"
+      - category: transport
+        type: flight
+        name: "SAS (SK 1790)"
+        travel:
+          - name: "Copenhagen Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Copenhagen+Airport+CPH+Kastrup"
+            time: "22:52"
+          - name: "Tallinna Lennujaam | Tallinn Airport"
+            link: "https://maps.app.goo.gl/hL7ZhTsFaaUdS7oQ8"
+            time: "01:25, 25 Feb"
+
+

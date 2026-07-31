@@ -59,13 +59,20 @@ layout: default
               <span class="itinerary-name">{{ item.name }}</span>
               <div class="itinerary-route">
                 {% for stop in item.travel %}
-                  {% if stop.link %}<a href="{{ stop.link }}" target="_blank" rel="noopener">{{ stop.name }}</a>{% else %}{{ stop.name }}{% endif %} ({{ stop.time }}){% unless forloop.last %} → {% endunless %}
+                <div class="itinerary-stop">
+                  <span class="itinerary-stop-icon">📍</span>
+                  {% if stop.link %}<a href="{{ stop.link }}" target="_blank" rel="noopener">{{ stop.name }}</a>{% else %}{{ stop.name }}{% endif %}
+                  <span class="itinerary-time-icon">⏰</span> {{ stop.time }}
+                </div>
                 {% endfor %}
               </div>
             {% elsif item.link %}
               <a href="{{ item.link }}" target="_blank" rel="noopener" class="itinerary-name">{{ item.name }}</a>
             {% else %}
               <span class="itinerary-name">{{ item.name }}</span>
+            {% endif %}
+            {% if item.remarks %}
+              <div class="itinerary-remarks">📝 {{ item.remarks }}</div>
             {% endif %}
           </div>
           {% endfor %}
@@ -182,8 +189,11 @@ layout: default
   .itinerary-icon { font-size: 1.1rem; }
   .itinerary-name { font-weight: 600; }
   a.itinerary-name { text-decoration: underline; color: #1a73e8; }
-  .itinerary-route { flex-basis: 100%; font-size: 0.9rem; color: #555; }
+  .itinerary-route { flex-basis: 100%; font-size: 0.9rem; color: #555; display: flex; flex-direction: column; gap: 0.15rem; }
+  .itinerary-stop-icon, .itinerary-time-icon { margin-right: 0.2rem; }
+  .itinerary-time-icon { margin-left: 0.3rem; }
   .itinerary-route a { color: #1a73e8; text-decoration: underline; }
+  .itinerary-remarks { flex-basis: 100%; margin-top: 0.35rem; font-size: 0.82rem; color: #555; font-style: italic; }
 
   /* Retro-Game-FF7 theme: lighten the cards so they contrast against
      the dark page background instead of staying near-invisible. */
@@ -238,4 +248,5 @@ layout: default
   body.theme-retro-game a.itinerary-name { color: var(--retro-accent); }
   body.theme-retro-game .itinerary-route { color: var(--retro-text); }
   body.theme-retro-game .itinerary-route a { color: var(--retro-accent); }
+  body.theme-retro-game .itinerary-remarks { color: #e0c9ff; }
 </style>
