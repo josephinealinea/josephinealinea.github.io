@@ -19,12 +19,12 @@ permalink: /travel/
         <span class="post-date">{{ trip.start_date | date: "%B %-d, %Y" }} – {{ trip.end_date | date: "%B %-d, %Y" }}</span>
       </div>
       <h3 class="post-title">
-        <a class="post-link" href="{{ trip.url | relative_url }}">{{ trip.title }}</a>
+        <a class="post-link" href="{{ trip.url | relative_url }}?show-all=true">{{ trip.title }}</a>
       </h3>
       <div class="post-excerpt">
         {% if end_ts < today_ts %}✈️ Past trip{% else %}📅 Upcoming{% endif %}
       </div>
-      <a href="{{ trip.url | relative_url }}" class="read-more">View Trip →</a>
+      <a href="{{ trip.url | relative_url }}?show-all=true" class="read-more">View Trip →</a>
     </article>
   {% endfor %}
 </div>

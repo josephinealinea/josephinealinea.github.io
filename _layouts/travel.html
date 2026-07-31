@@ -12,12 +12,23 @@ layout: default
     <div class="trip-intro">{{ content }}</div>
   {% endif %}
 
+  <div id="panel-toggle" class="panel-toggle">
+    <label class="panel-toggle-option">
+      <input type="checkbox" id="panel-toggle-show-all">
+      Show all
+    </label>
+    <label class="panel-toggle-option">
+      <input type="checkbox" id="panel-toggle-weather-only">
+      Show only weather forecast
+    </label>
+  </div>
+
   <div id="today-section" class="today-section" style="display:none;">
     <h2>📍️ Weather Right Now 🌡</h2>
     <div class="today-locations"></div>
   </div>
 
-  {% assign trip = site.data.travels[page.trip_key] %}
+  {% assign trip = site.data.travels.weather[page.trip_key] %}
   <div class="trip-days">
     {% for day in trip.days %}
     <div class="trip-day" data-date="{{ day.date }}">
@@ -84,6 +95,7 @@ layout: default
     }
   };
 </script>
+<script src="{{ '/assets/js/travel-panel-toggle.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-shared.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-weather.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-day-order.js' | relative_url }}"></script>
@@ -110,6 +122,10 @@ layout: default
   .weather-recorded-label { font-size: 0.78rem; color: #888; text-transform: uppercase; letter-spacing: 0.02em; }
   .back-link { display: inline-block; margin-bottom: 1rem; }
 
+  .panel-toggle { display: flex; gap: 1.25rem; align-items: center; margin: 0.5rem 0 1.25rem; font-size: 0.9rem; color: #444; }
+  .panel-toggle-option { display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer; }
+  .panel-hidden { display: none !important; }
+
   .today-badge { margin-left: 0.5rem; }
   .today-section { border: 1px solid #ddd; border-radius: 8px; padding: 0.75rem 1rem; margin: 1.25rem 0; background: #f6fffa; }
   .today-section h2 { margin: 0 0 0.6rem; font-size: 1.05rem; }
@@ -135,6 +151,8 @@ layout: default
   body.theme-retro-game .weather-note { color: #e0c9ff; }
   body.theme-retro-game .weather-recorded-label { color: var(--retro-secondary); }
   body.theme-retro-game .back-link { color: var(--retro-primary); }
+  body.theme-retro-game .panel-toggle { color: var(--retro-text); }
+  body.theme-retro-game .panel-toggle-option input[type="checkbox"] { accent-color: var(--retro-primary); }
   body.theme-retro-game .today-section {
     background: rgba(0, 255, 0, 0.1);
     border: 2px solid var(--retro-primary);
