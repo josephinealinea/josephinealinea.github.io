@@ -62,7 +62,7 @@ layout: default
                 <div class="itinerary-stop">
                   <span class="itinerary-stop-icon">📍</span>
                   {% if stop.link %}<a href="{{ stop.link }}" target="_blank" rel="noopener">{{ stop.name }}</a>{% else %}{{ stop.name }}{% endif %}
-                  <span class="itinerary-time-icon">⏰</span> {{ stop.time }}
+                  {% if stop.time %}<span class="itinerary-time-icon">⏰</span> {{ stop.time }}{% endif %}
                 </div>
                 {% endfor %}
               </div>

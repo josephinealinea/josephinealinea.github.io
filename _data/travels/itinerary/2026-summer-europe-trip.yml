@@ -1,0 +1,470 @@
+# Summer Europe Trip 2026 — itinerary data (accommodation + travel legs).
+# Airbnb accommodation links are intentionally left blank — added manually.
+# One "- date:" block per day; "items" is an ordered list rendered top to bottom.
+# "type" must exactly match a key in _data/itinerary_icons.yml.
+
+trip_name: "Summer Europe Trip 2026"
+
+days:
+
+  - date: 2026-06-23
+    items:
+      - category: transport
+        type: flight
+        name: "Finnair (AY 1036)"
+        travel:
+          - name: "Tallinn Airport"
+            link: "https://maps.app.goo.gl/hL7ZhTsFaaUdS7oQ8"
+            time: "06:00"
+          - name: "Helsinki Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Helsinki+Airport"
+            time: "06:28"
+      - category: transport
+        type: flight
+        name: "Finnair (AY 1511)"
+        travel:
+          - name: "Helsinki Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Helsinki+Airport"
+            time: "08:09"
+          - name: "Zurich Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Zurich+Airport"
+            time: "09:46"
+      - category: transport
+        type: train
+        name: "SBB Train"
+        travel:
+          - name: "Zürich HB"
+            link: "https://www.google.com/maps/search/?api=1&query=Z%C3%BCrich+Hauptbahnhof"
+          - name: "Interlaken West"
+            link: "https://www.google.com/maps/search/?api=1&query=Interlaken+West+train+station"
+      - category: accommodation
+        type: hotel
+        name: "Hotel Harder Minerva"
+        link: "https://www.google.com/maps/search/?api=1&query=Hotel+Harder+Minerva%2C+Harderstrasse+15%2C+Interlaken"
+
+  - date: 2026-06-24
+    items:
+      - category: accommodation
+        type: hotel
+        name: "Hotel Harder Minerva"
+        link: "https://www.google.com/maps/search/?api=1&query=Hotel+Harder+Minerva%2C+Harderstrasse+15%2C+Interlaken"
+      - category: transport
+        type: train
+        name: "SBB Train"
+        travel:
+          - name: "Interlaken West"
+            link: "https://www.google.com/maps/search/?api=1&query=Interlaken+West+train+station"
+          - name: "Bern"
+            link: "https://www.google.com/maps/search/?api=1&query=Bern+Hauptbahnhof"
+          - name: "Interlaken West"
+            link: "https://www.google.com/maps/search/?api=1&query=Interlaken+West+train+station"
+
+  - date: 2026-06-25
+    items:
+      - category: accommodation
+        type: hotel
+        name: "Hotel Harder Minerva"
+        link: "https://www.google.com/maps/search/?api=1&query=Hotel+Harder+Minerva%2C+Harderstrasse+15%2C+Interlaken"
+      - category: transport
+        type: train
+        name: "SBB Train"
+        travel:
+          - name: "Interlaken West"
+            link: "https://www.google.com/maps/search/?api=1&query=Interlaken+West+train+station"
+          - name: "Grindelwald"
+            link: "https://www.google.com/maps/search/?api=1&query=Grindelwald+train+station"
+          - name: "Interlaken West"
+            link: "https://www.google.com/maps/search/?api=1&query=Interlaken+West+train+station"
+      - category: food
+        type: cafe
+        name: "Clubhaus Crêperie & Café"
+        link: "https://maps.app.goo.gl/Anv3Q48Q2AUZwDHd9"
+        remarks: "try ube match drink"
+
+  - date: 2026-06-26
+    items:
+      - category: accommodation
+        type: hotel
+        name: "Hotel Harder Minerva"
+        link: "https://www.google.com/maps/search/?api=1&query=Hotel+Harder+Minerva%2C+Harderstrasse+15%2C+Interlaken"
+      - category: transport
+        type: train
+        name: "SBB Train"
+        travel:
+          - name: "Interlaken West"
+            link: "https://www.google.com/maps/search/?api=1&query=Interlaken+West+train+station"
+          - name: "Spiez"
+            link: "https://www.google.com/maps/search/?api=1&query=Spiez+train+station"
+          - name: "Thun"
+            link: "https://www.google.com/maps/search/?api=1&query=Thun+train+station"
+          - name: "Interlaken West"
+            link: "https://www.google.com/maps/search/?api=1&query=Interlaken+West+train+station"
+
+  - date: 2026-06-27
+    items:
+      - category: accommodation
+        type: hotel
+        name: "Hotel Harder Minerva"
+        link: "https://www.google.com/maps/search/?api=1&query=Hotel+Harder+Minerva%2C+Harderstrasse+15%2C+Interlaken"
+      - category: transport
+        type: train
+        name: "SBB Train"
+        travel:
+          - name: "Interlaken West"
+            link: "https://www.google.com/maps/search/?api=1&query=Interlaken+West+train+station"
+          - name: "Wengen"
+            link: "https://www.google.com/maps/search/?api=1&query=Wengen+train+station"
+          - name: "Lauterbrunnen"
+            link: "https://www.google.com/maps/search/?api=1&query=Lauterbrunnen+train+station"
+          - name: "Interlaken West"
+            link: "https://www.google.com/maps/search/?api=1&query=Interlaken+West+train+station"
+      - category: food
+        type: restaurant
+        name: "Restaurant Weidstübli"
+        link: "https://maps.app.goo.gl/TKxFzJhiYXrwAsNB8"
+
+  - date: 2026-06-28
+    items:
+      - category: accommodation
+        type: hotel
+        name: "Hotel Harder Minerva"
+        link: "https://www.google.com/maps/search/?api=1&query=Hotel+Harder+Minerva%2C+Harderstrasse+15%2C+Interlaken"
+      - category: transport
+        type: train
+        name: "SBB Train"
+        travel:
+          - name: "Interlaken West"
+            link: "https://www.google.com/maps/search/?api=1&query=Interlaken+West+train+station"
+          - name: "Zermatt"
+            link: "https://www.google.com/maps/search/?api=1&query=Zermatt+train+station"
+          - name: "Brienz"
+            link: "https://www.google.com/maps/search/?api=1&query=Brienz+train+station"
+          - name: "Interlaken West"
+            link: "https://www.google.com/maps/search/?api=1&query=Interlaken+West+train+station"
+      - category: activity
+        type: hike
+        name: "Zermatt Viewpoint at Murini Viewpoint"
+        link: "https://maps.app.goo.gl/XTGX8fq5j5y3ohJTA"
+
+  - date: 2026-06-29
+    items:
+      - category: activity
+        type: museum
+        name: "Heidiland"
+        link: "https://maps.app.goo.gl/mxWJM97i93rgB7LL6"
+      - category: transport
+        type: car
+        name: "Drive"
+        travel:
+          - name: "Interlaken"
+            link: "https://www.google.com/maps/search/?api=1&query=Interlaken%2C+Switzerland"
+          - name: "Triesenberg"
+            link: "https://www.google.com/maps/search/?api=1&query=Triesenberg%2C+Liechtenstein"
+      - category: accommodation
+        type: camp
+        name: "Camping Yurt in Triesenberg"
+      - category: food
+        type: restaurant
+        name: "Edelweiss"
+        link: "https://maps.app.goo.gl/uas9hc4tXtNaLbRD7"
+
+  - date: 2026-06-30
+    items:
+      - category: activity
+        type: hike
+        name: "Llama hike"
+        link: "https://www.google.com/maps/search/?api=1&query=Lama+%26+Alpakahof+Triesenberg%2C+Chalberr%C3%BCtistrasse+70%2C+Triesenberg"
+      - category: transport
+        type: car
+        name: "Drive"
+        travel:
+          - name: "Triesenberg"
+            link: "https://www.google.com/maps/search/?api=1&query=Triesenberg%2C+Liechtenstein"
+          - name: "Innsbruck"
+            link: "https://www.google.com/maps/search/?api=1&query=Innsbruck%2C+Austria"
+      - category: accommodation
+        type: airbnb
+        name: "Flat in Innsbruck"
+      - category: food
+        type: restaurant
+        name: "Alpensaal an der Messe"
+        link: "https://www.google.com/maps/search/?api=1&query=Alpensaal+an+der+Messe%2C+Kapuzinergasse+11%2C+Innsbruck"
+
+  - date: 2026-07-01
+    items:
+      - category: transport
+        type: car
+        name: "Drive"
+        travel:
+          - name: "Innsbruck"
+            link: "https://www.google.com/maps/search/?api=1&query=Innsbruck%2C+Austria"
+          - name: "Tre Cime di Lavaredo"
+            link: "https://www.google.com/maps/search/?api=1&query=Tre+Cime+di+Lavaredo"
+          - name: "Lake Braies"
+            link: "https://www.google.com/maps/search/?api=1&query=Lake+Braies%2C+Italy"
+          - name: "Cortina d'Ampezzo"
+            link: "https://www.google.com/maps/search/?api=1&query=Cortina+d%27Ampezzo"
+          - name: "Falzes"
+            link: "https://www.google.com/maps/search/?api=1&query=Falzes%2C+Italy"
+      - category: accommodation
+        type: airbnb
+        name: "Flat in Falzes via Gruben"
+
+  - date: 2026-07-02
+    items:
+      - category: accommodation
+        type: airbnb
+        name: "Flat in Falzes via Gruben"
+      - category: transport
+        type: car
+        name: "Drive"
+        travel:
+          - name: "Falzes"
+            link: "https://www.google.com/maps/search/?api=1&query=Falzes%2C+Italy"
+          - name: "Sassolungo"
+            link: "https://www.google.com/maps/search/?api=1&query=Sassolungo%2C+Italy"
+      - category: activity
+        type: hike
+        name: "Sassolungo"
+        link: "https://www.google.com/maps/search/?api=1&query=Sassolungo%2C+Italy"
+      - category: food
+        type: restaurant
+        name: "Rifugio Friedrich August"
+        link: "https://maps.app.goo.gl/vSGdJG9Vf2zmSkcH9"
+        remarks: "long queue for the donuts. steak is good too"
+      - category: transport
+        type: car
+        name: "Drive"
+        travel:
+          - name: "Sassolungo"
+            link: "https://www.google.com/maps/search/?api=1&query=Sassolungo%2C+Italy"
+          - name: "Bruneck"
+            link: "https://www.google.com/maps/search/?api=1&query=Bruneck%2C+Italy"
+          - name: "Falzes"
+            link: "https://www.google.com/maps/search/?api=1&query=Falzes%2C+Italy"
+
+  - date: 2026-07-03
+    items:
+      - category: transport
+        type: car
+        name: "Drive"
+        travel:
+          - name: "Falzes"
+            link: "https://www.google.com/maps/search/?api=1&query=Falzes%2C+Italy"
+          - name: "Ortisei"
+            link: "https://www.google.com/maps/search/?api=1&query=Ortisei%2C+Italy"
+          - name: "Gummer"
+            link: "https://www.google.com/maps/search/?api=1&query=Gummer%2C+Italy"
+      - category: activity
+        type: hike
+        name: "Seceda"
+        link: "https://www.google.com/maps/search/?api=1&query=Seceda%2C+Italy"
+      - category: food
+        type: steak
+        name: "Baita Sofie Hütte"
+        link: "https://maps.app.goo.gl/wU7nyP3fXQGHQNXD6"
+        remarks: "steak with a view of Seceda"
+      - category: activity
+        type: hike
+        name: "Alpe di Siusi"
+        link: "https://www.google.com/maps/search/?api=1&query=Alpe+di+Siusi%2C+Italy"
+      - category: accommodation
+        type: airbnb
+        name: "Flat in Gummer"
+
+  - date: 2026-07-04
+    items:
+      - category: transport
+        type: car
+        name: "Drive"
+        travel:
+          - name: "Gummer"
+            link: "https://www.google.com/maps/search/?api=1&query=Gummer%2C+Italy"
+          - name: "Treviso"
+            link: "https://www.google.com/maps/search/?api=1&query=Treviso%2C+Italy"
+          - name: "Venice"
+            link: "https://www.google.com/maps/search/?api=1&query=Venice%2C+Italy"
+      - category: accommodation
+        type: hotel
+        name: "Hotel Maggior Consiglio"
+        link: "https://www.google.com/maps/search/?api=1&query=Hotel+Maggior+Consiglio%2C+Calle+Priuli+dei+Cavaletti%2C+Venice"
+
+  - date: 2026-07-05
+    items:
+      - category: transport
+        type: flight
+        name: "Ryanair (FR 3870)"
+        travel:
+          - name: "Treviso Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Treviso+Airport"
+            time: "08:40"
+          - name: "Malta Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Malta+International+Airport"
+            time: "10:30"
+      - category: accommodation
+        type: airbnb
+        name: "Flat in Cospicua"
+      - category: food
+        type: seafood
+        name: "Cockney's"
+        link: "https://www.google.com/maps/search/?api=1&query=Cockney%27s+Restaurant%2C+Marsamxett+Wharf%2C+Valletta"
+
+  - date: 2026-07-06
+    items:
+      - category: accommodation
+        type: airbnb
+        name: "Flat in Cospicua"
+      - category: activity
+        type: water
+        name: "Comino (Blue Lagoon)"
+        link: "https://www.google.com/maps/search/?api=1&query=Blue+Lagoon%2C+Comino%2C+Malta"
+      - category: food
+        type: restaurant
+        name: "BAP"
+        link: "https://www.google.com/maps/search/?api=1&query=BAP%2C+38+St+Zachary+Street%2C+Valletta"
+      - category: food
+        type: restaurant
+        name: "Pinoy Street Food"
+        link: "https://www.google.com/maps/search/?api=1&query=Pinoy+Street+Food%2C+Valletta"
+
+  - date: 2026-07-07
+    items:
+      - category: accommodation
+        type: airbnb
+        name: "Flat in Cospicua"
+      - category: activity
+        type: museum
+        name: "Mdina Old Town"
+        link: "https://www.google.com/maps/search/?api=1&query=Mdina%2C+Malta"
+      - category: food
+        type: steak
+        name: "Sciacca Grill"
+        link: "https://www.google.com/maps/search/?api=1&query=Sciacca+Grill%2C+Valletta"
+
+  - date: 2026-07-08
+    items:
+      - category: accommodation
+        type: airbnb
+        name: "Flat in Cospicua"
+      - category: activity
+        type: museum
+        name: "Valletta Streets"
+        link: "https://www.google.com/maps/search/?api=1&query=Valletta%2C+Malta"
+      - category: food
+        type: restaurant
+        name: "Legligin"
+        link: "https://www.google.com/maps/search/?api=1&query=Legligin%2C+Valletta"
+
+  - date: 2026-07-09
+    items:
+      - category: transport
+        type: flight
+        name: "Ryanair (FR 367)"
+        travel:
+          - name: "Malta Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Malta+International+Airport"
+            time: "05:46"
+          - name: "Catania Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Catania+Fontanarossa+Airport"
+            time: "06:23"
+      - category: accommodation
+        type: hotel
+        name: "Gattopardo House"
+        link: "https://www.google.com/maps/search/?api=1&query=Gattopardo+House%2C+Via+Minoriti+10%2C+Catania"
+      - category: activity
+        type: museum
+        name: "Taormina"
+        link: "https://www.google.com/maps/search/?api=1&query=Taormina%2C+Italy"
+      - category: food
+        type: restaurant
+        name: "Mendolia Beach Club"
+        link: "https://www.google.com/maps/search/?api=1&query=Mendolia+Beach+Club%2C+Via+Nazionale+198%2C+Taormina"
+
+  - date: 2026-07-10
+    items:
+      - category: transport
+        type: flight
+        name: "ITA Airways (AZ 1722)"
+        travel:
+          - name: "Catania Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Catania+Fontanarossa+Airport"
+            time: "05:55"
+          - name: "Rome Fiumicino Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Rome+Fiumicino+Airport"
+            time: "07:20"
+      - category: transport
+        type: flight
+        name: "ITA Airways (AZ 348)"
+        travel:
+          - name: "Rome Fiumicino Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Rome+Fiumicino+Airport"
+            time: "09:19"
+          - name: "Nice Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Nice+C%C3%B4te+d%27Azur+Airport"
+            time: "10:31"
+      - category: accommodation
+        type: airbnb
+        name: "Flat in Nice Old Town"
+      - category: food
+        type: restaurant
+        name: "La Nonna"
+      - category: food
+        type: seafood
+        name: "Café de Nice"
+        link: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+Nice%2C+1+Rue+Maurice+Jaubert%2C+Nice"
+      - category: activity
+        type: drive
+        name: "Menton"
+        link: "https://www.google.com/maps/search/?api=1&query=Menton%2C+France"
+      - category: activity
+        type: drive
+        name: "Monaco"
+        link: "https://www.google.com/maps/search/?api=1&query=Monaco"
+
+  - date: 2026-07-11
+    items:
+      - category: accommodation
+        type: airbnb
+        name: "Flat in Nice Old Town"
+      - category: food
+        type: cafe
+        name: "Marinette"
+        link: "https://www.google.com/maps/search/?api=1&query=Marinette%2C+13+Rue+Colonna+d%27Istria%2C+Nice"
+      - category: activity
+        type: hike
+        name: "Colline du Château"
+        link: "https://www.google.com/maps/search/?api=1&query=Colline+du+Ch%C3%A2teau%2C+Nice"
+
+  - date: 2026-07-12
+    items:
+      - category: accommodation
+        type: airbnb
+        name: "Flat in Nice Old Town"
+      - category: food
+        type: bakery
+        name: "Maison Kayser"
+        link: "https://www.google.com/maps/search/?api=1&query=Maison+Kayser%2C+10+Rue+Alexandre+Mari%2C+Nice"
+      - category: food
+        type: seafood
+        name: "Le Café de Turin"
+        link: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+Turin%2C+5+Place+Garibaldi%2C+Nice"
+      - category: transport
+        type: flight
+        name: "SAS (SK 1830)"
+        travel:
+          - name: "Nice Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Nice+C%C3%B4te+d%27Azur+Airport"
+            time: "16:21"
+          - name: "Stockholm Arlanda Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Stockholm+Arlanda+Airport"
+            time: "19:31"
+      - category: transport
+        type: flight
+        name: "SAS (SK 1722)"
+        travel:
+          - name: "Stockholm Arlanda Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Stockholm+Arlanda+Airport"
+            time: "21:36"
+          - name: "Tallinn Airport"
+            link: "https://maps.app.goo.gl/hL7ZhTsFaaUdS7oQ8"
+            time: "23:36"
