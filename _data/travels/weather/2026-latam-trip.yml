@@ -1,0 +1,80 @@
+# LATAM Trip 2026 — itinerary data
+# Same format as other files in this folder: one "- date:" block per day,
+# with one or more locations (name, country, lat, lon).
+
+trip_name: "LATAM Trip 2026"
+start_date: 2026-10-24
+end_date: 2026-11-08
+
+days:
+
+  - date: 2026-10-24
+    locations:
+      - { name: "Los Angeles", country: "United States", lat: 34.0522, lon: -118.2437 }
+
+  - date: 2026-10-25
+    locations:
+      - { name: "Cusco", country: "Peru", lat: -13.5294, lon: -71.9850 }
+
+  - date: 2026-10-26
+    locations:
+      - { name: "Ollantaytambo", country: "Peru", lat: -13.2581, lon: -72.2633 }
+      - { name: "Aguas Calientes", country: "Peru", lat: -13.1547, lon: -72.5253 }
+
+  - date: 2026-10-27
+    locations:
+      - { name: "Aguas Calientes", country: "Peru", lat: -13.1547, lon: -72.5253 }
+      - { name: "Machu Picchu", country: "Peru", lat: -13.1631, lon: -72.5451 }
+      - { name: "Cusco", country: "Peru", lat: -13.5294, lon: -71.9850 }
+
+  - date: 2026-10-28
+    locations:
+      - { name: "Cusco", country: "Peru", lat: -13.5294, lon: -71.9850 }
+
+  - date: 2026-10-29
+    locations:
+      - { name: "Cusco", country: "Peru", lat: -13.5294, lon: -71.9850 }
+
+  - date: 2026-10-30
+    locations:
+      - { name: "Cusco", country: "Peru", lat: -13.5294, lon: -71.9850 }
+
+  - date: 2026-10-31
+    locations:
+      - { name: "Cusco", country: "Peru", lat: -13.5294, lon: -71.9850 }
+      - { name: "La Paz", country: "Bolivia", lat: -16.4897, lon: -68.1193 }
+
+  - date: 2026-11-01
+    locations:
+      - { name: "Uyuni", country: "Bolivia", lat: -20.4597, lon: -66.8250 }
+
+  - date: 2026-11-02
+    locations:
+      - { name: "Uyuni", country: "Bolivia", lat: -20.4597, lon: -66.8250 }
+
+  - date: 2026-11-03
+    locations:
+      - { name: "Uyuni", country: "Bolivia", lat: -20.4597, lon: -66.8250 }
+      - { name: "La Paz", country: "Bolivia", lat: -16.4897, lon: -68.1193 }
+
+  - date: 2026-11-04
+    locations:
+      - { name: "La Paz", country: "Bolivia", lat: -16.4897, lon: -68.1193 }
+      - { name: "Rio de Janeiro", country: "Brazil", lat: -22.9068, lon: -43.1729 }
+
+  - date: 2026-11-05
+    locations:
+      - { name: "Rio de Janeiro", country: "Brazil", lat: -22.9068, lon: -43.1729 }
+
+  - date: 2026-11-06
+    locations:
+      - { name: "Rio de Janeiro", country: "Brazil", lat: -22.9068, lon: -43.1729 }
+      - { name: "Los Angeles", country: "United States", lat: 34.0522, lon: -118.2437 }
+
+  - date: 2026-11-07
+    locations:
+      - { name: "Los Angeles", country: "United States", lat: 34.0522, lon: -118.2437 }
+
+  - date: 2026-11-08
+    locations:
+      - { name: "Tallinn", country: "Estonia", lat: 59.4370, lon: 24.7536 }

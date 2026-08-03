@@ -1,0 +1,141 @@
+# LATAM Trip 2026 — itinerary data (flights so far; accommodation/activities/food to be added later).
+# One "- date:" block per day; "items" is an ordered list rendered top to bottom.
+# "type" must exactly match a key in _data/itinerary_icons.yml.
+#
+# Note: no transport entry exists for the Uyuni -> La Paz move on 03.11 —
+# left out intentionally (no flight was given for that leg).
+
+trip_name: "LATAM Trip 2026"
+
+days:
+
+  - date: 2026-10-24
+    items:
+      - category: transport
+        type: flight
+        name: "KLM (KL 2842)"
+        travel:
+          - name: "Tallinn Airport"
+            link: "https://maps.app.goo.gl/hL7ZhTsFaaUdS7oQ8"
+            time: "07:30"
+          - name: "Amsterdam Schiphol Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Amsterdam+Schiphol+Airport"
+            time: "09:00"
+      - category: transport
+        type: flight
+        name: "KLM (KL 601)"
+        travel:
+          - name: "Amsterdam Schiphol Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Amsterdam+Schiphol+Airport"
+            time: "09:50"
+          - name: "Los Angeles Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Los+Angeles+International+Airport"
+            time: "11:50"
+      - category: transport
+        type: flight
+        name: "Delta Airlines (DL 6071)"
+        travel:
+          - name: "Los Angeles Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Los+Angeles+International+Airport"
+            time: "21:30"
+          - name: "Lima Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Jorge+Ch%C3%A1vez+International+Airport+Lima"
+            time: "08:05, 25 Oct"
+
+  - date: 2026-10-25
+    items:
+      - category: transport
+        type: flight
+        name: "Delta Airlines (DL 6269)"
+        travel:
+          - name: "Lima Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Jorge+Ch%C3%A1vez+International+Airport+Lima"
+            time: "09:45"
+          - name: "Cusco Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Alejandro+Velasco+Astete+International+Airport+Cusco"
+            time: "11:10"
+
+  - date: 2026-10-31
+    items:
+      - category: transport
+        type: flight
+        name: "Avianca (AV 105)"
+        travel:
+          - name: "Cusco Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Alejandro+Velasco+Astete+International+Airport+Cusco"
+            time: "12:30"
+          - name: "La Paz Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=El+Alto+International+Airport+La+Paz"
+            time: "14:45"
+
+  - date: 2026-11-04
+    items:
+      - category: transport
+        type: flight
+        name: "BoA (OB 668)"
+        travel:
+          - name: "La Paz Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=El+Alto+International+Airport+La+Paz"
+            time: "10:40"
+          - name: "Santa Cruz Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Viru+Viru+International+Airport+Santa+Cruz+Bolivia"
+            time: "11:45"
+      - category: transport
+        type: flight
+        name: "BoA (OB 732)"
+        travel:
+          - name: "Santa Cruz Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Viru+Viru+International+Airport+Santa+Cruz+Bolivia"
+            time: "13:20"
+          - name: "Rio de Janeiro Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Rio+de+Janeiro%E2%80%93Gale%C3%A3o+International+Airport"
+            time: "17:20"
+
+  - date: 2026-11-06
+    items:
+      - category: transport
+        type: flight
+        name: "Delta Airlines (DL 6130)"
+        travel:
+          - name: "Rio de Janeiro Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Rio+de+Janeiro%E2%80%93Gale%C3%A3o+International+Airport"
+            time: "19:30"
+          - name: "São Paulo Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=S%C3%A3o+Paulo%E2%80%93Guarulhos+International+Airport"
+            time: "20:40"
+      - category: transport
+        type: flight
+        name: "Delta Airlines (DL 6079)"
+        travel:
+          - name: "São Paulo Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=S%C3%A3o+Paulo%E2%80%93Guarulhos+International+Airport"
+            time: "23:10"
+          - name: "Los Angeles Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Los+Angeles+International+Airport"
+            time: "06:15, 7 Nov"
+
+  - date: 2026-11-07
+    items:
+      - category: transport
+        type: flight
+        name: "KLM (AF 29)"
+        travel:
+          - name: "Los Angeles Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Los+Angeles+International+Airport"
+            time: "21:05"
+          - name: "Paris Charles de Gaulle Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Paris+Charles+de+Gaulle+Airport"
+            time: "16:50, 8 Nov"
+
+  - date: 2026-11-08
+    items:
+      - category: transport
+        type: flight
+        name: "KLM (AF 7972)"
+        travel:
+          - name: "Paris Charles de Gaulle Airport"
+            link: "https://www.google.com/maps/search/?api=1&query=Paris+Charles+de+Gaulle+Airport"
+            time: "20:05"
+          - name: "Tallinn Airport"
+            link: "https://maps.app.goo.gl/hL7ZhTsFaaUdS7oQ8"
+            time: "23:59"
