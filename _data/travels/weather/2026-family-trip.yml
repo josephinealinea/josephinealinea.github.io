@@ -11,6 +11,7 @@ end_date: 2026-05-10
 days:
   - date: 2026-04-30
     locations:
+      - { name: "Tallinn", country: "Estonia", lat: 59.4370, lon: 24.7536 }
       - { name: "Frankfurt", country: "Germany", lat: 50.1109, lon: 8.6821 }
   - date: 2026-05-01
     locations:

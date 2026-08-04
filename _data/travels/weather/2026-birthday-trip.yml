@@ -11,6 +11,7 @@ end_date: 2026-02-24
 days:
   - date: 2026-02-14
     locations:
+      - { name: "Tallinn", country: "Estonia", lat: 59.4370, lon: 24.7536 }
       - { name: "Budapest", country: "Hungary", lat: 47.4979, lon: 19.0402 }
   - date: 2026-02-15
     locations:

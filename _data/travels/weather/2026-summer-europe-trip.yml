@@ -19,6 +19,7 @@ days:
 
   - date: 2026-06-23
     locations:
+      - { name: "Tallinn", country: "Estonia", lat: 59.4370, lon: 24.7536 }
       - { name: "Zurich", country: "Switzerland", lat: 47.3769, lon: 8.5417 }
       - { name: "Lucerne", country: "Switzerland", lat: 47.0502, lon: 8.3093 }
       - { name: "Interlaken", country: "Switzerland", lat: 46.6863, lon: 7.8632 }
@@ -51,7 +52,6 @@ days:
       - { name: "Interlaken", country: "Switzerland", lat: 46.6863, lon: 7.8632 }
       - { name: "Zermatt", country: "Switzerland", lat: 46.0207, lon: 7.7491 }
       - { name: "Brienz", country: "Switzerland", lat: 46.7545, lon: 8.0385 }
-      - { name: "Kandersteg", country: "Switzerland", lat: 46.4980, lon: 7.6709 }
 
   - date: 2026-06-29
     locations:
