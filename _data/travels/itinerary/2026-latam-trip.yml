@@ -55,6 +55,27 @@ days:
             link: "https://www.google.com/maps/search/?api=1&query=Alejandro+Velasco+Astete+International+Airport+Cusco"
             time: "11:10"
 
+  - date: 2026-10-26
+    items:
+      - category: transport
+        type: train
+        name: "PeruRail (Vistadome Observatory 603)"
+        travel:
+          - name: "Ollantaytambo Station"
+            link: "https://www.google.com/maps/search/?api=1&query=PeruRail+Ollantaytambo+Station"
+            time: "15:37"
+          - name: "Machu Picchu Station"
+            link: "https://www.google.com/maps/search/?api=1&query=PeruRail+Machu+Picchu+Pueblo+Station"
+            time: "17:20"
+
+  - date: 2026-10-27
+    items:
+      - category: activity
+        type: museum
+        name: "Historic Sanctuary of Machu Picchu"
+        link: "https://maps.app.goo.gl/9GiG6XR7x8ZYur8Z6"
+        remarks: "Entrance ticket at 10am"
+
   - date: 2026-10-31
     items:
       - category: transport
