@@ -13,20 +13,20 @@ days:
         type: flight
         name: "Finnair (AY 1036)"
         travel:
-          - name: "Tallinn Airport"
+          - name: "TLL"
             link: "https://maps.app.goo.gl/hL7ZhTsFaaUdS7oQ8"
             time: "06:00"
-          - name: "Helsinki Airport"
+          - name: "HEL"
             link: "https://www.google.com/maps/search/?api=1&query=Helsinki+Airport"
             time: "06:28"
       - category: transport
         type: flight
         name: "Finnair (AY 1511)"
         travel:
-          - name: "Helsinki Airport"
+          - name: "HEL"
             link: "https://www.google.com/maps/search/?api=1&query=Helsinki+Airport"
             time: "08:09"
-          - name: "Zurich Airport"
+          - name: "ZRH"
             link: "https://www.google.com/maps/search/?api=1&query=Zurich+Airport"
             time: "09:46"
       - category: transport
@@ -295,10 +295,10 @@ days:
         type: flight
         name: "Ryanair (FR 3870)"
         travel:
-          - name: "Treviso Airport"
+          - name: "TSF"
             link: "https://www.google.com/maps/search/?api=1&query=Treviso+Airport"
             time: "08:40"
-          - name: "Malta Airport"
+          - name: "MLA"
             link: "https://www.google.com/maps/search/?api=1&query=Malta+International+Airport"
             time: "10:30"
       - category: accommodation
@@ -361,10 +361,10 @@ days:
         type: flight
         name: "Ryanair (FR 367)"
         travel:
-          - name: "Malta Airport"
+          - name: "MLA"
             link: "https://www.google.com/maps/search/?api=1&query=Malta+International+Airport"
             time: "05:46"
-          - name: "Catania Airport"
+          - name: "CTA"
             link: "https://www.google.com/maps/search/?api=1&query=Catania+Fontanarossa+Airport"
             time: "06:23"
       - category: accommodation
@@ -386,20 +386,20 @@ days:
         type: flight
         name: "ITA Airways (AZ 1722)"
         travel:
-          - name: "Catania Airport"
+          - name: "CTA"
             link: "https://www.google.com/maps/search/?api=1&query=Catania+Fontanarossa+Airport"
             time: "05:55"
-          - name: "Rome Fiumicino Airport"
+          - name: "FCO"
             link: "https://www.google.com/maps/search/?api=1&query=Rome+Fiumicino+Airport"
             time: "07:20"
       - category: transport
         type: flight
         name: "ITA Airways (AZ 348)"
         travel:
-          - name: "Rome Fiumicino Airport"
+          - name: "FCO"
             link: "https://www.google.com/maps/search/?api=1&query=Rome+Fiumicino+Airport"
             time: "09:19"
-          - name: "Nice Airport"
+          - name: "NCE"
             link: "https://www.google.com/maps/search/?api=1&query=Nice+C%C3%B4te+d%27Azur+Airport"
             time: "10:31"
       - category: accommodation
@@ -452,19 +452,19 @@ days:
         type: flight
         name: "SAS (SK 1830)"
         travel:
-          - name: "Nice Airport"
+          - name: "NCE"
             link: "https://www.google.com/maps/search/?api=1&query=Nice+C%C3%B4te+d%27Azur+Airport"
             time: "16:21"
-          - name: "Stockholm Arlanda Airport"
+          - name: "ARN"
             link: "https://www.google.com/maps/search/?api=1&query=Stockholm+Arlanda+Airport"
             time: "19:31"
       - category: transport
         type: flight
         name: "SAS (SK 1722)"
         travel:
-          - name: "Stockholm Arlanda Airport"
+          - name: "ARN"
             link: "https://www.google.com/maps/search/?api=1&query=Stockholm+Arlanda+Airport"
             time: "21:36"
-          - name: "Tallinn Airport"
+          - name: "TLL"
             link: "https://maps.app.goo.gl/hL7ZhTsFaaUdS7oQ8"
             time: "23:36"

@@ -7,10 +7,10 @@ days:
         type: flight
         name: "Wizz Air (W6 4656)"
         travel:
-          - name: "Tallinna Lennujaam | Tallinn Airport"
+          - name: "TLL"
             link: "https://maps.app.goo.gl/hL7ZhTsFaaUdS7oQ8"
             time: "16:29"
-          - name: "Budapest Ferenc Liszt International Airport"
+          - name: "BUD"
             link: "https://maps.app.goo.gl/Tas1EBsaeHg4KTpr8"
             time: "17:40"
       - category: accommodation
@@ -58,10 +58,10 @@ days:
         type: flight
         name: "Ryanair (FR 4656)"
         travel:
-          - name: "Budapest Ferenc Liszt International Airport"
+          - name: "BUD"
             link: "https://maps.app.goo.gl/Tas1EBsaeHg4KTpr8"
             time: "14:09"
-          - name: "Marrakesh Menara Airport"
+          - name: "RAK"
             link: "https://maps.app.goo.gl/nEJXnsVJhZp7w5rs6"
             time: "17:32"
       - category: accommodation
@@ -133,10 +133,10 @@ days:
         type: flight
         name: "Ryanair (FR 4009)"
         travel:
-          - name: "Marrakesh Menara Airport"
+          - name: "RAK"
             link: "https://maps.app.goo.gl/nEJXnsVJhZp7w5rs6"
             time: "04:30"
-          - name: "Sevilla SVQ Airport"
+          - name: "SVQ"
             link: "https://www.google.com/maps/search/?api=1&query=Sevilla+Airport+SVQ"
             time: "07:55"
       - category: accommodation
@@ -181,20 +181,20 @@ days:
         type: flight
         name: "SAS (SK 2522)"
         travel:
-          - name: "Sevilla Airport"
+          - name: "SVQ"
             link: "https://www.google.com/maps/search/?api=1&query=Sevilla+Airport+SVQ"
             time: "18:18"
-          - name: "Copenhagen Airport"
+          - name: "CPH"
             link: "https://www.google.com/maps/search/?api=1&query=Copenhagen+Airport+CPH+Kastrup"
             time: "21:47"
       - category: transport
         type: flight
         name: "SAS (SK 1790)"
         travel:
-          - name: "Copenhagen Airport"
+          - name: "CPH"
             link: "https://www.google.com/maps/search/?api=1&query=Copenhagen+Airport+CPH+Kastrup"
             time: "22:52"
-          - name: "Tallinna Lennujaam | Tallinn Airport"
+          - name: "TLL"
             link: "https://maps.app.goo.gl/hL7ZhTsFaaUdS7oQ8"
             time: "01:25, 25 Feb"
 

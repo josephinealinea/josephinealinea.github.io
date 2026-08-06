@@ -1,0 +1,29 @@
+# Maps a 3-letter IATA airport code used in stop.name of type: flight items in
+# _data/travels/itinerary/*.yml to its full display name.
+# Rendered in place of the code on travel pages (e.g. "TLL" -> "Tallinn Airport").
+# Add an entry here any time a new airport code shows up in a trip itinerary file.
+# Kept in alphabetical order by IATA code.
+
+AMS: "Amsterdam Schiphol Airport"
+ARN: "Stockholm Arlanda Airport"
+BUD: "Budapest Ferenc Liszt International Airport"
+CDG: "Paris Charles de Gaulle Airport"
+CPH: "Copenhagen Airport"
+CTA: "Catania Airport"
+CUZ: "Cusco Airport"
+FCO: "Rome Fiumicino Airport"
+GIG: "Rio de Janeiro Airport"
+GRU: "São Paulo Airport"
+HEL: "Helsinki Airport"
+LAX: "Los Angeles Airport"
+LIM: "Lima Airport"
+LPB: "La Paz Airport"
+MLA: "Malta Airport"
+NCE: "Nice Airport"
+RAK: "Marrakesh Menara Airport"
+SIN: "Singapore Changi Airport"
+SVQ: "Aeropuerto de Sevilla | Seville Airport"
+TLL: "Tallinna Lennujaam | Tallinn Airport"
+TSF: "Treviso Airport"
+VVI: "Santa Cruz Airport"
+ZRH: "Zurich Airport"
