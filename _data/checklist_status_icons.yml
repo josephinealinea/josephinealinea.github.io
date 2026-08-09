@@ -1,0 +1,5 @@
+# Maps the "status" value used in _data/travels/checklist/*.yml to an emoji.
+# Add an entry here any time a new status shows up in a checklist file.
+
+todo: "▫️"
+done: "✔️"

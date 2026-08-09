@@ -1,0 +1,31 @@
+# LATAM Trip 2026 — travel checklist data.
+# Flat "items" list; "status" must be "todo" or "done" (lowercase) and must
+# exactly match a key in _data/checklist_status_icons.yml.
+# Rendered order is todo-first/done-last regardless of the order written here
+# (see the sort logic in _layouts/travel.html) — write items in any order.
+
+trip_name: "LATAM Trip 2026"
+
+items:
+  - checklist:
+      - { status: "todo", description: "US Visa" }
+      - { status: "done", description: "RT Flight from TLL to LAX" }
+      - { status: "done", description: "RT Flight from SIN to LAX" }
+      - { status: "done", description: "Flight from LAX to CUZ" }
+      - { status: "done", description: "Flight from GIG to LAX" }
+      - { status: "done", description: "Flight from CUZ to LPB" }
+      - { status: "todo", description: "Flight from LPB to GIG" }
+      - { status: "todo", description: "RT Flight from LPB to UYU" }
+      - { status: "todo", description: "Accommodation 1N in LA" }
+      - { status: "todo", description: "Accommodation 1N in Sacred Valley" }
+      - { status: "done", description: "Accommodation 1N in Aguas Calientes" }
+      - { status: "done", description: "Accommodation 4N in Cusco" }
+      - { status: "todo", description: "Accommodation 3N in Uyuni" }
+      - { status: "todo", description: "Accommodation 1N in La Paz" }
+      - { status: "todo", description: "Accommodation 2N in Rio" }
+      - { status: "done", description: "Machu Picchu entrance ticket" }
+      - { status: "done", description: "Train ticket from Ollantaytambo to Machu Picchu" }
+      - { status: "todo", description: "Train ticket from Machu Picchu to Cusco" }
+      - { status: "todo", description: "Ollantaytambo & Sacred Valley tour" }
+      - { status: "todo", description: "Uyuni Salt Flats tour" }
+      - { status: "todo", description: "Rio tour" }

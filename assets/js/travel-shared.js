@@ -93,6 +93,58 @@ window.TravelShared = (function () {
     return Math.round((target - today) / 86400000);
   }
 
+  function pluralize(n, unit) {
+    return n + " " + unit + (n === 1 ? "" : "s");
+  }
+
+  // Formats a day count as "N days" up to a year, then "N months" up to 18
+  // months, then "N years[ and M months]" beyond that. Used by tripAnnotation.
+  function tripRelativeLabel(days) {
+    if (days <= 365) {
+      return pluralize(days, "day");
+    }
+
+    var months = Math.round(days / 30);
+    if (months <= 18) {
+      return pluralize(months, "month");
+    }
+
+    var years = Math.floor(months / 12);
+    var remMonths = months % 12;
+    if (remMonths === 0) {
+      return pluralize(years, "year");
+    }
+    return pluralize(years, "year") + " and " + pluralize(remMonths, "month");
+  }
+
+  // "upcoming" (today < start), "past" (today > end), or "ongoing" (in between).
+  function tripPhase(startDate, endDate) {
+    var startDiff = daysFromToday(startDate);
+    var endDiff = daysFromToday(endDate);
+    if (startDiff > 0) return "upcoming";
+    if (endDiff < 0) return "past";
+    return "ongoing";
+  }
+
+  // e.g. "(in 79 days)", "(3 months ago)", "(Day 2 of 3)" for an ongoing trip.
+  function tripAnnotation(startDate, endDate) {
+    var startDiff = daysFromToday(startDate);
+    var endDiff = daysFromToday(endDate);
+
+    if (startDiff > 0) {
+      return "(in " + tripRelativeLabel(startDiff) + ")";
+    }
+
+    if (endDiff < 0) {
+      return "(" + tripRelativeLabel(Math.abs(endDiff)) + " ago)";
+    }
+
+    var totalDays = Math.round((new Date(endDate + "T00:00:00") - new Date(startDate + "T00:00:00")) / 86400000) + 1;
+    var currentDay = (0 - startDiff) + 1;
+
+    return "(Day " + currentDay + " of " + totalDays + ")";
+  }
+
   return {
     wmoDescription: wmoDescription,
     wmoEmoji: wmoEmoji,
@@ -101,6 +153,8 @@ window.TravelShared = (function () {
     aqiCategory: aqiCategory,
     forecastNote: forecastNote,
     currentNote: currentNote,
-    daysFromToday: daysFromToday
+    daysFromToday: daysFromToday,
+    tripPhase: tripPhase,
+    tripAnnotation: tripAnnotation
   };
 })();

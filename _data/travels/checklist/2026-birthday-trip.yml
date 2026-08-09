@@ -1,0 +1,16 @@
+
+trip_name: "Birthday Trip 2026"
+
+items:
+  - checklist:
+      - { status: "done", description: "Flight from TLL to BUD" }
+      - { status: "done", description: "Flight from BUD to RAK" }
+      - { status: "done", description: "Flight from RAK to SVQ" }
+      - { status: "done", description: "Flight from SVQ to TLL" }
+      - { status: "done", description: "Accommodation in Budapest" }
+      - { status: "done", description: "Accommodation in Marakech (before Sahara trip)" }
+      - { status: "done", description: "Accommodation in Marakech (after Sahara trip)" }
+      - { status: "done", description: "Accommodation in Seville" }
+      - { status: "done", description: "Sahara trip tour" }
+      - { status: "done", description: "Hot air balloon tour" }
+      - { status: "done", description: "Exchange morocco dinar money" }

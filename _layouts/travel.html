@@ -25,9 +25,39 @@ layout: default
       <input type="checkbox" id="panel-toggle-itinerary-only">
       Show only itinerary
     </label>
+    <label class="panel-toggle-option">
+      <input type="checkbox" id="panel-toggle-checklist-only">
+      Show only checklist
+    </label>
   </div>
 
-  <div id="today-section" class="today-section" data-panel="weather" style="display:none;">
+  {% assign checklist = site.data.travels.checklist[page.trip_key] %}
+  {% if checklist %}
+  <div id="checklist-section" class="other-panel" data-panel="checklist">
+    <h2> 🧳 Travel Checklist 🚀</h2>
+    <div class="checklist-items">
+      {% for group in checklist.items %}
+        {% for key_value in group %}
+        {% assign group_items = key_value[1] %}
+        {% assign todo_items = group_items | where: "status", "todo" %}
+        {% assign done_items = group_items | where: "status", "done" %}
+        {% assign sorted_items = todo_items | concat: done_items %}
+        <div class="checklist-group">
+          {% for item in sorted_items %}
+          {% assign status_icon = site.data.checklist_status_icons[item.status] %}
+          <div class="checklist-item checklist-item-{{ item.status }}">
+            <span class="checklist-icon">{{ status_icon }}</span>
+            <span class="checklist-name">{{ item.description }}</span>
+          </div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <div id="today-section" class="other-panel" data-panel="weather" style="display:none;">
     <h2>📍️ Weather Right Now 🌡</h2>
     <div class="today-locations"></div>
   </div>
@@ -168,8 +198,8 @@ layout: default
   .panel-hidden { display: none !important; }
 
   .today-badge { margin-left: 0.5rem; }
-  .today-section { border: 1px solid #ddd; border-radius: 8px; padding: 0.75rem 1rem; margin: 1.25rem 0; background: #f6fffa; }
-  .today-section h2 { margin: 0 0 0.6rem; font-size: 1.05rem; }
+  .other-panel { border: 1px solid #ddd; border-radius: 8px; padding: 0.75rem 1rem; margin: 1.25rem 0; background: #f6fffa; }
+  .other-panel h2 { margin: 0 0 0.6rem; font-size: 1.05rem; }
   .today-locations { display: flex; flex-wrap: wrap; gap: 0.75rem; }
   .today-location-card { flex: 1 1 220px; border: 1px solid #ddd; border-radius: 8px; padding: 0.6rem 0.85rem; background: #fff; }
   .today-card-header { display: block; margin-bottom: 0.25rem; }
@@ -198,6 +228,26 @@ layout: default
   .itinerary-route a { color: #1a73e8; text-decoration: underline; }
   .itinerary-remarks { flex-basis: 100%; margin-top: 0.35rem; font-size: 0.82rem; color: #555; font-style: italic; }
 
+  .checklist-items { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .checklist-group {
+    flex: 1 1 220px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.6rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .checklist-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+  }
+  .checklist-icon { font-size: 1.1rem; }
+  .checklist-name { color: #555; }
+  .checklist-item-done { opacity: 0.6; }
+  .checklist-item-done .checklist-name { text-decoration: line-through; }
+
   /* Retro-Game-FF7 theme: lighten the cards so they contrast against
      the dark page background instead of staying near-invisible. */
   body.theme-retro-game .travel-page .trip-dates { color: var(--retro-primary); }
@@ -215,13 +265,13 @@ layout: default
   body.theme-retro-game .back-link { color: var(--retro-primary); }
   body.theme-retro-game .panel-toggle { color: var(--retro-text); }
   body.theme-retro-game .panel-toggle-option input[type="checkbox"] { accent-color: var(--retro-primary); }
-  body.theme-retro-game .today-section {
+  body.theme-retro-game .other-panel {
     background: rgba(0, 255, 0, 0.1);
     border: 2px solid var(--retro-primary);
     border-radius: 12px;
     backdrop-filter: blur(10px);
   }
-  body.theme-retro-game .today-section h2 {
+  body.theme-retro-game .other-panel h2 {
     color: var(--retro-primary);
     text-shadow: 2px 2px 0px var(--retro-shadow);
   }
@@ -252,4 +302,11 @@ layout: default
   body.theme-retro-game .itinerary-route { color: var(--retro-text); }
   body.theme-retro-game .itinerary-route a { color: var(--retro-accent); }
   body.theme-retro-game .itinerary-remarks { color: #e0c9ff; }
+
+  body.theme-retro-game .checklist-group {
+    background: rgba(74, 158, 255, 0.12);
+    border-color: var(--retro-border);
+  }
+  body.theme-retro-game .checklist-name { color: var(--retro-accent); }
+  body.theme-retro-game .checklist-item-done { opacity: 0.55; }
 </style>

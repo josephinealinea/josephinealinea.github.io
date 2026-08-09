@@ -1,39 +1,45 @@
-// Controls which panels are visible on a /travel/<trip>/ page via three
+// Controls which panels are visible on a /travel/<trip>/ page via four
 // mutually-exclusive checkboxes: "Show all" (default), "Show only weather
-// forecast", and "Show only itinerary". Any panel container tagged with
-// data-panel="weather" or data-panel="itinerary" is hidden unless its mode
-// (or "show-all") is active; elements with no data-panel attribute (e.g.
-// .trip-intro) are never touched. A future panel category just needs a new
-// data-panel value and a matching checkbox.
+// forecast", "Show only itinerary", and "Show only checklist". Any panel
+// container tagged with data-panel="weather", data-panel="itinerary", or
+// data-panel="checklist" is hidden unless its mode (or "show-all") is
+// active; elements with no data-panel attribute (e.g. .trip-intro) are
+// never touched. A future panel category just needs a new data-panel value
+// and a matching checkbox.
 //
 // Initial mode priority: URL param (?show-all=true / ?show-only-weather=true
-// / ?show-only-itinerary=true) > saved localStorage choice > default
-// ("show-all"). Manual toggles are saved to localStorage and reflected in
-// the URL (via replaceState) so the resulting view is reloadable/shareable.
+// / ?show-only-itinerary=true / ?show-only-checklist=true) > saved
+// localStorage choice > default ("show-all"). Manual toggles are saved to
+// localStorage and reflected in the URL (via replaceState) so the resulting
+// view is reloadable/shareable.
 
 (function () {
   var STORAGE_KEY = "travel-panel-mode";
   var SHOW_ALL = "show-all";
   var WEATHER_ONLY = "weather-only";
   var ITINERARY_ONLY = "itinerary-only";
+  var CHECKLIST_ONLY = "checklist-only";
 
   // mode -> the data-panel value it exclusively shows (null = show everything)
   var MODE_PANEL = {};
   MODE_PANEL[SHOW_ALL] = null;
   MODE_PANEL[WEATHER_ONLY] = "weather";
   MODE_PANEL[ITINERARY_ONLY] = "itinerary";
+  MODE_PANEL[CHECKLIST_ONLY] = "checklist";
 
   var MODE_CHECKBOX_ID = {};
   MODE_CHECKBOX_ID[SHOW_ALL] = "panel-toggle-show-all";
   MODE_CHECKBOX_ID[WEATHER_ONLY] = "panel-toggle-weather-only";
   MODE_CHECKBOX_ID[ITINERARY_ONLY] = "panel-toggle-itinerary-only";
+  MODE_CHECKBOX_ID[CHECKLIST_ONLY] = "panel-toggle-checklist-only";
 
   var MODE_URL_PARAM = {};
   MODE_URL_PARAM[SHOW_ALL] = "show-all";
   MODE_URL_PARAM[WEATHER_ONLY] = "show-only-weather";
   MODE_URL_PARAM[ITINERARY_ONLY] = "show-only-itinerary";
+  MODE_URL_PARAM[CHECKLIST_ONLY] = "show-only-checklist";
 
-  var MODES = [SHOW_ALL, WEATHER_ONLY, ITINERARY_ONLY];
+  var MODES = [SHOW_ALL, WEATHER_ONLY, ITINERARY_ONLY, CHECKLIST_ONLY];
 
   function applyMode(mode) {
     var onlyPanel = MODE_PANEL[mode];

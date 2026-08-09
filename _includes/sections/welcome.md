@@ -12,7 +12,9 @@ title: Welcome
       <div class="welcome-text-content">
         <h1 class="section-heading">Welcome</h1>
         <p class="welcome-intro">
-          My name is Josephine, and welcome to this corner of the internet - where I share my technical journey, projects, and insights.
+          My name is Josephine 
+            <br /> welcome to this corner of the internet
+            <br /> where I share my technical journey, projects, (and my travel journal) ^_^
         </p>
       </div>
     </div>

@@ -1,0 +1,7 @@
+
+trip_name: "Anniversary Trip 2026"
+
+items:
+  - checklist:
+      - { status: "done", description: "RT bus/ferry ticket from Tallinn to Kuuresaare" }
+      - { status: "done", description: "Accommodation in Kuuresaare" }

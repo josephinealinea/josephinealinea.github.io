@@ -1,0 +1,9 @@
+
+trip_name: "Siargao Family Trip 2026"
+
+items:
+  - checklist:
+      - { status: "done", description: "Flight from TLL to MNL" }
+      - { status: "done", description: "Flight from MNL to Siargao" }
+      - { status: "done", description: "Accommodation in Siargao" }
+      - { status: "done", description: "Book Car rental in Siargao" }

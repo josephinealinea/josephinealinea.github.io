@@ -1,0 +1,33 @@
+
+trip_name: "Summer Europe Trip 2026"
+
+items:
+  - checklist:
+      - { status: "done", description: "Flight from TLL to ZRH" }
+      - { status: "done", description: "Flight from TSF to MLA" }
+      - { status: "done", description: "Flight from MLA to CTA" }
+      - { status: "done", description: "Flight from CTA to NCE" }
+      - { status: "done", description: "Accommodation 4N in Interlaken (remote working days)" }
+      - { status: "done", description: "Accommodation 2N in Interlaken (with friends)" }
+      - { status: "done", description: "Accommodation 1N in Liechtenstein" }
+      - { status: "done", description: "Accommodation 1N in Innsbruck" }
+      - { status: "done", description: "Accommodation 2N in Dolomites (first batch)" }
+      - { status: "done", description: "Accommodation 2N in Dolomites (second batch)" }
+      - { status: "done", description: "Accommodation 1N In Venice" }
+      - { status: "done", description: "Accommodation 4N In Malta" }
+      - { status: "done", description: "Accommodation 1N In Sicily" }
+      - { status: "done", description: "Accommodation 2N In Nice" }
+      - { status: "done", description: "Book car rental Dolomites" }
+      - { status: "done", description: "Book parking slots Dolomites" }
+      - { status: "done", description: "Train tickets from Zurich to Interlaken" }
+      - { status: "done", description: "Train tickets from Interlaken to Zermatt" }
+      - { status: "done", description: "Train tickets from Interlaken to Bern" }
+      - { status: "done", description: "Train tickets from Interlaken to Grindelwald" }
+      - { status: "done", description: "Train tickets from Interlaken to Thun" }
+      - { status: "done", description: "Train tickets from Interlaken to Wengen" }
+      - { status: "done", description: "Book Bridal shower event" }
+      - { status: "done", description: "Book Bridal shower dinner" }
+      - { status: "done", description: "Liechtenstein tour - Llama hike (Triesenberg)" }
+      - { status: "done", description: "Cultural dinner in Innsbruck" }
+      - { status: "done", description: "Malta tour" }
+      - { status: "done", description: "Sicily tour" }
