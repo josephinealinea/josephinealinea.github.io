@@ -20,8 +20,9 @@ items:
       - { status: "todo", description: "Accommodation 1N near Sacred Valley" }
       - { status: "done", description: "Accommodation 1N in Aguas Calientes" }
       - { status: "done", description: "Accommodation 4N in Cusco" }
-      - { status: "todo", description: "Accommodation 3N in Uyuni" }
-      - { status: "todo", description: "Accommodation 1N in La Paz" }
+      - { status: "todo", description: "Accommodation 1N in La Paz (before Salt Flats)" }
+      - { status: "todo", description: "Accommodation 2N in Uyuni" }
+      - { status: "todo", description: "Accommodation 1N in La Paz (after Salt Flats)" }
       - { status: "todo", description: "Accommodation 2N in Rio" }
       - { status: "done", description: "Machu Picchu entrance ticket" }
       - { status: "done", description: "Train ticket from Ollantaytambo to Machu Picchu" }
