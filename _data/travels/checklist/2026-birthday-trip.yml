@@ -8,9 +8,9 @@ items:
       - { status: "done", description: "Flight from RAK to SVQ" }
       - { status: "done", description: "Flight from SVQ to TLL" }
       - { status: "done", description: "Accommodation in Budapest" }
-      - { status: "done", description: "Accommodation in Marakech (before Sahara trip)" }
-      - { status: "done", description: "Accommodation in Marakech (after Sahara trip)" }
+      - { status: "done", description: "Accommodation in Marrakech (before Sahara trip)" }
+      - { status: "done", description: "Accommodation in Marrakech (after Sahara trip)" }
       - { status: "done", description: "Accommodation in Seville" }
-      - { status: "done", description: "Sahara trip tour" }
+      - { status: "done", description: "Sahara trip adventure" }
       - { status: "done", description: "Hot air balloon tour" }
       - { status: "done", description: "Exchange morocco dinar money" }
