@@ -22,14 +22,14 @@ items:
       - { status: "todo", description: "Accommodation 1N near Sacred Valley? (TBD)" }
       - { status: "done", description: "Accommodation 1N in Aguas Calientes" }
       - { status: "done", description: "Accommodation 4N in Cusco" }
-      - { status: "todo", description: "Accommodation 1N in La Paz (before Uyuni - TBD)" }
+      - { status: "todo", description: "Accommodation 1N in La Paz (sleepbox? - TBD)" }
       - { status: "todo", description: "Accommodation 2N in Uyuni" }
-      - { status: "todo", description: "Accommodation 1N in La Paz (after Uyuni - TBD)" }
+      - { status: "todo", description: "Accommodation 1N in La Paz (sleepbox? - TBD)" }
       - { status: "todo", description: "Accommodation 2N in Rio" }
       - { status: "done", description: "Machu Picchu entrance ticket" }
       - { status: "done", description: "Train ticket from Ollantaytambo to Machu Picchu" }
       - { status: "todo", description: "Train ticket from Machu Picchu to Cusco" }
-      - { status: "todo", description: "Bus RT ticket from Aguas Calientes to Machu Picchu" }
+      - { status: "todo", description: "RT Bus from Aguas Calientes to Machu Picchu" }
       - { status: "todo", description: "Ollantaytambo & Sacred Valley tour" }
       - { status: "todo", description: "Uyuni Salt Flats tour" }
       - { status: "todo", description: "Rio tour" }

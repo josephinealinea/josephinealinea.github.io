@@ -135,24 +135,24 @@ days:
     items:
       - category: transport
         type: flight
-        name: "BoA (OB 668)"
+        name: "Avianca (AV 224)"
         travel:
           - name: "LPB"
             link: "https://www.google.com/maps/search/?api=1&query=El+Alto+International+Airport+La+Paz"
-            time: "10:40"
-          - name: "VVI"
-            link: "https://www.google.com/maps/search/?api=1&query=Viru+Viru+International+Airport+Santa+Cruz+Bolivia"
-            time: "11:45"
+            time: "03:20"
+          - name: "BOG"
+            link: "https://maps.app.goo.gl/Pgb4XryMxX1ixU1r8"
+            time: "06:05"
       - category: transport
         type: flight
-        name: "BoA (OB 732)"
+        name: "Avianca (AV 147)"
         travel:
-          - name: "VVI"
-            link: "https://www.google.com/maps/search/?api=1&query=Viru+Viru+International+Airport+Santa+Cruz+Bolivia"
-            time: "13:20"
+          - name: "BOG"
+            link: "https://maps.app.goo.gl/Pgb4XryMxX1ixU1r8"
+            time: "07:10"
           - name: "GIG"
             link: "https://www.google.com/maps/search/?api=1&query=Rio+de+Janeiro%E2%80%93Gale%C3%A3o+International+Airport"
-            time: "17:20"
+            time: "15:45"
 
   - date: 2026-11-06
     items:
