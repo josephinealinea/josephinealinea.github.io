@@ -71,6 +71,9 @@ days:
         type: hotel
         name: "Casa Blanca Lodge"
         link: "https://maps.app.goo.gl/ZUcMBKumCZyyVpBz8"
+      - category: activity
+        type: hike
+        name: "Llama walk through the Ancient Inca Town"
 
   - date: 2026-10-26
     items:
@@ -143,7 +146,7 @@ days:
     items:
       - category: transport
         type: flight
-        name: "BoA ()"
+        name: "BoA (OB 304)"
         travel:
           - name: "LPB"
             link: "https://www.google.com/maps/search/?api=1&query=El+Alto+International+Airport+La+Paz"
@@ -157,7 +160,7 @@ days:
         link: "https://maps.app.goo.gl/cLNKpMR3riGF3aWR6"
       - category: activity
         type: hike
-        name: "Salar de Uyuni"
+        name: "Salar de Uyuni and stargazing"
         link: "https://maps.app.goo.gl/wdJwPwCj6a3HFBPA8"
         remarks: "Tour starts at 10:30am, pickup from hotel"
 
@@ -165,7 +168,7 @@ days:
     items:
       - category: transport
         type: flight
-        name: "BoA ()"
+        name: "BoA (OB 305)"
         travel:
           - name: "UYU"
             link: "https://maps.app.goo.gl/rFn9H56d99FGdCNo7"
