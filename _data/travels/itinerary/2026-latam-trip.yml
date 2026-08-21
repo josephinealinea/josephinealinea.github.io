@@ -67,6 +67,10 @@ days:
           - name: "CUZ"
             link: "https://www.google.com/maps/search/?api=1&query=Alejandro+Velasco+Astete+International+Airport+Cusco"
             time: "11:10"
+      - category: accommodation
+        type: hotel
+        name: "Casa Blanca Lodge"
+        link: "https://maps.app.goo.gl/ZUcMBKumCZyyVpBz8"
 
   - date: 2026-10-26
     items:
@@ -130,6 +134,61 @@ days:
           - name: "LPB"
             link: "https://www.google.com/maps/search/?api=1&query=El+Alto+International+Airport+La+Paz"
             time: "14:45"
+      - category: accommodation
+        type: hotel
+        name: "Illampu Art Boutique Hotel"
+        link: "https://maps.app.goo.gl/MPjMLd1HoZAjXEd46"
+
+  - date: 2026-11-01
+    items:
+      - category: transport
+        type: flight
+        name: "BoA ()"
+        travel:
+          - name: "LPB"
+            link: "https://www.google.com/maps/search/?api=1&query=El+Alto+International+Airport+La+Paz"
+            time: "07:10"
+          - name: "UYU"
+            link: "https://maps.app.goo.gl/rFn9H56d99FGdCNo7"
+            time: "08:10"
+      - category: accommodation
+        type: hotel
+        name: "HOTEL CASA DE SAL"
+        link: "https://maps.app.goo.gl/cLNKpMR3riGF3aWR6"
+      - category: activity
+        type: hike
+        name: "Salar de Uyuni"
+        link: "https://maps.app.goo.gl/wdJwPwCj6a3HFBPA8"
+        remarks: "Tour starts at 10:30am, pickup from hotel"
+
+  - date: 2026-11-02
+    items:
+      - category: transport
+        type: flight
+        name: "BoA ()"
+        travel:
+          - name: "UYU"
+            link: "https://maps.app.goo.gl/rFn9H56d99FGdCNo7"
+            time: "09:00"
+          - name: "LPB"
+            link: "https://www.google.com/maps/search/?api=1&query=El+Alto+International+Airport+La+Paz"
+            time: "10:00"
+      - category: accommodation
+        type: hotel
+        name: "Illampu Art Boutique Hotel"
+        link: "https://maps.app.goo.gl/MPjMLd1HoZAjXEd46"
+      - category: activity
+        type: hike
+        name: "Mystical Sunset in the Valley of Souls"
+        link: "https://maps.app.goo.gl/MAf7ffPJeRytJTmK8"
+        remarks: "Tour starts at 02:00pm, pickup at Bolivia Homeland tours, 1min walk from hotel"
+
+  - date: 2026-11-03
+    items:
+      - category: accommodation
+        type: hotel
+        name: "Illampu Art Boutique Hotel"
+        link: "https://maps.app.goo.gl/MPjMLd1HoZAjXEd46"
 
   - date: 2026-11-04
     items:
@@ -139,10 +198,10 @@ days:
         travel:
           - name: "LPB"
             link: "https://www.google.com/maps/search/?api=1&query=El+Alto+International+Airport+La+Paz"
-            time: "03:20"
+            time: "03:25"
           - name: "BOG"
             link: "https://maps.app.goo.gl/Pgb4XryMxX1ixU1r8"
-            time: "06:05"
+            time: "06:10"
       - category: transport
         type: flight
         name: "Avianca (AV 147)"
@@ -153,6 +212,17 @@ days:
           - name: "GIG"
             link: "https://www.google.com/maps/search/?api=1&query=Rio+de+Janeiro%E2%80%93Gale%C3%A3o+International+Airport"
             time: "15:45"
+      - category: accommodation
+        type: airbnb
+        name: "Home in Rio de Janeiro"
+        link: ""
+
+  - date: 2026-11-05
+    items:
+      - category: accommodation
+        type: airbnb
+        name: "Home in Rio de Janeiro"
+        link: ""
 
   - date: 2026-11-06
     items:
