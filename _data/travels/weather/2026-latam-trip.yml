@@ -20,6 +20,7 @@ days:
   - date: 2026-10-25
     locations:
       - { name: "Cusco", country: "Peru", lat: -13.5294, lon: -71.9850 }
+      - { name: "Ollantaytambo", country: "Peru", lat: -13.2581, lon: -72.2633 }
 
   - date: 2026-10-26
     locations:
@@ -56,10 +57,10 @@ days:
   - date: 2026-11-02
     locations:
       - { name: "Uyuni", country: "Bolivia", lat: -20.4597, lon: -66.8250 }
+      - { name: "La Paz", country: "Bolivia", lat: -16.4897, lon: -68.1193 }
 
   - date: 2026-11-03
     locations:
-      - { name: "Uyuni", country: "Bolivia", lat: -20.4597, lon: -66.8250 }
       - { name: "La Paz", country: "Bolivia", lat: -16.4897, lon: -68.1193 }
 
   - date: 2026-11-04

@@ -9,27 +9,30 @@ trip_name: "LATAM Trip 2026"
 items:
   - checklist:
       - { status: "todo", description: "US Visa" }
-      - { status: "todo", description: "Yellow Fever Vaccine" }
-      - { status: "todo", description: "Exchange some cash PEN, BOB, BRL" }
+      - { status: "todo", description: "Yellow Fever Vaccine (with official booklet)" }
+      - { status: "todo", description: "Exchange some cash (PEN) Peruvian sol S/" }
+      - { status: "todo", description: "Exchange some cash (BOB) Bolivian boliviano Bs" }
+      - { status: "todo", description: "Exchange some cash (BRL) Brazilian real R$" }
       - { status: "done", description: "RT Flight from TLL to LAX" }
       - { status: "done", description: "RT Flight from SIN to LAX" }
       - { status: "done", description: "Flight from LAX to CUZ" }
       - { status: "done", description: "Flight from GIG to LAX" }
       - { status: "done", description: "Flight from CUZ to LPB" }
-      - { status: "todo", description: "Flight from LPB to GIG" }
+      - { status: "done", description: "Flight from LPB to GIG" }
       - { status: "todo", description: "RT Flight from LPB to UYU" }
       - { status: "todo", description: "Accommodation 1N in LA" }
-      - { status: "todo", description: "Accommodation 1N near Sacred Valley? (TBD)" }
+      - { status: "done", description: "Accommodation 1N Ollantaytambo" }
       - { status: "done", description: "Accommodation 1N in Aguas Calientes" }
       - { status: "done", description: "Accommodation 4N in Cusco" }
-      - { status: "todo", description: "Accommodation 1N in La Paz (sleepbox? - TBD)" }
-      - { status: "todo", description: "Accommodation 2N in Uyuni" }
-      - { status: "todo", description: "Accommodation 1N in La Paz (sleepbox? - TBD)" }
-      - { status: "todo", description: "Accommodation 2N in Rio" }
+      - { status: "done", description: "Accommodation 1N in Uyuni" }
+      - { status: "done", description: "Accommodation 3N in La Paz" }
+      - { status: "done", description: "Accommodation 2N in Rio" }
       - { status: "done", description: "Machu Picchu entrance ticket" }
       - { status: "done", description: "Train ticket from Ollantaytambo to Machu Picchu" }
       - { status: "todo", description: "Train ticket from Machu Picchu to Cusco" }
       - { status: "todo", description: "RT Bus from Aguas Calientes to Machu Picchu" }
       - { status: "todo", description: "Ollantaytambo & Sacred Valley tour" }
-      - { status: "todo", description: "Uyuni Salt Flats tour" }
+      - { status: "todo", description: "Rainbow Mountain tour" }
+      - { status: "done", description: "Uyuni Salt Flats tour" }
+      - { status: "todo", description: "La Paz tour" }
       - { status: "todo", description: "Rio tour" }
