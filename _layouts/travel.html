@@ -15,20 +15,27 @@ layout: default
   <div id="panel-toggle" class="panel-toggle">
     <label class="panel-toggle-option">
       <input type="checkbox" id="panel-toggle-show-all">
-      Show all
+      Show All
     </label>
-    <label class="panel-toggle-option">
-      <input type="checkbox" id="panel-toggle-weather-only">
-      Show only weather forecast
-    </label>
-    <label class="panel-toggle-option">
-      <input type="checkbox" id="panel-toggle-itinerary-only">
-      Show only itinerary
-    </label>
-    <label class="panel-toggle-option">
-      <input type="checkbox" id="panel-toggle-checklist-only">
-      Show only checklist
-    </label>
+    <span class="panel-toggle-group">
+      <span class="panel-toggle-group-label">Show Only:</span>
+      <label class="panel-toggle-option">
+        <input type="checkbox" id="panel-toggle-weather-only">
+        Weather Forecast
+      </label>
+      <label class="panel-toggle-option">
+        <input type="checkbox" id="panel-toggle-itinerary-only">
+        Itinerary
+      </label>
+      <label class="panel-toggle-option">
+        <input type="checkbox" id="panel-toggle-checklist-only">
+        Checklist
+      </label>
+      <label class="panel-toggle-option">
+        <input type="checkbox" id="panel-toggle-budget-only">
+        Budget breakdown
+      </label>
+    </span>
   </div>
 
   {% assign checklist = site.data.travels.checklist[page.trip_key] %}
@@ -193,8 +200,10 @@ layout: default
   .weather-recorded-label { font-size: 0.78rem; color: #888; text-transform: uppercase; letter-spacing: 0.02em; }
   .back-link { display: inline-block; margin-bottom: 1rem; }
 
-  .panel-toggle { display: flex; gap: 1.25rem; align-items: center; margin: 0.5rem 0 1.25rem; font-size: 0.9rem; color: #444; }
-  .panel-toggle-option { display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer; }
+  .panel-toggle { display: flex; flex-wrap: wrap; gap: 1.1rem; align-items: center; margin: 0.5rem 0 1.25rem; font-size: 0.9rem; color: #444; }
+  .panel-toggle-option { display: inline-flex; align-items: center; gap: 0.3rem; cursor: pointer; }
+  .panel-toggle-group { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+  .panel-toggle-group-label { color: #777; }
   .panel-hidden { display: none !important; }
 
   .today-badge { margin-left: 0.5rem; }
@@ -264,6 +273,7 @@ layout: default
   body.theme-retro-game .weather-recorded-label { color: var(--retro-secondary); }
   body.theme-retro-game .back-link { color: var(--retro-primary); }
   body.theme-retro-game .panel-toggle { color: var(--retro-text); }
+  body.theme-retro-game .panel-toggle-group-label { color: var(--retro-secondary); }
   body.theme-retro-game .panel-toggle-option input[type="checkbox"] { accent-color: var(--retro-primary); }
   body.theme-retro-game .other-panel {
     background: rgba(0, 255, 0, 0.1);

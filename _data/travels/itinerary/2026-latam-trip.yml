@@ -71,12 +71,12 @@ days:
         type: hotel
         name: "Casa Blanca Lodge"
         link: "https://maps.app.goo.gl/ZUcMBKumCZyyVpBz8"
-      - category: activity
-        type: hike
-        name: "Llama walk through the Ancient Inca Town"
 
   - date: 2026-10-26
     items:
+      - category: activity
+        type: hike
+        name: "Llama walk through the Ancient Inca Town"
       - category: transport
         type: train
         name: "PeruRail (Vistadome Observatory 603)"
@@ -99,6 +99,16 @@ days:
         name: "Historic Sanctuary of Machu Picchu"
         link: "https://maps.app.goo.gl/9GiG6XR7x8ZYur8Z6"
         remarks: "Entrance ticket at 10am"
+      - category: transport
+        type: train
+        name: "Placeholder"
+        travel:
+          - name: "Machu Picchu Station"
+            link: "https://www.google.com/maps/search/?api=1&query=PeruRail+Machu+Picchu+Pueblo+Station"
+            time: ""
+          - name: "Cusco (San Pedro) Station"
+            link: "https://maps.app.goo.gl/CM9vbdpNcMyQ3bzx8"
+            time: ""
       - category: accommodation
         type: airbnb
         name: "Home in Cusco"
@@ -117,6 +127,9 @@ days:
         type: airbnb
         name: "Home in Cusco"
         link: "https://maps.app.goo.gl/adAXVqaLyPf1rTZA6"
+      - category: activity
+        type: hike
+        name: "Placeholder, Sacred Valley tour ?"
 
   - date: 2026-10-30
     items:
@@ -141,6 +154,10 @@ days:
         type: hotel
         name: "Illampu Art Boutique Hotel"
         link: "https://maps.app.goo.gl/MPjMLd1HoZAjXEd46"
+      - category: activity
+        type: hike
+        name: "Teleferico Cable Cars"
+        remarks: "Line Red, Orange, White, Celeste, Green, from Central to Irpavi station"
 
   - date: 2026-11-01
     items:
@@ -192,6 +209,10 @@ days:
         type: hotel
         name: "Illampu Art Boutique Hotel"
         link: "https://maps.app.goo.gl/MPjMLd1HoZAjXEd46"
+      - category: activity
+        type: hike
+        name: "Teleferico Cable Cars"
+        remarks: "Line Celeste, Yellow, Silver, Blue, from Prado to Rio Seco station"
 
   - date: 2026-11-04
     items:
@@ -226,6 +247,9 @@ days:
         type: airbnb
         name: "Home in Rio de Janeiro"
         link: ""
+      - category: activity
+        type: hike
+        name: "Placeholder, Rio full day tour ?"
 
   - date: 2026-11-06
     items:

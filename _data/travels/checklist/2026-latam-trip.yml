@@ -8,11 +8,11 @@ trip_name: "LATAM Trip 2026"
 
 items:
   - checklist:
-      - { status: "todo", description: "US Visa" }
+      - { status: "todo", description: "US / EU Visa" }
       - { status: "todo", description: "Yellow Fever Vaccine (with official booklet)" }
-      - { status: "todo", description: "Exchange some cash (PEN) Peruvian sol S/" }
-      - { status: "todo", description: "Exchange some cash (BOB) Bolivian boliviano Bs" }
-      - { status: "todo", description: "Exchange some cash (BRL) Brazilian real R$" }
+      - { status: "todo", description: "Cash exchange (PEN) Peruvian sol S/" }
+      - { status: "todo", description: "Cash exchange (BOB) Bolivian boliviano Bs" }
+      - { status: "todo", description: "Cash exchange (BRL) Brazilian real R$" }
       - { status: "done", description: "RT Flight from TLL to LAX" }
       - { status: "done", description: "RT Flight from SIN to LAX" }
       - { status: "done", description: "Flight from LAX to CUZ" }
