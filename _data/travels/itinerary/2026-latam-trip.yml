@@ -1,4 +1,4 @@
-# LATAM Trip 2026 — itinerary data (flights so far; accommodation/activities/food to be added later).
+# LATAM Trip 2026 — itinerary data (flights so far; lodging/activities/food to be added later).
 # One "- date:" block per day; "items" is an ordered list rendered top to bottom.
 # "type" must exactly match a key in _data/itinerary_icons.yml.
 #
@@ -67,7 +67,7 @@ days:
           - name: "CUZ"
             link: "https://www.google.com/maps/search/?api=1&query=Alejandro+Velasco+Astete+International+Airport+Cusco"
             time: "11:10"
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Casa Blanca Lodge"
         link: "https://maps.app.goo.gl/ZUcMBKumCZyyVpBz8"
@@ -77,6 +77,7 @@ days:
       - category: activity
         type: hike
         name: "Llama walk through the Ancient Inca Town"
+        remarks: "Starts at 9am (about 2-3hrs)"
       - category: transport
         type: train
         name: "PeruRail (Vistadome Observatory 603)"
@@ -87,7 +88,7 @@ days:
           - name: "Machu Picchu Station"
             link: "https://www.google.com/maps/search/?api=1&query=PeruRail+Machu+Picchu+Pueblo+Station"
             time: "17:20"
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Inti Punku MachuPicchu Hotel & Suites"
         link: "https://maps.app.goo.gl/RkJnnmfLFpj4Uh9XA"
@@ -109,31 +110,32 @@ days:
           - name: "Cusco (San Pedro) Station"
             link: "https://maps.app.goo.gl/CM9vbdpNcMyQ3bzx8"
             time: ""
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Home in Cusco"
         link: "https://maps.app.goo.gl/adAXVqaLyPf1rTZA6"
 
   - date: 2026-10-28
     items:
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Home in Cusco"
         link: "https://maps.app.goo.gl/adAXVqaLyPf1rTZA6"
 
   - date: 2026-10-29
     items:
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Home in Cusco"
         link: "https://maps.app.goo.gl/adAXVqaLyPf1rTZA6"
       - category: activity
-        type: hike
-        name: "Placeholder, Sacred Valley tour ?"
+        type: museum
+        name: "Sacred Valley tour"
+        link: "https://maps.app.goo.gl/gTqPVPKLkXWcXezu9"
 
   - date: 2026-10-30
     items:
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Home in Cusco"
         link: "https://maps.app.goo.gl/adAXVqaLyPf1rTZA6"
@@ -150,7 +152,7 @@ days:
           - name: "LPB"
             link: "https://www.google.com/maps/search/?api=1&query=El+Alto+International+Airport+La+Paz"
             time: "14:45"
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Illampu Art Boutique Hotel"
         link: "https://maps.app.goo.gl/MPjMLd1HoZAjXEd46"
@@ -171,12 +173,12 @@ days:
           - name: "UYU"
             link: "https://maps.app.goo.gl/rFn9H56d99FGdCNo7"
             time: "08:10"
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "HOTEL CASA DE SAL"
         link: "https://maps.app.goo.gl/cLNKpMR3riGF3aWR6"
       - category: activity
-        type: hike
+        type: photography
         name: "Salar de Uyuni and stargazing"
         link: "https://maps.app.goo.gl/wdJwPwCj6a3HFBPA8"
         remarks: "Tour starts at 10:30am, pickup from hotel"
@@ -193,19 +195,19 @@ days:
           - name: "LPB"
             link: "https://www.google.com/maps/search/?api=1&query=El+Alto+International+Airport+La+Paz"
             time: "10:00"
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Illampu Art Boutique Hotel"
         link: "https://maps.app.goo.gl/MPjMLd1HoZAjXEd46"
       - category: activity
-        type: hike
+        type: museum
         name: "Mystical Sunset in the Valley of Souls"
         link: "https://maps.app.goo.gl/MAf7ffPJeRytJTmK8"
         remarks: "Tour starts at 02:00pm, pickup at Bolivia Homeland tours, 1min walk from hotel"
 
   - date: 2026-11-03
     items:
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Illampu Art Boutique Hotel"
         link: "https://maps.app.goo.gl/MPjMLd1HoZAjXEd46"
@@ -236,20 +238,25 @@ days:
           - name: "GIG"
             link: "https://www.google.com/maps/search/?api=1&query=Rio+de+Janeiro%E2%80%93Gale%C3%A3o+International+Airport"
             time: "15:45"
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Home in Rio de Janeiro"
         link: ""
+      - category: activity
+        type: water
+        name: "Praia de Ipanema"
+        link: "https://maps.app.goo.gl/8PGo8GGbmtBwDi9C9"
 
   - date: 2026-11-05
     items:
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Home in Rio de Janeiro"
         link: ""
       - category: activity
         type: hike
-        name: "Placeholder, Rio full day tour ?"
+        name: "Rio Full day tour"
+        link: "https://maps.app.goo.gl/ixMeN47tvhJwvY9w8"
 
   - date: 2026-11-06
     items:

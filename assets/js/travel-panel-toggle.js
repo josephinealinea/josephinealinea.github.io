@@ -4,9 +4,11 @@
 // data-panel="weather", data-panel="itinerary", data-panel="checklist", or
 // data-panel="budget" is hidden unless its mode (or "show-all") is active;
 // elements with no data-panel attribute (e.g. .trip-intro) are never
-// touched. A future panel category just needs a new data-panel value and a
-// matching checkbox. (Budget has no panel markup yet — its checkbox exists
-// so the toggle UI is ready, but selecting it currently hides everything.)
+// touched. A data-panel value can list more than one panel separated by
+// spaces (e.g. data-panel="weather itinerary" on each .trip-day, since a
+// day's date heading should stay visible for either of those two modes but
+// hide along with everything else under Checklist/Budget). A future panel
+// category just needs a new data-panel value and a matching checkbox.
 //
 // Initial mode priority: URL param (?show-all=true / ?show-only-weather=true
 // / ?show-only-itinerary=true / ?show-only-checklist=true /
@@ -49,7 +51,8 @@
   function applyMode(mode) {
     var onlyPanel = MODE_PANEL[mode];
     Array.prototype.forEach.call(document.querySelectorAll("[data-panel]"), function (el) {
-      var hidden = onlyPanel !== null && el.getAttribute("data-panel") !== onlyPanel;
+      var panels = el.getAttribute("data-panel").split(/\s+/);
+      var hidden = onlyPanel !== null && panels.indexOf(onlyPanel) === -1;
       el.classList.toggle("panel-hidden", hidden);
     });
 

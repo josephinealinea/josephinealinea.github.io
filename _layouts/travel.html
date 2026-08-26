@@ -73,7 +73,7 @@ layout: default
   {% assign itinerary = site.data.travels.itinerary[page.trip_key] %}
   <div class="trip-days">
     {% for day in trip.days %}
-    <div class="trip-day" data-date="{{ day.date }}">
+    <div class="trip-day" data-date="{{ day.date }}" data-panel="weather itinerary">
       <h3>{{ day.date | date: "%-d %B" }}<span class="today-badge"></span></h3>
       <div class="locations" data-panel="weather">
         {% for loc in day.locations %}
@@ -121,6 +121,18 @@ layout: default
     </div>
     {% endfor %}
   </div>
+
+  {% assign budget = site.data.travels.budget[page.trip_key] %}
+  {% if budget %}
+  <div id="budget-section" class="other-panel" data-panel="budget">
+    <h2>💸 Budget Breakdown 💰</h2>
+    <div class="budget-toggle">
+      <button type="button" class="budget-toggle-btn is-active" data-group-by="category">By Category</button>
+      <button type="button" class="budget-toggle-btn" data-group-by="country">By Country</button>
+    </div>
+    <div class="budget-currency-blocks"></div>
+  </div>
+  {% endif %}
 </div>
 
 <script>
@@ -171,13 +183,47 @@ layout: default
       good:         "{{ cn.good | escape }}"
     }
   };
+
+  // Sourced from _data/travels/budget/<trip-key>.yml — edit there to add/update budget line items.
+  window.BUDGET_DATA = [
+    {% if budget %}
+    {% for item in budget.items %}
+    {
+      description: "{{ item.description | escape }}",
+      category: "{{ item.category | escape }}",
+      amount: {{ item.amount }},
+      currency: "{{ item.currency | escape }}",
+      countries: [{% for c in item.countries %}"{{ c | escape }}"{% unless forloop.last %}, {% endunless %}{% endfor %}]
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    {% endif %}
+  ];
+
+  // Sourced from _data/budget_categories.yml — edit there to update both JS files.
+  window.BUDGET_CATEGORIES = {
+    {% for cat in site.data.budget_categories %}
+    "{{ cat[0] }}": { icon: "{{ cat[1].icon | escape }}", color: "{{ cat[1].color }}" }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  };
+
+  // Sourced from _data/travels/budget/<trip-key>.yml — the currency all budget totals/charts are shown in, plus rates to convert into it.
+  window.BUDGET_DISPLAY_CURRENCY = "{% if budget %}{{ budget.display_currency | escape }}{% endif %}";
+  window.BUDGET_EXCHANGE_RATES = {
+    {% if budget %}
+    {% for rate in budget.exchange_rates %}
+    "{{ rate[0] }}": {{ rate[1] }}{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    {% endif %}
+  };
 </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <script src="{{ '/assets/js/travel-panel-toggle.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-shared.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-countdown.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-weather.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-day-order.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-today.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/travel-budget.js' | relative_url }}"></script>
 
 <style>
   .travel-page { max-width: 800px; margin: 0 auto; padding: 1rem 0 3rem; }
@@ -257,6 +303,49 @@ layout: default
   .checklist-item-done { opacity: 0.6; }
   .checklist-item-done .checklist-name { text-decoration: line-through; }
 
+  .budget-toggle { display: flex; gap: 0.5rem; margin-bottom: 0.85rem; }
+  .budget-toggle-btn {
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    background: #fff;
+    padding: 0.3rem 0.85rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: #444;
+  }
+  .budget-toggle-btn.is-active { background: #1a73e8; border-color: #1a73e8; color: #fff; }
+
+  .budget-currency-blocks { display: flex; }
+  .budget-currency-block {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.1rem 1.35rem;
+    background: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.75rem;
+  }
+  .budget-chart-wrap { flex: 0 0 auto; margin: 0 auto; }
+  .budget-currency-block canvas { display: block; max-width: 190px; max-height: 190px; }
+  .budget-details { flex: 1 1 280px; min-width: 240px; }
+  .budget-currency-total { font-weight: 700; font-size: 1.15rem; margin-bottom: 0.15rem; }
+  .budget-native-totals { font-size: 0.8rem; color: #777; font-style: italic; margin-bottom: 0.75rem; }
+  .budget-legend { list-style: none; margin: 0; padding: 0; font-size: 0.88rem; }
+  .budget-legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .budget-legend li:last-child { border-bottom: none; }
+  .budget-legend-swatch { width: 0.8rem; height: 0.8rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+  .budget-legend-label { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .budget-legend-percent { flex: 0 0 auto; width: 3.4rem; text-align: right; color: #888; font-variant-numeric: tabular-nums; }
+  .budget-legend-amount { flex: 0 0 auto; min-width: 6.5rem; text-align: right; color: #555; font-variant-numeric: tabular-nums; }
+
   /* Retro-Game-FF7 theme: lighten the cards so they contrast against
      the dark page background instead of staying near-invisible. */
   body.theme-retro-game .travel-page .trip-dates { color: var(--retro-primary); }
@@ -319,4 +408,28 @@ layout: default
   }
   body.theme-retro-game .checklist-name { color: var(--retro-accent); }
   body.theme-retro-game .checklist-item-done { opacity: 0.55; }
+
+  body.theme-retro-game .budget-toggle-btn {
+    background: rgba(74, 158, 255, 0.12);
+    border-color: var(--retro-border);
+    color: var(--retro-text);
+  }
+  body.theme-retro-game .budget-toggle-btn.is-active {
+    background: var(--retro-primary);
+    color: #000;
+    text-shadow: none;
+  }
+  body.theme-retro-game .budget-currency-block {
+    background: rgba(74, 158, 255, 0.12);
+    border: 2px solid var(--retro-primary);
+  }
+  body.theme-retro-game .budget-currency-total {
+    color: var(--retro-accent);
+    text-shadow: 0 0 3px var(--retro-primary);
+  }
+  body.theme-retro-game .budget-native-totals { color: #e0c9ff; }
+  body.theme-retro-game .budget-legend { color: var(--retro-text); }
+  body.theme-retro-game .budget-legend li { border-bottom-color: var(--retro-border); }
+  body.theme-retro-game .budget-legend-percent { color: var(--retro-text); opacity: 0.75; }
+  body.theme-retro-game .budget-legend-amount { color: var(--retro-secondary); }
 </style>

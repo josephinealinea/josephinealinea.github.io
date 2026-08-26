@@ -1,0 +1,77 @@
+# LATAM Trip 2026 — budget data.
+# "display_currency" is the single currency the budget panel totals/charts
+# are shown in. "exchange_rates" gives, for every other currency used below,
+# how many units of that currency equal 1 unit of display_currency (e.g.
+# `USD: 1.17` means 1 EUR = 1.17 USD) — these are hand-entered estimates for
+# budgeting purposes, not live rates, so update them occasionally rather than
+# expecting them to track the real market.
+#
+# Flat "items" list. "category" must exactly match a key in
+# _data/budget_categories.yml (falls back to "other" if not). "currency" is
+# an ISO 4217 code (e.g. "USD", "PEN") — every item's amount is converted to
+# display_currency before totals/charts are computed. "countries" is a list
+# (not a single value) because some items, especially flights, span more
+# than one country — amount is split evenly across all listed countries when
+# grouping "by country". "date" (YYYY-MM-DD) is optional and purely for your
+# own record of when the expense was actually made — it isn't read by the
+# budget panel or used for any grouping/display.
+
+trip_name: "LATAM Trip 2026"
+
+display_currency: "EUR"
+
+exchange_rates:
+  USD: 1.17
+  PEN: 3.91
+  BOB: 13.46
+  BRL: 6.01
+
+items:
+  - description: "RT KLM tickets TLL - LAX"
+    category: transport
+    amount: 902.87
+    currency: "EUR"
+    countries: ["United States"]
+    date: 2026-03-17
+
+  - description: "Multi way Delta tickets LAX - Latam"
+    category: transport
+    amount: 1124.23
+    currency: "USD"
+    countries: ["United States", "Peru", "Brazil"]
+    date: 2026-03-20
+
+  - description: "Avianca One way ticket CUZ - LPB"
+    category: transport
+    amount: 246.22
+    currency: "USD"
+    countries: ["Bolivia"]
+    date: 2026-04-20
+
+  - description: "Machu Pichu entrance ticket"
+    category: activities
+    amount: 47.00
+    currency: "USD"
+    countries: ["Peru"]
+    date: 2026-05-19
+
+  - description: "Peru Rail One way train ticket to Machu Pichu"
+    category: transport
+    amount: 140.00
+    currency: "USD"
+    countries: ["Peru"]
+    date: 2026-08-05
+
+  - description: "Avianca One way ticket LPB - RIO (GIG)"
+    category: transport
+    amount: 424.70
+    currency: "USD"
+    countries: ["Brazil"]
+    date: 2026-08-14
+
+  - description: "BoA RT flight LPB - UYU"
+    category: transport
+    amount: 345.10
+    currency: "USD"
+    countries: ["Bolivia"]
+    date: 2026-08-14

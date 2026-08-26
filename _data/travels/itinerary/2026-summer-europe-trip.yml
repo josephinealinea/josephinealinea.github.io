@@ -1,5 +1,5 @@
-# Summer Europe Trip 2026 — itinerary data (accommodation + travel legs).
-# Airbnb accommodation links are intentionally left blank — added manually.
+# Summer Europe Trip 2026 — itinerary data (lodging + travel legs).
+# Airbnb lodging links are intentionally left blank — added manually.
 # One "- date:" block per day; "items" is an ordered list rendered top to bottom.
 # "type" must exactly match a key in _data/itinerary_icons.yml.
 
@@ -37,14 +37,14 @@ days:
             link: "https://www.google.com/maps/search/?api=1&query=Z%C3%BCrich+Hauptbahnhof"
           - name: "Interlaken West"
             link: "https://www.google.com/maps/search/?api=1&query=Interlaken+West+train+station"
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Hotel Harder Minerva"
         link: "https://www.google.com/maps/search/?api=1&query=Hotel+Harder+Minerva%2C+Harderstrasse+15%2C+Interlaken"
 
   - date: 2026-06-24
     items:
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Hotel Harder Minerva"
         link: "https://www.google.com/maps/search/?api=1&query=Hotel+Harder+Minerva%2C+Harderstrasse+15%2C+Interlaken"
@@ -61,7 +61,7 @@ days:
 
   - date: 2026-06-25
     items:
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Hotel Harder Minerva"
         link: "https://www.google.com/maps/search/?api=1&query=Hotel+Harder+Minerva%2C+Harderstrasse+15%2C+Interlaken"
@@ -83,7 +83,7 @@ days:
 
   - date: 2026-06-26
     items:
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Hotel Harder Minerva"
         link: "https://www.google.com/maps/search/?api=1&query=Hotel+Harder+Minerva%2C+Harderstrasse+15%2C+Interlaken"
@@ -102,7 +102,7 @@ days:
 
   - date: 2026-06-27
     items:
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Hotel Harder Minerva"
         link: "https://www.google.com/maps/search/?api=1&query=Hotel+Harder+Minerva%2C+Harderstrasse+15%2C+Interlaken"
@@ -125,7 +125,7 @@ days:
 
   - date: 2026-06-28
     items:
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Hotel Harder Minerva"
         link: "https://www.google.com/maps/search/?api=1&query=Hotel+Harder+Minerva%2C+Harderstrasse+15%2C+Interlaken"
@@ -160,7 +160,7 @@ days:
             link: "https://www.google.com/maps/search/?api=1&query=Interlaken%2C+Switzerland"
           - name: "Triesenberg"
             link: "https://www.google.com/maps/search/?api=1&query=Triesenberg%2C+Liechtenstein"
-      - category: accommodation
+      - category: lodging
         type: camp
         name: "Camping Yurt in Triesenberg"
       - category: food
@@ -182,7 +182,7 @@ days:
             link: "https://www.google.com/maps/search/?api=1&query=Triesenberg%2C+Liechtenstein"
           - name: "Innsbruck"
             link: "https://www.google.com/maps/search/?api=1&query=Innsbruck%2C+Austria"
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Flat in Innsbruck"
       - category: food
@@ -206,13 +206,13 @@ days:
             link: "https://www.google.com/maps/search/?api=1&query=Cortina+d%27Ampezzo"
           - name: "Falzes"
             link: "https://www.google.com/maps/search/?api=1&query=Falzes%2C+Italy"
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Flat in Falzes via Gruben"
 
   - date: 2026-07-02
     items:
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Flat in Falzes via Gruben"
       - category: transport
@@ -268,7 +268,7 @@ days:
         type: hike
         name: "Alpe di Siusi"
         link: "https://www.google.com/maps/search/?api=1&query=Alpe+di+Siusi%2C+Italy"
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Flat in Gummer"
 
@@ -284,7 +284,7 @@ days:
             link: "https://www.google.com/maps/search/?api=1&query=Treviso%2C+Italy"
           - name: "Venice"
             link: "https://www.google.com/maps/search/?api=1&query=Venice%2C+Italy"
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Hotel Maggior Consiglio"
         link: "https://www.google.com/maps/search/?api=1&query=Hotel+Maggior+Consiglio%2C+Calle+Priuli+dei+Cavaletti%2C+Venice"
@@ -301,7 +301,7 @@ days:
           - name: "MLA"
             link: "https://www.google.com/maps/search/?api=1&query=Malta+International+Airport"
             time: "10:30"
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Flat in Cospicua"
       - category: food
@@ -311,7 +311,7 @@ days:
 
   - date: 2026-07-06
     items:
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Flat in Cospicua"
       - category: activity
@@ -329,7 +329,7 @@ days:
 
   - date: 2026-07-07
     items:
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Flat in Cospicua"
       - category: activity
@@ -343,7 +343,7 @@ days:
 
   - date: 2026-07-08
     items:
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Flat in Cospicua"
       - category: activity
@@ -367,7 +367,7 @@ days:
           - name: "CTA"
             link: "https://www.google.com/maps/search/?api=1&query=Catania+Fontanarossa+Airport"
             time: "06:23"
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Gattopardo House"
         link: "https://www.google.com/maps/search/?api=1&query=Gattopardo+House%2C+Via+Minoriti+10%2C+Catania"
@@ -402,7 +402,7 @@ days:
           - name: "NCE"
             link: "https://www.google.com/maps/search/?api=1&query=Nice+C%C3%B4te+d%27Azur+Airport"
             time: "10:31"
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Flat in Nice Old Town"
       - category: food
@@ -423,7 +423,7 @@ days:
 
   - date: 2026-07-11
     items:
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Flat in Nice Old Town"
       - category: food
@@ -437,7 +437,7 @@ days:
 
   - date: 2026-07-12
     items:
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Flat in Nice Old Town"
       - category: food

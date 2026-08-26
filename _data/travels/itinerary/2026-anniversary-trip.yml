@@ -1,4 +1,4 @@
-# Anniversary Trip 2026 — itinerary data (accommodation + travel legs).
+# Anniversary Trip 2026 — itinerary data (lodging + travel legs).
 # One "- date:" block per day; "items" is an ordered list rendered top to bottom.
 # "type" must exactly match a key in _data/itinerary_icons.yml.
 
@@ -8,7 +8,7 @@ days:
 
   - date: 2026-07-25
     items:
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Airbnb flat in Kuressaare"
         link: "https://maps.app.goo.gl/Fw7q2sFW1eD8MDAaA?g_st=ic"
@@ -33,7 +33,7 @@ days:
 
   - date: 2026-07-26
     items:
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Airbnb flat in Kuressaare"
         link: "https://maps.app.goo.gl/Fw7q2sFW1eD8MDAaA?g_st=ic"
@@ -52,7 +52,7 @@ days:
 
   - date: 2026-07-27
     items:
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Airbnb flat in Kuressaare"
         link: "https://maps.app.goo.gl/Fw7q2sFW1eD8MDAaA?g_st=ic"

@@ -13,7 +13,7 @@ days:
           - name: "BUD"
             link: "https://maps.app.goo.gl/Tas1EBsaeHg4KTpr8"
             time: "17:40"
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Airbnb flat in Budapest"
         link: "https://maps.app.goo.gl/DzXacNdvLmJbYQE57?g_st=ic"
@@ -21,7 +21,7 @@ days:
 
   - date: 2026-02-15
     items:
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Airbnb flat in Budapest"
         link: "https://maps.app.goo.gl/DzXacNdvLmJbYQE57?g_st=ic"
@@ -33,7 +33,7 @@ days:
 
   - date: 2026-02-16
     items:
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Airbnb flat in Budapest"
         link: "https://maps.app.goo.gl/DzXacNdvLmJbYQE57?g_st=ic"
@@ -50,7 +50,7 @@ days:
 
   - date: 2026-02-17
     items:
-      - category: accommodation
+      - category: lodging
         type: airbnb
         name: "Airbnb flat in Budapest"
         link: "https://maps.app.goo.gl/DzXacNdvLmJbYQE57?g_st=ic"
@@ -64,7 +64,7 @@ days:
           - name: "RAK"
             link: "https://maps.app.goo.gl/nEJXnsVJhZp7w5rs6"
             time: "17:32"
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Riad Palais Sebban"
         link: "https://maps.app.goo.gl/YfwYUwwti7G6HdUG8"
@@ -72,40 +72,40 @@ days:
 
   - date: 2026-02-18
     items:
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Riad Palais Sebban"
         link: "https://maps.app.goo.gl/YfwYUwwti7G6HdUG8"
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Hotel Saghro"
         link: "https://www.google.com/maps/search/?api=1&query=Hotel+Saghro%2C+Av+Des+Far%2C+45800+Tinghir%2C+Morocco"
 
   - date: 2026-02-19
     items:
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Hotel Saghro"
         link: "https://www.google.com/maps/search/?api=1&query=Hotel+Saghro%2C+Av+Des+Far%2C+45800+Tinghir%2C+Morocco"
-      - category: accommodation
+      - category: lodging
         type: camp
         name: "Camping in Sahara Desert"
         link: "https://www.google.com/maps/search/?api=1&query=Erg+Chebbi%2C+Sahara+Desert%2C+Morocco"
 
   - date: 2026-02-20
     items:
-      - category: accommodation
+      - category: lodging
         type: camp
         name: "Camping in Sahara Desert"
         link: "https://www.google.com/maps/search/?api=1&query=Erg+Chebbi%2C+Sahara+Desert%2C+Morocco"
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Riad El Noujoum"
         link: "https://www.google.com/maps/search/?api=1&query=Riad+El+Noujoum%2C+50+Derb+Ben+Zina%2C+Kasbah%2C+Marrakech"
 
   - date: 2026-02-21
     items:
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Riad El Noujoum"
         link: "https://www.google.com/maps/search/?api=1&query=Riad+El+Noujoum%2C+50+Derb+Ben+Zina%2C+Kasbah%2C+Marrakech"
@@ -125,7 +125,7 @@ days:
 
   - date: 2026-02-22
     items:
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Riad El Noujoum"
         link: "https://www.google.com/maps/search/?api=1&query=Riad+El+Noujoum%2C+50+Derb+Ben+Zina%2C+Kasbah%2C+Marrakech"
@@ -139,7 +139,7 @@ days:
           - name: "SVQ"
             link: "https://www.google.com/maps/search/?api=1&query=Sevilla+Airport+SVQ"
             time: "07:55"
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Hotel Giralda Center"
         link: "https://www.google.com/maps/search/?api=1&query=Hotel+Giralda+Center%2C+Calle+Juan+de+Mata+Carriazo+7%2C+Seville%2C+Spain"
@@ -157,7 +157,7 @@ days:
 
   - date: 2026-02-23
     items:
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Hotel Giralda Center"
         link: "https://www.google.com/maps/search/?api=1&query=Hotel+Giralda+Center%2C+Calle+Juan+de+Mata+Carriazo+7%2C+Seville%2C+Spain"
@@ -173,7 +173,7 @@ days:
 
   - date: 2026-02-24
     items:
-      - category: accommodation
+      - category: lodging
         type: hotel
         name: "Hotel Giralda Center"
         link: "https://www.google.com/maps/search/?api=1&query=Hotel+Giralda+Center%2C+Calle+Juan+de+Mata+Carriazo+7%2C+Seville%2C+Spain"

@@ -1,0 +1,32 @@
+# Maps the "category" value used in _data/travels/budget/*.yml to an icon
+# and a hex color (used for pie-chart slices + legend swatches). Add an
+# entry here any time a new category shows up in a budget file. Colors are
+# chosen to read on both the light card background (#f6fffa) and the
+# retro-game theme's translucent dark background — keep new colors within
+# similar saturation/lightness so a new category doesn't stick out or
+# disappear in one theme. "other" is also the fallback for any category
+# value that doesn't match a key here.
+
+lodging:
+  icon: "🏨"
+  color: "#4C6EF5"
+
+transport:
+  icon: "✈️"
+  color: "#F76707"
+
+food:
+  icon: "🍽️"
+  color: "#2F9E44"
+
+activities:
+  icon: "🎟️"
+  color: "#E64980"
+
+shopping:
+  icon: "🛍️"
+  color: "#AE3EC9"
+
+other:
+  icon: "💰"
+  color: "#868E96"
