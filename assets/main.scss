@@ -502,6 +502,16 @@ body {
   flex-direction: column;
 }
 
+.form-group label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5em;
+}
+
+.required-mark {
+  color: #dc3545;
+}
+
 .contact-form input,
 .contact-form textarea {
   padding: 15px;

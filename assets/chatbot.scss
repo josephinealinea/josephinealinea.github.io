@@ -142,4 +142,17 @@
   .site-nav {
     top: 52px !important;
   }
+
+  /* Minima's default 36x36 hamburger tap target is under the 44x44pt
+     recommended minimum for mobile controls. Grow the label and keep the
+     icon flush to its bottom edge, matching minima's original layout. */
+  label[for="nav-trigger"] {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .menu-icon {
+    width: 44px !important;
+    padding-top: 18px !important;
+  }
 }

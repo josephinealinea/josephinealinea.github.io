@@ -13,13 +13,16 @@ title: Contact Me
       <!-- Contact Form -->
       <form action="https://formspree.io/f/manjvnwy" method="POST" class="contact-form">
         <div class="form-group">
-          <input type="text" name="name" placeholder="Name *" required>
+          <label for="contact-name">Name <span class="required-mark" aria-hidden="true">*</span></label>
+          <input type="text" id="contact-name" name="name" required>
         </div>
         <div class="form-group">
-          <input type="email" name="email" placeholder="Email *" required>
+          <label for="contact-email">Email <span class="required-mark" aria-hidden="true">*</span></label>
+          <input type="email" id="contact-email" name="email" required>
         </div>
         <div class="form-group">
-          <textarea name="message" placeholder="Type your message here... *" required></textarea>
+          <label for="contact-message">Message <span class="required-mark" aria-hidden="true">*</span></label>
+          <textarea id="contact-message" name="message" required></textarea>
         </div>
         <div class="form-group">
           <input type="text" name="_gotcha" style="display:none">
@@ -28,11 +31,11 @@ title: Contact Me
       </form>
       <div class="contact-info">
         <div class="contact-item">
-          <span class="contact-icon">📍</span>
+          <span class="contact-icon" aria-hidden="true">📍</span>
           <span>Tallinn, Estonia 🇪🇪</span>
         </div>
         <div class="contact-item">
-          <span class="contact-icon">💼</span>
+          <span class="contact-icon" aria-hidden="true">💼</span>
           <span>Available for opportunities</span>
         </div>
       </div>
