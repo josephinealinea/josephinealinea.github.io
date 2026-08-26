@@ -1,7 +1,7 @@
 <!-- Avatar Chatbot -->
-<div id="chatbot-icon">
-  <img src="/assets/img/avatar.png" alt="josibot">
-</div>
+<button type="button" id="chatbot-icon" aria-label="Chat with {{ site.bot_name | escape }}" aria-expanded="false" aria-controls="chatbot-window">
+  <img src="/assets/img/avatar.png" alt="">
+</button>
 
 <div id="chatbot-window">
 <div id="chatbot-header">💬 ask {{ site.bot_name | escape }}</div>
@@ -62,6 +62,7 @@ chatbotIcon.addEventListener('click', () => {
   } else {
     chatbotWindow.style.display = 'none';
   }
+  chatbotIcon.setAttribute('aria-expanded', chatbotWindow.style.display !== 'none');
 });
 
 let isDragging = false;
@@ -147,6 +148,7 @@ setTimeout(() => {
   if (!isMobileViewport()) {
     chatbotWindow.style.display = 'block';
     chatbotWindow.classList.add('collapsed');
+    chatbotIcon.setAttribute('aria-expanded', 'true');
   }
   addMessage("{{ site.bot_name | escape }}", "👋 Hi! I’m {{ site.bot_name | escape }}. Ask me {{ site.nickname | escape }}'s experiences, skills, projects, or services!");
 }, 1000);

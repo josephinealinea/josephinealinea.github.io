@@ -24,9 +24,9 @@
 
       <div class="footer-col footer-col-2">
         <!--<ul class="social-media-list"> -->
-          {%- if site.github_username -%}<a href="https://github.com/{{ site.github_username| cgi_escape | escape }}"><svg class="svg-icon"><use xlink:href="{{ 'assets/minima-social-icons.svg#github' | relative_url }}"></use></svg></a>{%- endif -%} &nbsp;
-          {%- if site.linkedin_username -%}<a href="https://www.linkedin.com/in/{{ site.linkedin_username| cgi_escape | escape }}"><svg class="svg-icon"><use xlink:href="{{ 'assets/minima-social-icons.svg#linkedin' | relative_url }}"></use></svg></a>{%- endif -%} &nbsp;
-          {%- if site.instagram_username -%}<a href="https://www.instagram.com/{{ site.instagram_username| cgi_escape | escape }}"><svg class="svg-icon"><use xlink:href="{{ 'assets/minima-social-icons.svg#instagram' | relative_url }}"></use></svg></a>{%- endif -%}
+          {%- if site.github_username -%}<a class="social-icon-link" href="https://github.com/{{ site.github_username| cgi_escape | escape }}" aria-label="GitHub"><svg class="svg-icon"><use xlink:href="{{ 'assets/minima-social-icons.svg#github' | relative_url }}"></use></svg></a>{%- endif -%} &nbsp;
+          {%- if site.linkedin_username -%}<a class="social-icon-link" href="https://www.linkedin.com/in/{{ site.linkedin_username| cgi_escape | escape }}" aria-label="LinkedIn"><svg class="svg-icon"><use xlink:href="{{ 'assets/minima-social-icons.svg#linkedin' | relative_url }}"></use></svg></a>{%- endif -%} &nbsp;
+          {%- if site.instagram_username -%}<a class="social-icon-link" href="https://www.instagram.com/{{ site.instagram_username| cgi_escape | escape }}" aria-label="Instagram"><svg class="svg-icon"><use xlink:href="{{ 'assets/minima-social-icons.svg#instagram' | relative_url }}"></use></svg></a>{%- endif -%}
           <!-- {%- if site.twitter_username -%}<li><a href="https://www.twitter.com/{{ site.twitter_username| cgi_escape | escape }}"><svg class="svg-icon"><use xlink:href="{{ 'assets/minima-social-icons.svg#twitter' | relative_url }}"></use></svg> <span class="username">{{ site.twitter_username| escape }}</span></a></li>{%- endif -%} -->
         <!--</ul> -->
       </div>

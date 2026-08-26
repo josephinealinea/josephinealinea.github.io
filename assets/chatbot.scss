@@ -12,6 +12,10 @@
   overflow: hidden;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  border: none;
+  padding: 0;
+  background: transparent;
+  display: block;
 }
 #chatbot-icon img {
   width: 100%;
@@ -95,12 +99,19 @@
   color: #000 !important;
 }
 
-/* On mobile (≤600px), the 300px window won't fit to the left of the
-   avatar on a ~375px screen. Shrink to 210px so it clears the avatar. */
+/* On mobile (≤600px), shrink the avatar to a standard-size floating
+   action button so it can't cover a large chunk of page content — the
+   full-size 105x130 avatar was overlapping hero/section text on short
+   viewports. The window's left edge and offset shrink to match. */
 @media (max-width: 600px) {
+  #chatbot-icon {
+    width: 64px;
+    height: 64px;
+  }
+
   #chatbot-window {
     width: 210px;
-    right: 130px;
+    right: 84px;
   }
 }
 
