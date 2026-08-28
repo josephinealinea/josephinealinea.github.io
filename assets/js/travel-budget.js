@@ -18,6 +18,20 @@
     return item.amount / rate;
   }
 
+  function missingRateCurrencies(items) {
+    var display = window.BUDGET_DISPLAY_CURRENCY;
+    var rates = window.BUDGET_EXCHANGE_RATES || {};
+    var seen = {};
+    var missing = [];
+    items.forEach(function (item) {
+      if (item.currency !== display && !rates[item.currency] && !seen[item.currency]) {
+        seen[item.currency] = true;
+        missing.push(item.currency);
+      }
+    });
+    return missing;
+  }
+
   function nativeTotals(items) {
     var totals = {};
     var order = [];
@@ -115,6 +129,7 @@
       var label = document.createElement("span");
       label.className = "budget-legend-label";
       label.textContent = (group.icon ? group.icon + " " : "") + group.label;
+      label.title = group.label;
       li.appendChild(label);
 
       var percent = document.createElement("span");
@@ -155,6 +170,7 @@
     var canvas = document.createElement("canvas");
     canvas.width = 190;
     canvas.height = 190;
+    canvas.setAttribute("aria-hidden", "true");
     chartWrap.appendChild(canvas);
     block.appendChild(chartWrap);
 
@@ -165,6 +181,17 @@
     totalLine.className = "budget-currency-total";
     totalLine.textContent = "Total: " + formatAmount(total, displayCurrency);
     details.appendChild(totalLine);
+
+    var missing = missingRateCurrencies(items);
+    if (missing.length) {
+      var warning = document.createElement("div");
+      warning.className = "budget-warning";
+      warning.textContent =
+        "⚠ " +
+        missing.join(", ") +
+        " shown unconverted — add an exchange rate in this trip's budget file.";
+      details.appendChild(warning);
+    }
 
     var natives = nativeTotals(items);
     var hasForeignAmounts = natives.some(function (n) {

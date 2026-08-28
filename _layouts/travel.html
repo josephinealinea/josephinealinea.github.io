@@ -240,16 +240,16 @@ layout: default
   .location-card strong { margin: 0 0 0.25rem; }
   .location-card .weather-widget { margin-top: 0.4rem; font-size: 0.9rem; color: #444; }
   .weather-line { margin-top: 0.15rem; }
-  .weather-sun { color: #777; font-size: 0.85rem; }
+  .weather-sun { color: #555; font-size: 0.85rem; }
   .weather-aqi { color: #555; font-size: 0.85rem; }
   .weather-note { margin-top: 0.35rem; font-size: 0.82rem; color: #555; font-style: italic; }
-  .weather-recorded-label { font-size: 0.78rem; color: #888; text-transform: uppercase; letter-spacing: 0.02em; }
+  .weather-recorded-label { font-size: 0.78rem; color: #555; text-transform: uppercase; letter-spacing: 0.02em; }
   .back-link { display: inline-block; margin-bottom: 1rem; }
 
   .panel-toggle { display: flex; flex-wrap: wrap; gap: 1.1rem; align-items: center; margin: 0.5rem 0 1.25rem; font-size: 0.9rem; color: #444; }
   .panel-toggle-option { display: inline-flex; align-items: center; gap: 0.3rem; cursor: pointer; }
   .panel-toggle-group { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
-  .panel-toggle-group-label { color: #777; }
+  .panel-toggle-group-label { color: #555; }
   .panel-hidden { display: none !important; }
 
   .today-badge { margin-left: 0.5rem; }
@@ -308,7 +308,7 @@ layout: default
     border: 1px solid #ccc;
     border-radius: 999px;
     background: #fff;
-    padding: 0.3rem 0.85rem;
+    padding: 0.55rem 1rem;
     font-size: 0.85rem;
     cursor: pointer;
     color: #444;
@@ -331,7 +331,8 @@ layout: default
   .budget-currency-block canvas { display: block; max-width: 190px; max-height: 190px; }
   .budget-details { flex: 1 1 280px; min-width: 240px; }
   .budget-currency-total { font-weight: 700; font-size: 1.15rem; margin-bottom: 0.15rem; }
-  .budget-native-totals { font-size: 0.8rem; color: #777; font-style: italic; margin-bottom: 0.75rem; }
+  .budget-native-totals { font-size: 0.8rem; color: #555; font-style: italic; margin-bottom: 0.5rem; }
+  .budget-warning { font-size: 0.8rem; color: #8a5a00; background: #fff6e0; border: 1px solid #f0dca0; border-radius: 6px; padding: 0.4rem 0.6rem; margin-bottom: 0.75rem; }
   .budget-legend { list-style: none; margin: 0; padding: 0; font-size: 0.88rem; }
   .budget-legend li {
     display: flex;
@@ -343,7 +344,7 @@ layout: default
   .budget-legend li:last-child { border-bottom: none; }
   .budget-legend-swatch { width: 0.8rem; height: 0.8rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }
   .budget-legend-label { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .budget-legend-percent { flex: 0 0 auto; width: 3.4rem; text-align: right; color: #888; font-variant-numeric: tabular-nums; }
+  .budget-legend-percent { flex: 0 0 auto; width: 3.4rem; text-align: right; color: #555; font-variant-numeric: tabular-nums; }
   .budget-legend-amount { flex: 0 0 auto; min-width: 6.5rem; text-align: right; color: #555; font-variant-numeric: tabular-nums; }
 
   /* Retro-Game-FF7 theme: lighten the cards so they contrast against
@@ -428,6 +429,11 @@ layout: default
     text-shadow: 0 0 3px var(--retro-primary);
   }
   body.theme-retro-game .budget-native-totals { color: #e0c9ff; }
+  body.theme-retro-game .budget-warning {
+    color: var(--retro-accent);
+    background: rgba(255, 215, 0, 0.12);
+    border-color: var(--retro-accent);
+  }
   body.theme-retro-game .budget-legend { color: var(--retro-text); }
   body.theme-retro-game .budget-legend li { border-bottom-color: var(--retro-border); }
   body.theme-retro-game .budget-legend-percent { color: var(--retro-text); opacity: 0.75; }

@@ -113,6 +113,15 @@
     width: 210px;
     right: 84px;
   }
+
+  /* The icon is fixed to the viewport's bottom-right corner (64px tall,
+     20px offset), so whatever content ends up at the true bottom of any
+     page's scroll range — the site footer, or the last item in a long
+     panel like the travel page's checklist/budget lists — needs enough
+     reserved space to scroll clear of it instead of sitting behind it. */
+  .site-footer {
+    padding-bottom: 6.5rem;
+  }
 }
 
 /* ── Shared mobile layout ────────────────────────────────────────────
