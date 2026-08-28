@@ -127,8 +127,10 @@ layout: default
   <div id="budget-section" class="other-panel" data-panel="budget">
     <h2>💸 Budget Breakdown 💰</h2>
     <div class="budget-toggle">
-      <button type="button" class="budget-toggle-btn is-active" data-group-by="category">By Category</button>
-      <button type="button" class="budget-toggle-btn" data-group-by="country">By Country</button>
+      <button type="button" class="budget-toggle-btn is-active" data-group-by="category" data-scope="confirmed">By Category</button>
+      <button type="button" class="budget-toggle-btn" data-group-by="country" data-scope="confirmed">By Country</button>
+      <button type="button" class="budget-toggle-btn" data-group-by="category" data-scope="forecasted">Forecast by Category</button>
+      <button type="button" class="budget-toggle-btn" data-group-by="country" data-scope="forecasted">Forecast by Country</button>
     </div>
     <div class="budget-currency-blocks"></div>
   </div>
@@ -193,7 +195,8 @@ layout: default
       category: "{{ item.category | escape }}",
       amount: {{ item.amount }},
       currency: "{{ item.currency | escape }}",
-      countries: [{% for c in item.countries %}"{{ c | escape }}"{% unless forloop.last %}, {% endunless %}{% endfor %}]
+      countries: [{% for c in item.countries %}"{{ c | escape }}"{% unless forloop.last %}, {% endunless %}{% endfor %}],
+      status: "{{ item.status | escape }}"
     }{% unless forloop.last %},{% endunless %}
     {% endfor %}
     {% endif %}
@@ -303,7 +306,7 @@ layout: default
   .checklist-item-done { opacity: 0.6; }
   .checklist-item-done .checklist-name { text-decoration: line-through; }
 
-  .budget-toggle { display: flex; gap: 0.5rem; margin-bottom: 0.85rem; }
+  .budget-toggle { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.85rem; }
   .budget-toggle-btn {
     border: 1px solid #ccc;
     border-radius: 999px;

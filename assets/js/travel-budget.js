@@ -3,6 +3,10 @@
   var warnedCurrencies = {};
   var charts = [];
 
+  function isConfirmed(item) {
+    return item.status !== "pre-booked";
+  }
+
   function convertAmount(item) {
     var display = window.BUDGET_DISPLAY_CURRENCY;
     if (!display || item.currency === display) return item.amount;
@@ -148,19 +152,28 @@
     return list;
   }
 
-  function renderPanel(container, groupBy) {
+  function renderPanel(container, groupBy, scope) {
     charts.forEach(function (chart) {
       chart.destroy();
     });
     charts = [];
     container.innerHTML = "";
 
-    var items = window.BUDGET_DATA;
+    var items = scope === "forecasted" ? window.BUDGET_DATA : window.BUDGET_DATA.filter(isConfirmed);
     var displayCurrency = window.BUDGET_DISPLAY_CURRENCY;
     var groups = groupBy === "country" ? groupByCountry(items) : groupByCategory(items);
     var total = items.reduce(function (sum, item) {
       return sum + convertAmount(item);
     }, 0);
+
+    if (!items.length) {
+      var empty = document.createElement("div");
+      empty.className = "budget-native-totals";
+      empty.textContent =
+        scope === "forecasted" ? "No budget items yet." : "No confirmed items yet — check the Forecasted (All) view.";
+      container.appendChild(empty);
+      return;
+    }
 
     var block = document.createElement("div");
     block.className = "budget-currency-block";
@@ -261,7 +274,7 @@
     var container = section.querySelector(".budget-currency-blocks");
     var buttons = section.querySelectorAll(".budget-toggle-btn");
 
-    renderPanel(container, "category");
+    renderPanel(container, "category", "confirmed");
 
     buttons.forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -269,7 +282,7 @@
           b.classList.remove("is-active");
         });
         btn.classList.add("is-active");
-        renderPanel(container, btn.getAttribute("data-group-by"));
+        renderPanel(container, btn.getAttribute("data-group-by"), btn.getAttribute("data-scope"));
       });
     });
   });

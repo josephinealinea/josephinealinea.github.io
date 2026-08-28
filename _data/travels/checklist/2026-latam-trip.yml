@@ -8,7 +8,7 @@ trip_name: "LATAM Trip 2026"
 
 items:
   - checklist:
-      - { status: "todo", description: "US / EU Visa" }
+      - { status: "todo", description: "US / UK Visa" }
       - { status: "todo", description: "Yellow Fever Vaccine (with official booklet)" }
       - { status: "todo", description: "Cash exchange (PEN) Peruvian sol S/" }
       - { status: "todo", description: "Cash exchange (BOB) Bolivian boliviano Bs" }

@@ -14,7 +14,11 @@
 # than one country — amount is split evenly across all listed countries when
 # grouping "by country". "date" (YYYY-MM-DD) is optional and purely for your
 # own record of when the expense was actually made — it isn't read by the
-# budget panel or used for any grouping/display.
+# budget panel or used for any grouping/display. "status" is optional and
+# must be exactly "confirmed" or "pre-booked" (any item that omits it, or
+# uses any other value, is treated as "confirmed"). The panel's default
+# "Confirmed" view only charts confirmed items; the "Forecasted (All)" view
+# includes both confirmed and pre-booked items.
 
 trip_name: "LATAM Trip 2026"
 
@@ -25,6 +29,7 @@ exchange_rates:
   PEN: 3.91
   BOB: 13.46
   BRL: 6.01
+  SGD: 1.48
 
 items:
   - description: "RT KLM tickets TLL - LAX"
@@ -33,6 +38,7 @@ items:
     currency: "EUR"
     countries: ["United States"]
     date: 2026-03-17
+    status: confirmed
 
   - description: "Multi way Delta tickets LAX - Latam"
     category: transport
@@ -40,6 +46,7 @@ items:
     currency: "USD"
     countries: ["United States", "Peru", "Brazil"]
     date: 2026-03-20
+    status: confirmed
 
   - description: "Avianca One way ticket CUZ - LPB"
     category: transport
@@ -47,6 +54,7 @@ items:
     currency: "USD"
     countries: ["Bolivia"]
     date: 2026-04-20
+    status: confirmed
 
   - description: "Machu Pichu entrance ticket"
     category: activities
@@ -54,13 +62,15 @@ items:
     currency: "USD"
     countries: ["Peru"]
     date: 2026-05-19
+    status: confirmed
 
-  - description: "Peru Rail One way train ticket to Machu Pichu"
+  - description: "Peru Rail One way train ticket to Machu Picchu"
     category: transport
     amount: 140.00
     currency: "USD"
     countries: ["Peru"]
     date: 2026-08-05
+    status: confirmed
 
   - description: "Avianca One way ticket LPB - RIO (GIG)"
     category: transport
@@ -68,6 +78,7 @@ items:
     currency: "USD"
     countries: ["Brazil"]
     date: 2026-08-14
+    status: confirmed
 
   - description: "BoA RT flight LPB - UYU"
     category: transport
@@ -75,3 +86,102 @@ items:
     currency: "USD"
     countries: ["Bolivia"]
     date: 2026-08-14
+    status: confirmed
+
+  - description: "PeruRail One way ticket from Machu to Cusco"
+    category: transport
+    amount: 150
+    currency: "USD"
+    countries: ["Peru"]
+    date: 2026-08-28
+    status: pre-booked
+
+  - description: "Accommodation in Ollantaytambo"
+    category: lodging
+    amount: 28.70
+    currency: "USD"
+    countries: ["Peru"]
+    date: 2026-08-28
+    status: pre-booked
+
+  - description: "Accommodation in La Paz"
+    category: lodging
+    amount: 100.15
+    currency: "EUR"
+    countries: ["Bolivia"]
+    date: 2026-08-28
+    status: pre-booked
+
+  - description: "Accommodation in Rio"
+    category: lodging
+    amount: 120.50
+    currency: "EUR"
+    countries: ["Brazil"]
+    date: 2026-08-28
+    status: pre-booked
+
+  - description: "Llama walk in Ollaytantambo"
+    category: activities
+    amount: 50.52
+    currency: "EUR"
+    countries: ["Peru"]
+    date: 2026-08-28
+    status: pre-booked
+
+  - description: "Sacred Valley tour"
+    category: activities
+    amount: 57.10
+    currency: "EUR"
+    countries: ["Peru"]
+    date: 2026-08-28
+    status: pre-booked
+
+
+  - description: "Salt Flats tour"
+    category: activities
+    amount: 73.43
+    currency: "EUR"
+    countries: ["Bolivia"]
+    date: 2026-08-28
+    status: pre-booked
+
+  - description: "Valley of the Souls tour"
+    category: activities
+    amount: 23.20
+    currency: "EUR"
+    countries: ["Peru"]
+    date: 2026-08-28
+    status: pre-booked
+
+  - description: "Christ the Redeemer full day tour"
+    category: activities
+    amount: 63.50
+    currency: "EUR"
+    countries: ["Brazil"]
+    date: 2026-08-28
+    status: pre-booked
+
+  - description: "Accommodation in Aguas Calientes - Inkti Punktu"
+    category: lodging
+    amount: 36
+    currency: "USD"
+    countries: ["Peru"]
+    date: 2026-08-28
+    status: pre-booked
+
+  - description: "Accommodation in Cusco"
+    category: lodging
+    amount: 128
+    currency: "EUR"
+    countries: ["Peru"]
+    date: 2026-08-28
+    status: pre-booked
+
+  - description: "Accommodation in Uyuni"
+    category: lodging
+    amount: 60
+    currency: "SGD"
+    countries: ["Bolivia"]
+    date: 2026-08-28
+    status: pre-booked
+
