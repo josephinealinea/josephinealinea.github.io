@@ -294,8 +294,10 @@
       btn.addEventListener("click", function () {
         buttons.forEach(function (b) {
           b.classList.remove("is-active");
+          b.setAttribute("aria-pressed", "false");
         });
         btn.classList.add("is-active");
+        btn.setAttribute("aria-pressed", "true");
         renderPanel(container, btn.getAttribute("data-group-by"), btn.getAttribute("data-scope"));
       });
     });

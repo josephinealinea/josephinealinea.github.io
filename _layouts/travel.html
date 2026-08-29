@@ -127,10 +127,10 @@ layout: default
   <div id="budget-section" class="other-panel" data-panel="budget">
     <h2>💸 Budget Breakdown 💰</h2>
     <div class="budget-toggle">
-      <button type="button" class="budget-toggle-btn is-active" data-group-by="category" data-scope="confirmed">By Category</button>
-      <button type="button" class="budget-toggle-btn" data-group-by="country" data-scope="confirmed">By Country</button>
-      <button type="button" class="budget-toggle-btn" data-group-by="category" data-scope="forecasted">Forecast by Category</button>
-      <button type="button" class="budget-toggle-btn" data-group-by="country" data-scope="forecasted">Forecast by Country</button>
+      <button type="button" class="budget-toggle-btn is-active" data-group-by="category" data-scope="confirmed" aria-pressed="true">By Category</button>
+      <button type="button" class="budget-toggle-btn" data-group-by="country" data-scope="confirmed" aria-pressed="false">By Country</button>
+      <button type="button" class="budget-toggle-btn" data-group-by="category" data-scope="forecasted" aria-pressed="false">Forecast by Category</button>
+      <button type="button" class="budget-toggle-btn" data-group-by="country" data-scope="forecasted" aria-pressed="false">Forecast by Country</button>
     </div>
     <div class="budget-currency-blocks"></div>
   </div>
@@ -349,6 +349,14 @@ layout: default
   .budget-legend-label { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .budget-legend-percent { flex: 0 0 auto; width: 3.4rem; text-align: right; color: #555; font-variant-numeric: tabular-nums; }
   .budget-legend-amount { flex: 0 0 auto; min-width: 6.5rem; text-align: right; color: #555; font-variant-numeric: tabular-nums; }
+
+  /* The four toggle buttons' labels vary a lot in width ("By Country" vs
+     "Forecast by Category"), so flex-wrap alone breaks into a lopsided
+     layout on narrow screens. Force a tidy 2x2 grid instead (a past trip's
+     2-button row still lays out fine as a single row within this grid). */
+  @media (max-width: 600px) {
+    .budget-toggle { display: grid; grid-template-columns: 1fr 1fr; }
+  }
 
   /* Retro-Game-FF7 theme: lighten the cards so they contrast against
      the dark page background instead of staying near-invisible. */
