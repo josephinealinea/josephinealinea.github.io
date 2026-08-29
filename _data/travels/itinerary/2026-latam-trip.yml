@@ -74,7 +74,7 @@ days:
 
   - date: 2026-10-26
     items:
-      - category: activity
+      - category: activities
         type: hike
         name: "Llama walk through the Ancient Inca Town"
         remarks: "Starts at 9am (about 2-3hrs)"
@@ -95,7 +95,7 @@ days:
 
   - date: 2026-10-27
     items:
-      - category: activity
+      - category: activities
         type: museum
         name: "Historic Sanctuary of Machu Picchu"
         link: "https://maps.app.goo.gl/9GiG6XR7x8ZYur8Z6"
@@ -121,7 +121,7 @@ days:
         type: airbnb
         name: "Home in Cusco"
         link: "https://maps.app.goo.gl/adAXVqaLyPf1rTZA6"
-      - category: activity
+      - category: activities
         type: museum
         name: "Sacred Valley tour"
         link: "https://maps.app.goo.gl/gTqPVPKLkXWcXezu9"
@@ -156,7 +156,7 @@ days:
         type: hotel
         name: "Illampu Art Boutique Hotel"
         link: "https://maps.app.goo.gl/MPjMLd1HoZAjXEd46"
-      - category: activity
+      - category: activities
         type: hike
         name: "Teleferico Cable Cars"
         remarks: "Line Red, Orange, White, Celeste, Green, from Central to Irpavi station"
@@ -177,7 +177,7 @@ days:
         type: hotel
         name: "HOTEL CASA DE SAL"
         link: "https://maps.app.goo.gl/cLNKpMR3riGF3aWR6"
-      - category: activity
+      - category: activities
         type: photography
         name: "Salar de Uyuni and stargazing"
         link: "https://maps.app.goo.gl/wdJwPwCj6a3HFBPA8"
@@ -199,7 +199,7 @@ days:
         type: hotel
         name: "Illampu Art Boutique Hotel"
         link: "https://maps.app.goo.gl/MPjMLd1HoZAjXEd46"
-      - category: activity
+      - category: activities
         type: museum
         name: "Mystical Sunset in the Valley of Souls"
         link: "https://maps.app.goo.gl/MAf7ffPJeRytJTmK8"
@@ -212,7 +212,7 @@ days:
         name: "Illampu Art Boutique Hotel"
         link: "https://maps.app.goo.gl/MPjMLd1HoZAjXEd46"
         remarks: "luggage storage before  heading to airport at midnight"
-      - category: activity
+      - category: activities
         type: hike
         name: "Teleferico Cable Cars"
         remarks: "Line Celeste, Yellow, Silver, Blue, from Prado to Rio Seco station"
@@ -243,11 +243,11 @@ days:
         type: airbnb
         name: "Home in Rio de Janeiro"
         link: ""
-      - category: activity
+      - category: activities
         type: water
         name: "Praia de Ipanema"
         link: "https://maps.app.goo.gl/8PGo8GGbmtBwDi9C9"
-      - category: activity
+      - category: activities
         type: water
         name: "Praia do Arpoador"
         link: "https://maps.app.goo.gl/RMh4iRJpncByhQWbA"
@@ -258,14 +258,14 @@ days:
         type: airbnb
         name: "Home in Rio de Janeiro"
         link: ""
-      - category: activity
+      - category: activities
         type: hike
         name: "Rio Full day tour"
         link: "https://maps.app.goo.gl/ixMeN47tvhJwvY9w8"
 
   - date: 2026-11-06
     items:
-      - category: activity
+      - category: activities
         type: water
         name: "Praia de Copacabana"
         link: "https://maps.app.goo.gl/6w5AZVBfVJHqtm9N9"

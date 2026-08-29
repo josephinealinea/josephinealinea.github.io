@@ -42,7 +42,7 @@ days:
         name: "New York Café"
         link: "https://maps.app.goo.gl/3meaqzqCQY4o498U9"
         remarks: "prepare for long queue"
-      - category: activity
+      - category: activities
         type: museum
         name: "Fisherman's Bastion"
         link: "https://maps.app.goo.gl/CvXZSZUR6wxLMWsKA"
@@ -109,11 +109,11 @@ days:
         type: hotel
         name: "Riad El Noujoum"
         link: "https://www.google.com/maps/search/?api=1&query=Riad+El+Noujoum%2C+50+Derb+Ben+Zina%2C+Kasbah%2C+Marrakech"
-      - category: activity
+      - category: activities
         type: spa
         name: "Le bain de Kasbah Marrakech"
         link: "https://maps.app.goo.gl/cqJGZL9NmkibZu8k6"
-      - category: activity
+      - category: activities
         type: shopping
         name: "Souk Market"
         link: "https://maps.app.goo.gl/BvYc8LspqZXpeHrw8"
@@ -144,7 +144,7 @@ days:
         name: "Hotel Giralda Center"
         link: "https://www.google.com/maps/search/?api=1&query=Hotel+Giralda+Center%2C+Calle+Juan+de+Mata+Carriazo+7%2C+Seville%2C+Spain"
         remarks: "spacious and nice hotel with good breakfast menu"
-      - category: activity
+      - category: activities
         type: museum
         name: "Plaza de España"
         link: "https://maps.app.goo.gl/V5YvM5DiEY4HtgGJ9"
@@ -166,7 +166,7 @@ days:
         name: "Bar El Comercio"
         link: "https://maps.app.goo.gl/MeuCdq2D5Swbwhdm9"
         remarks: "churros"
-      - category: activity
+      - category: activities
         type: museum
         name: "Santa Cruz"
         link: "https://maps.app.goo.gl/Lqsbxv2CpvwZzmTRA"

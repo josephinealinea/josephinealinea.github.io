@@ -229,72 +229,119 @@ layout: default
 <script src="{{ '/assets/js/travel-budget.js' | relative_url }}"></script>
 
 <style>
+  /* ── Theming architecture ──────────────────────────────────────────────
+     Every color/background/border below is written as
+     var(--token-name, <original-light-value>) instead of a hardcoded
+     literal. This means:
+       - The light (Minima) theme needs ZERO explicit token definitions —
+         every property just falls back to its original value, so it's
+         pixel-identical to before this refactor.
+       - A theme that wants to restyle these components only needs to SET
+         the tokens it cares about, once, in a single block (see the
+         body.theme-retro-game and body.theme-y2k-theme blocks below) —
+         not repeat every individual selector.
+     Tokens are grouped by ROLE (e.g. --travel-note-text is shared by four
+     different "aside" texts that happen to want the same treatment), not
+     by selector — a theme can still target an individual selector directly
+     for anything that's a genuinely one-off effect (glow, a contrast-driven
+     color, etc.) rather than a reusable role; both patterns coexist here.
+     ───────────────────────────────────────────────────────────────────── */
   .travel-page { max-width: 800px; margin: 0 auto; padding: 1rem 0 3rem; }
-  .travel-page .trip-dates { color: #666; margin-top: -0.5rem; }
+  .travel-page .trip-dates { color: var(--travel-primary, #666); margin-top: -0.5rem; }
   .trip-day { margin: 1.75rem 0; }
-  .trip-day h3 { border-bottom: 2px solid #eee; padding-bottom: 0.25rem; margin-bottom: 0.75rem; }
+  .trip-day h3 {
+    border-bottom: 2px solid var(--travel-border-accent, #eee);
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--travel-heading-text, inherit);
+  }
   .locations { display: flex; flex-wrap: wrap; gap: 0.75rem; }
   .location-card {
     flex: 1 1 220px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: 1px solid var(--travel-border-accent, #ddd);
+    border-radius: var(--travel-card-radius, 8px);
     padding: 0.75rem 1rem;
+    background: var(--travel-card-bg, transparent);
+    box-shadow: var(--travel-card-shadow, none);
   }
-  .location-card strong { margin: 0 0 0.25rem; }
-  .location-card .weather-widget { margin-top: 0.4rem; font-size: 0.9rem; color: #444; }
+  .location-card strong { margin: 0 0 0.25rem; color: var(--travel-link-accent, inherit); }
+  .location-card:hover strong { color: var(--travel-link-accent-hover, var(--travel-link-accent, inherit)); }
+  .location-card .weather-widget { margin-top: 0.4rem; font-size: 0.9rem; color: var(--travel-body-text, #444); }
   .weather-line { margin-top: 0.15rem; }
-  .weather-sun { color: #555; font-size: 0.85rem; }
-  .weather-aqi { color: #555; font-size: 0.85rem; }
-  .weather-note { margin-top: 0.35rem; font-size: 0.82rem; color: #555; font-style: italic; }
-  .weather-recorded-label { font-size: 0.78rem; color: #555; text-transform: uppercase; letter-spacing: 0.02em; }
-  .back-link { display: inline-block; margin-bottom: 1rem; }
+  .weather-sun { color: var(--travel-sun-text, #555); font-size: 0.85rem; }
+  .weather-aqi { color: var(--travel-body-text, #555); font-size: 0.85rem; }
+  .weather-note { margin-top: 0.35rem; font-size: 0.82rem; color: var(--travel-note-text, #555); font-style: italic; }
+  .weather-recorded-label { font-size: 0.78rem; color: var(--travel-secondary-text, #555); text-transform: uppercase; letter-spacing: 0.02em; }
+  .back-link { display: inline-block; margin-bottom: 1rem; color: var(--travel-primary, inherit); }
 
-  .panel-toggle { display: flex; flex-wrap: wrap; gap: 1.1rem; align-items: center; margin: 0.5rem 0 1.25rem; font-size: 0.9rem; color: #444; }
+  .panel-toggle { display: flex; flex-wrap: wrap; gap: 1.1rem; align-items: center; margin: 0.5rem 0 1.25rem; font-size: 0.9rem; color: var(--travel-body-text, #444); }
   .panel-toggle-option { display: inline-flex; align-items: center; gap: 0.3rem; cursor: pointer; }
+  .panel-toggle-option input[type="checkbox"] { accent-color: var(--travel-primary, auto); }
   .panel-toggle-group { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
-  .panel-toggle-group-label { color: #555; }
+  .panel-toggle-group-label { color: var(--travel-secondary-text, #555); }
   .panel-hidden { display: none !important; }
 
   .today-badge { margin-left: 0.5rem; }
-  .other-panel { border: 1px solid #ddd; border-radius: 8px; padding: 0.75rem 1rem; margin: 1.25rem 0; background: #f6fffa; }
-  .other-panel h2 { margin: 0 0 0.6rem; font-size: 1.05rem; }
+  .other-panel {
+    border: var(--travel-panel-border, 1px solid #ddd);
+    border-radius: var(--travel-panel-radius, 8px);
+    padding: 0.75rem 1rem;
+    margin: 1.25rem 0;
+    background: var(--travel-panel-bg, #f6fffa);
+    backdrop-filter: var(--travel-panel-blur, none);
+  }
+  .other-panel h2 { margin: 0 0 0.6rem; font-size: 1.05rem; color: var(--travel-panel-heading-text, inherit); }
   .today-locations { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-  .today-location-card { flex: 1 1 220px; border: 1px solid #ddd; border-radius: 8px; padding: 0.6rem 0.85rem; background: #fff; }
+  .today-location-card {
+    flex: 1 1 220px;
+    border: var(--travel-highlight-card-border, 1px solid #ddd);
+    border-radius: var(--travel-card-radius, 8px);
+    padding: 0.6rem 0.85rem;
+    background: var(--travel-highlight-card-bg, #fff);
+    box-shadow: var(--travel-card-shadow, none);
+  }
   .today-card-header { display: block; margin-bottom: 0.25rem; }
-  .today-location-card strong { display: inline; }
-  .today-location-card .today-widget { font-size: 0.9rem; color: #444; }
-  .today-note { margin-top: 0.3rem; font-size: 0.8rem; color: #555; font-style: italic; }
+  .today-location-card strong { display: inline; color: var(--travel-link-accent, inherit); }
+  .today-location-card:hover strong { color: var(--travel-link-accent-hover, var(--travel-link-accent, inherit)); }
+  .today-country { color: var(--travel-body-text, inherit); }
+  .today-location-card .today-widget { font-size: 0.9rem; color: var(--travel-body-text, #444); }
+  .today-note { margin-top: 0.3rem; font-size: 0.8rem; color: var(--travel-note-text, #555); font-style: italic; }
 
   .itinerary-items { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.75rem; }
   .itinerary-item {
     flex: 1 1 220px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: 1px solid var(--travel-border-accent, #ddd);
+    border-radius: var(--travel-card-radius, 8px);
     padding: 0.6rem 0.85rem;
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     gap: 0.4rem;
+    background: var(--travel-card-bg, transparent);
+    box-shadow: var(--travel-card-shadow, none);
   }
   .itinerary-item-transport { flex-basis: 100%; }
   .itinerary-icon { font-size: 1.1rem; }
-  .itinerary-name { font-weight: 600; }
-  a.itinerary-name { text-decoration: underline; color: #1a73e8; }
-  .itinerary-route { flex-basis: 100%; font-size: 0.9rem; color: #555; display: flex; flex-direction: column; gap: 0.15rem; }
+  .itinerary-name { font-weight: 600; color: var(--travel-link-accent, inherit); }
+  a.itinerary-name { text-decoration: underline; color: var(--travel-link-accent, #1a73e8); }
+  .itinerary-item:hover .itinerary-name { color: var(--travel-link-accent-hover, var(--travel-link-accent, #1a73e8)); }
+  .itinerary-route { flex-basis: 100%; font-size: 0.9rem; color: var(--travel-body-text, #555); display: flex; flex-direction: column; gap: 0.15rem; }
   .itinerary-stop-icon, .itinerary-time-icon { margin-right: 0.2rem; }
   .itinerary-time-icon { margin-left: 0.3rem; }
-  .itinerary-route a { color: #1a73e8; text-decoration: underline; }
-  .itinerary-remarks { flex-basis: 100%; margin-top: 0.35rem; font-size: 0.82rem; color: #555; font-style: italic; }
+  .itinerary-route a { color: var(--travel-link-accent, #1a73e8); text-decoration: underline; }
+  .itinerary-remarks { flex-basis: 100%; margin-top: 0.35rem; font-size: 0.82rem; color: var(--travel-note-text, #555); font-style: italic; }
 
   .checklist-items { display: flex; flex-wrap: wrap; gap: 0.6rem; }
   .checklist-group {
     flex: 1 1 220px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: 1px solid var(--travel-border-accent, #ddd);
+    border-radius: var(--travel-card-radius, 8px);
     padding: 0.6rem 0.85rem;
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
+    background: var(--travel-card-bg, transparent);
+    box-shadow: var(--travel-card-shadow, none);
   }
   .checklist-item {
     display: flex;
@@ -302,29 +349,35 @@ layout: default
     gap: 0.4rem;
   }
   .checklist-icon { font-size: 1.1rem; }
-  .checklist-name { color: #555; }
+  .checklist-name { color: var(--travel-link-accent, #555); }
+  .checklist-item:hover .checklist-name { color: var(--travel-link-accent-hover, var(--travel-link-accent, #555)); }
   .checklist-item-done { opacity: 0.6; }
   .checklist-item-done .checklist-name { text-decoration: line-through; }
 
   .budget-toggle { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.85rem; }
   .budget-toggle-btn {
-    border: 1px solid #ccc;
+    border: 1px solid var(--travel-border-accent, #ccc);
     border-radius: 999px;
-    background: #fff;
+    background: var(--travel-card-bg, #fff);
     padding: 0.55rem 1rem;
     font-size: 0.85rem;
     cursor: pointer;
-    color: #444;
+    color: var(--travel-body-text, #444);
   }
-  .budget-toggle-btn.is-active { background: #1a73e8; border-color: #1a73e8; color: #fff; }
+  .budget-toggle-btn.is-active {
+    background: var(--travel-active-toggle-bg, #1a73e8);
+    border-color: var(--travel-active-toggle-bg, #1a73e8);
+    color: var(--travel-active-toggle-text, #fff);
+  }
 
   .budget-currency-blocks { display: flex; }
   .budget-currency-block {
     width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: var(--travel-highlight-card-border, 1px solid #ddd);
+    border-radius: var(--travel-card-radius, 8px);
     padding: 1.1rem 1.35rem;
-    background: #fff;
+    background: var(--travel-highlight-card-bg, #fff);
+    box-shadow: var(--travel-card-shadow, none);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -333,22 +386,35 @@ layout: default
   .budget-chart-wrap { flex: 0 0 auto; margin: 0 auto; }
   .budget-currency-block canvas { display: block; max-width: 190px; max-height: 190px; }
   .budget-details { flex: 1 1 280px; min-width: 240px; }
-  .budget-currency-total { font-weight: 700; font-size: 1.15rem; margin-bottom: 0.15rem; }
-  .budget-native-totals { font-size: 0.8rem; color: #555; font-style: italic; margin-bottom: 0.5rem; }
-  .budget-warning { font-size: 0.8rem; color: #8a5a00; background: #fff6e0; border: 1px solid #f0dca0; border-radius: 6px; padding: 0.4rem 0.6rem; margin-bottom: 0.75rem; }
-  .budget-legend { list-style: none; margin: 0; padding: 0; font-size: 0.88rem; }
+  .budget-currency-total {
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 0.15rem;
+    color: var(--travel-total-text, inherit);
+  }
+  .budget-native-totals { font-size: 0.8rem; color: var(--travel-note-text, #555); font-style: italic; margin-bottom: 0.5rem; }
+  .budget-warning {
+    font-size: 0.8rem;
+    color: var(--travel-warning-text, #8a5a00);
+    background: var(--travel-warning-bg, #fff6e0);
+    border: 1px solid var(--travel-warning-border, #f0dca0);
+    border-radius: 6px;
+    padding: 0.4rem 0.6rem;
+    margin-bottom: 0.75rem;
+  }
+  .budget-legend { list-style: none; margin: 0; padding: 0; font-size: 0.88rem; color: var(--travel-body-text, inherit); }
   .budget-legend li {
     display: flex;
     align-items: center;
     gap: 0.55rem;
     padding: 0.35rem 0;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--travel-border-accent, #f0f0f0);
   }
   .budget-legend li:last-child { border-bottom: none; }
   .budget-legend-swatch { width: 0.8rem; height: 0.8rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }
   .budget-legend-label { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .budget-legend-percent { flex: 0 0 auto; width: 3.4rem; text-align: right; color: #555; font-variant-numeric: tabular-nums; }
-  .budget-legend-amount { flex: 0 0 auto; min-width: 6.5rem; text-align: right; color: #555; font-variant-numeric: tabular-nums; }
+  .budget-legend-percent { flex: 0 0 auto; width: 3.4rem; text-align: right; color: var(--travel-body-text, #555); font-variant-numeric: tabular-nums; opacity: var(--travel-legend-percent-opacity, 1); }
+  .budget-legend-amount { flex: 0 0 auto; min-width: 6.5rem; text-align: right; color: var(--travel-secondary-text, #555); font-variant-numeric: tabular-nums; }
 
   /* The four toggle buttons' labels vary a lot in width ("By Country" vs
      "Forecast by Category"), so flex-wrap alone breaks into a lopsided
@@ -358,95 +424,25 @@ layout: default
     .budget-toggle { display: grid; grid-template-columns: 1fr 1fr; }
   }
 
-  /* Retro-Game-FF7 theme: lighten the cards so they contrast against
-     the dark page background instead of staying near-invisible. */
-  body.theme-retro-game .travel-page .trip-dates { color: var(--retro-primary); }
-  body.theme-retro-game .trip-day h3 { border-bottom-color: var(--retro-border); color: var(--retro-text); }
-  body.theme-retro-game .location-card {
-    background: rgba(74, 158, 255, 0.12);
-    border-color: var(--retro-border);
-  }
-  body.theme-retro-game .location-card strong { color: var(--retro-accent); }
-  body.theme-retro-game .location-card .weather-widget { color: var(--retro-text); }
-  body.theme-retro-game .weather-sun { color: #8ecfff; }
-  body.theme-retro-game .weather-aqi { color: var(--retro-text); }
-  body.theme-retro-game .weather-note { color: #e0c9ff; }
-  body.theme-retro-game .weather-recorded-label { color: var(--retro-secondary); }
-  body.theme-retro-game .back-link { color: var(--retro-primary); }
-  body.theme-retro-game .panel-toggle { color: var(--retro-text); }
-  body.theme-retro-game .panel-toggle-group-label { color: var(--retro-secondary); }
-  body.theme-retro-game .panel-toggle-option input[type="checkbox"] { accent-color: var(--retro-primary); }
-  body.theme-retro-game .other-panel {
-    background: rgba(0, 255, 0, 0.1);
-    border: 2px solid var(--retro-primary);
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-  }
-  body.theme-retro-game .other-panel h2 {
-    color: var(--retro-primary);
-    text-shadow: 2px 2px 0px var(--retro-shadow);
-  }
-  body.theme-retro-game .today-location-card {
-    background: rgba(74, 158, 255, 0.12);
-    border: 2px solid var(--retro-primary);
-  }
-  body.theme-retro-game .today-location-card strong {
-    color: var(--retro-accent);
-  }
-  body.theme-retro-game .today-country {
-    color: var(--retro-text);
-  }
-  body.theme-retro-game .today-location-card .today-widget {
-    color: var(--retro-text);
-    text-shadow: 0 0 3px var(--retro-primary);
-  }
-  body.theme-retro-game .today-note {
-    color: #e0c9ff;
-    text-shadow: 0 0 3px var(--retro-secondary);
-  }
-  body.theme-retro-game .itinerary-item {
-    background: rgba(74, 158, 255, 0.12);
-    border-color: var(--retro-border);
-  }
-  body.theme-retro-game .itinerary-name { color: var(--retro-accent); }
-  body.theme-retro-game a.itinerary-name { color: var(--retro-accent); }
-  body.theme-retro-game .itinerary-route { color: var(--retro-text); }
-  body.theme-retro-game .itinerary-route a { color: var(--retro-accent); }
-  body.theme-retro-game .itinerary-remarks { color: #e0c9ff; }
+  /* ── Retro-Game FF7 theme ──────────────────────────────────────────────
+     The --travel-* token VALUES live in retro-game.scss (body.theme-retro-game
+     { --travel-card-bg: ...; }), scoped to plain body so any page/component
+     can use them, not just this one. Only the one-off effects that target
+     travel.html's own classes stay here — text-shadow glows and a
+     contrast-driven toggle color that aren't reusable roles shared with
+     anything else, so tokenizing a value used by exactly one selector
+     wouldn't save anything. */
+  body.theme-retro-game .other-panel h2 { text-shadow: 2px 2px 0px var(--retro-shadow); }
+  body.theme-retro-game .today-location-card .today-widget { text-shadow: 0 0 3px var(--retro-primary); }
+  body.theme-retro-game .today-note { text-shadow: 0 0 3px var(--retro-secondary); }
+  body.theme-retro-game .budget-currency-total { text-shadow: 0 0 3px var(--retro-primary); }
+  /* Retro-Game's global body { text-shadow: 0 0 5px var(--retro-primary) }
+     inherits onto everything by default — cancel it here so the active
+     toggle's contrast-critical black-on-blue text stays crisp. */
+  body.theme-retro-game .budget-toggle-btn.is-active { text-shadow: none; }
 
-  body.theme-retro-game .checklist-group {
-    background: rgba(74, 158, 255, 0.12);
-    border-color: var(--retro-border);
-  }
-  body.theme-retro-game .checklist-name { color: var(--retro-accent); }
-  body.theme-retro-game .checklist-item-done { opacity: 0.55; }
-
-  body.theme-retro-game .budget-toggle-btn {
-    background: rgba(74, 158, 255, 0.12);
-    border-color: var(--retro-border);
-    color: var(--retro-text);
-  }
-  body.theme-retro-game .budget-toggle-btn.is-active {
-    background: var(--retro-primary);
-    color: #000;
-    text-shadow: none;
-  }
-  body.theme-retro-game .budget-currency-block {
-    background: rgba(74, 158, 255, 0.12);
-    border: 2px solid var(--retro-primary);
-  }
-  body.theme-retro-game .budget-currency-total {
-    color: var(--retro-accent);
-    text-shadow: 0 0 3px var(--retro-primary);
-  }
-  body.theme-retro-game .budget-native-totals { color: #e0c9ff; }
-  body.theme-retro-game .budget-warning {
-    color: var(--retro-accent);
-    background: rgba(255, 215, 0, 0.12);
-    border-color: var(--retro-accent);
-  }
-  body.theme-retro-game .budget-legend { color: var(--retro-text); }
-  body.theme-retro-game .budget-legend li { border-bottom-color: var(--retro-border); }
-  body.theme-retro-game .budget-legend-percent { color: var(--retro-text); opacity: 0.75; }
-  body.theme-retro-game .budget-legend-amount { color: var(--retro-secondary); }
+  /* Y2K theme's --travel-* token values live in y2k-theme.scss
+     (body.theme-y2k-theme { --travel-card-bg: ...; }), same reasoning as
+     Retro-Game above — no travel.html-specific one-offs needed for this
+     theme (no global glow to cancel, no unique decorative flourishes). */
 </style>

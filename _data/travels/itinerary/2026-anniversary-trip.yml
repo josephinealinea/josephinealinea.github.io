@@ -22,7 +22,7 @@ days:
           - name: "Kuresaare bussijaam"
             link: "https://maps.app.goo.gl/11TUQr8H6qBdWfTK8"
             time: "13:40"
-      - category: activity
+      - category: activities
         type: museum
         name: "Kuresaare Castle"
         link: "https://maps.app.goo.gl/5NexjF1XxzoGhAjY8"
@@ -37,7 +37,7 @@ days:
         type: airbnb
         name: "Airbnb flat in Kuressaare"
         link: "https://maps.app.goo.gl/Fw7q2sFW1eD8MDAaA?g_st=ic"
-      - category: activity
+      - category: activities
         type: hike
         name: "Tori Sadam"
         link: "https://maps.app.goo.gl/ZxS62pVrmqJqdLGd8"
@@ -45,7 +45,7 @@ days:
         type: restaurant
         name: "Sabba restoran Kuresaares"
         link: "https://maps.app.goo.gl/PPSG8M2MUCzoeD7Y6"
-      - category: activity
+      - category: activities
         type: spa
         name: "Asa Spa Hotell"
         link: "https://maps.app.goo.gl/DHUuVnj6J7UPc3yk6"

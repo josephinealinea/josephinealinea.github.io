@@ -1138,6 +1138,38 @@ body.theme-retro-game .site-nav .page-link.active {
   text-shadow: 0 0 5px var(--retro-accent);
 }
 
+// Shared component tokens (--travel-*) — scoped to plain `body`, not any
+// one page's wrapper class, so ANY page/component can opt into these by
+// referencing var(--travel-card-bg, <its own light-theme fallback>), the
+// same way _layouts/travel.html's cards/panels/notes already do. Adding a
+// themed look to a future Post or Projects component is then just "use
+// the existing --travel-* names" — no new override block needed here.
+body.theme-retro-game {
+  --travel-primary: var(--retro-primary);
+  --travel-border-accent: var(--retro-border);
+  --travel-heading-text: var(--retro-text);
+  --travel-card-bg: rgba(74, 158, 255, 0.12);
+  --travel-highlight-card-bg: rgba(74, 158, 255, 0.12);
+  --travel-highlight-card-border: 2px solid var(--retro-primary);
+  --travel-link-accent: var(--retro-accent);
+  --travel-body-text: var(--retro-text);
+  --travel-secondary-text: var(--retro-secondary);
+  --travel-note-text: #e0c9ff;
+  --travel-sun-text: #8ecfff;
+  --travel-panel-bg: rgba(0, 255, 0, 0.1);
+  --travel-panel-border: 2px solid var(--retro-primary);
+  --travel-panel-radius: 12px;
+  --travel-panel-blur: blur(10px);
+  --travel-panel-heading-text: var(--retro-primary);
+  --travel-active-toggle-bg: var(--retro-primary);
+  --travel-active-toggle-text: #000;
+  --travel-total-text: var(--retro-accent);
+  --travel-warning-text: var(--retro-accent);
+  --travel-warning-bg: rgba(255, 215, 0, 0.12);
+  --travel-warning-border: var(--retro-accent);
+  --travel-legend-percent-opacity: 0.75;
+}
+
 // Mobile overrides — must use body.theme-retro-game scope to beat the
 // desktop theme-scoped rules which have higher specificity than plain selectors
 @media (max-width: 768px) {

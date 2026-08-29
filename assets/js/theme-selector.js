@@ -218,61 +218,54 @@ if (document.readyState === 'loading') {
     initializeSkillBars();
 }
 
+       // Registry of all themes: which <link> stylesheet id to enable (all
+       // others get disabled) and the toggle-button label at each width.
+       // Adding a new theme means adding one entry here, one entry in
+       // theme-selector.html's dropdown, and one <link id="..." disabled>
+       // in head.html — nothing else in this file needs to change.
+       const THEME_REGISTRY = {
+           'jekyll-minima': { stylesheetId: 'main-css', labelFull: 'Minima Theme', labelShort: 'Minima' },
+           'retro-game': { stylesheetId: 'retro-game-css', labelFull: 'Retro-Game FF7', labelShort: 'FF7' },
+           'y2k-theme': { stylesheetId: 'y2k-theme-css', labelFull: 'Y2K Theme', labelShort: 'Y2K' }
+       };
+       const THEME_NAMES = Object.keys(THEME_REGISTRY);
+
        // Theme application function
        function applyTheme(theme) {
            console.log('Applying theme:', theme);
-           
+
+           const config = THEME_REGISTRY[theme] || THEME_REGISTRY['jekyll-minima'];
+
            // Remove existing theme classes
-           document.body.classList.remove('theme-jekyll-minima', 'theme-retro-game');
-           
+           document.body.classList.remove(...THEME_NAMES.map(name => `theme-${name}`));
+
            // Add new theme class
            document.body.classList.add(`theme-${theme}`);
-           
+
            // Save theme preference
            localStorage.setItem('selectedTheme', theme);
-           
+
            // Update theme display
            updateThemeDisplay(theme);
 
            // Recalculate body padding — retro header may have different height
            setTimeout(updateBodyPadding, 50);
 
-           // Update CSS file loading - enable/disable appropriate CSS files
-           const mainCss = document.getElementById('main-css');
-           const retroGameCss = document.getElementById('retro-game-css');
-           
-           console.log('CSS elements found:', { 
-               mainCss: !!mainCss, 
-               retroGameCss: !!retroGameCss 
+           // Update CSS file loading - enable only the active theme's stylesheet
+           THEME_NAMES.forEach(name => {
+               const link = document.getElementById(THEME_REGISTRY[name].stylesheetId);
+               if (link) link.disabled = THEME_REGISTRY[name].stylesheetId !== config.stylesheetId;
            });
-           
-           if (mainCss && retroGameCss) {
-               if (theme === 'retro-game') {
-                   // Enable retro-game theme, disable main theme
-                   mainCss.disabled = true;
-                   retroGameCss.disabled = false;
-                   console.log('Retro-game theme enabled - main CSS disabled:', mainCss.disabled, 'retro CSS disabled:', retroGameCss.disabled);
-               } else {
-                   // Enable main theme, disable retro-game theme
-                   mainCss.disabled = false;
-                   retroGameCss.disabled = true;
-                   console.log('Jekyll-Minima theme enabled - main CSS disabled:', mainCss.disabled, 'retro CSS disabled:', retroGameCss.disabled);
-               }
-           } else {
-               console.error('CSS elements not found for theme switching');
-           }
+           console.log('Active stylesheet:', config.stylesheetId);
        }
-       
+
        // Function to update theme display name in the toggle button.
        // Uses short labels on mobile (≤768px) to match the dropdown options.
        function updateThemeDisplay(theme) {
            const currentThemeSpan = document.getElementById('current-theme');
            if (currentThemeSpan) {
                const isMobile = window.innerWidth <= 768;
-               if (theme === 'retro-game') {
-                   currentThemeSpan.textContent = isMobile ? 'FF7' : 'Retro-Game FF7';
-               } else {
-                   currentThemeSpan.textContent = isMobile ? 'Minima' : 'Minima Theme';
-               }
+               const config = THEME_REGISTRY[theme] || THEME_REGISTRY['jekyll-minima'];
+               currentThemeSpan.textContent = isMobile ? config.labelShort : config.labelFull;
            }
        }

@@ -1,0 +1,929 @@
+---
+---
+
+// Y2K Theme
+// A Windows 98 / Y2K desktop-UI aesthetic: flat grays, sharp corners,
+// classic raised/sunken 3D bevels, navy title bar, Tahoma font stack.
+// Deliberately the opposite of the Retro-Game FF7 theme's rounded corners
+// and neon glow — no gradients-as-glow, no text-shadow glow, no blur.
+
+// Import base Jekyll styles (same base layout retro-game.scss reuses)
+@import "minima";
+
+// Base Theme Selector Styles (always available — bare selectors are safe
+// here because this stylesheet is only ever active on its own, matching
+// the same convention retro-game.scss uses for this exact widget)
+.theme-selector {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-toggle {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background: #0056b3;
+  }
+}
+
+.theme-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e9ecef;
+  min-width: 180px;
+  display: none;
+  overflow: hidden;
+
+  &.show {
+    display: block;
+  }
+}
+
+.theme-option {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: white;
+  color: #333;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+
+  &:hover {
+    background: #f8f9fa;
+  }
+
+  &.active {
+    background: #e3f2fd;
+    color: #1976d2;
+    font-weight: 600;
+  }
+}
+
+.label-short { display: none; }
+
+@media (max-width: 768px) {
+  .theme-selector { top: 10px; right: 10px; }
+  .theme-toggle { padding: 10px 14px; font-size: 12px; }
+  .label-full  { display: none; }
+  .label-short { display: inline; }
+}
+
+// Y2K Theme Variables (own namespace — this file's inline-page counterpart
+// in _layouts/travel.html needs body.theme-y2k-theme rules to coexist with
+// body.theme-retro-game's --retro-* variables, so these are deliberately
+// named --y2k-* rather than reusing --retro-*.)
+:root {
+  --y2k-desktop: #008a8a;      // classic Windows 98 teal desktop (lightened
+                                // a shade from the period-authentic #008080 —
+                                // 4.40:1 against black text, just under the
+                                // 4.5:1 minimum — so black body text clears
+                                // it at 5.00:1 as a safety margin, even
+                                // though no real content currently sits
+                                // directly on this background)
+  --y2k-face: #c0c0c0;         // button/window face gray ("silver")
+  --y2k-face-light: #dfdfdf;   // bevel highlight
+  --y2k-face-dark: #808080;    // bevel shadow — decorative use only (borders,
+                                // box-shadow bevels); NOT for text color, it
+                                // fails 4.5:1 against both --y2k-face and
+                                // --y2k-window-bg. Use --y2k-text-muted instead.
+  --y2k-face-darker: #0a0a0a;  // darkest bevel edge
+  --y2k-titlebar-start: #000080; // active title bar gradient (navy -> blue)
+  --y2k-titlebar-end: #1084d0;
+  --y2k-titlebar-text: #ffffff;
+  --y2k-text: #000000;
+  --y2k-text-muted: #444444;   // secondary/meta text. Needs to clear 4.5:1
+                                // against BOTH backgrounds it's actually used
+                                // on: --y2k-window-bg (#fff, for .post-date)
+                                // and --y2k-face (#c0c0c0, for .post-meta/
+                                // blockquote inside .page-content) — #666666
+                                // passes the first (5.74:1) but fails the
+                                // second (3.16:1); #444444 clears both
+                                // (9.74:1 / 5.35:1).
+  --y2k-link: #0000ff;
+  --y2k-window-bg: #ffffff;    // sunken field / "paper" background
+}
+
+// Reusable 3D bevel mixins, via the standard 4-layer inset-shadow technique
+@mixin win98-raised {
+  border: 1px solid var(--y2k-face-darker);
+  box-shadow:
+    inset -1px -1px 0 var(--y2k-face-darker),
+    inset 1px 1px 0 #fff,
+    inset -2px -2px 0 var(--y2k-face-dark),
+    inset 2px 2px 0 var(--y2k-face-light);
+}
+
+@mixin win98-sunken {
+  border: 1px solid var(--y2k-face-darker);
+  box-shadow:
+    inset -1px -1px 0 #fff,
+    inset 1px 1px 0 var(--y2k-face-darker),
+    inset -2px -2px 0 var(--y2k-face-light),
+    inset 2px 2px 0 var(--y2k-face-dark);
+}
+
+// Global Y2K Styles
+body.theme-y2k-theme {
+  background-color: var(--y2k-desktop);
+  color: var(--y2k-text);
+  font-family: Tahoma, 'MS Sans Serif', Geneva, sans-serif;
+  line-height: 1.5;
+  padding-top: 80px;
+}
+
+// Typography — bold and flat, no glow, no uppercase theatrics
+body.theme-y2k-theme h1,
+body.theme-y2k-theme h2,
+body.theme-y2k-theme h3,
+body.theme-y2k-theme h4,
+body.theme-y2k-theme h5,
+body.theme-y2k-theme h6 {
+  color: var(--y2k-text);
+  font-family: Tahoma, 'MS Sans Serif', Geneva, sans-serif;
+  font-weight: bold;
+}
+
+body.theme-y2k-theme h1 {
+  font-size: 1.8em;
+  border-bottom: 2px solid var(--y2k-face-dark);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+body.theme-y2k-theme h2 {
+  font-size: 1.3em;
+  border-left: 4px solid var(--y2k-titlebar-start);
+  padding-left: 10px;
+}
+
+body.theme-y2k-theme h3 {
+  font-size: 1.1em;
+  color: var(--y2k-titlebar-start);
+}
+
+// Links — classic unvisited blue, no hover animation flourish
+body.theme-y2k-theme a {
+  color: var(--y2k-link);
+  text-decoration: underline;
+
+  &:hover {
+    color: #ff0000;
+  }
+}
+
+// Site Header, skinned as a Windows title bar. Deliberately NOT display:flex
+// — matching Minima's own plain block/float header (.site-title floats
+// left, .site-nav floats right, chatbot.scss's shared mobile rule switches
+// .site-nav to position:absolute below the title for the hamburger) keeps
+// this theme's header structurally identical to Minima/Retro-Game FF7 at
+// every breakpoint, rather than reimplementing layout via flex (which
+// previously fought minima's .wrapper { margin: 0 auto } — flex auto-
+// margins absorb free space to center the item instead of stretching it,
+// shrinking .wrapper to content size and forcing .site-title into a much
+// narrower box than intended).
+body.theme-y2k-theme .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(90deg, var(--y2k-titlebar-start), var(--y2k-titlebar-end));
+  border-bottom: 1px solid var(--y2k-face-darker);
+  box-shadow: 0 2px 0 var(--y2k-face-dark);
+  padding: 0 1em;
+}
+
+body.theme-y2k-theme .site-title {
+  // Uppercase + letter-spacing matches Minima's own .site-title (main.scss)
+  // and Retro-Game FF7's — kept consistent across all three themes.
+  color: var(--y2k-titlebar-text);
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  // A little "icon" square before the title, like an app icon in a title
+  // bar — an inline-block pseudo-element wraps along with the text fine.
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+    vertical-align: -2px;
+    background: var(--y2k-face);
+    border: 1px solid #fff;
+  }
+}
+
+body.theme-y2k-theme .site-nav .page-link {
+  // Uppercase + bold + letter-spacing matches Minima's and Retro-Game FF7's
+  // own .page-link styling, so nav links wrap into the same row pattern
+  // (same text metrics driving the same natural line breaks) across themes.
+  color: var(--y2k-titlebar-text);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 16px; // matches Minima's and Retro-Game FF7's .page-link padding
+  text-decoration: none;
+
+  &:hover {
+    background: var(--y2k-face);
+    color: var(--y2k-text);
+  }
+
+  &.active {
+    background: var(--y2k-face);
+    color: var(--y2k-text);
+    font-weight: bold;
+  }
+}
+
+// Main Content — the page body reads as a maximized Win98 window
+//
+// width:100% matters here: minima's own body is `display:flex;
+// flex-direction:column` (its sticky-footer layout), and .page-content is a
+// flex child with no explicit width. A flex item with auto left/right
+// margins (our `margin: ... auto` below, the cross axis in a column flex
+// container) makes browsers suppress the default align-items:stretch and
+// shrink-wrap the item to its own content's natural width instead — so a
+// page with short content (e.g. the /travel/ trip list's brief cards) ended
+// up rendering a visibly narrower window than a page with longer content
+// (Blogs/Projects), even though both share the exact same max-width. Giving
+// the item a definite width (100%) up front sidesteps that shrink-wrap
+// entirely; max-width + margin:auto then centers it exactly as intended.
+body.theme-y2k-theme .page-content {
+  background-color: var(--y2k-face);
+  @include win98-raised;
+  border-radius: 0;
+  padding: 24px;
+  margin: 20px auto;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 960px;
+}
+
+// Posts
+body.theme-y2k-theme .post-list {
+  .post-meta {
+    color: var(--y2k-text-muted);
+    font-size: 0.9em;
+  }
+
+  .post-link {
+    color: var(--y2k-link);
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}
+
+body.theme-y2k-theme .post-header {
+  border-bottom: 2px solid var(--y2k-face-dark);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+
+  .post-title {
+    color: var(--y2k-text);
+    font-size: 1.8em;
+  }
+
+  .post-meta {
+    color: var(--y2k-text-muted);
+    font-size: 0.95em;
+  }
+}
+
+body.theme-y2k-theme .post-content {
+  code {
+    background-color: var(--y2k-window-bg);
+    color: var(--y2k-text);
+    padding: 2px 6px;
+    border-radius: 0;
+    font-family: 'Courier New', monospace;
+    @include win98-sunken;
+  }
+
+  pre {
+    background-color: var(--y2k-window-bg);
+    border-radius: 0;
+    padding: 16px;
+    overflow-x: auto;
+    @include win98-sunken;
+
+    code {
+      background: none;
+      box-shadow: none;
+      border: none;
+      padding: 0;
+    }
+  }
+
+  blockquote {
+    border-left: 4px solid var(--y2k-face-dark);
+    padding-left: 16px;
+    margin: 16px 0;
+    font-style: italic;
+    color: var(--y2k-text-muted);
+  }
+}
+
+body.theme-y2k-theme .post-navigation {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 2px solid var(--y2k-face-dark);
+
+  .prev, .next {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 8px;
+    background: var(--y2k-face);
+    color: var(--y2k-text);
+    text-decoration: none;
+    border-radius: 0;
+    @include win98-raised;
+
+    &:active {
+      @include win98-sunken;
+    }
+  }
+
+  .prev { float: left; }
+  .next { float: right; }
+
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Footer, skinned as a Windows status bar
+body.theme-y2k-theme .site-footer {
+  background: var(--y2k-face);
+  border-top: 1px solid var(--y2k-face-darker);
+  box-shadow: inset 0 1px 0 #fff;
+  padding: 16px 0;
+  margin-top: 40px;
+  text-align: center;
+
+  .footer-col {
+    color: var(--y2k-text);
+
+    h3 {
+      color: var(--y2k-text);
+      margin-bottom: 8px;
+      font-size: 1em;
+    }
+
+    p, li {
+      color: var(--y2k-text);
+      margin-bottom: 6px;
+      font-size: 0.95em;
+    }
+  }
+}
+
+body.theme-y2k-theme .about-bio-link {
+  text-align: center;
+  padding-top: 1.5em;
+}
+
+// Welcome Section
+body.theme-y2k-theme .welcome-section {
+  background: var(--y2k-face);
+  color: var(--y2k-text);
+  text-align: center;
+  padding: 2em 0 !important;
+  min-height: auto !important;
+}
+
+body.theme-y2k-theme .welcome-header {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  margin-bottom: 2em;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+body.theme-y2k-theme .profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 0;
+  object-fit: cover;
+  @include win98-raised;
+  padding: 3px;
+  background: var(--y2k-window-bg);
+}
+
+body.theme-y2k-theme .welcome-text-content {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+}
+
+body.theme-y2k-theme .welcome-intro {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 1em;
+  color: var(--y2k-text);
+}
+
+body.theme-y2k-theme .mission-statement {
+  margin: 2em 0;
+  padding: 1.5em;
+  background: var(--y2k-window-bg);
+  border-radius: 0;
+  @include win98-sunken;
+  text-align: left;
+}
+
+body.theme-y2k-theme .mission-heading {
+  font-size: 1.15em;
+  margin-bottom: 0.75em;
+  color: var(--y2k-text);
+}
+
+body.theme-y2k-theme .mission-text {
+  font-size: 1em;
+  line-height: 1.6;
+  color: var(--y2k-text);
+}
+
+body.theme-y2k-theme .welcome-section .section-heading {
+  color: var(--y2k-text);
+  font-size: 2.4em;
+  margin-bottom: 0.5em;
+
+  &::after {
+    background: var(--y2k-titlebar-start);
+    border-radius: 0;
+  }
+}
+
+body.theme-y2k-theme .welcome-text {
+  color: var(--y2k-text);
+}
+
+body.theme-y2k-theme .welcome-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+body.theme-y2k-theme .welcome-button {
+  border-radius: 0;
+  font-weight: normal;
+
+  &.primary {
+    background: var(--y2k-face);
+    color: var(--y2k-text);
+    @include win98-raised;
+    border-color: transparent;
+    // Classic Win98 "default button" marker: a thin black outline just
+    // outside the bevel, like the Enter-key-default button in a dialog.
+    outline: 1px solid var(--y2k-face-darker);
+    outline-offset: 2px;
+
+    &:hover { background: var(--y2k-face-light); }
+    &:active { @include win98-sunken; }
+  }
+
+  &.secondary {
+    background: var(--y2k-face);
+    color: var(--y2k-text);
+    @include win98-raised;
+    border-color: transparent;
+
+    &:hover { background: var(--y2k-face-light); }
+    &:active { @include win98-sunken; }
+  }
+}
+
+// Blog Section
+body.theme-y2k-theme .latest-posts-section {
+  background: var(--y2k-face);
+  padding: 2em 0 !important;
+  min-height: auto !important;
+}
+
+body.theme-y2k-theme .post-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2em;
+  margin-bottom: 2em;
+}
+
+body.theme-y2k-theme .post-card {
+  background: var(--y2k-window-bg);
+  @include win98-raised;
+  border-radius: 0;
+  color: var(--y2k-text);
+  padding: 1.5em;
+}
+
+body.theme-y2k-theme .post-date {
+  color: var(--y2k-text-muted);
+  font-size: 0.9em;
+}
+
+body.theme-y2k-theme .post-title .post-link {
+  color: var(--y2k-link);
+  text-decoration: underline;
+}
+
+// Hovering the whole card (Blogs and Projects share this .post-card markup)
+// darkens the title/read-more link to navy — same hover accent used by the
+// travel page's --travel-link-accent-hover.
+body.theme-y2k-theme .post-card:hover .post-link,
+body.theme-y2k-theme .post-card:hover .read-more {
+  color: var(--y2k-titlebar-start);
+}
+
+body.theme-y2k-theme .post-excerpt {
+  color: var(--y2k-text);
+  line-height: 1.6;
+}
+
+body.theme-y2k-theme .read-more {
+  color: var(--y2k-link);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+body.theme-y2k-theme .latest-posts-actions,
+body.theme-y2k-theme .latest-posts-button {
+  border-radius: 0;
+}
+
+body.theme-y2k-theme .latest-posts-button {
+  background: var(--y2k-face);
+  color: var(--y2k-text);
+  @include win98-raised;
+
+  &:hover { background: var(--y2k-face-light); }
+  &:active { @include win98-sunken; }
+
+  &.secondary {
+    background: var(--y2k-face);
+  }
+}
+
+// About Section
+body.theme-y2k-theme .about-section {
+  background: var(--y2k-face);
+  padding: 2em 0 !important;
+  min-height: auto !important;
+}
+
+body.theme-y2k-theme .about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3em;
+  align-items: center;
+}
+
+body.theme-y2k-theme .about-text p {
+  font-size: 1.05em;
+  line-height: 1.7;
+  color: var(--y2k-text);
+}
+
+body.theme-y2k-theme .highlight-item {
+  text-align: center;
+  padding: 1.5em;
+  background: var(--y2k-window-bg);
+  border-radius: 0;
+  @include win98-raised;
+  color: var(--y2k-text);
+}
+
+body.theme-y2k-theme .highlight-icon {
+  font-size: 2.6em;
+  display: block;
+  margin-bottom: 0.4em;
+}
+
+body.theme-y2k-theme .highlight-item h3 {
+  color: var(--y2k-text);
+  margin-bottom: 0.4em;
+}
+
+body.theme-y2k-theme .highlight-item p {
+  color: var(--y2k-text);
+  line-height: 1.6;
+}
+
+// Skills Section
+body.theme-y2k-theme .skills-section {
+  background: var(--y2k-face);
+  padding: 2em 0 !important;
+  min-height: auto !important;
+}
+
+body.theme-y2k-theme .skills-category {
+  background: var(--y2k-window-bg);
+  @include win98-raised;
+  border-radius: 0;
+  padding: 1.5em 0;
+  text-align: center;
+}
+
+body.theme-y2k-theme .category-title {
+  color: var(--y2k-text);
+  border-bottom-color: var(--y2k-face-dark);
+}
+
+body.theme-y2k-theme .skill-name {
+  color: var(--y2k-text);
+}
+
+// Classic chunky, segmented Win98 progress-bar look
+body.theme-y2k-theme .skill-level {
+  background: var(--y2k-window-bg);
+  @include win98-sunken;
+  border-radius: 0;
+  padding: 2px;
+}
+
+body.theme-y2k-theme .skill-bar {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--y2k-titlebar-start) 0px,
+    var(--y2k-titlebar-start) 6px,
+    var(--y2k-window-bg) 6px,
+    var(--y2k-window-bg) 8px
+  );
+  border-radius: 0;
+}
+
+// Contact Section
+body.theme-y2k-theme .contact-section {
+  background: var(--y2k-face);
+  padding: 2em 0 !important;
+  min-height: auto !important;
+}
+
+body.theme-y2k-theme .contact-heading {
+  color: var(--y2k-text);
+  font-size: 1.4em;
+  margin-bottom: 1em;
+  text-align: center;
+  border-bottom: 2px solid var(--y2k-face-dark);
+  padding-bottom: 0.5em;
+}
+
+body.theme-y2k-theme .contact-content p {
+  font-size: 1.05em;
+  color: var(--y2k-text);
+  margin-bottom: 2em;
+  line-height: 1.6;
+}
+
+body.theme-y2k-theme .contact-form {
+  max-width: 700px;
+  margin: 0 auto 3em;
+  display: grid;
+  gap: 1.25em;
+}
+
+body.theme-y2k-theme .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+body.theme-y2k-theme .contact-form input,
+body.theme-y2k-theme .contact-form textarea {
+  padding: 10px;
+  border-radius: 0;
+  font-size: 1em;
+  font-family: Tahoma, 'MS Sans Serif', Geneva, sans-serif;
+  background: var(--y2k-window-bg);
+  color: var(--y2k-text);
+  @include win98-sunken;
+
+  &:focus {
+    outline: 1px dotted var(--y2k-text);
+    outline-offset: -3px;
+  }
+}
+
+body.theme-y2k-theme .contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+body.theme-y2k-theme .submit-button,
+body.theme-y2k-theme .contact-button {
+  background: var(--y2k-face);
+  color: var(--y2k-text);
+  border: none;
+  padding: 10px 24px;
+  border-radius: 0;
+  font-size: 1em;
+  cursor: pointer;
+  font-family: Tahoma, 'MS Sans Serif', Geneva, sans-serif;
+  @include win98-raised;
+
+  &:hover { background: var(--y2k-face-light); }
+  &:active { @include win98-sunken; }
+}
+
+body.theme-y2k-theme .contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.25em;
+  margin-top: 2em;
+}
+
+body.theme-y2k-theme .contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 1em;
+  background: var(--y2k-window-bg);
+  border-radius: 0;
+  @include win98-raised;
+  color: var(--y2k-text);
+}
+
+// Section Headings
+body.theme-y2k-theme .section-heading {
+  color: var(--y2k-text);
+  font-size: 2.2em;
+
+  &::after {
+    background: var(--y2k-titlebar-start);
+    border-radius: 0;
+  }
+}
+
+body.theme-y2k-theme .site-nav .page-link.active {
+  background: var(--y2k-face);
+  color: var(--y2k-text);
+}
+
+// Shared component tokens (--travel-*) — scoped to plain `body`, not any
+// one page's wrapper class, so ANY page/component can opt into these by
+// referencing var(--travel-card-bg, <its own light-theme fallback>), the
+// same way _layouts/travel.html's cards/panels/notes already do. Adding a
+// themed look to a future Post or Projects component is then just "use
+// the existing --travel-* names" — no new override block needed here.
+// (See retro-game.scss's matching block for the full token list.)
+body.theme-y2k-theme {
+  --travel-primary: var(--y2k-link);
+  --travel-border-accent: var(--y2k-face-darker);
+  --travel-heading-text: var(--y2k-text);
+  --travel-card-bg: var(--y2k-window-bg);
+  // Rounded corners clip/anti-alias the inset bevel shadow into near-
+  // invisibility — flattening to sharp corners is what makes the bevel
+  // actually read as a Win98 3D border, matching .post-card/.other-panel.
+  --travel-card-radius: 0;
+  --travel-card-shadow:
+    inset -1px -1px 0 var(--y2k-face-darker),
+    inset 1px 1px 0 #fff,
+    inset -2px -2px 0 var(--y2k-face-dark),
+    inset 2px 2px 0 var(--y2k-face-light);
+  --travel-highlight-card-bg: var(--y2k-window-bg);
+  --travel-highlight-card-border: 2px solid var(--y2k-face-darker);
+  --travel-link-accent: var(--y2k-link);
+  // Darker navy on hover — distinct from the resting link blue, still a
+  // strong 8.8:1+ contrast on both the white card bg and the gray face bg.
+  --travel-link-accent-hover: var(--y2k-titlebar-start);
+  --travel-body-text: var(--y2k-text);
+  --travel-secondary-text: var(--y2k-text-muted);
+  --travel-note-text: var(--y2k-text-muted);
+  --travel-sun-text: var(--y2k-titlebar-start);
+  --travel-panel-bg: var(--y2k-face);
+  --travel-panel-border: 2px solid var(--y2k-face-darker);
+  --travel-panel-radius: 0;
+  --travel-panel-heading-text: var(--y2k-text);
+  --travel-active-toggle-bg: var(--y2k-titlebar-start);
+  --travel-active-toggle-text: #fff;
+  --travel-total-text: var(--y2k-text);
+  // Classic Win98 warning-dialog coloring — black text on pale yellow, flat
+  // dark border matching every other Y2K panel's border convention.
+  --travel-warning-text: var(--y2k-text);
+  --travel-warning-bg: #ffffcc;
+  --travel-warning-border: var(--y2k-face-darker);
+}
+
+// Mobile overrides — mirrors retro-game.scss's own breakpoint and selectors
+@media (max-width: 768px) {
+  body.theme-y2k-theme .site-title::before {
+    display: none;
+  }
+
+  body.theme-y2k-theme h1 {
+    font-size: 1.5em;
+  }
+
+  body.theme-y2k-theme .page-content {
+    padding: 16px;
+    margin: 10px auto;
+  }
+
+  body.theme-y2k-theme .post-navigation .prev,
+  body.theme-y2k-theme .post-navigation .next {
+    display: block;
+    float: none;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  body.theme-y2k-theme .welcome-section,
+  body.theme-y2k-theme .latest-posts-section,
+  body.theme-y2k-theme .about-section,
+  body.theme-y2k-theme .skills-section,
+  body.theme-y2k-theme .contact-section {
+    padding: 1.5em 0 !important;
+  }
+
+  body.theme-y2k-theme .welcome-section .section-heading {
+    font-size: 1.9em;
+  }
+
+  body.theme-y2k-theme .welcome-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1em;
+  }
+
+  body.theme-y2k-theme .welcome-text-content {
+    text-align: center;
+    min-width: auto;
+  }
+
+  body.theme-y2k-theme .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+
+  body.theme-y2k-theme .mission-statement {
+    margin: 1.5em 0;
+    padding: 1em;
+  }
+
+  body.theme-y2k-theme .mission-heading {
+    font-size: 1.05em;
+  }
+
+  body.theme-y2k-theme .about-content {
+    grid-template-columns: 1fr;
+    gap: 2em;
+  }
+
+  body.theme-y2k-theme .welcome-actions {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1em;
+  }
+
+  body.theme-y2k-theme .welcome-button {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 240px;
+  }
+
+  body.theme-y2k-theme .post-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.theme-y2k-theme .latest-posts-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  body.theme-y2k-theme .latest-posts-button {
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+  }
+
+  body.theme-y2k-theme .contact-form {
+    margin-bottom: 2em;
+  }
+
+  body.theme-y2k-theme .contact-info {
+    grid-template-columns: 1fr;
+  }
+}

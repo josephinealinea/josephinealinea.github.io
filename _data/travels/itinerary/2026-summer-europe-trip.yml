@@ -141,14 +141,14 @@ days:
             link: "https://www.google.com/maps/search/?api=1&query=Brienz+train+station"
           - name: "Interlaken West"
             link: "https://www.google.com/maps/search/?api=1&query=Interlaken+West+train+station"
-      - category: activity
+      - category: activities
         type: hike
         name: "Zermatt Viewpoint at Murini Viewpoint"
         link: "https://maps.app.goo.gl/XTGX8fq5j5y3ohJTA"
 
   - date: 2026-06-29
     items:
-      - category: activity
+      - category: activities
         type: museum
         name: "Heidiland"
         link: "https://maps.app.goo.gl/mxWJM97i93rgB7LL6"
@@ -170,7 +170,7 @@ days:
 
   - date: 2026-06-30
     items:
-      - category: activity
+      - category: activities
         type: hike
         name: "Llama hike"
         link: "https://www.google.com/maps/search/?api=1&query=Lama+%26+Alpakahof+Triesenberg%2C+Chalberr%C3%BCtistrasse+70%2C+Triesenberg"
@@ -223,7 +223,7 @@ days:
             link: "https://www.google.com/maps/search/?api=1&query=Falzes%2C+Italy"
           - name: "Sassolungo"
             link: "https://www.google.com/maps/search/?api=1&query=Sassolungo%2C+Italy"
-      - category: activity
+      - category: activities
         type: hike
         name: "Sassolungo"
         link: "https://www.google.com/maps/search/?api=1&query=Sassolungo%2C+Italy"
@@ -255,7 +255,7 @@ days:
             link: "https://www.google.com/maps/search/?api=1&query=Ortisei%2C+Italy"
           - name: "Gummer"
             link: "https://www.google.com/maps/search/?api=1&query=Gummer%2C+Italy"
-      - category: activity
+      - category: activities
         type: hike
         name: "Seceda"
         link: "https://www.google.com/maps/search/?api=1&query=Seceda%2C+Italy"
@@ -264,7 +264,7 @@ days:
         name: "Baita Sofie Hütte"
         link: "https://maps.app.goo.gl/wU7nyP3fXQGHQNXD6"
         remarks: "steak with a view of Seceda"
-      - category: activity
+      - category: activities
         type: hike
         name: "Alpe di Siusi"
         link: "https://www.google.com/maps/search/?api=1&query=Alpe+di+Siusi%2C+Italy"
@@ -314,7 +314,7 @@ days:
       - category: lodging
         type: airbnb
         name: "Flat in Cospicua"
-      - category: activity
+      - category: activities
         type: water
         name: "Comino (Blue Lagoon)"
         link: "https://www.google.com/maps/search/?api=1&query=Blue+Lagoon%2C+Comino%2C+Malta"
@@ -332,7 +332,7 @@ days:
       - category: lodging
         type: airbnb
         name: "Flat in Cospicua"
-      - category: activity
+      - category: activities
         type: museum
         name: "Mdina Old Town"
         link: "https://www.google.com/maps/search/?api=1&query=Mdina%2C+Malta"
@@ -346,7 +346,7 @@ days:
       - category: lodging
         type: airbnb
         name: "Flat in Cospicua"
-      - category: activity
+      - category: activities
         type: museum
         name: "Valletta Streets"
         link: "https://www.google.com/maps/search/?api=1&query=Valletta%2C+Malta"
@@ -371,7 +371,7 @@ days:
         type: hotel
         name: "Gattopardo House"
         link: "https://www.google.com/maps/search/?api=1&query=Gattopardo+House%2C+Via+Minoriti+10%2C+Catania"
-      - category: activity
+      - category: activities
         type: museum
         name: "Taormina"
         link: "https://www.google.com/maps/search/?api=1&query=Taormina%2C+Italy"
@@ -412,11 +412,11 @@ days:
         type: seafood
         name: "Café de Nice"
         link: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+Nice%2C+1+Rue+Maurice+Jaubert%2C+Nice"
-      - category: activity
+      - category: activities
         type: drive
         name: "Menton"
         link: "https://www.google.com/maps/search/?api=1&query=Menton%2C+France"
-      - category: activity
+      - category: activities
         type: drive
         name: "Monaco"
         link: "https://www.google.com/maps/search/?api=1&query=Monaco"
@@ -430,7 +430,7 @@ days:
         type: cafe
         name: "Marinette"
         link: "https://www.google.com/maps/search/?api=1&query=Marinette%2C+13+Rue+Colonna+d%27Istria%2C+Nice"
-      - category: activity
+      - category: activities
         type: hike
         name: "Colline du Château"
         link: "https://www.google.com/maps/search/?api=1&query=Colline+du+Ch%C3%A2teau%2C+Nice"

@@ -15,7 +15,10 @@ permalink: /projects/
 <script src="{{ '/assets/js/projects-github.js' | relative_url }}"></script>
 
 <style>
-  .tag { display: inline-block; background: #eee; border-radius: 4px; padding: 0.15rem 0.5rem; margin: 0.1rem 0.1rem 0 0; font-size: 0.8rem; }
+  /* color explicit at 4.95:1 against the #eee background — it was
+     otherwise inheriting .post-meta's #828282 (3.31:1, below the 4.5:1
+     minimum for this font-size). */
+  .tag { display: inline-block; background: #eee; color: #666; border-radius: 4px; padding: 0.15rem 0.5rem; margin: 0.1rem 0.1rem 0 0; font-size: 0.8rem; }
   .projects-source { color: #666; font-size: 0.9rem; margin-top: 0.5rem; }
   .projects-error { color: #a33; }
   body.theme-retro-game .tag { background: rgba(74, 158, 255, 0.25); color: var(--retro-text); }

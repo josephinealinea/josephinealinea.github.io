@@ -211,7 +211,9 @@ body {
 
 .welcome-button.primary {
   background: white;
-  color: #667eea;
+  // #667eea only hit 3.66:1 on white (below the 4.5:1 minimum for body-size
+  // text) — darkened along the same hue to 5265cc (~5.1:1) instead.
+  color: #5265cc;
   border-color: white;
 }
 
@@ -266,6 +268,11 @@ body {
 
 .post-meta {
   margin-bottom: 1em;
+  // Minima's own $grey-color (#828282) only hits 3.84:1 on white, below the
+  // 4.5:1 minimum — this is what individual post pages use directly around
+  // their <time> element (no .post-date wrapper there). #666 matches the
+  // existing .post-date color already used in the post-card grid.
+  color: #666;
 }
 
 .post-date {
@@ -675,6 +682,18 @@ body {
   .about-content {
     grid-template-columns: 1fr;
     gap: 2em;
+  }
+
+  // The tech-stack image packs ~40 small logos; shrinking it to the full
+  // mobile width makes individual logos illegible. Hold it at a legible
+  // minimum width and let it scroll horizontally instead.
+  .skills-image-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .skills-image-scroll img {
+    min-width: 600px;
   }
   
   .post-grid {
