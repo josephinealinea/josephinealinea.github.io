@@ -1,0 +1,72 @@
+# Christmas Trip 2026 — itinerary data.
+# One "- date:" block per day; "items" is an ordered list rendered top to bottom.
+# "category" must exactly match a key in _data/budget_categories.yml (only
+# "transport" gets special rendering). "type" must exactly match a key in
+# _data/itinerary_icons.yml.
+
+trip_name: "Christmas Trip 2026"
+
+days:
+  - date: 2026-12-24
+    items:
+      - category: transport
+        type: flight
+        name: "Finnair (AY 1036)"
+        travel:
+          - name: "TLL"
+            link: "https://maps.app.goo.gl/hL7ZhTsFaaUdS7oQ8"
+            time: "06:00"
+          - name: "HEL"
+            link: "https://www.google.com/maps/search/?api=1&query=Helsinki+Airport"
+            time: "06:30"
+      - category: transport
+        type: flight
+        name: "Finnair (AY 1315)"
+        travel:
+          - name: "HEL"
+            link: "https://www.google.com/maps/search/?api=1&query=Helsinki+Airport"
+            time: "07:50"
+          - name: "LUX"
+            link: "https://www.google.com/maps/search/?api=1&query=Luxembourg+Airport"
+            time: "09:30"
+      - category: lodging
+        type: hotel
+        name: "Park Inn by Radisson Luxembourg City"
+        link: "https://maps.app.goo.gl/EoSy45749yk2KNoF7"
+
+  - date: 2026-12-25
+    items:
+      - category: lodging
+        type: hotel
+        name: "Park Inn by Radisson Luxembourg City"
+        link: "https://maps.app.goo.gl/EoSy45749yk2KNoF7"
+
+  - date: 2026-12-26
+    items:
+      - category: lodging
+        type: hotel
+        name: "Park Inn by Radisson Luxembourg City"
+        link: "https://maps.app.goo.gl/EoSy45749yk2KNoF7"
+
+  - date: 2026-12-27
+    items:
+      - category: transport
+        type: flight
+        name: "Finnair (AY 1318)"
+        travel:
+          - name: "LUX"
+            link: "https://www.google.com/maps/search/?api=1&query=Luxembourg+Airport"
+            time: "19:30"
+          - name: "HEL"
+            link: "https://www.google.com/maps/search/?api=1&query=Helsinki+Airport"
+            time: "23:00"
+      - category: transport
+        type: flight
+        name: "Finnair (AY 1035)"
+        travel:
+          - name: "HEL"
+            link: "https://www.google.com/maps/search/?api=1&query=Helsinki+Airport"
+            time: "00:20, 28 Dec"
+          - name: "TLL"
+            link: "https://maps.app.goo.gl/hL7ZhTsFaaUdS7oQ8"
+            time: "00:55, 28 Dec"

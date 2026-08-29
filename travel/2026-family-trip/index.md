@@ -9,6 +9,6 @@ permalink: /travel/2026-family-trip/
 
 🇵🇭
 
-Frankfurt → Singapore → Manila → Cebu → Siargao → Manila → back to Tallinn.
+Tallinn → Frankfurt → Singapore → Manila → Cebu → Siargao → Manila → back to Tallinn.
 
 This trip already happened — no live weather needed, just keeping it here for the record.

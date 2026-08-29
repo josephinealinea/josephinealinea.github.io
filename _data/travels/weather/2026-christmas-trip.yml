@@ -1,0 +1,23 @@
+# Christmas Trip 2026 — itinerary data
+# Edit this file any time to update the trip.
+# Live weather on the page is fetched in the visitor's browser at view-time.
+
+trip_name: "Christmas Trip 2026"
+start_date: 2026-12-24
+end_date: 2026-12-27
+
+days:
+  - date: 2026-12-24
+    locations:
+      - { name: "Tallinn", country: "Estonia", lat: 59.4370, lon: 24.7536 }
+      - { name: "Luxembourg City", country: "Luxembourg", lat: 49.6117, lon: 6.1319 }
+  - date: 2026-12-25
+    locations:
+      - { name: "Luxembourg City", country: "Luxembourg", lat: 49.6117, lon: 6.1319 }
+  - date: 2026-12-26
+    locations:
+      - { name: "Luxembourg City", country: "Luxembourg", lat: 49.6117, lon: 6.1319 }
+  - date: 2026-12-27
+    locations:
+      - { name: "Luxembourg City", country: "Luxembourg", lat: 49.6117, lon: 6.1319 }
+      - { name: "Tallinn", country: "Estonia", lat: 59.4370, lon: 24.7536 }

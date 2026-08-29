@@ -1,0 +1,29 @@
+# Christmas Trip 2026 — budget data.
+# "display_currency" is the single currency the budget panel totals/charts
+# are shown in. "exchange_rates" gives, for every other currency used below,
+# how many units of it equal 1 unit of display_currency (hand-entered
+# estimates, not live rates). Each item's "category" must exactly match a
+# key in _data/budget_categories.yml, "currency" is an ISO 4217 code,
+# "countries" is a list (some items, like flights, span more than one), and
+# "status" is optional ("confirmed" or "pre-booked"; omitted = confirmed).
+
+trip_name: "Christmas Trip 2026"
+
+display_currency: "EUR"
+
+items:
+  - description: "RT Flight tickets to Lux by Finnair"
+    category: transport
+    amount: 430.82
+    currency: "EUR"
+    countries: ["Luxembourg"]
+    date: 2026-08-28
+    status: confirmed
+
+  - description: "Hotel accom - Park Inn"
+    category: lodging
+    amount: 487.66
+    currency: "EUR"
+    countries: ["Luxembourg"]
+    date: 2026-08-28
+    status: pre-booked

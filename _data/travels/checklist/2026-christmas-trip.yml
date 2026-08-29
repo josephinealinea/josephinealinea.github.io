@@ -1,0 +1,10 @@
+# Christmas Trip 2026 — travel checklist data.
+# Flat "items" list; "status" must be "todo" or "done" (lowercase) and must
+# exactly match a key in _data/checklist_status_icons.yml.
+
+trip_name: "Christmas Trip 2026"
+
+items:
+  - checklist:
+      - { status: "done", description: "RT Flight from TLL to LUX" }
+      - { status: "done", description: "Accommodation in Luxembourg" }

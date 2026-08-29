@@ -211,6 +211,7 @@ days:
         type: hotel
         name: "Illampu Art Boutique Hotel"
         link: "https://maps.app.goo.gl/MPjMLd1HoZAjXEd46"
+        remarks: "luggage storage before  heading to airport at midnight"
       - category: activity
         type: hike
         name: "Teleferico Cable Cars"
@@ -246,6 +247,10 @@ days:
         type: water
         name: "Praia de Ipanema"
         link: "https://maps.app.goo.gl/8PGo8GGbmtBwDi9C9"
+      - category: activity
+        type: water
+        name: "Praia do Arpoador"
+        link: "https://maps.app.goo.gl/RMh4iRJpncByhQWbA"
 
   - date: 2026-11-05
     items:
@@ -260,6 +265,10 @@ days:
 
   - date: 2026-11-06
     items:
+      - category: activity
+        type: water
+        name: "Praia de Copacabana"
+        link: "https://maps.app.goo.gl/6w5AZVBfVJHqtm9N9"
       - category: transport
         type: flight
         name: "Delta Airlines (DL 6130)"
