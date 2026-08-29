@@ -1,0 +1,28 @@
+
+trip_name: "Siargao Family Trip 2026"
+
+display_currency: "EUR"
+
+items:
+  - description: "RT TLL-MNL Flight via Lufthansa"
+    category: transport
+    amount: 1165.24
+    currency: "EUR"
+    countries: ["Philippines"]
+    status: confirmed
+
+  - description: "Budha resort family room"
+    category: lodging
+    amount: 247.16
+    currency: "EUR"
+    countries: ["Philippines"]
+    status: confirmed
+
+  - description: "Cash exchange budget PHP"
+    category: other
+    amount: 700
+    currency: "EUR"
+    countries: ["Philippines"]
+    status: confirmed
+
+

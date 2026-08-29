@@ -102,14 +102,14 @@ days:
         remarks: "Entrance ticket at 10am"
       - category: transport
         type: train
-        name: "Placeholder"
+        name: "PeruRail (Expedition 604)"
         travel:
           - name: "Machu Picchu Station"
             link: "https://www.google.com/maps/search/?api=1&query=PeruRail+Machu+Picchu+Pueblo+Station"
-            time: ""
+            time: "17:23"
           - name: "Cusco (San Pedro) Station"
             link: "https://maps.app.goo.gl/CM9vbdpNcMyQ3bzx8"
-            time: ""
+            time: "21:52"
       - category: lodging
         type: airbnb
         name: "Home in Cusco"
@@ -121,6 +121,10 @@ days:
         type: airbnb
         name: "Home in Cusco"
         link: "https://maps.app.goo.gl/adAXVqaLyPf1rTZA6"
+      - category: activity
+        type: museum
+        name: "Sacred Valley tour"
+        link: "https://maps.app.goo.gl/gTqPVPKLkXWcXezu9"
 
   - date: 2026-10-29
     items:
@@ -128,10 +132,6 @@ days:
         type: airbnb
         name: "Home in Cusco"
         link: "https://maps.app.goo.gl/adAXVqaLyPf1rTZA6"
-      - category: activity
-        type: museum
-        name: "Sacred Valley tour"
-        link: "https://maps.app.goo.gl/gTqPVPKLkXWcXezu9"
 
   - date: 2026-10-30
     items:

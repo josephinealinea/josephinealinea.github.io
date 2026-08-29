@@ -20,7 +20,7 @@ items:
       - { status: "done", description: "Flight from CUZ to LPB" }
       - { status: "done", description: "Flight from LPB to GIG" }
       - { status: "done", description: "RT Flight from LPB to UYU" }
-      - { status: "todo", description: "Accommodation 1N in LA" }
+      - { status: "done", description: "Accommodation 1N in LA" }
       - { status: "done", description: "Accommodation 1N Ollantaytambo" }
       - { status: "done", description: "Accommodation 1N in Aguas Calientes" }
       - { status: "done", description: "Accommodation 4N in Cusco" }
@@ -29,7 +29,7 @@ items:
       - { status: "done", description: "Accommodation 2N in Rio" }
       - { status: "done", description: "Machu Picchu entrance ticket" }
       - { status: "done", description: "Train ticket from Ollantaytambo to Machu Picchu" }
-      - { status: "todo", description: "Train ticket from Machu Picchu to Cusco" }
+      - { status: "done", description: "Train ticket from Machu Picchu to Cusco" }
       - { status: "todo", description: "RT Bus from Aguas Calientes to Machu Picchu" }
       - { status: "done", description: "Ollantaytambo tour" }
       - { status: "todo", description: "Sacred Valley tour" }

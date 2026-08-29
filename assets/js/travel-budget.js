@@ -272,6 +272,20 @@
     if (!section || !window.BUDGET_DATA || !window.BUDGET_DATA.length) return;
 
     var container = section.querySelector(".budget-currency-blocks");
+
+    // Forecasted totals (which include pre-booked items) aren't useful once
+    // a trip is over — only offer them for upcoming/ongoing trips.
+    var datesEl = document.querySelector(".trip-dates");
+    var isPastTrip =
+      datesEl &&
+      window.TravelShared &&
+      TravelShared.tripPhase(datesEl.getAttribute("data-start-date"), datesEl.getAttribute("data-end-date")) === "past";
+    if (isPastTrip) {
+      section.querySelectorAll('[data-scope="forecasted"]').forEach(function (btn) {
+        btn.remove();
+      });
+    }
+
     var buttons = section.querySelectorAll(".budget-toggle-btn");
 
     renderPanel(container, "category", "confirmed");

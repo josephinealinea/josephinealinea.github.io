@@ -1,0 +1,205 @@
+
+trip_name: "Birthday Trip 2026"
+
+display_currency: "EUR"
+
+exchange_rates:
+  SGD: 1.5
+
+items:
+  - description: "Tallinn - Budapest"
+    category: transport
+    amount: 58.59
+    currency: "EUR"
+    countries: ["Hungary"]
+    status: confirmed
+
+  - description: "Budapest - Marrakech"
+    category: transport
+    amount: 83.53
+    currency: "EUR"
+    countries: ["Morocco"]
+    status: confirmed
+
+  - description: "Marrakech - Seville"
+    category: transport
+    amount: 76.47
+    currency: "EUR"
+    countries: ["Spain"]
+    status: confirmed
+
+  - description: "Seville - Tallinn"
+    category: transport
+    amount: 141.48
+    currency: "EUR"
+    countries: ["Hungary", "Morocco", "Spain"]
+    status: confirmed
+
+  - description: "Budapest airbnb"
+    category: lodging
+    amount: 103.95
+    currency: "EUR"
+    countries: ["Hungary"]
+    status: confirmed
+
+  - description: "Marrakech agoda - 1"
+    category: lodging
+    amount: 55.00
+    currency: "EUR"
+    countries: ["Morocco"]
+    status: confirmed
+
+  - description: "Marrakech agoda - 2"
+    category: lodging
+    amount: 126.58
+    currency: "SGD"
+    countries: ["Morocco"]
+    status: confirmed
+
+  - description: "Seville agoda"
+    category: lodging
+    amount: 97.90
+    currency: "EUR"
+    countries: ["Spain"]
+    status: confirmed
+
+  - description: "Budapest 3 day pass"
+    category: transport
+    amount: 15
+    currency: "EUR"
+    countries: ["Hungary"]
+    status: confirmed
+
+  - description: "Magnet + postcard"
+    category: shopping
+    amount: 4.29
+    currency: "EUR"
+    countries: ["Hungary"]
+    status: confirmed
+
+  - description: "Paprika souvenir"
+    category: shopping
+    amount: 12
+    currency: "EUR"
+    countries: ["Hungary"]
+    status: confirmed
+
+  - description: "Dinner in Budapest"
+    category: food
+    amount: 30
+    currency: "EUR"
+    countries: ["Hungary"]
+    status: confirmed
+
+  - description: "NY Cafe"
+    category: food
+    amount: 21.75
+    currency: "EUR"
+    countries: ["Hungary"]
+    status: confirmed
+
+  - description: "Postcard stamp"
+    category: shopping
+    amount: 2.70
+    currency: "EUR"
+    countries: ["Hungary"]
+    status: confirmed
+
+  - description: "Morocco esim"
+    category: others
+    amount: 9.36
+    currency: "EUR"
+    countries: ["Morocco"]
+    status: confirmed
+
+  - description: "Morocco gyg dinner and show"
+    category: food
+    amount: 32.87
+    currency: "EUR"
+    countries: ["Morocco"]
+    status: confirmed
+
+  - description: "Morocco transfers"
+    category: transport
+    amount: 20
+    currency: "EUR"
+    countries: ["Morocco"]
+    status: confirmed
+
+  - description: "Morocco shopping cash"
+    category: shopping
+    amount: 150
+    currency: "EUR"
+    countries: ["Morocco"]
+    status: confirmed
+
+  - description: "Morocco activities cash"
+    category: activities
+    amount: 50
+    currency: "EUR"
+    countries: ["Morocco"]
+    status: confirmed
+
+  - description: "Morocco Sahara Dessert"
+    category: activities
+    amount: 185
+    currency: "SGD"
+    countries: ["Morocco"]
+    status: confirmed
+
+  - description: "Morocco Hot Air balloon"
+    category: activities
+    amount: 135.78
+    currency: "SGD"
+    countries: ["Morocco"]
+    status: confirmed
+
+  - description: "Seville breakfast"
+    category: food
+    amount: 14.99
+    currency: "EUR"
+    countries: ["Spain"]
+    status: confirmed
+
+  - description: "Seville breakfast"
+    category: food
+    amount: 14.99
+    currency: "EUR"
+    countries: ["Spain"]
+    status: confirmed
+
+  - description: "Hotel breakfast"
+    category: food
+    amount: 37
+    currency: "EUR"
+    countries: ["Spain"]
+    status: confirmed
+
+  - description: "Seville transport"
+    category: transport
+    amount: 3.50
+    currency: "EUR"
+    countries: ["Spain"]
+    status: confirmed
+
+  - description: "Seville shopping food"
+    category: shopping
+    amount: 24.41
+    currency: "EUR"
+    countries: ["Spain"]
+    status: confirmed
+
+  - description: "Seville postcard"
+    category: shopping
+    amount: 2.50
+    currency: "EUR"
+    countries: ["Spain"]
+    status: confirmed
+
+  - description: "Seville transfers"
+    category: transport
+    amount: 20
+    currency: "EUR"
+    countries: ["Morocco"]
+    status: confirmed
+

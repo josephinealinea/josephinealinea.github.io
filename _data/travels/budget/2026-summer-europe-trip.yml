@@ -1,0 +1,414 @@
+
+trip_name: "Summer Europe Trip 2026"
+
+display_currency: "EUR"
+
+exchange_rates:
+  SGD: 1.5
+
+items:
+  - description: "Tallinn - Zurich"
+    category: transport
+    amount: 171.23
+    currency: "EUR"
+    countries: ["Switzerland"]
+    status: confirmed
+
+  - description: "Nice - Tallinn"
+    category: transport
+    amount: 145.16
+    currency: "EUR"
+    countries: ["Switzerland", "Liechtenstein", "Austria", "Italy", "Malta", "France"]
+    status: confirmed
+
+  - description: "Nice Accomodation"
+    category: lodging
+    amount: 168.50
+    currency: "EUR"
+    countries: ["France"]
+    status: confirmed
+
+  - description: "Catania - Nice"
+    category: transport
+    amount: 154.07
+    currency: "EUR"
+    countries: ["France"]
+    status: confirmed
+
+  - description: "Malta - Catania"
+    category: transport
+    amount: 79.98
+    currency: "EUR"
+    countries: ["Italy"]
+    status: confirmed
+
+  - description: "Venice - Malta"
+    category: transport
+    amount: 103.23
+    currency: "EUR"
+    countries: ["Malta"]
+    status: confirmed
+
+  - description: "Liech Accommodation"
+    category: lodging
+    amount: 65.76
+    currency: "EUR"
+    countries: ["Liechtenstein"]
+    status: confirmed
+
+  - description: "Train to Zermatt"
+    category: transport
+    amount: 76.30
+    currency: "EUR"
+    countries: ["Switzerland"]
+    status: confirmed
+
+  - description: "Train to Interlaken"
+    category: transport
+    amount: 56.68
+    currency: "EUR"
+    countries: ["Switzerland"]
+    status: confirmed
+
+  - description: "Train to Bern RT"
+    category: transport
+    amount: 68.02
+    currency: "EUR"
+    countries: ["Switzerland"]
+    status: confirmed
+
+  - description: "Train to Grindelwald RT"
+    category: transport
+    amount: 32.26
+    currency: "EUR"
+    countries: ["Switzerland"]
+    status: confirmed
+
+  - description: "Train to Thun RT"
+    category: transport
+    amount: 34.01
+    currency: "EUR"
+    countries: ["Switzerland"]
+    status: confirmed
+
+  - description: "Train to Wengen"
+    category: transport
+    amount: 39.24
+    currency: "EUR"
+    countries: ["Switzerland"]
+    status: confirmed
+
+  - description: "Switzerland Food"
+    category: food
+    amount: 123.13
+    currency: "EUR"
+    countries: ["Switzerland"]
+    status: confirmed
+
+  - description: "Liechtenstein Mcdonalds"
+    category: food
+    amount: 3.99
+    currency: "EUR"
+    countries: ["Liechtenstein"]
+    status: confirmed
+
+  - description: "Switzerland souvenirs"
+    category: shopping
+    amount: 180.84
+    currency: "EUR"
+    countries: ["Switzerland"]
+    status: confirmed
+
+  - description: "Liechtenstein llama hike gyg"
+    category: activities
+    amount: 40
+    currency: "EUR"
+    countries: ["Liechtenstein"]
+    status: confirmed
+
+  - description: "Seceda entrance"
+    category: activities
+    amount: 5
+    currency: "EUR"
+    countries: ["Liechtenstein"]
+    status: confirmed
+
+  - description: "Agoda Treviso"
+    category: lodging
+    amount: 59.74
+    currency: "EUR"
+    countries: ["Italy"]
+    status: confirmed
+
+  - description: "Dolomites + Venice souvenirs"
+    category: shopping
+    amount: 54.36
+    currency: "EUR"
+    countries: ["Italy"]
+    status: confirmed
+
+  - description: "Airport transfers"
+    category: transport
+    amount: 28.59
+    currency: "EUR"
+    countries: ["Italy"]
+    status: confirmed
+
+  - description: "Malta cab"
+    category: transport
+    amount: 76.50
+    currency: "EUR"
+    countries: ["Malta"]
+    status: confirmed
+
+  - description: "Malta food"
+    category: food
+    amount: 68.27
+    currency: "EUR"
+    countries: ["Malta"]
+    status: confirmed
+
+  - description: "Malta shopping / souvenirs"
+    category: shopping
+    amount: 115.83
+    currency: "EUR"
+    countries: ["Malta"]
+    status: confirmed
+
+  - description: "Sicily souvenir"
+    category: shopping
+    amount: 38.10
+    currency: "EUR"
+    countries: ["Italy"]
+    status: confirmed
+
+  - description: "Sicily ruins"
+    category: activities
+    amount: 8
+    currency: "EUR"
+    countries: ["Italy"]
+    status: confirmed
+
+  - description: "Sicily Taormina food"
+    category: food
+    amount: 23.25
+    currency: "EUR"
+    countries: ["Italy"]
+    status: confirmed
+
+  - description: "Nice tour"
+    category: activities
+    amount: 81.25
+    currency: "EUR"
+    countries: ["France"]
+    status: confirmed
+
+  - description: "Nice shopping"
+    category: shopping
+    amount: 81.32
+    currency: "EUR"
+    countries: ["France"]
+    status: confirmed
+
+  - description: "Nice transfer"
+    category: transport
+    amount: 10.48
+    currency: "EUR"
+    countries: ["France"]
+    status: confirmed
+
+  - description: "Nice food"
+    category: food
+    amount: 179.18
+    currency: "SGD"
+    countries: ["France"]
+    status: confirmed
+
+  - description: "Sicily food"
+    category: food
+    amount: 63.76
+    currency: "SGD"
+    countries: ["Italy"]
+    status: confirmed
+
+  - description: "Malta food"
+    category: food
+    amount: 292.59
+    currency: "SGD"
+    countries: ["Malta"]
+    status: confirmed
+
+  - description: "Interlaken hotel"
+    category: lodging
+    amount: 357.06
+    currency: "SGD"
+    countries: ["Switzerland"]
+    status: confirmed
+
+  - description: "Dolomites donuts"
+    category: food
+    amount: 14.96
+    currency: "SGD"
+    countries: ["Italy"]
+    status: confirmed
+
+  - description: "Sicily Tour"
+    category: activities
+    amount: 151.86
+    currency: "SGD"
+    countries: ["Italy"]
+    status: confirmed
+
+  - description: "Vehicle Pass tickets"
+    category: transport
+    amount: 4.89
+    currency: "SGD"
+    countries: ["Italy", "Austria", "Liechtenstein"]
+    status: confirmed
+
+  - description: "Car Gas"
+    category: transport
+    amount: 18.35
+    currency: "SGD"
+    countries: ["Italy", "Austria", "Liechtenstein"]
+    status: confirmed
+
+  - description: "Car Rental"
+    category: transport
+    amount: 727.32
+    currency: "SGD"
+    countries: ["Italy", "Austria", "Liechtenstein"]
+    status: confirmed
+
+  - description: "Dolomites Food"
+    category: food
+    amount: 105.05
+    currency: "SGD"
+    countries: ["Italy"]
+    status: confirmed
+
+  - description: "Toll + Parking fees + Gas"
+    category: transport
+    amount: 116.19
+    currency: "SGD"
+    countries: ["Italy"]
+    status: confirmed
+
+  - description: "Toll + Parking fees"
+    category: transport
+    amount: 11.66
+    currency: "SGD"
+    countries: ["Austria"]
+    status: confirmed
+
+  - description: "Chu Chu Train - Nice"
+    category: activities
+    amount: 18.24
+    currency: "SGD"
+    countries: ["France"]
+    status: confirmed
+
+  - description: "Italy City Tax"
+    category: lodging
+    amount: 18.9
+    currency: "SGD"
+    countries: ["Italy"]
+    status: confirmed
+
+  - description: "Coffee in Innsbruck"
+    category: food
+    amount: 14.35
+    currency: "SGD"
+    countries: ["Austria"]
+    status: confirmed
+
+  - description: "Resto Food"
+    category: food
+    amount: 44.44
+    currency: "SGD"
+    countries: ["Switzerland"]
+    status: confirmed
+
+  - description: "Chu Chu Train Malta"
+    category: activities
+    amount: 10.72
+    currency: "SGD"
+    countries: ["Malta"]
+    status: confirmed
+
+  - description: "Cafe Ortisei"
+    category: food
+    amount: 13.90
+    currency: "SGD"
+    countries: ["Italy"]
+    status: confirmed
+
+  - description: "Heidiland Ticket"
+    category: activities
+    amount: 24.76
+    currency: "SGD"
+    countries: ["Switzerland"]
+    status: confirmed
+
+  - description: "Edelweiss Dinner"
+    category: food
+    amount: 51.81
+    currency: "SGD"
+    countries: ["Liechtenstein"]
+    status: confirmed
+
+  - description: "Dinner show"
+    category: food
+    amount: 103.22
+    currency: "SGD"
+    countries: ["Austria"]
+    status: confirmed
+
+  - description: "Malta gyg tour"
+    category: activities
+    amount: 44.88
+    currency: "SGD"
+    countries: ["Malta"]
+    status: confirmed
+
+  - description: "Hotel Sicily"
+    category: lodging
+    amount: 83.87
+    currency: "SGD"
+    countries: ["Italy"]
+    status: confirmed
+
+  - description: "City Tax Malta"
+    category: lodging
+    amount: 8.87
+    currency: "SGD"
+    countries: ["Malta"]
+    status: confirmed
+
+  - description: "Hotel Interlaken 2"
+    category: lodging
+    amount: 322.91
+    currency: "SGD"
+    countries: ["Switzerland"]
+    status: confirmed
+
+  - description: "Dolomites Airbnb"
+    category: lodging
+    amount: 334.57
+    currency: "SGD"
+    countries: ["Italy"]
+    status: confirmed
+
+  - description: "Malta Airbnb"
+    category: lodging
+    amount: 344.50
+    currency: "SGD"
+    countries: ["Malta"]
+    status: confirmed
+
+  - description: "Innsbruck Airbnb"
+    category: lodging
+    amount: 98.87
+    currency: "SGD"
+    countries: ["Austria"]
+    status: confirmed
