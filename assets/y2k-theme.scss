@@ -829,6 +829,25 @@ body.theme-y2k-theme {
 
 // Mobile overrides — mirrors retro-game.scss's own breakpoint and selectors
 @media (max-width: 768px) {
+  // chatbot.scss's shared @media(max-width:768px) already sets a plain
+  // `.site-header { min-height: 90px; }` meant to give the title row and
+  // the hamburger row underneath enough room — but minima's own unscoped
+  // `.site-header { min-height: 55.95px; ... }` base rule (pulled in by
+  // this theme's own `@import "minima"` above) ties on specificity and
+  // loads later in the compiled <link> order, so it silently wins and the
+  // header renders too short: the 44px hamburger button (positioned near
+  // the header's bottom edge) then hangs past the header into the page's
+  // first scrolled-in content, overlapping it. The extra `.theme-y2k-theme`
+  // class here outranks that tie permanently, regardless of link order.
+  // 90px (chatbot.scss's own baseline, tuned for Minima's default header
+  // padding) still wasn't quite enough once this theme's own thinner
+  // header padding is factored in — the hamburger's floated position
+  // measures out to end ~102px from the header's top edge, so give it
+  // real breathing room instead of a razor-thin fit.
+  body.theme-y2k-theme .site-header {
+    min-height: 110px;
+  }
+
   body.theme-y2k-theme .site-title::before {
     display: none;
   }
@@ -925,5 +944,30 @@ body.theme-y2k-theme {
 
   body.theme-y2k-theme .contact-info {
     grid-template-columns: 1fr;
+  }
+}
+
+// Minima only actually hides .site-nav behind the hamburger checkbox below
+// $on-palm (600px) — the 768px block above covers a wider "wraps onto
+// multiple inline rows but still visible" range where .site-nav has no
+// popover of its own to style. Scoping the dropdown's Win98 "menu" look to
+// 600px keeps that inline-wrapped range's nav looking like a normal bar
+// instead of picking up an unwanted boxed background it doesn't need yet.
+@media (max-width: 600px) {
+  // The hamburger dropdown (chatbot.scss repositions .site-nav to
+  // position:absolute here) drops out of the navy titlebar and onto
+  // Minima's own plain white popover background — but .site-nav .page-link
+  // is hardcoded to --y2k-titlebar-text (white), illegible on white. Give
+  // the dropdown its own Win98 "menu" look — window-bg (white), not
+  // --y2k-face, so the existing hover/active states (which already use
+  // --y2k-face as their highlight) still read as a visible change against
+  // the resting background instead of blending into it.
+  body.theme-y2k-theme .site-nav {
+    background: var(--y2k-window-bg);
+    @include win98-raised;
+  }
+
+  body.theme-y2k-theme .site-nav .page-link {
+    color: var(--y2k-text);
   }
 }
