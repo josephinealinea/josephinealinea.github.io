@@ -445,4 +445,11 @@ layout: default
      (body.theme-y2k-theme { --travel-card-bg: ...; }), same reasoning as
      Retro-Game above — no travel.html-specific one-offs needed for this
      theme (no global glow to cancel, no unique decorative flourishes). */
+
+  /* Manila theme's --travel-* token values live in manila-theme.scss
+     (body.theme-manila-theme { --travel-card-bg: ...; }), same reasoning as
+     above. One one-off: the ★ marker on the active budget toggle, matching
+     the same star convention manila-theme.scss uses on the active nav link
+     — travel-specific, so it stays here rather than becoming a token. */
+  body.theme-manila-theme .budget-toggle-btn.is-active::before { content: "★ "; }
 </style>

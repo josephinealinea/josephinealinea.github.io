@@ -761,7 +761,10 @@ body.theme-retro-game .latest-posts-section {
 // Blog Layout (single column for retro-game)
 body.theme-retro-game .post-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  // Matches Minima's own responsive multi-column layout (main.scss) rather
+  // than a hardcoded single column — the mobile override below still
+  // collapses this to 1fr under 768px, same as Minima's own pattern.
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2em;
   margin-bottom: 2em;
 }

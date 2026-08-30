@@ -528,7 +528,10 @@ body.theme-y2k-theme .latest-posts-section {
 
 body.theme-y2k-theme .post-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  // Matches Minima's own responsive multi-column layout (main.scss) rather
+  // than a hardcoded single column — the mobile override below still
+  // collapses this to 1fr under 768px, same as Minima's own pattern.
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2em;
   margin-bottom: 2em;
 }
@@ -602,6 +605,16 @@ body.theme-y2k-theme .about-content {
   align-items: center;
 }
 
+// .about-highlights (the gap between each column's 3 stacked cards) is a
+// custom site rule in assets/main.scss that never loads here — same reason
+// documented at .page-content above (main.css is disabled whenever another
+// theme is active). Without it the 3 highlight-items in each column touch
+// directly with no gap between them.
+body.theme-y2k-theme .about-highlights {
+  display: grid;
+  gap: 1.5em;
+}
+
 body.theme-y2k-theme .about-text p {
   font-size: 1.05em;
   line-height: 1.7;
@@ -638,6 +651,13 @@ body.theme-y2k-theme .skills-section {
   background: var(--y2k-face);
   padding: 2em 0 !important;
   min-height: auto !important;
+}
+
+// .skills-content is a custom site rule in assets/main.scss that never
+// loads here — same reason as .about-highlights above.
+body.theme-y2k-theme .skills-content {
+  display: grid;
+  gap: 3em;
 }
 
 body.theme-y2k-theme .skills-category {

@@ -1,0 +1,1028 @@
+---
+---
+
+// Manila Theme
+// A Philippine flag-inspired theme: blue, red, gold, and white — all four
+// visible in normal browsing, not just on hover. The 🇵🇭 flag emoji marks
+// the site title; a ☀️ sun + ⭐ stars accent sits under every section
+// heading; a thin red stripe rides under the header's gold border; the
+// welcome hero fades from blue into red. Gradients throughout soften the
+// flat flag colors into a warmer, more cartoonish look — no global
+// text-shadow glow (that's Retro-Game's signature), no sharp Win98 bevels
+// (that's Y2K's).
+
+// Import base Jekyll styles (same base layout retro-game.scss/y2k-theme.scss reuse)
+@import "minima";
+
+// Base Theme Selector Styles (always available — bare selectors are safe
+// here because this stylesheet is only ever active on its own, matching the
+// same convention retro-game.scss and y2k-theme.scss use for this widget —
+// the toggle button itself deliberately stays this same neutral "modern
+// control" look across all four themes, so it's always easy to find).
+.theme-selector {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-toggle {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background: #0056b3;
+  }
+}
+
+.theme-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e9ecef;
+  min-width: 180px;
+  display: none;
+  overflow: hidden;
+
+  &.show {
+    display: block;
+  }
+}
+
+.theme-option {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: white;
+  color: #333;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+
+  &:hover {
+    background: #f8f9fa;
+  }
+
+  &.active {
+    background: #e3f2fd;
+    color: #1976d2;
+    font-weight: 600;
+  }
+}
+
+.label-short { display: none; }
+
+@media (max-width: 768px) {
+  .theme-selector { top: 10px; right: 10px; }
+  .theme-toggle { padding: 10px 14px; font-size: 12px; }
+  .label-full  { display: none; }
+  .label-short { display: inline; }
+}
+
+// Manila Theme Variables (own namespace — --manila-* rather than --y2k-*/
+// --retro-* so this theme's body.theme-manila-theme rules can coexist with
+// the other themes' variables in the same compiled cascade, same reasoning
+// documented in y2k-theme.scss's own :root block.)
+:root {
+  --manila-blue: #0038a8;        // flag blue — 9.85:1 on white, 9.52:1 on
+                                   // --manila-bg; safe as body/link text too
+  --manila-blue-bright: #0052cc;  // header gradient end (brighter blue) —
+                                   // still 6.82:1 for white header text
+  --manila-red: #ce1126;          // flag red — hover/active accent only.
+                                   // 5.63:1 on white, 5.44:1 on --manila-bg,
+                                   // but only 3.82:1 on --manila-gold — never
+                                   // put red text on a gold background.
+  --manila-gold: #fcd116;         // flag gold — the motif color: sunburst
+                                   // medallions, card borders, active-state
+                                   // fills. Only 1.47:1 on white — decorative/
+                                   // background use only, NEVER text color.
+  --manila-gold-soft: #fff6d5;    // pale gold tint for subtle panel
+                                   // backgrounds (checklist/itinerary panels)
+  --manila-bg: #fffbef;           // page background — a warm, sun-kissed
+                                   // near-white rather than flat white
+  --manila-card-bg: #ffffff;
+  --manila-text: #1a1a1a;         // 16.82:1 on --manila-bg, 15.68:1 on white
+  --manila-text-muted: #666666;   // 5.55:1 on --manila-bg — matches the
+                                   // #666 convention already used site-wide
+                                   // for secondary/meta text (post dates, tags)
+  --manila-header-text: #ffffff;  // 9.85:1 / 6.82:1 across the header gradient
+}
+
+// Global Manila Styles
+body.theme-manila-theme {
+  background-color: var(--manila-bg);
+  color: var(--manila-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  padding-top: 80px;
+}
+
+body.theme-manila-theme h1,
+body.theme-manila-theme h2,
+body.theme-manila-theme h3,
+body.theme-manila-theme h4,
+body.theme-manila-theme h5,
+body.theme-manila-theme h6 {
+  color: var(--manila-blue);
+}
+
+body.theme-manila-theme h1 {
+  font-size: 1.9em;
+  border-bottom: 3px solid var(--manila-gold);
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+
+body.theme-manila-theme h2 {
+  font-size: 1.3em;
+  border-left: 4px solid var(--manila-gold);
+  padding-left: 10px;
+}
+
+body.theme-manila-theme h3 {
+  font-size: 1.1em;
+  color: var(--manila-blue);
+}
+
+// Links — flag blue at rest, flag red on hover (the flag's own blue<->red
+// relationship), matching the site's shared link/hover-link convention.
+body.theme-manila-theme a {
+  color: var(--manila-blue);
+  text-decoration: underline;
+
+  &:hover {
+    color: var(--manila-red);
+  }
+}
+
+// Site Header, skinned as a blue-into-red banner (the flag's own two field
+// colors, blended into a gradient rather than a hard stripe). Deliberately
+// NOT display:flex — matching Minima's own plain block/float
+// header (.site-title floats left, .site-nav floats right, chatbot.scss's
+// shared mobile rule switches .site-nav to position:absolute below the
+// title for the hamburger) keeps this theme's header structurally identical
+// to the other three themes at every breakpoint, per the project's Header
+// Consistency Rule — see y2k-theme.scss's matching comment for the full
+// flexbox shrink-wrap story this avoids.
+body.theme-manila-theme .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  // Blue dominates the left ~2/3 (where the title/nav text sits) and
+  // blends into red toward the right edge — both endpoints (9.85:1 / 5.63:1)
+  // and the blend between them clear 4.5:1 for the white header text. The
+  // gold hint lives in the hover/title accents below instead of the
+  // gradient itself (a three-stop blue/gold/red band read as a muddier
+  // transition than this cleaner two-color blend).
+  background: linear-gradient(90deg, var(--manila-blue) 0%, var(--manila-blue-bright) 55%, var(--manila-red) 100%);
+  border-bottom: 3px solid var(--manila-gold);
+  padding: 0 1em;
+}
+
+body.theme-manila-theme .site-title {
+  // Uppercase + letter-spacing matches every other theme's .site-title —
+  // kept consistent across all four themes. Gold rather than white — the
+  // hint of yellow always in view — 6.70:1 against the header's blue, where
+  // the title always sits (far left, before the gradient shifts toward red).
+  color: var(--manila-gold);
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  // The flag itself, right in the title — instantly shows all four colors
+  // (including red) on every page, not just as an abstract accent color.
+  &::before {
+    content: "🇵🇭";
+    display: inline-block;
+    margin-right: 8px;
+  }
+}
+
+body.theme-manila-theme .site-nav .page-link {
+  // Uppercase + bold + letter-spacing + padding matches every other theme's
+  // .page-link, so nav links wrap into the same row pattern across themes.
+  color: var(--manila-header-text);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+
+  // A gold highlight on hover — the hint of yellow in the nav — same
+  // gold-bg/blue-text combo the active link already uses (6.70:1/9.85:1),
+  // so hover previews exactly what the active state looks like.
+  &:hover {
+    background: var(--manila-gold);
+    color: var(--manila-blue);
+  }
+
+  &.active {
+    background: var(--manila-gold);
+    color: var(--manila-blue);
+    font-weight: bold;
+
+    &::before {
+      content: "★ ";
+    }
+  }
+}
+
+// Main Content — the page's "window" box. width:100% + box-sizing:border-box
+// matters here: minima's own body is `display:flex; flex-direction:column`
+// (its sticky-footer layout), and .page-content is a flex child with no
+// explicit width. A flex item with auto left/right margins (the cross axis
+// in a column flex container) makes browsers suppress the default
+// align-items:stretch and shrink-wrap the item to its own content's natural
+// width instead — a page with short content would render a visibly
+// narrower box than a page with long content, even sharing the same
+// max-width. Giving the item a definite width (100%) up front sidesteps
+// that shrink-wrap entirely; max-width + margin:auto then centers it
+// exactly as intended. (Full story in y2k-theme.scss's matching comment —
+// this was a real bug found and fixed there this session.)
+body.theme-manila-theme .page-content {
+  background-color: var(--manila-card-bg);
+  border: 1px solid var(--manila-gold);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 56, 168, 0.12);
+  padding: 24px;
+  margin: 20px auto;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 960px;
+}
+
+// Posts
+body.theme-manila-theme .post-list {
+  .post-meta {
+    color: var(--manila-text-muted);
+    font-size: 0.9em;
+  }
+
+  .post-link {
+    color: var(--manila-blue);
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}
+
+body.theme-manila-theme .post-header {
+  border-bottom: 3px solid var(--manila-gold);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+
+  .post-title {
+    color: var(--manila-blue);
+    font-size: 1.8em;
+  }
+
+  .post-meta {
+    color: var(--manila-text-muted);
+    font-size: 0.95em;
+  }
+}
+
+body.theme-manila-theme .post-content {
+  code {
+    background-color: var(--manila-gold-soft);
+    color: var(--manila-text);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+  }
+
+  pre {
+    background-color: var(--manila-gold-soft);
+    border-radius: 8px;
+    padding: 16px;
+    overflow-x: auto;
+    border: 1px solid var(--manila-gold);
+
+    code {
+      background: none;
+      padding: 0;
+    }
+  }
+
+  blockquote {
+    border-left: 4px solid var(--manila-gold);
+    padding-left: 16px;
+    margin: 16px 0;
+    font-style: italic;
+    color: var(--manila-text-muted);
+  }
+}
+
+body.theme-manila-theme .post-navigation {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--manila-gold);
+
+  .prev, .next {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 8px;
+    background: var(--manila-blue);
+    color: var(--manila-header-text);
+    text-decoration: none;
+    border-radius: 8px;
+
+    &:hover {
+      background: var(--manila-blue-bright);
+    }
+  }
+
+  .prev { float: left; }
+  .next { float: right; }
+
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Footer
+body.theme-manila-theme .site-footer {
+  background: var(--manila-blue);
+  border-top: 3px solid var(--manila-gold);
+  padding: 16px 0;
+  margin-top: 40px;
+  text-align: center;
+
+  .footer-col {
+    color: var(--manila-header-text);
+
+    h3 {
+      color: var(--manila-gold);
+      margin-bottom: 8px;
+      font-size: 1em;
+    }
+
+    p, li {
+      color: var(--manila-header-text);
+      margin-bottom: 6px;
+      font-size: 0.95em;
+    }
+
+    a {
+      color: var(--manila-header-text);
+
+      &:hover {
+        color: var(--manila-gold);
+      }
+    }
+  }
+}
+
+body.theme-manila-theme .about-bio-link {
+  text-align: center;
+  padding-top: 1.5em;
+}
+
+// Welcome Section — the hero fades from flag blue into flag red, a softer
+// cartoonish blend of the flag's own colors rather than a hard stripe. Text
+// sits mostly over the blue/bright-blue two-thirds; both endpoints (and the
+// blend between them) clear 4.5:1 for white text.
+body.theme-manila-theme .welcome-section {
+  background: linear-gradient(135deg, var(--manila-blue) 0%, var(--manila-blue-bright) 55%, var(--manila-red) 100%);
+  color: var(--manila-header-text);
+  text-align: center;
+  padding: 2em 0 !important;
+  min-height: auto !important;
+}
+
+body.theme-manila-theme .welcome-header {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  margin-bottom: 2em;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+body.theme-manila-theme .profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--manila-gold);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+body.theme-manila-theme .welcome-text-content {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+}
+
+body.theme-manila-theme .welcome-intro {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 1em;
+  color: var(--manila-header-text);
+}
+
+body.theme-manila-theme .mission-statement {
+  margin: 2em 0;
+  padding: 1.5em;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--manila-gold);
+  border-radius: 12px;
+  text-align: left;
+}
+
+body.theme-manila-theme .mission-heading {
+  font-size: 1.15em;
+  margin-bottom: 0.75em;
+  color: var(--manila-gold);
+}
+
+body.theme-manila-theme .mission-text {
+  font-size: 1em;
+  line-height: 1.6;
+  color: var(--manila-header-text);
+}
+
+// Section Headings — a literal ☀️ sun + ⭐⭐⭐ stars accent (the flag's own
+// sun-and-3-stars canton) replaces the plain underline bar every other
+// theme uses here. Using the actual emoji glyphs instead of a CSS-drawn
+// shape makes the motif unmistakable at a glance, matches the site's own
+// emoji-heavy visual language elsewhere (✈️📍⏰🎨 etc.), and gets the
+// "cartoonish" quality for free since emoji render in full color regardless
+// of the surrounding theme.
+//
+// .section-heading and .section-heading::after are custom site rules that
+// live in assets/main.scss — NOT part of the Minima gem, so this theme's own
+// `@import "minima"` above doesn't pull them in, and main.css itself is
+// `disabled` whenever another theme is active. Y2K's and Retro-Game's own
+// `.section-heading::after` overrides only set background/border-radius,
+// assuming the base rule's `content`/`position: absolute`/centering would
+// still apply — it doesn't, so their bar silently never renders either
+// (confirmed via computed style: `content: none`). This rule is written
+// fully self-contained instead of relying on that base rule.
+body.theme-manila-theme .section-heading {
+  position: relative;
+  color: var(--manila-blue);
+  font-size: 2.3em;
+  text-align: center;
+  margin-bottom: 1.3em;
+
+  &::after {
+    content: "☀️ ⭐ ⭐ ⭐";
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.55em;
+    white-space: nowrap;
+    letter-spacing: 2px;
+    // A soft gold glow behind the glyphs — the "softened" touch, not a
+    // heavy neon effect like Retro-Game's global text-shadow.
+    filter: drop-shadow(0 0 6px rgba(252, 209, 22, 0.5));
+  }
+}
+
+body.theme-manila-theme .welcome-section .section-heading {
+  color: var(--manila-header-text);
+  font-size: 3.2em;
+  margin-bottom: 0.9em;
+
+  &::after {
+    font-size: 0.4em;
+    bottom: -34px;
+  }
+}
+
+body.theme-manila-theme .welcome-text {
+  color: var(--manila-header-text);
+}
+
+body.theme-manila-theme .welcome-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+body.theme-manila-theme .welcome-button {
+  font-weight: 600;
+  border-radius: 30px;
+
+  &.primary {
+    background: linear-gradient(135deg, #ffe066, var(--manila-gold));
+    color: var(--manila-blue);
+    border-color: var(--manila-gold);
+
+    &:hover {
+      background: linear-gradient(135deg, #fff0a3, #ffe066);
+    }
+  }
+
+  &.secondary {
+    background: transparent;
+    color: var(--manila-header-text);
+    border-color: var(--manila-header-text);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+}
+
+// Blog Section
+body.theme-manila-theme .latest-posts-section {
+  background: var(--manila-gold-soft);
+  padding: 2em 0 !important;
+  min-height: auto !important;
+}
+
+// .post-grid's responsive multi-column layout is a custom site rule in
+// assets/main.scss — NOT part of the Minima gem, so this theme's own
+// `@import "minima"` doesn't pull it in, and main.css is `disabled`
+// whenever another theme is active. Without it, post/project cards just
+// stack in a single column instead of Minima's responsive grid — the same
+// category of bug as .section-heading::after and the contact form. Written
+// self-contained instead of relying on a rule that never loads.
+body.theme-manila-theme .post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2em;
+  margin-bottom: 2em;
+}
+
+body.theme-manila-theme .post-card {
+  background: linear-gradient(180deg, #ffffff, var(--manila-gold-soft));
+  border: 2px solid var(--manila-gold);
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 56, 168, 0.1);
+  color: var(--manila-text);
+  padding: 1.5em;
+}
+
+body.theme-manila-theme .post-date {
+  color: var(--manila-text-muted);
+  font-size: 0.9em;
+}
+
+body.theme-manila-theme .post-title .post-link {
+  color: var(--manila-blue);
+  text-decoration: underline;
+}
+
+// Hovering the whole card (Blogs and Projects share this .post-card markup)
+// reddens the title/read-more link — the flag's blue<->red hover relation,
+// same accent used by the travel page's --travel-link-accent-hover.
+body.theme-manila-theme .post-card:hover .post-link,
+body.theme-manila-theme .post-card:hover .read-more {
+  color: var(--manila-red);
+}
+
+body.theme-manila-theme .post-excerpt {
+  color: var(--manila-text);
+  line-height: 1.6;
+}
+
+body.theme-manila-theme .read-more {
+  color: var(--manila-blue);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+body.theme-manila-theme .latest-posts-button {
+  background: linear-gradient(135deg, var(--manila-blue), var(--manila-blue-bright));
+  color: var(--manila-header-text);
+  border-radius: 30px;
+
+  &:hover {
+    background: linear-gradient(135deg, var(--manila-blue-bright), #2f7fe0);
+  }
+
+  &.secondary {
+    background: transparent;
+    color: var(--manila-blue);
+    border: 2px solid var(--manila-blue);
+
+    &:hover {
+      background: var(--manila-gold-soft);
+    }
+  }
+}
+
+// About Section
+body.theme-manila-theme .about-section {
+  background: var(--manila-bg);
+  padding: 2em 0 !important;
+  min-height: auto !important;
+}
+
+// .about-content (the outer 2-column split) and .about-highlights (each
+// column's own gap between its 3 stacked cards) are custom site rules in
+// assets/main.scss that never load here — same reason as .post-grid above.
+// Without them the 6 highlight-items just stack in one long single column.
+body.theme-manila-theme .about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3em;
+  align-items: center;
+}
+
+body.theme-manila-theme .about-highlights {
+  display: grid;
+  gap: 1.5em;
+}
+
+body.theme-manila-theme .about-text p {
+  font-size: 1.05em;
+  line-height: 1.7;
+  color: var(--manila-text);
+}
+
+body.theme-manila-theme .highlight-item {
+  text-align: center;
+  padding: 1.5em;
+  background: linear-gradient(180deg, #ffffff, var(--manila-gold-soft));
+  border: 2px solid var(--manila-gold);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 56, 168, 0.08);
+  color: var(--manila-text);
+}
+
+body.theme-manila-theme .highlight-item h3 {
+  color: var(--manila-blue);
+  margin-bottom: 0.4em;
+}
+
+body.theme-manila-theme .highlight-item p {
+  color: var(--manila-text);
+  line-height: 1.6;
+}
+
+// Skills Section
+body.theme-manila-theme .skills-section {
+  background: var(--manila-gold-soft);
+  padding: 2em 0 !important;
+  min-height: auto !important;
+}
+
+// .skills-content is a custom site rule in assets/main.scss that never
+// loads here — same reason as .post-grid/.about-content above.
+body.theme-manila-theme .skills-content {
+  display: grid;
+  gap: 3em;
+}
+
+body.theme-manila-theme .skills-category {
+  background: linear-gradient(180deg, #ffffff, var(--manila-gold-soft));
+  border: 2px solid var(--manila-gold);
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 56, 168, 0.1);
+  padding: 1.5em 0;
+  text-align: center;
+}
+
+body.theme-manila-theme .category-title {
+  color: var(--manila-blue);
+  border-bottom-color: var(--manila-gold);
+}
+
+body.theme-manila-theme .skill-name {
+  color: var(--manila-text);
+}
+
+body.theme-manila-theme .skill-level {
+  background: var(--manila-gold-soft);
+  border-radius: 10px;
+}
+
+body.theme-manila-theme .skill-bar {
+  background: linear-gradient(90deg, var(--manila-blue), var(--manila-gold));
+  border-radius: 10px;
+}
+
+// Contact Section
+body.theme-manila-theme .contact-section {
+  background: var(--manila-bg);
+  padding: 2em 0 !important;
+  min-height: auto !important;
+}
+
+body.theme-manila-theme .contact-heading {
+  color: var(--manila-blue);
+  font-size: 1.4em;
+  margin-bottom: 1em;
+  text-align: center;
+  border-bottom: 3px solid var(--manila-gold);
+  padding-bottom: 0.5em;
+}
+
+body.theme-manila-theme .contact-content p {
+  font-size: 1.05em;
+  color: var(--manila-text);
+  margin-bottom: 2em;
+  line-height: 1.6;
+}
+
+// .contact-form/.form-group's layout (max-width, the label-above-input
+// stack, full-width fields) are custom site rules in assets/main.scss — NOT
+// part of the Minima gem, so this theme's own `@import "minima"` doesn't
+// pull them in, and main.css itself is `disabled` whenever another theme is
+// active. Without them, the label and input fall back to plain inline HTML
+// flow (label text sitting beside a browser-default-width input, ~170px)
+// instead of a clean full-width stack — the same category of bug as
+// .section-heading::after, just on the contact form this time. Written
+// fully self-contained instead of relying on rules that never load.
+body.theme-manila-theme .contact-form {
+  max-width: 700px;
+  margin: 0 auto 3em;
+  display: grid;
+  gap: 1.5em;
+}
+
+body.theme-manila-theme .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+body.theme-manila-theme .form-group label {
+  font-weight: 600;
+  color: var(--manila-text);
+  margin-bottom: 0.5em;
+}
+
+body.theme-manila-theme .required-mark {
+  color: var(--manila-red);
+}
+
+body.theme-manila-theme .contact-form input,
+body.theme-manila-theme .contact-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1em;
+  background: var(--manila-card-bg);
+  color: var(--manila-text);
+  border: 1px solid var(--manila-gold);
+
+  &:focus {
+    outline: 2px solid var(--manila-blue);
+    outline-offset: 1px;
+  }
+}
+
+body.theme-manila-theme .contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+body.theme-manila-theme .submit-button,
+body.theme-manila-theme .contact-button {
+  background: linear-gradient(135deg, var(--manila-blue), var(--manila-blue-bright));
+  color: var(--manila-header-text);
+  border: none;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-size: 1em;
+  cursor: pointer;
+
+  &:hover {
+    background: linear-gradient(135deg, var(--manila-blue-bright), #2f7fe0);
+  }
+}
+
+// .contact-info's responsive grid is a custom site rule in assets/main.scss
+// that never loads here — same reason as .post-grid/.about-content above —
+// without it the location/availability items just stack full-width.
+body.theme-manila-theme .contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5em;
+  margin-top: 2em;
+}
+
+body.theme-manila-theme .contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 1em;
+  background: linear-gradient(180deg, #ffffff, var(--manila-gold-soft));
+  border: 2px solid var(--manila-gold);
+  border-radius: 16px;
+  color: var(--manila-text);
+}
+
+body.theme-manila-theme .site-nav .page-link.active {
+  background: var(--manila-gold);
+  color: var(--manila-blue);
+}
+
+// Shared component tokens (--travel-*) — scoped to plain `body`, not any one
+// page's wrapper class, so ANY page/component can opt into these by
+// referencing var(--travel-card-bg, <its own light-theme fallback>), the
+// same way _layouts/travel.html's cards/panels/notes already do. (See
+// y2k-theme.scss's/retro-game.scss's matching blocks for the full token list.)
+body.theme-manila-theme {
+  --travel-primary: var(--manila-blue);
+  --travel-border-accent: var(--manila-gold);
+  --travel-heading-text: var(--manila-blue);
+  // A soft gradient rather than flat white, matching .post-card/
+  // .highlight-item/.skills-category elsewhere in this theme.
+  --travel-card-bg: linear-gradient(180deg, #ffffff, var(--manila-gold-soft));
+  --travel-card-shadow: 0 4px 12px rgba(0, 56, 168, 0.1);
+  --travel-highlight-card-bg: linear-gradient(180deg, #ffffff, var(--manila-gold-soft));
+  --travel-highlight-card-border: 2px solid var(--manila-gold);
+  --travel-link-accent: var(--manila-blue);
+  // Flag red on hover — the same blue<->red relation used everywhere else
+  // in this theme.
+  --travel-link-accent-hover: var(--manila-red);
+  --travel-body-text: var(--manila-text);
+  --travel-secondary-text: var(--manila-text-muted);
+  --travel-note-text: var(--manila-text-muted);
+  --travel-sun-text: var(--manila-blue);
+  --travel-panel-bg: var(--manila-gold-soft);
+  --travel-panel-border: 2px solid var(--manila-gold);
+  --travel-panel-heading-text: var(--manila-blue);
+  --travel-active-toggle-bg: var(--manila-gold);
+  --travel-active-toggle-text: var(--manila-blue);
+  --travel-total-text: var(--manila-blue);
+  --travel-warning-text: #7a4a00;
+  --travel-warning-bg: var(--manila-gold-soft);
+  --travel-warning-border: var(--manila-gold);
+  // Slightly softer/rounder than the 8px default, matching the 16px used
+  // on .post-card/.highlight-item/.skills-category elsewhere in this theme
+  // for a more cartoonish silhouette.
+  --travel-card-radius: 16px;
+}
+
+// (The budget panel's ★ active-toggle marker lives in _layouts/travel.html,
+// matching where Retro-Game's own travel-specific one-offs live — see the
+// comment block there.)
+
+// Mobile overrides — mirrors retro-game.scss's/y2k-theme.scss's own
+// breakpoint and selectors
+@media (max-width: 768px) {
+  // chatbot.scss's shared @media(max-width:768px) sets a plain
+  // `.site-header { min-height: 90px; }` meant to give the title row and
+  // hamburger row underneath enough room, but Minima's own unscoped
+  // `.site-header { min-height: 55.95px; ... }` base rule (pulled in via
+  // this theme's own `@import "minima"` above) ties on specificity and
+  // loads later in the compiled <link> order, so it silently wins — the
+  // same bug found and fixed for Y2K this session (see its matching
+  // comment). The extra `.theme-manila-theme` class here outranks that tie
+  // permanently. 110px verified empirically to comfortably clear this
+  // theme's own hamburger position (measures ~102px from the header's top).
+  body.theme-manila-theme .site-header {
+    min-height: 110px;
+  }
+
+  body.theme-manila-theme .site-title::before {
+    margin-right: 4px;
+  }
+
+  body.theme-manila-theme h1 {
+    font-size: 1.5em;
+  }
+
+  body.theme-manila-theme .page-content {
+    padding: 16px;
+    margin: 10px auto;
+  }
+
+  body.theme-manila-theme .post-navigation .prev,
+  body.theme-manila-theme .post-navigation .next {
+    display: block;
+    float: none;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  body.theme-manila-theme .welcome-section,
+  body.theme-manila-theme .latest-posts-section,
+  body.theme-manila-theme .about-section,
+  body.theme-manila-theme .skills-section,
+  body.theme-manila-theme .contact-section {
+    padding: 1.5em 0 !important;
+  }
+
+  body.theme-manila-theme .welcome-section .section-heading {
+    font-size: 2em;
+  }
+
+  body.theme-manila-theme .welcome-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1em;
+  }
+
+  body.theme-manila-theme .welcome-text-content {
+    text-align: center;
+    min-width: auto;
+  }
+
+  body.theme-manila-theme .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+
+  body.theme-manila-theme .mission-statement {
+    margin: 1.5em 0;
+    padding: 1em;
+  }
+
+  body.theme-manila-theme .mission-heading {
+    font-size: 1.05em;
+  }
+
+  body.theme-manila-theme .about-content {
+    grid-template-columns: 1fr;
+    gap: 2em;
+  }
+
+  body.theme-manila-theme .welcome-actions {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1em;
+  }
+
+  body.theme-manila-theme .welcome-button {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 240px;
+  }
+
+  body.theme-manila-theme .post-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.theme-manila-theme .latest-posts-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  body.theme-manila-theme .latest-posts-button {
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+  }
+
+  body.theme-manila-theme .contact-form {
+    margin-bottom: 2em;
+  }
+
+  body.theme-manila-theme .contact-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Minima only actually hides .site-nav behind the hamburger checkbox below
+// $on-palm (600px) — the 768px block above covers a wider "wraps onto
+// multiple inline rows but still visible" range where .site-nav has no
+// popover of its own to style. Scoping the dropdown's own look to 600px
+// keeps that inline-wrapped range's nav looking like a normal bar instead
+// of picking up an unwanted boxed background it doesn't need yet — see
+// y2k-theme.scss's matching comment for the bug this avoids repeating.
+@media (max-width: 600px) {
+  // The hamburger dropdown (chatbot.scss repositions .site-nav to
+  // position:absolute here) drops out of the blue header and onto Minima's
+  // own plain white popover background — but .site-nav .page-link above is
+  // hardcoded to --manila-header-text (white), illegible on white. Give the
+  // dropdown a white background of its own with dark, blue link text
+  // instead — same fix shape as Y2K's, chosen independently for this
+  // theme's own palette.
+  body.theme-manila-theme .site-nav {
+    background: var(--manila-card-bg);
+    border: 1px solid var(--manila-gold);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 56, 168, 0.15);
+  }
+
+  body.theme-manila-theme .site-nav .page-link {
+    color: var(--manila-blue);
+
+    &:hover {
+      background: var(--manila-gold-soft);
+    }
+
+    &.active {
+      background: var(--manila-gold);
+      color: var(--manila-blue);
+    }
+  }
+}

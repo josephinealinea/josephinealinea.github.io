@@ -226,7 +226,8 @@ if (document.readyState === 'loading') {
        const THEME_REGISTRY = {
            'jekyll-minima': { stylesheetId: 'main-css', labelFull: 'Minima Theme', labelShort: 'Minima' },
            'retro-game': { stylesheetId: 'retro-game-css', labelFull: 'Retro-Game FF7', labelShort: 'FF7' },
-           'y2k-theme': { stylesheetId: 'y2k-theme-css', labelFull: 'Y2K Theme', labelShort: 'Y2K' }
+           'y2k-theme': { stylesheetId: 'y2k-theme-css', labelFull: 'Y2K Theme', labelShort: 'Y2K' },
+           'manila-theme': { stylesheetId: 'manila-theme-css', labelFull: 'Manila Theme', labelShort: 'Manila' }
        };
        const THEME_NAMES = Object.keys(THEME_REGISTRY);
 
