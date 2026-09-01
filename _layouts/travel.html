@@ -20,6 +20,10 @@ layout: default
     <span class="panel-toggle-group">
       <span class="panel-toggle-group-label">Show Only:</span>
       <label class="panel-toggle-option">
+        <input type="checkbox" id="panel-toggle-about-only">
+        About
+      </label>
+      <label class="panel-toggle-option">
         <input type="checkbox" id="panel-toggle-weather-only">
         Weather Forecast
       </label>
@@ -33,10 +37,25 @@ layout: default
       </label>
       <label class="panel-toggle-option">
         <input type="checkbox" id="panel-toggle-budget-only">
-        Budget breakdown
+        Budget
       </label>
     </span>
   </div>
+
+  {% assign about = site.data.travels.about[page.trip_key] %}
+  {% if about %}
+  <div id="about-section" class="other-panel" data-panel="about">
+    <h2>🌎 About These Countries 🧭</h2>
+    <div class="about-carousel">
+      <div class="about-carousel-track"></div>
+      <div class="about-carousel-controls">
+        <button type="button" class="about-carousel-btn about-carousel-prev" aria-label="Previous country">‹</button>
+        <div class="about-carousel-dots"></div>
+        <button type="button" class="about-carousel-btn about-carousel-next" aria-label="Next country">›</button>
+      </div>
+    </div>
+  </div>
+  {% endif %}
 
   {% assign checklist = site.data.travels.checklist[page.trip_key] %}
   {% if checklist %}
@@ -186,6 +205,18 @@ layout: default
     }
   };
 
+  // Sourced from _data/travels/about/<trip-key>.yml — edit there to add/update per-country "About" info.
+  window.ABOUT_DATA = [
+    {% if about %}
+    {% for c in about.countries %}
+    {
+      country: "{{ c.country | escape }}",
+      info: [{% for line in c.info %}"{{ line | escape }}"{% unless forloop.last %}, {% endunless %}{% endfor %}]
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    {% endif %}
+  ];
+
   // Sourced from _data/travels/budget/<trip-key>.yml — edit there to add/update budget line items.
   window.BUDGET_DATA = [
     {% if budget %}
@@ -222,6 +253,7 @@ layout: default
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <script src="{{ '/assets/js/travel-panel-toggle.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-shared.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/travel-about.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-countdown.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-weather.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-day-order.js' | relative_url }}"></script>
@@ -330,6 +362,63 @@ layout: default
   .itinerary-time-icon { margin-left: 0.3rem; }
   .itinerary-route a { color: var(--travel-link-accent, #1a73e8); text-decoration: underline; }
   .itinerary-remarks { flex-basis: 100%; margin-top: 0.35rem; font-size: 0.82rem; color: var(--travel-note-text, #555); font-style: italic; }
+
+  .about-carousel { display: flex; flex-direction: column; gap: 0.75rem; }
+  .about-country-card {
+    display: none;
+    height: 30rem;
+    overflow-y: auto;
+    border: 1px solid var(--travel-border-accent, #ddd);
+    border-radius: var(--travel-card-radius, 8px);
+    padding: 1rem 1.2rem;
+    background: var(--travel-card-bg, transparent);
+    box-shadow: var(--travel-card-shadow, none);
+  }
+  .about-country-card.is-active { display: block; }
+  .about-country-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.7rem; }
+  .about-country-flag { font-size: 1.8rem; line-height: 1; }
+  .about-country-name { font-size: 1.15rem; font-weight: 700; color: var(--travel-panel-heading-text, inherit); }
+  .about-country-facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.55rem 1rem; margin: 0 0 0.9rem; padding: 0; list-style: none; }
+  .about-fact { display: flex; flex-direction: column; }
+  .about-fact-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--travel-secondary-text, #555); }
+  .about-fact-value { font-size: 0.92rem; color: var(--travel-body-text, inherit); }
+  .about-country-loading { font-size: 0.88rem; color: var(--travel-secondary-text, #555); font-style: italic; margin-bottom: 0.75rem; }
+  .about-warning {
+    font-size: 0.8rem;
+    color: var(--travel-warning-text, #8a5a00);
+    background: var(--travel-warning-bg, #fff6e0);
+    border: 1px solid var(--travel-warning-border, #f0dca0);
+    border-radius: 6px;
+    padding: 0.4rem 0.6rem;
+    margin-bottom: 0.9rem;
+  }
+  .about-country-good-to-know h3 { margin: 0 0 0.35rem; font-size: 0.95rem; color: var(--travel-panel-heading-text, inherit); }
+  .about-country-good-to-know ul { margin: 0; padding-left: 1.1rem; font-size: 0.88rem; color: var(--travel-note-text, #555); }
+  .about-country-good-to-know li { margin-bottom: 0.2rem; }
+  .about-carousel-controls { display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+  .about-carousel-btn {
+    border: 1px solid var(--travel-border-accent, #ccc);
+    border-radius: 999px;
+    background: var(--travel-card-bg, #fff);
+    color: var(--travel-body-text, #444);
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .about-carousel-btn:disabled { opacity: 0.4; cursor: default; }
+  .about-carousel-dots { display: flex; gap: 0.4rem; }
+  .about-carousel-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: var(--travel-border-accent, #ccc);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  .about-carousel-dot.is-active { background: var(--travel-active-toggle-bg, #1a73e8); }
 
   .checklist-items { display: flex; flex-wrap: wrap; gap: 0.6rem; }
   .checklist-group {

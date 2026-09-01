@@ -75,6 +75,14 @@ items:
     date: 2026-08-14
     status: confirmed
 
+  - description: "Typhoid fever vaccine"
+    category: other
+    amount: 7.80
+    currency: "EUR"
+    countries: ["Peru","Bolivia","Brazil"]
+    date: 2026-08-04
+    status: confirmed
+
   - description: "PeruRail One way ticket from Machu to Cusco"
     category: transport
     amount: 150

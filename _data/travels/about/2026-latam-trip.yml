@@ -1,0 +1,32 @@
+
+trip_name: "LATAM Trip 2026"
+
+countries:
+  - country: peru
+    info:
+      - "Aguas Calientes is about 2,040 m (6,690 ft)"
+      - "Machu Picchu is about 2,430 m (7,970 ft)"
+      - "Ollantaytambo is about 2,790 m (9,150 ft)"
+      - "Sacred Valley is about 3,000 m (9,850 ft)"
+      - "Cusco is about 3,400 m (11,150 ft)"
+      - "Uber is available in Cusco. Other alternative/backup: inDrive, Colectivo, regular taxi"
+      - "Taxi/tuk-tuk can be aranged via hotel in Ollantaytambo"
+
+  - country: bolivia
+    info:
+      - "La Paz is about 3,640 m (11,940 ft)"
+      - "Uyuni is about 3,656 m (11,995 ft)"
+      - "El Alto is about 4,150 m (13,615 ft)"
+      - "Uber/Yango/inDrive are available in La Paz. Regular taxis are also available"
+      - "Regular taxi available in Uyuni"
+
+  - country: brazil
+    info:
+      - "Rio de Janeiro is about 0-20 m (0-65 ft)"
+      - "Sugarloaf Mountain summit is about 396 m (1,299 ft)"
+      - "Christ the Redeemer is about 710 m (2,330 ft)"
+      - "Uber/99 are available in Rio de Janeiro. Regular taxis are also available"
+
+  - country: united states of america
+    info:
+      - "Uber/Lyft are widely used"
