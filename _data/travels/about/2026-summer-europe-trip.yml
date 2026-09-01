@@ -1,0 +1,11 @@
+
+trip_name: "Summer Europe Trip 2026"
+
+countries:
+  - country: switzerland
+  - country: liechtenstein
+  - country: austria
+  - country: italy
+  - country: malta
+  - country: france
+
