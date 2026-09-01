@@ -12,11 +12,14 @@
     return list && list.length ? list.join(", ") : null;
   }
 
-  // countries.dev timezones are UTC offset strings like "UTC-05:00" — parse
-  // the offset and apply it to the visitor's current UTC time to get "now"
-  // in that timezone. Not a live-ticking clock; computed once when the
-  // card's facts are rendered, same as the "right now" weather panel.
+  // countries.dev timezones are UTC offset strings like "UTC-05:00", but a
+  // zero offset comes back as bare "UTC" (e.g. Morocco) rather than
+  // "UTC+00:00" — parse the offset and apply it to the visitor's current UTC
+  // time to get "now" in that timezone. Not a live-ticking clock; computed
+  // once when the card's facts are rendered, same as the "right now" weather
+  // panel.
   function localTimeForOffset(offset) {
+    if (offset === "UTC") offset = "UTC+00:00";
     var match = /^UTC([+-])(\d{2}):(\d{2})$/.exec(offset || "");
     if (!match) return null;
     var sign = match[1] === "-" ? -1 : 1;
