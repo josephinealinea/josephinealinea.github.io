@@ -1189,3 +1189,18 @@ body.theme-retro-game {
     letter-spacing: 1px;
   }
 }
+
+// Minima only actually hides .site-nav behind the hamburger checkbox below
+// $on-palm (600px) — see the equivalent comment in y2k-theme.scss/
+// manila-theme.scss. The hamburger dropdown (chatbot.scss repositions
+// .site-nav to position:absolute here) drops onto Minima's own plain white
+// popover background — but .site-nav .page-link is hardcoded to
+// --retro-text (white), illegible on white. Give the dropdown its own dark
+// background so the existing white text/gold-accent hover & active states
+// stay legible, same fix Y2K/Manila already apply for this breakpoint.
+@media (max-width: 600px) {
+  body.theme-retro-game .site-nav {
+    background: var(--retro-bg);
+    border: 1px solid var(--retro-border);
+  }
+}

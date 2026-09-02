@@ -35,7 +35,7 @@ items:
     date: 2026-04-20
     status: confirmed
 
-  - description: "Machu Pichu entrance ticket"
+  - description: "Machu Picchu entrance ticket"
     category: activities
     amount: 47.00
     currency: "USD"
@@ -75,21 +75,21 @@ items:
     date: 2026-08-14
     status: confirmed
 
+  - description: "PeruRail One way ticket from Machu to Cusco"
+    category: transport
+    amount: 109
+    currency: "USD"
+    countries: ["Peru"]
+    date: 2026-08-28
+    status: confirmed
+
   - description: "Typhoid fever vaccine"
     category: other
     amount: 7.80
     currency: "EUR"
     countries: ["Peru","Bolivia","Brazil"]
-    date: 2026-08-04
+    date: 2026-09-02
     status: confirmed
-
-  - description: "PeruRail One way ticket from Machu to Cusco"
-    category: transport
-    amount: 150
-    currency: "USD"
-    countries: ["Peru"]
-    date: 2026-08-28
-    status: pre-booked
 
   - description: "Accommodation in Ollantaytambo"
     category: lodging
@@ -174,7 +174,7 @@ items:
 
   - description: "Accommodation in Uyuni"
     category: lodging
-    amount: 60
+    amount: 51
     currency: "SGD"
     countries: ["Bolivia"]
     date: 2026-08-28

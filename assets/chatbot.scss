@@ -118,9 +118,30 @@
      20px offset), so whatever content ends up at the true bottom of any
      page's scroll range — the site footer, or the last item in a long
      panel like the travel page's checklist/budget lists — needs enough
-     reserved space to scroll clear of it instead of sitting behind it. */
+     reserved space to scroll clear of it instead of sitting behind it.
+     !important because every theme sets its own unconditional
+     `.site-footer { padding: ... }` shorthand (retro-game.scss at equal
+     specificity but later in the cascade, y2k-theme.scss/manila-theme.scss
+     at higher specificity via their `body.theme-x .site-footer` scoping) —
+     without it, this reservation gets silently clobbered on those three
+     themes and the icon covers the copyright line at the bottom of the
+     page. */
   .site-footer {
-    padding-bottom: 6.5rem;
+    padding-bottom: 6.5rem !important;
+  }
+
+  /* Minima's own mobile nav (the hamburger .trigger dropdown, shown below
+     this $on-palm breakpoint) stacks .page-link one per row via its default
+     `display: block`. main.scss and retro-game.scss both override
+     .page-link to `display: inline-block; margin: 0 0.5em;` for their
+     desktop nav-bar spacing — that leaks into this dropdown too (chatbot.css
+     loads before main.css/retro-game.css, so it needs !important to win),
+     making the links wrap into a cramped multi-column grid instead of
+     stacking vertically. Y2K/Manila never set `display` on .page-link, so
+     only Minima/Retro-Game actually need this reset. */
+  .site-nav .page-link {
+    display: block !important;
+    margin: 0 !important;
   }
 }
 
