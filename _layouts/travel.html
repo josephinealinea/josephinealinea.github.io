@@ -73,7 +73,11 @@ layout: default
           {% assign status_icon = site.data.checklist_status_icons[item.status] %}
           <div class="checklist-item checklist-item-{{ item.status }}">
             <span class="checklist-icon">{{ status_icon }}</span>
+            {% if item.options %}
+            <button type="button" class="checklist-name checklist-name-has-options" data-options="{{ item.options | jsonify | escape }}">{{ item.description }}<span class="checklist-options-icon" aria-hidden="true">🔗</span></button>
+            {% else %}
             <span class="checklist-name">{{ item.description }}</span>
+            {% endif %}
           </div>
           {% endfor %}
         </div>
@@ -155,6 +159,28 @@ layout: default
   </div>
   {% endif %}
 </div>
+
+{% if checklist %}
+<!-- Rendered outside .travel-page/#checklist-section on purpose: any
+     ancestor with backdrop-filter (or filter/transform) — the retro-game
+     theme's .other-panel blur, e.g. — creates a new containing block for
+     position:fixed descendants, so this modal would end up fixed to that
+     ancestor's box instead of the viewport if nested inside one. -->
+<div id="checklist-options-overlay" class="checklist-options-overlay" hidden>
+  <div class="checklist-options-modal" role="dialog" aria-modal="true" aria-labelledby="checklist-options-title">
+    <div class="checklist-options-header">
+      <h3 id="checklist-options-title" class="checklist-options-title"></h3>
+      <button type="button" class="checklist-options-close" aria-label="Close">✕</button>
+    </div>
+    <table class="checklist-options-table">
+      <thead>
+        <tr><th>#</th><th>Option</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
 
 <script>
   // Sourced from _data/aqi_bands.yml — edit there to update both JS files.
@@ -259,6 +285,7 @@ layout: default
 <script src="{{ '/assets/js/travel-day-order.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-today.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-budget.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/travel-checklist-options.js' | relative_url }}"></script>
 
 <style>
   /* ── Theming architecture ──────────────────────────────────────────────
@@ -442,6 +469,81 @@ layout: default
   .checklist-item:hover .checklist-name { color: var(--travel-link-accent-hover, var(--travel-link-accent, #555)); }
   .checklist-item-done { opacity: 0.6; }
   .checklist-item-done .checklist-name { text-decoration: line-through; }
+
+  /* .checklist-name is a <span> for plain items, but a <button> (with a
+     trailing 🔗 icon) for items with an "options" popup — reset the button
+     chrome so it matches the plain span's look, distinguished only by the
+     icon and pointer cursor. */
+  button.checklist-name {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .checklist-options-icon { margin-left: 0.3rem; font-size: 0.85em; }
+
+  .checklist-options-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: var(--travel-modal-overlay-bg, rgba(0, 0, 0, 0.5));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .checklist-options-overlay[hidden] { display: none; }
+  .checklist-options-modal {
+    width: 100%;
+    max-width: 420px;
+    max-height: 80vh;
+    overflow-y: auto;
+    background: var(--travel-modal-bg, #fff);
+    border: var(--travel-panel-border, 1px solid #ddd);
+    border-radius: var(--travel-card-radius, 8px);
+    box-shadow: var(--travel-modal-shadow, 0 8px 30px rgba(0, 0, 0, 0.25));
+    padding: 1rem 1.2rem;
+  }
+  .checklist-options-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .checklist-options-title { margin: 0; font-size: 1.05rem; color: var(--travel-panel-heading-text, inherit); }
+  .checklist-options-close {
+    flex: 0 0 auto;
+    background: none;
+    border: 1px solid var(--travel-border-accent, #ccc);
+    border-radius: 6px;
+    width: 1.8rem;
+    height: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--travel-body-text, #444);
+  }
+  /* Minima's own base table styles (table th background, table
+     tr:nth-child(even) background, table td/th border) are generic —
+     imported by every theme for markdown-table support — and would
+     otherwise leak into this table too. Reset them explicitly rather than
+     relying on selector specificity alone. */
+  .checklist-options-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; border: none; }
+  .checklist-options-table tr:nth-child(even) { background: transparent; }
+  .checklist-options-table th, .checklist-options-table td {
+    text-align: left;
+    padding: 0.5rem 0.4rem;
+    border: none;
+    border-bottom: 1px solid var(--travel-border-accent, #eee);
+    background: transparent;
+  }
+  .checklist-options-table th { color: var(--travel-secondary-text, #555); font-weight: 600; }
+  .checklist-options-table td:first-child, .checklist-options-table th:first-child { width: 2rem; }
+  .checklist-options-table a { color: var(--travel-link-accent, #1a73e8); text-decoration: underline; }
+  .checklist-options-table a:hover { color: var(--travel-link-accent-hover, var(--travel-link-accent, #1a73e8)); }
 
   .budget-toggle { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.85rem; }
   .budget-toggle-btn {

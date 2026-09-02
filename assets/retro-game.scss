@@ -1162,6 +1162,14 @@ body.theme-retro-game {
   --travel-panel-bg: rgba(0, 255, 0, 0.1);
   --travel-panel-border: 2px solid var(--retro-primary);
   --travel-panel-radius: 12px;
+  // The checklist options modal is a position:fixed overlay, not an in-flow
+  // card sitting on the theme's own solid black body background — every
+  // --travel-*-bg token above is intentionally translucent (a subtle tint
+  // over that solid black), which looks right in-flow but lets whatever's
+  // scrolled underneath the modal bleed through and overlap its own text.
+  // The modal needs a genuinely opaque background, so it gets its own token
+  // rather than reusing --travel-panel-bg.
+  --travel-modal-bg: var(--retro-bg);
   --travel-panel-blur: blur(10px);
   --travel-panel-heading-text: var(--retro-primary);
   --travel-active-toggle-bg: var(--retro-primary);

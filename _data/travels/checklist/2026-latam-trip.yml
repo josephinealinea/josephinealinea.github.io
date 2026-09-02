@@ -3,6 +3,10 @@
 # exactly match a key in _data/checklist_status_icons.yml.
 # Rendered order is todo-first/done-last regardless of the order written here
 # (see the sort logic in _layouts/travel.html) — write items in any order.
+# Optional "options" — a list of { name, link } — turns the description into
+# a clickable popup listing those options as a table (name links open in a
+# new tab). No leading "-" inside the [ ] — it's a YAML flow sequence, not a
+# block sequence.
 
 trip_name: "LATAM Trip 2026"
 
@@ -10,9 +14,8 @@ items:
   - checklist:
       - { status: "todo", description: "US / UK Visa" }
       - { status: "todo", description: "Yellow Fever Vaccine (with official booklet)" }
-      - { status: "todo", description: "Cash exchange (PEN) Peruvian sol S/" }
-      - { status: "todo", description: "Cash exchange (BOB) Bolivian boliviano Bs" }
-      - { status: "todo", description: "Cash exchange (BRL) Brazilian real R$" }
+      - { status: "todo", description: "Cash in USD, exchange in PEN/BOB/BRL locally" }
+      - { status: "todo", description: "Order eSim" }
       - { status: "done", description: "RT Flight from TLL to LAX" }
       - { status: "done", description: "RT Flight from SIN to LAX" }
       - { status: "done", description: "Flight from LAX to CUZ" }
@@ -21,19 +24,49 @@ items:
       - { status: "done", description: "Flight from LPB to GIG" }
       - { status: "done", description: "RT Flight from LPB to UYU" }
       - { status: "done", description: "Accommodation 1N in LA" }
-      - { status: "done", description: "Accommodation 1N Ollantaytambo" }
-      - { status: "done", description: "Accommodation 1N in Aguas Calientes" }
+      - { status: "done", description: "Accommodation 1N Ollantaytambo", options: [
+          { name: "Casablanca Lodge Museum Sactuary & Spa", link: "https://www.booking.com/Share-Ysl3rH" }
+      ] }
+      - { status: "done", description: "Accommodation 1N in Aguas Calientes", options: [
+          { name: "Inti Punku Machu Picchu Suites", link: "https://www.agoda.com/sp/le1hn1D9ZsW" }
+      ] }
       - { status: "done", description: "Accommodation 4N in Cusco" }
-      - { status: "done", description: "Accommodation 1N in Uyuni" }
-      - { status: "done", description: "Accommodation 3N in La Paz" }
-      - { status: "done", description: "Accommodation 2N in Rio" }
+      - { status: "done", description: "Accommodation 1N in Uyuni", options: [
+          { name: "Casa de Sal Hotel", link: "https://www.agoda.com/sp/lVFHQO46kvN" }
+      ] }
+      - { status: "done", description: "Accommodation 3N in La Paz", options: [
+          { name: "Illampu Art Boutique Hotel", link: "https://www.agoda.com/sp/OCDBPklgOiB" }
+      ] }
+      - { status: "todo", description: "Accommodation 2N in Rio", options: [
+          { name: "With Sea View 3BR",
+            link: "https://www.airbnb.co.uk/rooms/1495195735009866324?unique_share_id=91379adc-b31d-41cc-be15-4bf4deb5c11e&viralityEntryPoint=1&s=76&source_impression_id=p3_1787682546_P3gdmabGbTWjmCvL" },
+          { name: "Luxurious Penthouse 3BR",
+            link: "https://www.airbnb.co.uk/rooms/783827009336786389?unique_share_id=5c04266d-4e53-4727-99ce-871603156b15&viralityEntryPoint=1&s=76&source_impression_id=p3_1788365428_P3l5I6eCMv3NL2DI" }
+      ] }
       - { status: "done", description: "Machu Picchu entrance ticket" }
       - { status: "done", description: "Train ticket from Ollantaytambo to Machu Picchu" }
       - { status: "done", description: "Train ticket from Machu Picchu to Cusco" }
       - { status: "todo", description: "RT Bus from Aguas Calientes to Machu Picchu" }
-      - { status: "done", description: "Ollantaytambo tour" }
-      - { status: "todo", description: "Sacred Valley tour" }
-      - { status: "todo", description: "Rainbow Mountain tour" }
-      - { status: "done", description: "Uyuni Salt Flats tour" }
-      - { status: "todo", description: "La Paz tour" }
-      - { status: "todo", description: "Rio tour" }
+      - { status: "todo", description: "Ollantaytambo tour", options: [
+              { name: "Llama walk", link: "https://gyg.me/KrxjvdzU" }
+      ] }
+      - { status: "todo", description: "Sacred Valley tour", options: [
+              { name: "From Cusco: Sacred Valley, Pisac, Ollay, Salt Mines", link: "https://gyg.me/ThSuQv4l" }
+      ] }
+      - { status: "todo", description: "Rainbow Mountain tour", options: [
+          { name: "From Cusco: Rainbow Mountain and Red Valley", link: "https://gyg.me/PoRPpcal" }
+      ] }
+      - { status: "todo", description: "Humantay Lake tour", options: [
+          { name: "From Cusco: Humantay Lake w breakfast", link: "https://gyg.me/BpuhkEms" }
+      ] }
+      - { status: "todo", description: "Uyuni Salt Flats tour", options: [
+              { name: "Uyunu Salt Flat with Stargazing", link: "https://gyg.me/hHz17YTg" }
+      ] }
+      - { status: "todo", description: "La Paz tour", options: [
+              { name: "Moon Valley w Cable Car", link: "https://gyg.me/0hhBvYGA" },
+              { name: "Moon Valley w Coca Museum & Cable Car", link: "https://gyg.me/kF3y7baI" },
+              { name: "Mystical Sunset at Valley of Souls", link: "https://gyg.me/ipIeKysX" }
+      ] }
+      - { status: "todo", description: "Rio tour", options: [
+              { name: "Christ the Redeemer, Sugarloaf, Selaron w BBQ", link: "https://gyg.me/E5pt0bSf" }
+      ] }
