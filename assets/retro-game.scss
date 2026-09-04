@@ -1189,6 +1189,33 @@ body.theme-retro-game {
   --travel-legend-percent-opacity: 0.75;
 }
 
+// Same hover glow as the homepage's About Me boxes (.highlight-item):
+// border brightens from --retro-border to --retro-accent, the glow grows,
+// and the card lifts slightly. Travel detail pages have their own set of
+// "boxes" — country info, checklist groups, itinerary/location cards,
+// budget totals — with no hover feedback at all before this.
+body.theme-retro-game .about-country-card,
+body.theme-retro-game .checklist-group,
+body.theme-retro-game .budget-currency-block,
+body.theme-retro-game .itinerary-item,
+body.theme-retro-game .location-card,
+body.theme-retro-game .today-location-card,
+body.theme-retro-game .budget-toggle-btn {
+  transition: all 0.3s ease;
+}
+
+body.theme-retro-game .about-country-card:hover,
+body.theme-retro-game .checklist-group:hover,
+body.theme-retro-game .budget-currency-block:hover,
+body.theme-retro-game .itinerary-item:hover,
+body.theme-retro-game .location-card:hover,
+body.theme-retro-game .today-location-card:hover,
+body.theme-retro-game .budget-toggle-btn:hover {
+  border-color: var(--retro-accent);
+  box-shadow: 0 0 20px var(--retro-accent);
+  transform: translateY(-3px);
+}
+
 // Mobile overrides — must use body.theme-retro-game scope to beat the
 // desktop theme-scoped rules which have higher specificity than plain selectors
 @media (max-width: 768px) {

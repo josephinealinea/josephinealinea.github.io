@@ -10,7 +10,7 @@ title: About Me
       <div class="about-highlights">
         <div class="highlight-item">
           <span class="highlight-icon" aria-hidden="true">💻</span>
-          <h3>Full-Stack</h3>
+          <h3>Full - stack</h3>
           <p>I build websites, web applications, APIs, or even mini games. Name it and let's chat :)</p>
         </div>
         <div class="highlight-item">
@@ -20,25 +20,25 @@ title: About Me
         </div>
         <div class="highlight-item">
           <span class="highlight-icon" aria-hidden="true">🌎</span>
-          <h3>Cross-Industry Expertise</h3>
+          <h3>Cross - Industry Expertise</h3>
           <p>I worked in FinTech, Banking, Telecommunications, and iGaming industries</p>
         </div>
       </div>
       <div class="about-highlights">
         <div class="highlight-item">
           <span class="highlight-icon" aria-hidden="true">⚙️</span>
-          <h3>Dev-Ops</h3>
+          <h3>Dev & Ops</h3>
           <p>Provides troubleshooting support, monitoring and observability; deliver end-to-end modern solution</p>
         </div>
         <div class="highlight-item">
           <span class="highlight-icon" aria-hidden="true">🤖</span>
-          <h3>Tech Consultant / Mentoring</h3>
+          <h3>Coaching</h3>
           <p>One click at a time - ask me for your tech questions</p>
         </div>
         <div class="highlight-item">
           <span class="highlight-icon" aria-hidden="true">𓆉</span>
-          <h3>Travel buddy / Photographer</h3>
-          <p>When not working, I love to travel and take picturesque photos</p>
+          <h3>Travel buddy</h3>
+          <p>When not working, I love to travel, take pictures, and experience life</p>
         </div>
       </div>
     </div>

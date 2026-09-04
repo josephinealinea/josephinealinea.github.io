@@ -99,12 +99,20 @@
 :root {
   --manila-blue: #0038a8;        // flag blue — 9.85:1 on white, 9.52:1 on
                                    // --manila-bg; safe as body/link text too
+  --manila-blue-dark: #001c4d;    // welcome-section gradient's own start —
+                                   // deep navy, 16.49:1 for white text
   --manila-blue-bright: #0052cc;  // header gradient end (brighter blue) —
                                    // still 6.82:1 for white header text
   --manila-red: #ce1126;          // flag red — hover/active accent only.
                                    // 5.63:1 on white, 5.44:1 on --manila-bg,
                                    // but only 3.82:1 on --manila-gold — never
                                    // put red text on a gold background.
+  --manila-red-subtle: #a83f4d;   // muted red — the welcome-section
+                                   // gradient's transition point into
+                                   // --manila-maroon, softer than the flag
+                                   // red used elsewhere. 6.03:1 for white text
+  --manila-maroon: #4a0e14;       // welcome-section gradient's own end —
+                                   // deep maroon, 15.39:1 for white text
   --manila-gold: #fcd116;         // flag gold — the motif color: sunburst
                                    // medallions, card borders, active-state
                                    // fills. Only 1.47:1 on white — decorative/
@@ -407,12 +415,14 @@ body.theme-manila-theme .section-content {
   padding: 0 2em;
 }
 
-// Welcome Section — the hero fades from flag blue into flag red, a softer
-// cartoonish blend of the flag's own colors rather than a hard stripe. Text
-// sits mostly over the blue/bright-blue two-thirds; both endpoints (and the
-// blend between them) clear 4.5:1 for white text.
+// Welcome Section — a wider fade through four stops (dark navy, blue, a
+// muted red, maroon) rather than the two-tone flag-blue-to-flag-red blend
+// this used to be. Text sits mostly over the navy/blue first third; every
+// stop (and the blends between them) clears 4.5:1 for white text — see
+// the --manila-blue-dark/--manila-red-subtle/--manila-maroon contrast
+// notes above.
 body.theme-manila-theme .welcome-section {
-  background: linear-gradient(135deg, var(--manila-blue) 0%, var(--manila-blue-bright) 55%, var(--manila-red) 100%);
+  background: linear-gradient(135deg, var(--manila-blue-dark) 0%, var(--manila-blue-bright) 35%, var(--manila-red-subtle) 70%, var(--manila-maroon) 100%);
   color: var(--manila-header-text);
   text-align: center;
   padding: 2em 0 !important;
@@ -453,7 +463,13 @@ body.theme-manila-theme .welcome-intro {
 body.theme-manila-theme .mission-statement {
   margin: 2em 0;
   padding: 1.5em;
-  background: rgba(255, 255, 255, 0.12);
+  // A dark tint, not a lighter/whiter one — the gradient behind this box
+  // is already fairly light through its blue stretch, so a white overlay
+  // washes toward white too and erodes the gold heading's contrast
+  // (was already only ~3.7:1 at 0.12 alpha). Darkening reads as a more
+  // distinct panel AND improves text contrast instead of hurting it —
+  // ~7:1 for the gold heading, ~10:1 for white body text at this alpha.
+  background: rgba(0, 0, 0, 0.25);
   border: 1px solid var(--manila-gold);
   border-radius: 12px;
   text-align: left;

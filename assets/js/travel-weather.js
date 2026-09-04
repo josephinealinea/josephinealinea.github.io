@@ -11,8 +11,8 @@
 // Note: localStorage snapshots from live forecast runs are kept as a fallback
 // and are browser-local — they aren't shared across devices.
 //
-// WMO weather codes are loaded from _data/wmo_codes.yml via window.WMO_CODES.
-// Condition note text is loaded from _data/condition_notes.yml via window.CONDITION_NOTES.
+// WMO weather codes are loaded from _data/travels/wmo_codes.yml via window.WMO_CODES.
+// Condition note text is loaded from _data/travels/condition_notes.yml via window.CONDITION_NOTES.
 // Both are injected by the travel layout. Shared helpers (extractTime, aqiCategory,
 // daysFromToday, wmoDescription, wmoEmoji, forecastNote) live in travel-shared.js,
 // which is loaded before this file.

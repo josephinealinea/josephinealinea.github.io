@@ -74,7 +74,7 @@ layout: default
         {% assign sorted_items = todo_items | concat: done_items %}
         <div class="checklist-group">
           {% for item in sorted_items %}
-          {% assign status_icon = site.data.checklist_status_icons[item.status] %}
+          {% assign status_icon = site.data.travels.checklist_status_icons[item.status] %}
           <div class="checklist-item checklist-item-{{ item.status }}">
             <span class="checklist-icon">{{ status_icon }}</span>
             {% if item.options %}
@@ -104,8 +104,8 @@ layout: default
       <h3>{{ day.date | date: "%-d %B" }}<span class="today-badge"></span></h3>
       <div class="locations" data-panel="weather">
         {% for loc in day.locations %}
-        <div class="location-card" data-date="{{ day.date }}" data-lat="{{ loc.lat }}" data-lon="{{ loc.lon }}" data-name="{{ loc.name }}" data-country="{{ loc.country }}" data-flag="{% assign _flag = site.data.flags[loc.country] %}{{ _flag }}">
-          <strong>{% assign flag = site.data.flags[loc.country] %}{% if flag %}{{ flag }} {% endif %}{{ loc.name }}</strong>{% if loc.country and loc.country != "" %}, {{ loc.country }}{% endif %}
+        <div class="location-card" data-date="{{ day.date }}" data-lat="{{ loc.lat }}" data-lon="{{ loc.lon }}" data-name="{{ loc.name }}" data-country="{{ loc.country }}" data-flag="{% assign _flag = site.data.travels.flags[loc.country] %}{{ _flag }}">
+          <strong>{% assign flag = site.data.travels.flags[loc.country] %}{% if flag %}{{ flag }} {% endif %}{{ loc.name }}</strong>{% if loc.country and loc.country != "" %}, {{ loc.country }}{% endif %}
           <div class="weather-widget">Checking weather…</div>
         </div>
         {% endfor %}
@@ -116,7 +116,7 @@ layout: default
         {% if itin_day %}
         <div class="itinerary-items" data-panel="itinerary">
           {% for item in itin_day.items %}
-          {% assign icon = site.data.itinerary_icons[item.type] %}
+          {% assign icon = site.data.travels.itinerary_icons[item.type] %}
           <div class="itinerary-item itinerary-item-{{ item.category }}">
             <span class="itinerary-icon">{{ icon }}</span>
             {% if item.category == "transport" %}
@@ -125,7 +125,7 @@ layout: default
                 {% for stop in item.travel %}
                 <div class="itinerary-stop">
                   <span class="itinerary-stop-icon">📍</span>
-                  {% assign airport_name = site.data.airports[stop.name] %}
+                  {% assign airport_name = site.data.travels.airports[stop.name] %}
                   {% if airport_name %}{% assign stop_display = airport_name | append: " (" | append: stop.name | append: ")" %}{% else %}{% assign stop_display = stop.name %}{% endif %}
                   {% if stop.link %}<a href="{{ stop.link }}" target="_blank" rel="noopener">{{ stop_display }}</a>{% else %}{{ stop_display }}{% endif %}
                   {% if stop.time %}<span class="itinerary-time-icon">⏰</span> {{ stop.time }}{% endif %}
@@ -187,23 +187,23 @@ layout: default
 {% endif %}
 
 <script>
-  // Sourced from _data/aqi_bands.yml — edit there to update both JS files.
+  // Sourced from _data/travels/aqi_bands.yml — edit there to update both JS files.
   window.AQI_BANDS = [
-    {% for band in site.data.aqi_bands %}
+    {% for band in site.data.travels.aqi_bands %}
     { max: {{ band.max }}, label: "{{ band.label }}", emoji: "{{ band.emoji }}" }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   ];
 
-  // Sourced from _data/wmo_codes.yml — edit there to update both JS files.
+  // Sourced from _data/travels/wmo_codes.yml — edit there to update both JS files.
   window.WMO_CODES = {
-    {% for wmo in site.data.wmo_codes %}
+    {% for wmo in site.data.travels.wmo_codes %}
     {{ wmo.code }}: { description: "{{ wmo.description }}", emoji: "{{ wmo.emoji }}" }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   };
 
-  // Sourced from _data/condition_notes.yml — edit there to update both JS files.
-  {% assign fn = site.data.condition_notes.forecast %}
-  {% assign cn = site.data.condition_notes.current %}
+  // Sourced from _data/travels/condition_notes.yml — edit there to update both JS files.
+  {% assign fn = site.data.travels.condition_notes.forecast %}
+  {% assign cn = site.data.travels.condition_notes.current %}
   window.CONDITION_NOTES = {
     forecast: {
       condition: {
@@ -263,9 +263,9 @@ layout: default
     {% endif %}
   ];
 
-  // Sourced from _data/budget_categories.yml — edit there to update both JS files.
+  // Sourced from _data/travels/budget_categories.yml — edit there to update both JS files.
   window.BUDGET_CATEGORIES = {
-    {% for cat in site.data.budget_categories %}
+    {% for cat in site.data.travels.budget_categories %}
     "{{ cat[0] }}": { icon: "{{ cat[1].icon | escape }}", color: "{{ cat[1].color }}" }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   };
@@ -319,7 +319,10 @@ layout: default
   }
   .trip-day { margin: 1.75rem 0; }
   .trip-day h3 {
-    border-bottom: 2px solid var(--travel-border-accent, #eee);
+    /* Same --travel-panel-heading-border/--travel-border-accent fallback
+       chain as .other-panel h2 above, so a theme customizing one gets the
+       other for free unless it deliberately sets them differently. */
+    border-bottom: 2px solid var(--travel-panel-heading-border, var(--travel-border-accent, #eee));
     padding-bottom: 0.25rem;
     margin-bottom: 0.75rem;
     color: var(--travel-heading-text, inherit);
@@ -351,15 +354,27 @@ layout: default
   .panel-hidden { display: none !important; }
 
   .today-badge { margin-left: 0.5rem; }
+  /* This used to draw its own border + background, with the card inside
+     it (.about-country-card / .checklist-group / .today-location-card /
+     .budget-currency-block) drawing a second one on top — a box within a
+     box, in every theme, at whatever colors that theme assigned the two
+     layers. Section heading + a single card now, same shape as a
+     .trip-day's <h3> (below) sitting above its .locations cards, not a
+     bordered wrapper around them. */
   .other-panel {
-    border: var(--travel-panel-border, 1px solid #ddd);
-    border-radius: var(--travel-panel-radius, 8px);
-    padding: 0.75rem 1rem;
     margin: 1.25rem 0;
-    background: var(--travel-panel-bg, #f6fffa);
-    backdrop-filter: var(--travel-panel-blur, none);
   }
-  .other-panel h2 { margin: 0 0 0.6rem; font-size: 1.05rem; color: var(--travel-panel-heading-text, inherit); }
+  .other-panel h2 {
+    margin: 0 0 0.6rem;
+    padding-bottom: 0.25rem;
+    /* --travel-panel-heading-border lets a theme give this underline its
+       own color, separate from --travel-border-accent (the card borders).
+       Themes that don't define it (everything but Manila, currently) fall
+       straight through to --travel-border-accent, unchanged. */
+    border-bottom: 2px solid var(--travel-panel-heading-border, var(--travel-border-accent, #eee));
+    font-size: 1.05rem;
+    color: var(--travel-panel-heading-text, inherit);
+  }
   .today-locations { display: flex; flex-wrap: wrap; gap: 0.75rem; }
   .today-location-card {
     flex: 1 1 220px;
@@ -419,6 +434,12 @@ layout: default
   .about-fact { display: flex; flex-direction: column; }
   .about-fact-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--travel-secondary-text, #555); }
   .about-fact-value { font-size: 0.92rem; color: var(--travel-body-text, inherit); }
+  /* Same hover treatment as .location-card/.itinerary-item/.checklist-item
+     below — those already highlight on hover via --travel-link-accent-hover,
+     this and the two rules further down (.about-country-good-to-know li,
+     .budget-legend li) were the remaining "items" on this page with no
+     hover feedback at all. */
+  .about-fact:hover .about-fact-value { color: var(--travel-link-accent-hover, var(--travel-link-accent, inherit)); }
   .about-country-loading { font-size: 0.88rem; color: var(--travel-secondary-text, #555); font-style: italic; margin-bottom: 0.75rem; }
   .about-warning {
     font-size: 0.8rem;
@@ -432,6 +453,7 @@ layout: default
   .about-country-good-to-know h3 { margin: 0 0 0.35rem; font-size: 0.95rem; color: var(--travel-panel-heading-text, inherit); }
   .about-country-good-to-know ul { margin: 0; padding-left: 1.1rem; font-size: 0.88rem; color: var(--travel-note-text, #555); }
   .about-country-good-to-know li { margin-bottom: 0.2rem; }
+  .about-country-good-to-know li:hover { color: var(--travel-link-accent-hover, var(--travel-link-accent, inherit)); }
   .about-carousel-controls { display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
   .about-carousel-btn {
     border: 1px solid var(--travel-border-accent, #ccc);
@@ -443,6 +465,10 @@ layout: default
     font-size: 1.1rem;
     line-height: 1;
     cursor: pointer;
+  }
+  .about-carousel-btn:not(:disabled):hover {
+    color: var(--travel-link-accent-hover, var(--travel-link-accent, inherit));
+    border-color: var(--travel-link-accent-hover, var(--travel-border-accent, #ccc));
   }
   .about-carousel-btn:disabled { opacity: 0.4; cursor: default; }
   .about-carousel-dots { display: flex; gap: 0.1rem; }
@@ -575,6 +601,10 @@ layout: default
     border-color: var(--travel-active-toggle-bg, #1a73e8);
     color: var(--travel-active-toggle-text, #fff);
   }
+  /* Same --travel-link-accent-hover used by every other "item" on this
+     page (location cards, checklist rows, About facts, budget legend) —
+     this is what turns text red on hover in Manila specifically. */
+  .budget-toggle-btn:hover { color: var(--travel-link-accent-hover, var(--travel-link-accent, inherit)); }
 
   .budget-currency-blocks { display: flex; }
   .budget-currency-block {
@@ -618,6 +648,7 @@ layout: default
     border-bottom: 1px solid var(--travel-border-accent, #f0f0f0);
   }
   .budget-legend li:last-child { border-bottom: none; }
+  .budget-legend li:hover .budget-legend-label { color: var(--travel-link-accent-hover, var(--travel-link-accent, inherit)); }
   .budget-legend-swatch { width: 0.8rem; height: 0.8rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }
   .budget-legend-label { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .budget-legend-percent { flex: 0 0 auto; width: 3.4rem; text-align: right; color: var(--travel-body-text, #555); font-variant-numeric: tabular-nums; opacity: var(--travel-legend-percent-opacity, 1); }

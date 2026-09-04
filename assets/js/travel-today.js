@@ -14,11 +14,11 @@
 // These are good candidates because they answer "what do I need to know if
 // I stepped outside right now," which a daily high/low doesn't.
 //
-// WMO weather codes are loaded from _data/wmo_codes.yml via window.WMO_CODES
+// WMO weather codes are loaded from _data/travels/wmo_codes.yml via window.WMO_CODES
 // (injected by the travel layout). Other shared helpers (extractTime,
 // aqiCategory, wmoDescription, wmoEmoji) live in travel-shared.js, which is
 // loaded before this file. Country flag emojis are read from the data-flag
-// attribute on each .location-card, set by the travel layout from _data/flags.yml.
+// attribute on each .location-card, set by the travel layout from _data/travels/flags.yml.
 
 (function () {
   function todayDateStr() {

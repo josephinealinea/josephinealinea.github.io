@@ -3,7 +3,7 @@
 // scripts can reference window.TravelShared without duplicating these definitions.
 
 window.TravelShared = (function () {
-  // WMO weather code data is injected from _data/wmo_codes.yml by the travel
+  // WMO weather code data is injected from _data/travels/wmo_codes.yml by the travel
   // layout as window.WMO_CODES. These helpers read from that object.
   function wmoDescription(code) {
     return (window.WMO_CODES && window.WMO_CODES[code]) ? window.WMO_CODES[code].description : "—";
@@ -14,7 +14,7 @@ window.TravelShared = (function () {
   }
 
   // Fallback AQI bands used when window.AQI_BANDS (injected from
-  // _data/aqi_bands.yml by the travel layout) is not available.
+  // _data/travels/aqi_bands.yml by the travel layout) is not available.
   var FALLBACK_AQI_BANDS = [
     { max: 20, label: "Good", emoji: "🟢" },
     { max: 40, label: "Fair", emoji: "🟡" },
@@ -42,7 +42,7 @@ window.TravelShared = (function () {
   }
 
   // Condition note for a forecast card (daily hi/lo context).
-  // Text strings sourced from _data/condition_notes.yml via window.CONDITION_NOTES.
+  // Text strings sourced from _data/travels/condition_notes.yml via window.CONDITION_NOTES.
   function forecastNote(code, hi, lo, rain) {
     var notes = window.CONDITION_NOTES && window.CONDITION_NOTES.forecast;
     var cond = notes && notes.condition;
@@ -73,7 +73,7 @@ window.TravelShared = (function () {
   }
 
   // Condition note for the "right now" today section (live conditions context).
-  // Text strings sourced from _data/condition_notes.yml via window.CONDITION_NOTES.
+  // Text strings sourced from _data/travels/condition_notes.yml via window.CONDITION_NOTES.
   function currentNote(code, temp, wind) {
     var notes = window.CONDITION_NOTES && window.CONDITION_NOTES.current;
     if (!notes) return "";
