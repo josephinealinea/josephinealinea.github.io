@@ -8,6 +8,10 @@ layout: default
     {{ page.start_date | date: "%B %-d, %Y" }} – {{ page.end_date | date: "%B %-d, %Y" }}
   </p>
 
+  <p id="forecast-window-note" class="forecast-window-note" hidden>
+    📅 Forecasts open 16 days before each date — cards below marked "not yet open" will fill in automatically as that date gets closer.
+  </p>
+
   {% if page.content and page.content != "" %}
     <div class="trip-intro">{{ content }}</div>
   {% endif %}
@@ -307,6 +311,12 @@ layout: default
      ───────────────────────────────────────────────────────────────────── */
   .travel-page { max-width: 800px; margin: 0 auto; padding: 1rem 0 3rem; }
   .travel-page .trip-dates { color: var(--travel-primary, #666); margin-top: -0.5rem; }
+  .forecast-window-note {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--travel-note-text, #555);
+    margin: 0.35rem 0 1rem;
+  }
   .trip-day { margin: 1.75rem 0; }
   .trip-day h3 {
     border-bottom: 2px solid var(--travel-border-accent, #eee);
@@ -435,14 +445,19 @@ layout: default
     cursor: pointer;
   }
   .about-carousel-btn:disabled { opacity: 0.4; cursor: default; }
-  .about-carousel-dots { display: flex; gap: 0.4rem; }
+  .about-carousel-dots { display: flex; gap: 0.1rem; }
   .about-carousel-dot {
+    /* Visible dot stays 0.55rem, but padding pads the actual clickable
+       area out to 1.5rem (24px) — the visible mark was a 9px target,
+       under the desktop minimum control size. */
     width: 0.55rem;
     height: 0.55rem;
-    border-radius: 50%;
+    box-sizing: content-box;
+    padding: 0.475rem;
     background: var(--travel-border-accent, #ccc);
+    background-clip: content-box;
+    border-radius: 50%;
     border: none;
-    padding: 0;
     cursor: pointer;
   }
   .about-carousel-dot.is-active { background: var(--travel-active-toggle-bg, #1a73e8); }

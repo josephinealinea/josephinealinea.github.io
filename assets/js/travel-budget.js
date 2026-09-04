@@ -178,14 +178,22 @@
     var block = document.createElement("div");
     block.className = "budget-currency-block";
 
-    var chartWrap = document.createElement("div");
-    chartWrap.className = "budget-chart-wrap";
-    var canvas = document.createElement("canvas");
-    canvas.width = 190;
-    canvas.height = 190;
-    canvas.setAttribute("aria-hidden", "true");
-    chartWrap.appendChild(canvas);
-    block.appendChild(chartWrap);
+    // A pie chart only earns its place when it's comparing parts to a
+    // whole — with a single category it's just a full circle restating
+    // "100%", which the total line and legend already say. Skip the
+    // canvas entirely rather than render a one-slice pie.
+    var showChart = groups.length > 1;
+    var canvas;
+    if (showChart) {
+      var chartWrap = document.createElement("div");
+      chartWrap.className = "budget-chart-wrap";
+      canvas = document.createElement("canvas");
+      canvas.width = 190;
+      canvas.height = 190;
+      canvas.setAttribute("aria-hidden", "true");
+      chartWrap.appendChild(canvas);
+      block.appendChild(chartWrap);
+    }
 
     var details = document.createElement("div");
     details.className = "budget-details";
@@ -227,6 +235,8 @@
     block.appendChild(details);
 
     container.appendChild(block);
+
+    if (!showChart) return;
 
     try {
       var chart = new Chart(canvas, {

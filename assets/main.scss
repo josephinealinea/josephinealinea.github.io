@@ -426,18 +426,35 @@ body {
 
 .skills-content {
   display: grid;
+  // minmax(0, 1fr), not a bare 1fr: an implicit grid track's default min
+  // size is auto (its content's min-content size), so a bare 1fr still
+  // lets a wide descendant (the tech-stack image below, min-width: 600px
+  // on mobile) balloon the column — and with it .skills-category,
+  // .skills-content, and the document itself — past the viewport instead
+  // of being clipped/scrolled inside .skills-image-scroll as intended.
+  grid-template-columns: minmax(0, 1fr);
   gap: 3em;
 }
 
 .skills-category {
   background: rgba(255, 255, 255, 0.1);
-  padding: 0;
+  // The tech-stack image (assets/img/techstack.png) is a flat white
+  // raster, baked-in background and all — it can't pick up theme colors.
+  // Padding keeps this card's own background/border visible as a frame
+  // around it, instead of the image covering the card edge-to-edge and
+  // reading as an unstyled foreign rectangle plastered over the theme.
+  padding: 1.5em;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   text-align: center;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   width: 100%;
+  box-sizing: border-box;
+}
+
+.skills-image-scroll img {
+  border-radius: 8px;
 }
 
 .category-title {

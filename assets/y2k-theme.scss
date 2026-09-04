@@ -657,6 +657,10 @@ body.theme-y2k-theme .skills-section {
 // loads here — same reason as .about-highlights above.
 body.theme-y2k-theme .skills-content {
   display: grid;
+  // See main.scss's matching rule: minmax(0, 1fr) so the tech-stack
+  // image's min-width: 600px can't balloon this grid track (and with it
+  // the whole document) past the viewport on mobile.
+  grid-template-columns: minmax(0, 1fr);
   gap: 3em;
 }
 
@@ -664,7 +668,11 @@ body.theme-y2k-theme .skills-category {
   background: var(--y2k-window-bg);
   @include win98-raised;
   border-radius: 0;
-  padding: 1.5em 0;
+  // Horizontal padding too, not just vertical — otherwise the flat white
+  // tech-stack image still butts straight up against the window's raised
+  // side edges instead of sitting framed inside it.
+  padding: 1.5em;
+  box-sizing: border-box;
   text-align: center;
 }
 

@@ -136,20 +136,89 @@ chatbotInput.addEventListener('keypress', (e) => {
 });
 
 // Initial welcome message
-// On mobile, screen space is tight, so don't auto-open the title bar/header
-// — just leave the avatar icon visible. The welcome message is still queued
-// up so it's there as soon as the visitor taps the icon. On wider (web)
-// screens, keep auto-opening the collapsed header as before.
-function isMobileViewport() {
-  return window.matchMedia('(max-width: 600px)').matches;
-}
-
+// Never auto-open the title bar/header on load — the widget is fixed to a
+// viewport corner, so an auto-opened header (~300px wide) has no way to
+// know what page content it's about to land on top of. Leave just the
+// avatar icon visible; the welcome message is queued up so it's there as
+// soon as the visitor taps the icon themselves.
 setTimeout(() => {
-  if (!isMobileViewport()) {
-    chatbotWindow.style.display = 'block';
-    chatbotWindow.classList.add('collapsed');
-    chatbotIcon.setAttribute('aria-expanded', 'true');
-  }
   addMessage("{{ site.bot_name | escape }}", "👋 Hi! I’m {{ site.bot_name | escape }}. Ask me {{ site.nickname | escape }}'s experiences, skills, projects, or services!");
 }, 1000);
+
+// The icon itself is still `position: fixed` to the corner of the
+// viewport, which is what "floating" means here — that part is by design
+// and stays. The problem was never that it floats; it's that a fixed
+// corner has no idea what page content will end up underneath it. A
+// hero card, an article paragraph, a itinerary card — any of them can
+// happen to run right up against that corner, at any scroll position,
+// on any page, and the icon (fully opaque) just sits on top and hides
+// whatever's there.
+//
+// Rather than guess a fixed padding reservation per page/section (fragile
+// — it only protects the one spot you happened to test), sample what's
+// actually under the icon's rect and step the icon up just far enough to
+// clear it. Runs on load and on resize only — i.e. it fixes the page's
+// *resting* state, which is what people actually see first. It
+// deliberately does NOT re-run on every scroll: on a long, continuous
+// article the text column fills the full viewport height at almost any
+// scroll position, so a "keep climbing until clear" loop has nowhere to
+// converge and will walk the icon straight off the top of the screen —
+// worse than the overlap it's trying to avoid. A floating widget briefly
+// passing behind body text while someone is actively scrolling past it
+// is normal (every chat-widget vendor does this); an icon that's already
+// unreachable before anyone has scrolled is the actual bug being fixed.
+const textNodeSelector = 'p, li, h1, h2, h3, h4, h5, dt, dd';
+const mainContent = document.querySelector('main');
+
+function findCollisionMinTop(iconRect) {
+  // elementFromPoint() can't be used here — the icon is opaque and on
+  // top, so a point sample at its own coordinates just returns the icon
+  // itself, never what it's covering. Test real geometry instead: does
+  // any text-bearing element's box actually intersect the icon's box?
+  let minTop = Infinity;
+  for (const el of mainContent.querySelectorAll(textNodeSelector)) {
+    if (!el.textContent.trim()) continue;
+    const r = el.getBoundingClientRect();
+    const intersects = r.left < iconRect.right && r.right > iconRect.left &&
+                        r.top < iconRect.bottom && r.bottom > iconRect.top;
+    if (intersects && r.top < minTop) minTop = r.top;
+  }
+  return minTop;
+}
+
+function clearTextUnderIcon() {
+  if (!mainContent) return;
+  chatbotIcon.style.bottom = '';
+
+  // Stepping the icon up can put it right into the next paragraph up
+  // (short lines, tight leading), so re-check from its new position
+  // rather than assuming one lift is enough. Converges in a couple of
+  // passes in practice; capped so a pathological page can't loop forever.
+  // Also hard-capped so the icon can never climb further than roughly the
+  // upper third of the screen — beyond that it's no longer a believable
+  // "floating corner" position anyway, and it must never leave the
+  // viewport entirely.
+  const iconHeight = chatbotIcon.getBoundingClientRect().height;
+  const maxOffset = Math.round(window.innerHeight * 0.66 - iconHeight);
+  let previousOffset = -1;
+  for (let pass = 0; pass < 6; pass++) {
+    const iconRect = chatbotIcon.getBoundingClientRect();
+    const minTop = findCollisionMinTop(iconRect);
+    if (minTop === Infinity) break;
+
+    const bottomOffset = Math.min(maxOffset, Math.max(20, Math.round(window.innerHeight - minTop) + 16));
+    if (bottomOffset === previousOffset) break;
+    chatbotIcon.style.bottom = bottomOffset + 'px';
+    previousOffset = bottomOffset;
+  }
+}
+
+let clearTextTimer;
+function scheduleClearTextCheck(delay) {
+  clearTimeout(clearTextTimer);
+  clearTextTimer = setTimeout(clearTextUnderIcon, delay);
+}
+
+window.addEventListener('load', () => scheduleClearTextCheck(50));
+window.addEventListener('resize', () => scheduleClearTextCheck(150));
 </script>

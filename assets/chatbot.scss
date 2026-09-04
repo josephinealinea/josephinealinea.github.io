@@ -1,6 +1,29 @@
 ---
 ---
 
+/* The Expertise section's tech-logo image is intentionally wider than a
+   mobile viewport (min-width: 600px in main.scss's mobile block, so the
+   ~40 logos stay legible) and scrolls horizontally inside its own
+   .skills-image-scroll wrapper. That's fine on a fresh load — but after a
+   theme switch (any sequence ending on a stylesheet whose mobile rules
+   re-apply that min-width) forces a layout recalculation, Chrome's mobile
+   emulation (exactly what DevTools' Device Toolbar uses, CDP
+   Emulation.setDeviceMetricsOverride under the hood) can respond to that
+   post-load overflow by widening the whole layout viewport to fit it
+   instead of clipping it — confirmed via document.documentElement.
+   scrollWidth jumping to ~681px against a 390px visualViewport.width.
+   Every position:fixed element on the page (the theme selector, the
+   chatbot icon) is positioned relative to that viewport, so they land
+   outside the visible screen once it widens — this is what "the theme
+   button disappears after switching themes on mobile" actually was.
+   overflow-x: hidden here is the standard guard: no single wide
+   descendant can ever force the document itself to grow past the real
+   viewport width, regardless of which theme's mobile rules are active or
+   what sequence of switches got there. */
+html, body {
+  overflow-x: hidden;
+}
+
 /* Chatbot icon */
 #chatbot-icon {
   position: fixed;
@@ -130,6 +153,16 @@
     padding-bottom: 6.5rem !important;
   }
 
+  /* NOTE: the same "icon covers the tail of a section" problem exists on
+     .welcome-section (the hero card is close to full viewport height, so
+     its last line can sit under the icon on a fresh, unscrolled mobile
+     load). Unlike .site-footer, every theme already declares its own
+     mobile padding for .welcome-section (main.scss, retro-game.scss,
+     y2k-theme.scss, manila-theme.scss), each loaded after this file or at
+     equal/higher specificity — so a rule added here would just lose the
+     cascade instead of winning it like the footer rule above does. Fixed
+     at the source in each of those four files' own mobile block instead. */
+
   /* Minima's own mobile nav (the hamburger .trigger dropdown, shown below
      this $on-palm breakpoint) stacks .page-link one per row via its default
      `display: block`. main.scss and retro-game.scss both override
@@ -185,4 +218,19 @@
     width: 44px !important;
     padding-top: 18px !important;
   }
+}
+
+/* ── Desktop nav width ───────────────────────────────────────────────
+   Minima's default .wrapper caps at ~740px — sized for a reading column,
+   too narrow for this site's 7-item nav bar, which wraps to two rows on
+   every desktop width as a result (reproduces on all four themes: Minima
+   inherits the 740px cap from the imported minima gem styles, and
+   Retro-Game/Y2K/Manila's headers don't set a wrapper width of their own,
+   so without this they fall back to whatever the browser/other rules
+   leave them, which isn't enough room either). The header holds
+   navigation, not prose, so it gets more room here rather than trimming
+   links — this file so the fix survives every theme, not just the one
+   that happened to be active when it was written. */
+.site-header .wrapper {
+  max-width: 1040px;
 }

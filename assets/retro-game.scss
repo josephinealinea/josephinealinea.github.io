@@ -622,7 +622,7 @@ body.theme-retro-game .contact-item:hover {
 
 // Welcome Section for Retro-Game Theme
 body.theme-retro-game .welcome-section {
-  background: linear-gradient(135deg, var(--retro-bg) 0%, var(--retro-shadow) 100%);
+  background: var(--retro-bg);
   color: var(--retro-text);
   text-align: center;
   position: relative;
@@ -671,7 +671,7 @@ body.theme-retro-game .welcome-intro {
 body.theme-retro-game .mission-statement {
   margin: 2em 0;
   padding: 1.5em;
-  background: rgba(0, 255, 0, 0.1);
+  background: linear-gradient(135deg, rgba(0, 255, 0, 0.05) 0%, rgba(0, 255, 0, 0.18) 100%);
   border-radius: 12px;
   backdrop-filter: blur(10px);
   border: 2px solid var(--retro-primary);
@@ -978,6 +978,10 @@ body.theme-retro-game .skills-section {
 // Skills Layout (same as minima)
 body.theme-retro-game .skills-content {
   display: grid;
+  // See main.scss's matching rule: minmax(0, 1fr) so the tech-stack
+  // image's min-width: 600px can't balloon this grid track (and with it
+  // the whole document) past the viewport on mobile.
+  grid-template-columns: minmax(0, 1fr);
   gap: 3em;
 }
 
@@ -985,9 +989,13 @@ body.theme-retro-game .skills-category {
   background: var(--retro-bg);
   border: 2px solid var(--retro-border);
   box-shadow: 0 0 15px var(--retro-primary);
-  padding: 0;
+  // The tech-stack image is a flat white raster and can't pick up theme
+  // colors; padding keeps the neon border visible as a frame around it
+  // instead of the image butting straight up against it.
+  padding: 1.5em;
   border-radius: 12px;
   text-align: center;
+  box-sizing: border-box;
 }
 
 body.theme-retro-game .skills-category {

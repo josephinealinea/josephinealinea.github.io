@@ -396,6 +396,17 @@ body.theme-manila-theme .about-bio-link {
   padding-top: 1.5em;
 }
 
+// .section-content (wraps the inner content of every homepage section —
+// Welcome, About, Skills, Contact) gets 0 2em of horizontal padding in
+// main.scss, which is what keeps things like the mission box inset from
+// the edges on Minima. This theme never redefined it, so on Manila that
+// padding is just absent — .mission-statement's own margin is vertical
+// only (2em 0), so with no horizontal padding anywhere above it either,
+// it sits flush against the section edges instead of inset like Minima.
+body.theme-manila-theme .section-content {
+  padding: 0 2em;
+}
+
 // Welcome Section — the hero fades from flag blue into flag red, a softer
 // cartoonish blend of the flag's own colors rather than a hard stripe. Text
 // sits mostly over the blue/bright-blue two-thirds; both endpoints (and the
@@ -685,6 +696,10 @@ body.theme-manila-theme .skills-section {
 // loads here — same reason as .post-grid/.about-content above.
 body.theme-manila-theme .skills-content {
   display: grid;
+  // See main.scss's matching rule: minmax(0, 1fr) so the tech-stack
+  // image's min-width: 600px can't balloon this grid track (and with it
+  // the whole document) past the viewport on mobile.
+  grid-template-columns: minmax(0, 1fr);
   gap: 3em;
 }
 
@@ -693,7 +708,11 @@ body.theme-manila-theme .skills-category {
   border: 2px solid var(--manila-gold);
   border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0, 56, 168, 0.1);
-  padding: 1.5em 0;
+  // Horizontal padding too, not just vertical — otherwise the flat white
+  // tech-stack image still touches the gold border on both sides instead
+  // of sitting framed inside the card.
+  padding: 1.5em;
+  box-sizing: border-box;
   text-align: center;
 }
 

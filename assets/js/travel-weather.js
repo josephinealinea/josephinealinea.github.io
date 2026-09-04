@@ -203,7 +203,14 @@
     }
 
     if (diff > 15) {
-      renderMessage(weatherEl, "📅 Forecast opens 16 days before this date");
+      // Full explanation lives once, at the top of the page (see
+      // travel.html's #forecast-window-note) — repeating the whole
+      // sentence on every not-yet-open card, sometimes six times on one
+      // itinerary, was pure noise. Keep it here too as a title tooltip so
+      // the reason is still one hover away on each card.
+      weatherEl.innerHTML = "<div class=\"weather-line\" title=\"Forecast opens 16 days before this date\">📅 Forecast not yet open</div>";
+      var note = document.getElementById("forecast-window-note");
+      if (note) note.hidden = false;
       return;
     }
 
