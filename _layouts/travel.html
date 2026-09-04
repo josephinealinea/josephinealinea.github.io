@@ -8,10 +8,6 @@ layout: default
     {{ page.start_date | date: "%B %-d, %Y" }} – {{ page.end_date | date: "%B %-d, %Y" }}
   </p>
 
-  <p id="forecast-window-note" class="forecast-window-note" hidden>
-    📅 Forecasts open 16 days before each date — cards below marked "not yet open" will fill in automatically as that date gets closer.
-  </p>
-
   {% if page.content and page.content != "" %}
     <div class="trip-intro">{{ content }}</div>
   {% endif %}

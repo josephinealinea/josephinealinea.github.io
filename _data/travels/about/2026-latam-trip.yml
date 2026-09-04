@@ -5,7 +5,7 @@ home_cities: ["tallinn", "singapore"]
 
 countries:
   - country: peru
-    cities: ["cusco"]
+    cities: ["cusco", "lima"]
     info:
       - "Aguas Calientes is about 2,040 m (6,690 ft)"
       - "Machu Picchu is about 2,430 m (7,970 ft)"
