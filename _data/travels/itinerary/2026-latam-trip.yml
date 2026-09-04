@@ -9,6 +9,26 @@ trip_name: "LATAM Trip 2026"
 
 days:
 
+  - date: 2026-10-17
+    items:
+      - category: transport
+        type: flight
+        name: "Singapore Airlines (SQ 308)"
+        travel:
+          - name: "SIN"
+            link: "https://www.google.com/maps/search/?api=1&query=Singapore+Changi+Airport"
+            time: "09:00"
+          - name: "LHR"
+            link: "https://maps.app.goo.gl/TbnXPdmLjBYgqrw98"
+            time: "15:45"
+
+  - date: 2026-10-22
+    items:
+      - category: lodging
+        type: hotel
+        name: "Andenia Boutique Hotel"
+        link: "https://maps.app.goo.gl/TRiPdZeygSJMGu2r7"
+
   - date: 2026-10-23
     items:
       - category: transport
@@ -21,6 +41,14 @@ days:
           - name: "LAX"
             link: "https://www.google.com/maps/search/?api=1&query=Los+Angeles+International+Airport"
             time: "21:50"
+      - category: lodging
+        type: hotel
+        name: "Hotel Carmel"
+        link: "https://maps.app.goo.gl/nkbUKvqgLw5HkprBA"
+      - category: lodging
+        type: hotel
+        name: "Andenia Boutique Hotel"
+        link: "https://maps.app.goo.gl/TRiPdZeygSJMGu2r7"
 
   - date: 2026-10-24
     items:
@@ -54,6 +82,10 @@ days:
           - name: "LIM"
             link: "https://www.google.com/maps/search/?api=1&query=Jorge+Ch%C3%A1vez+International+Airport+Lima"
             time: "08:05, 25 Oct"
+      - category: lodging
+        type: hotel
+        name: "Andenia Boutique Hotel"
+        link: "https://maps.app.goo.gl/TRiPdZeygSJMGu2r7"
 
   - date: 2026-10-25
     items:
@@ -251,6 +283,10 @@ days:
         type: water
         name: "Praia do Arpoador"
         link: "https://maps.app.goo.gl/RMh4iRJpncByhQWbA"
+      - category: lodging
+        type: hotel
+        name: "Hilton Garden Inn Lima Miraflores"
+        link: "https://maps.app.goo.gl/vjcb3mcHNEDRP4YS6"
 
   - date: 2026-11-05
     items:
@@ -262,6 +298,10 @@ days:
         type: hike
         name: "Rio Full day tour"
         link: "https://maps.app.goo.gl/ixMeN47tvhJwvY9w8"
+      - category: lodging
+        type: hotel
+        name: "Hilton Garden Inn Lima Miraflores"
+        link: "https://maps.app.goo.gl/vjcb3mcHNEDRP4YS6"
 
   - date: 2026-11-06
     items:
@@ -312,6 +352,16 @@ days:
           - name: "SIN"
             link: "https://www.google.com/maps/search/?api=1&query=Singapore+Changi+Airport"
             time: "07:55, 9 Nov"
+      - category: transport
+        type: flight
+        name: "Singapore Airlines (SQ 319)"
+        travel:
+          - name: "LHR"
+            link: "https://maps.app.goo.gl/TbnXPdmLjBYgqrw98"
+            time: "20:35"
+          - name: "SIN"
+            link: "https://www.google.com/maps/search/?api=1&query=Singapore+Changi+Airport"
+            time: "17:45, 8 Nov"
 
   - date: 2026-11-08
     items:

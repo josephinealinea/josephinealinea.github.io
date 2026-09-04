@@ -7,15 +7,43 @@ start_date: 2026-10-24
 end_date: 2026-11-08
 
 days:
+  - date: 2026-10-17
+    locations:
+      - { name: "Singapore", country: "Singapore", lat: 1.2902, lon: 103.8519 }
+      - { name: "London", country: "United Kingdom", lat: 51.5074, lon: 0.1278 }
+
+  - date: 2026-10-18
+    locations:
+      - { name: "London", country: "United Kingdom", lat: 51.5074, lon: 0.1278 }
+
+  - date: 2026-10-19
+    locations:
+      - { name: "London", country: "United Kingdom", lat: 51.5074, lon: 0.1278 }
+
+  - date: 2026-10-20
+    locations:
+      - { name: "Lima", country: "Peru", lat: -12.046374, lon: -77.042793 }
+
+  - date: 2026-10-21
+    locations:
+      - { name: "Lima", country: "Peru", lat: -12.046374, lon: -77.042793 }
+
+  - date: 2026-10-22
+    locations:
+      - { name: "Singapore", country: "Singapore", lat: 1.2902, lon: 103.8519 }
+      - { name: "Sacred Valley", country: "Peru", lat: -13.32, lon: -72.06 }
+
   - date: 2026-10-23
     locations:
       - { name: "Singapore", country: "Singapore", lat: 1.2902, lon: 103.8519 }
+      - { name: "Sacred Valley", country: "Peru", lat: -13.32, lon: -72.06 }
 
   - date: 2026-10-24
     locations:
       - { name: "Tallinn", country: "Estonia", lat: 59.4370, lon: 24.7536 }
       - { name: "Singapore", country: "Singapore", lat: 1.2902, lon: 103.8519 }
       - { name: "Los Angeles", country: "United States", lat: 34.0522, lon: -118.2437 }
+      - { name: "Sacred Valley", country: "Peru", lat: -13.32, lon: -72.06 }
 
   - date: 2026-10-25
     locations:
@@ -36,14 +64,21 @@ days:
   - date: 2026-10-28
     locations:
       - { name: "Cusco", country: "Peru", lat: -13.5294, lon: -71.9850 }
+      - { name: "Sacred Valley", country: "Peru", lat: -13.32, lon: -72.06 }
+      - { name: "Pisac", country: "Peru", lat: -13.421, lon: -71.8505 }
+      - { name: "Salt Mines Maras", country: "Peru", lat: -13.2994, lon: -72.1564 }
+      - { name: "Salt Mines Moray", country: "Peru", lat: -13.30028, lon: -72.15556 }
+      - { name: "Ollantaytambo", country: "Peru", lat: -13.2581, lon: -72.2633 }
 
   - date: 2026-10-29
     locations:
       - { name: "Cusco", country: "Peru", lat: -13.5294, lon: -71.9850 }
+      - { name: "Rainbow Mountain", country: "Peru", lat: -13.870227, lon: -71.302948 }
 
   - date: 2026-10-30
     locations:
       - { name: "Cusco", country: "Peru", lat: -13.5294, lon: -71.9850 }
+      - { name: "Humantay Lake", country: "Peru", lat: -13.3794, lon: -72.5844 }
 
   - date: 2026-10-31
     locations:
@@ -58,6 +93,7 @@ days:
     locations:
       - { name: "Uyuni", country: "Bolivia", lat: -20.4597, lon: -66.8250 }
       - { name: "La Paz", country: "Bolivia", lat: -16.4897, lon: -68.1193 }
+      - { name: "Valle de la Luna", country: "Bolivia", lat: -16.5678, lon: -68.0931 }
 
   - date: 2026-11-03
     locations:
@@ -67,23 +103,29 @@ days:
     locations:
       - { name: "La Paz", country: "Bolivia", lat: -16.4897, lon: -68.1193 }
       - { name: "Rio de Janeiro", country: "Brazil", lat: -22.9068, lon: -43.1729 }
+      - { name: "Lima", country: "Peru", lat: -12.046374, lon: -77.042793 }
 
   - date: 2026-11-05
     locations:
       - { name: "Rio de Janeiro", country: "Brazil", lat: -22.9068, lon: -43.1729 }
+      - { name: "Lima", country: "Peru", lat: -12.046374, lon: -77.042793 }
+      - { name: "London", country: "United Kingdom", lat: 51.5074, lon: 0.1278 }
 
   - date: 2026-11-06
     locations:
       - { name: "Rio de Janeiro", country: "Brazil", lat: -22.9068, lon: -43.1729 }
       - { name: "Los Angeles", country: "United States", lat: 34.0522, lon: -118.2437 }
+      - { name: "London", country: "United Kingdom", lat: 51.5074, lon: 0.1278 }
 
   - date: 2026-11-07
     locations:
       - { name: "Los Angeles", country: "United States", lat: 34.0522, lon: -118.2437 }
+      - { name: "London", country: "United Kingdom", lat: 51.5074, lon: 0.1278 }
 
   - date: 2026-11-08
     locations:
       - { name: "Tallinn", country: "Estonia", lat: 59.4370, lon: 24.7536 }
+      - { name: "Singapore", country: "Singapore", lat: 1.2902, lon: 103.8519 }
 
   - date: 2026-11-09
     locations:

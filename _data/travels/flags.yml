@@ -1,4 +1,4 @@
-# Maps the "country" value used in _data/travels/weather/*.yml to a flag emoji.
+# Maps the "country" value used in _data/travels/locations/*.yml to a flag emoji.
 # Rendered before the city name on travel pages (e.g. "🇪🇪 Tallinn, Estonia").
 # Add an entry here any time a new country shows up in a trip data file.
 # Kept in alphabetical order by country name.

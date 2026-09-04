@@ -49,7 +49,7 @@ layout: default
   {% assign about = site.data.travels.about[page.trip_key] %}
   {% if about %}
   <div id="about-section" class="other-panel" data-panel="about">
-    <h2>🌎 About These Countries 🧭</h2>
+    <h2>🌎 About Trip Locations 🧭</h2>
     <div class="about-carousel">
       <div class="about-carousel-track"></div>
       <div class="about-carousel-controls">
@@ -96,7 +96,7 @@ layout: default
     <div class="today-locations"></div>
   </div>
 
-  {% assign trip = site.data.travels.weather[page.trip_key] %}
+  {% assign trip = site.data.travels.locations[page.trip_key] %}
   {% assign itinerary = site.data.travels.itinerary[page.trip_key] %}
   <div class="trip-days">
     {% for day in trip.days %}
@@ -241,11 +241,18 @@ layout: default
     {% for c in about.countries %}
     {
       country: "{{ c.country | escape }}",
+      cities: [{% for city in c.cities %}"{{ city | escape }}"{% unless forloop.last %}, {% endunless %}{% endfor %}],
       info: [{% for line in c.info %}"{{ line | escape }}"{% unless forloop.last %}, {% endunless %}{% endfor %}]
     }{% unless forloop.last %},{% endunless %}
     {% endfor %}
     {% endif %}
   ];
+
+  // Drives the "Home Time Now" fact — lets a trip name several "back home"
+  // reference cities (e.g. LATAM 2026: Tallinn AND Singapore). Sourced
+  // from about.yml's top-level "home_cities" list; a trip that doesn't set
+  // one simply shows no "Home Time Now" fact.
+  window.HOME_CITIES = [{% if about %}{% for city in about.home_cities %}"{{ city | escape }}"{% unless forloop.last %}, {% endunless %}{% endfor %}{% endif %}];
 
   // Sourced from _data/travels/budget/<trip-key>.yml — edit there to add/update budget line items.
   window.BUDGET_DATA = [
@@ -279,10 +286,20 @@ layout: default
     {% endfor %}
     {% endif %}
   };
+
+  // Sourced from _data/travels/emergency_numbers.yml — edit there to add/update.
+  window.EMERGENCY_NUMBERS = {
+    {% for item in site.data.travels.emergency_numbers %}
+    "{{ item[0] | escape }}": "{{ item[1] | escape }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  };
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="{{ '/assets/js/travel-panel-toggle.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-shared.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/travel-map.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-about.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-countdown.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-weather.js' | relative_url }}"></script>
@@ -418,7 +435,7 @@ layout: default
   .about-carousel { display: flex; flex-direction: column; gap: 0.75rem; }
   .about-country-card {
     display: none;
-    height: 30rem;
+    height: 35rem;
     overflow-y: auto;
     border: 1px solid var(--travel-border-accent, #ddd);
     border-radius: var(--travel-card-radius, 8px);
@@ -427,6 +444,27 @@ layout: default
     box-shadow: var(--travel-card-shadow, none);
   }
   .about-country-card.is-active { display: block; }
+  /* The map slide (travel-map.js) reuses .about-country-card for its
+     border/background/height so it matches the per-country cards exactly,
+     then switches to flex layout so the map fills whatever height is left
+     under the header instead of needing a hand-measured px value. */
+  .about-map-card.about-country-card {
+    display: none;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .about-map-card.about-country-card.is-active { display: flex; }
+  .about-map-card .about-country-header { flex: 0 0 auto; margin-bottom: 0; }
+  .about-map {
+    flex: 1 1 auto;
+    min-height: 0;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  /* Leaflet adds the leaflet-container class to .about-map itself (it's
+     not a wrapped child) — this just guarantees it fills the flex slot
+     .about-map is already sized to above. */
+  .about-map.leaflet-container { width: 100%; height: 100%; }
   .about-country-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.7rem; }
   .about-country-flag { font-size: 1.8rem; line-height: 1; }
   .about-country-name { font-size: 1.15rem; font-weight: 700; color: var(--travel-panel-heading-text, inherit); }

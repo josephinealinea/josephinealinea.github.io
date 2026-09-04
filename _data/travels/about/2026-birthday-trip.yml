@@ -1,6 +1,8 @@
 
 trip_name: "Birthday Trip 2026"
 
+home_cities: ["tallinn"]
+
 countries:
   - country: hungary
   - country: morocco

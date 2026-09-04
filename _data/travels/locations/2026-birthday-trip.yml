@@ -1,7 +1,7 @@
 # Birthday Trip 2026 — already in the past, so no live weather is shown
 # (the layout/JS auto-detects past dates and just marks them "completed").
 #
-# Same format as _data/travels/weather/2026-summer-europe-trip.yml: one "- date:"
+# Same format as _data/travels/locations/2026-summer-europe-trip.yml: one "- date:"
 # block per day, with one or more locations (name, country, lat, lon).
 
 trip_name: "Birthday Trip 2026"

@@ -131,7 +131,6 @@ items:
     date: 2026-08-28
     status: pre-booked
 
-
   - description: "Salt Flats tour"
     category: activities
     amount: 73.43
@@ -180,3 +179,10 @@ items:
     date: 2026-08-28
     status: pre-booked
 
+  - description: "Saily Global 5GB eSim"
+    category: others
+    amount: 30.49
+    currency: "EUR"
+    countries: ["United States", "Peru", "Bolivia", "Brazil"]
+    date: 2026-09-04
+    status: pre-booked

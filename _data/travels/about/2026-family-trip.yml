@@ -1,6 +1,8 @@
 
 trip_name: "Family Trip 2026"
 
+home_cities: ["tallinn"]
+
 countries:
   - country: philippines
 

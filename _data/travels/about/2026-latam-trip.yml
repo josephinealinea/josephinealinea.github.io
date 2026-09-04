@@ -1,8 +1,11 @@
 
 trip_name: "LATAM Trip 2026"
 
+home_cities: ["tallinn", "singapore"]
+
 countries:
   - country: peru
+    cities: ["cusco"]
     info:
       - "Aguas Calientes is about 2,040 m (6,690 ft)"
       - "Machu Picchu is about 2,430 m (7,970 ft)"
@@ -13,6 +16,7 @@ countries:
       - "Taxi/tuk-tuk can be aranged via hotel in Ollantaytambo"
 
   - country: bolivia
+    cities: ["la paz", "uyuni"]
     info:
       - "La Paz is about 3,640 m (11,940 ft)"
       - "Uyuni is about 3,656 m (11,995 ft)"
@@ -21,6 +25,7 @@ countries:
       - "Regular taxi available in Uyuni"
 
   - country: brazil
+    cities: [ "rio de janeiro" ]
     info:
       - "Rio de Janeiro is about 0-20 m (0-65 ft)"
       - "Sugarloaf Mountain summit is about 396 m (1,299 ft)"
@@ -28,5 +33,6 @@ countries:
       - "Uber/99 are available in Rio de Janeiro. Regular taxis are also available"
 
   - country: united states of america
+    cities: [ "los angeles" ]
     info:
       - "Uber/Lyft are widely used"

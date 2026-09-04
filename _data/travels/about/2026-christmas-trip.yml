@@ -1,6 +1,9 @@
 
 trip_name: "Christmas Trip 2026"
 
+home_cities: ["tallinn"]
+
 countries:
   - country: luxembourg
+    cities: ["luxembourg"]
 

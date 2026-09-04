@@ -1,5 +1,5 @@
 # Anniversary Trip 2026 — itinerary data
-# Same format as _data/travels/weather/2026-summer-europe-trip.yml: one "- date:"
+# Same format as _data/travels/locations/2026-summer-europe-trip.yml: one "- date:"
 # block per day, with one or more locations (name, country, lat, lon).
 
 trip_name: "Anniversary Trip 2026"

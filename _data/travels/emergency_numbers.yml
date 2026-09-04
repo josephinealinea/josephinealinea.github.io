@@ -1,0 +1,34 @@
+# General emergency contact number per country, shown as a fact on that
+# country's card in the About panel (replaces the old "Top-Level Domain"
+# fact — see travel-about.js). Only needs an entry for countries that
+# actually show up in a trip's about.yml — add one here whenever a new
+# country appears in a trip.
+#
+# Where a country doesn't have one unified number (police/fire/ambulance
+# are separate lines), this is the single most broadly useful number for
+# a traveler to know — usually the police line, or whichever service a
+# 911/112-style operator routes everything through. These are general
+# guidance, not a substitute for checking current official advice before
+# a trip: verify before you travel, especially for the countries without
+# a single unified number (currently: Bolivia, Brazil, Morocco, Peru).
+#
+# Keys match the (lowercase) "country" value used in _data/travels/about/
+# <trip-key>.yml — NOT the Title Case keys in flags.yml, which is a
+# different lookup keyed off locations.yml instead.
+
+austria: "112"
+bolivia: "118"
+brazil: "190"
+france: "112"
+hungary: "112"
+italy: "112"
+liechtenstein: "112"
+luxembourg: "112"
+malta: "112"
+monaco: "112"
+morocco: "15"
+peru: "105"
+philippines: "911"
+spain: "112"
+switzerland: "112"
+united states of america: "911"

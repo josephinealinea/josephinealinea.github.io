@@ -1,12 +1,20 @@
 
 trip_name: "Summer Europe Trip 2026"
 
+home_cities: ["tallinn"]
+
 countries:
   - country: switzerland
+    cities: ["zurich"]
   - country: liechtenstein
   - country: austria
+    cities: ["innsbruck"]
   - country: italy
+    cities: ["sicilly"]
   - country: malta
+    cities: ["valletta"]
   - country: france
+    cities: ["nice", "menton"]
   - country: monaco
+    cities: ["monaco"]
 
