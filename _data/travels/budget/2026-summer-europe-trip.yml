@@ -200,7 +200,7 @@ items:
     category: activities
     amount: 81.25
     currency: "EUR"
-    countries: ["France"]
+    countries: ["France", "Monaco"]
     status: confirmed
 
   - description: "Nice shopping"
@@ -208,6 +208,13 @@ items:
     amount: 81.32
     currency: "EUR"
     countries: ["France"]
+    status: confirmed
+
+  - description: "Monaco souvenir"
+    category: shopping
+    amount: 6
+    currency: "EUR"
+    countries: ["Monaco"]
     status: confirmed
 
   - description: "Nice transfer"
