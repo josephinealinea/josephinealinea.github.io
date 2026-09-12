@@ -91,6 +91,23 @@ items:
     date: 2026-09-02
     status: confirmed
 
+  - description: "Saily Global 5GB eSim"
+    category: others
+    amount: 30.49
+    currency: "EUR"
+    countries: ["United States", "Peru", "Bolivia", "Brazil"]
+    date: 2026-09-04
+    status: pre-booked
+
+  - description: "Global Travel insurance"
+    category: others
+    amount: 70
+    currency: "EUR"
+    countries: ["United States", "Peru", "Bolivia", "Brazil"]
+    date: 2026-09-10
+    status: pre-booked
+
+## Pre-booked
   - description: "Accommodation in Ollantaytambo"
     category: lodging
     amount: 28.70
@@ -155,6 +172,7 @@ items:
     date: 2026-08-28
     status: pre-booked
 
+## Book by others
   - description: "Accommodation in Aguas Calientes - Inkti Punktu"
     category: lodging
     amount: 36
@@ -171,18 +189,18 @@ items:
     date: 2026-08-28
     status: pre-booked
 
+  - description: "Accommodation (day-use) in LA"
+    category: lodging
+    amount: 45.96
+    currency: "USD"
+    countries: ["United States"]
+    date: 2026-09-10
+    status: pre-booked
+
   - description: "Accommodation in Uyuni"
     category: lodging
     amount: 51
     currency: "SGD"
     countries: ["Bolivia"]
     date: 2026-08-28
-    status: pre-booked
-
-  - description: "Saily Global 5GB eSim"
-    category: others
-    amount: 30.49
-    currency: "EUR"
-    countries: ["United States", "Peru", "Bolivia", "Brazil"]
-    date: 2026-09-04
     status: pre-booked

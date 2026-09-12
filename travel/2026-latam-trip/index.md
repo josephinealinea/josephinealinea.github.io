@@ -9,6 +9,6 @@ permalink: /travel/2026-latam-trip/
 
 🇺🇸 🇵🇪 🇧🇴 🇧🇷
 
-Tallinn → Los Angeles → Cusco → Ollantaytambo → Aguas Calientes (Machu Picchu) → La Paz → Uyuni (Salt Flats) → Rio de Janeiro → Los Angeles → back to Tallinn.
+Tallinn & Singapore → Los Angeles → Cusco → Ollantaytambo → Aguas Calientes (Machu Picchu) → La Paz → Uyuni (Salt Flats) → Rio de Janeiro → Los Angeles → back to Tallinn & Singapore.
 
 🔖 Bookmark this page — weather updates live each time you open it. ^_^

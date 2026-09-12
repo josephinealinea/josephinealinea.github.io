@@ -7,31 +7,30 @@ start_date: 2026-10-24
 end_date: 2026-11-08
 
 days:
-  - date: 2026-10-17
-    locations:
-      - { name: "Singapore", country: "Singapore", lat: 1.2902, lon: 103.8519 }
-      - { name: "London", country: "United Kingdom", lat: 51.5074, lon: 0.1278 }
+#  - date: 2026-10-17
+#    locations:
+#      - { name: "Singapore", country: "Singapore", lat: 1.2902, lon: 103.8519 }
+#      - { name: "London", country: "United Kingdom", lat: 51.5074, lon: 0.1278 }
 
-  - date: 2026-10-18
-    locations:
-      - { name: "London", country: "United Kingdom", lat: 51.5074, lon: 0.1278 }
+#  - date: 2026-10-18
+#    locations:
+#      - { name: "London", country: "United Kingdom", lat: 51.5074, lon: 0.1278 }
 
-  - date: 2026-10-19
-    locations:
-      - { name: "London", country: "United Kingdom", lat: 51.5074, lon: 0.1278 }
+#  - date: 2026-10-19
+#    locations:
+#      - { name: "London", country: "United Kingdom", lat: 51.5074, lon: 0.1278 }
 
-  - date: 2026-10-20
-    locations:
-      - { name: "Lima", country: "Peru", lat: -12.046374, lon: -77.042793 }
+#  - date: 2026-10-20
+#    locations:
+#      - { name: "Lima", country: "Peru", lat: -12.046374, lon: -77.042793 }
 
-  - date: 2026-10-21
-    locations:
-      - { name: "Lima", country: "Peru", lat: -12.046374, lon: -77.042793 }
+#  - date: 2026-10-21
+#    locations:
+#      - { name: "Lima", country: "Peru", lat: -12.046374, lon: -77.042793 }
 
-  - date: 2026-10-22
-    locations:
-      - { name: "Singapore", country: "Singapore", lat: 1.2902, lon: 103.8519 }
-      - { name: "Sacred Valley", country: "Peru", lat: -13.32, lon: -72.06 }
+#  - date: 2026-10-22
+#    locations:
+#      - { name: "Sacred Valley", country: "Peru", lat: -13.32, lon: -72.06 }
 
   - date: 2026-10-23
     locations:

@@ -9,25 +9,25 @@ trip_name: "LATAM Trip 2026"
 
 days:
 
-  - date: 2026-10-17
-    items:
-      - category: transport
-        type: flight
-        name: "Singapore Airlines (SQ 308)"
-        travel:
-          - name: "SIN"
-            link: "https://www.google.com/maps/search/?api=1&query=Singapore+Changi+Airport"
-            time: "09:00"
-          - name: "LHR"
-            link: "https://maps.app.goo.gl/TbnXPdmLjBYgqrw98"
-            time: "15:45"
+#  - date: 2026-10-17
+#    items:
+#      - category: transport
+#        type: flight
+#        name: "Singapore Airlines (SQ 308)"
+#        travel:
+#          - name: "SIN"
+#            link: "https://www.google.com/maps/search/?api=1&query=Singapore+Changi+Airport"
+#            time: "09:00"
+#          - name: "LHR"
+#            link: "https://maps.app.goo.gl/TbnXPdmLjBYgqrw98"
+#            time: "15:45"
 
-  - date: 2026-10-22
-    items:
-      - category: lodging
-        type: hotel
-        name: "Andenia Boutique Hotel"
-        link: "https://maps.app.goo.gl/TRiPdZeygSJMGu2r7"
+#  - date: 2026-10-22
+#    items:
+#      - category: lodging
+#        type: hotel
+#        name: "Andenia Boutique Hotel"
+#        link: "https://maps.app.goo.gl/TRiPdZeygSJMGu2r7"
 
   - date: 2026-10-23
     items:
@@ -274,7 +274,7 @@ days:
       - category: lodging
         type: airbnb
         name: "Home in Rio de Janeiro"
-        link: ""
+        link: "https://maps.app.goo.gl/ERQwPNfmGjLFHAc56?g_st=ic"
       - category: activities
         type: water
         name: "Praia de Ipanema"
@@ -293,7 +293,7 @@ days:
       - category: lodging
         type: airbnb
         name: "Home in Rio de Janeiro"
-        link: ""
+        link: "https://maps.app.goo.gl/ERQwPNfmGjLFHAc56?g_st=ic"
       - category: activities
         type: hike
         name: "Rio Full day tour"
@@ -305,6 +305,10 @@ days:
 
   - date: 2026-11-06
     items:
+      - category: lodging
+        type: airbnb
+        name: "Home in Rio de Janeiro"
+        link: "https://maps.app.goo.gl/ERQwPNfmGjLFHAc56?g_st=ic"
       - category: activities
         type: water
         name: "Praia de Copacabana"
@@ -332,6 +336,16 @@ days:
 
   - date: 2026-11-07
     items:
+      - category: lodging
+        type: hotel
+        name: "Courtyard by Marriott LA (Day-use)"
+        link: "https://maps.app.goo.gl/3cAKhswX8hBZbdAd8"
+        remarks: "Check-in from 9am"
+      - category: activities
+        type: shopping
+        name: "Citadel Outlets"
+        link: "https://maps.app.goo.gl/wgTHrn8xDxYdH2jz6"
+        remarks: "Take uber to outlet store"
       - category: transport
         type: flight
         name: "KLM (AF 29)"

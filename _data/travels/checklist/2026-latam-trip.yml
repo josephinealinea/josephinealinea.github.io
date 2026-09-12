@@ -16,6 +16,7 @@ items:
       - { status: "todo", description: "Yellow Fever Vaccine (with official booklet)" }
       - { status: "todo", description: "Cash in USD, exchange in PEN/BOB/BRL locally" }
       - { status: "todo", description: "Order eSim" }
+      - { status: "todo", description: "Purchase a travel insurance" }
       - { status: "done", description: "RT Flight from TLL to LAX" }
       - { status: "done", description: "RT Flight from SIN to LAX" }
       - { status: "done", description: "Flight from LAX to CUZ" }
@@ -24,6 +25,9 @@ items:
       - { status: "done", description: "Flight from LPB to GIG" }
       - { status: "done", description: "RT Flight from LPB to UYU" }
       - { status: "done", description: "Accommodation 1N in LA" }
+      - { status: "done", description: "Accommodation (day-use) in LA", options: [
+          { name: "Day-use options in LA", link: "https://www.dayuse.com/s/united-states/california/los-angeles-county/los-angeles?selectedAddress=Los+Angeles&sluggableAddress=Los+Angeles&checkinDate=2026-11-07" }
+      ] }
       - { status: "done", description: "Accommodation 1N Ollantaytambo", options: [
           { name: "Casablanca Lodge Museum Sactuary & Spa", link: "https://www.booking.com/Share-Ysl3rH" }
       ] }
@@ -37,7 +41,7 @@ items:
       - { status: "done", description: "Accommodation 3N in La Paz", options: [
           { name: "Illampu Art Boutique Hotel", link: "https://www.agoda.com/sp/OCDBPklgOiB" }
       ] }
-      - { status: "todo", description: "Accommodation 2N in Rio", options: [
+      - { status: "done", description: "Accommodation 2N in Rio", options: [
           { name: "With Sea View 3BR",
             link: "https://www.airbnb.co.uk/rooms/1495195735009866324?unique_share_id=91379adc-b31d-41cc-be15-4bf4deb5c11e&viralityEntryPoint=1&s=76&source_impression_id=p3_1787682546_P3gdmabGbTWjmCvL" },
           { name: "Luxurious Penthouse 3BR",
