@@ -6,4 +6,10 @@ home_cities: ["tallinn"]
 countries:
   - country: luxembourg
     cities: ["luxembourg"]
-
+    info:
+      - "It is one of the world smallest countries, only about 2 586 km². Population is only around 700 000"
+      - "One of the richest countries per person. Its economy is heavily based on finance, technolgy, EU institutions and international business"
+      - "One of the founding members of EU, establish in 1957"
+      - "Public transportation is free nationwide"
+      - "Vianden Castle is one of the most famous landmarks"
+      - "Luxembourg City is much smaller than Tallinn (only 52 km², about 3x the size of Tallinn)"
