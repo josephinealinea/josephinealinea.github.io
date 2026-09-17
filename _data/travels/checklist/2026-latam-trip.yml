@@ -12,8 +12,8 @@ trip_name: "LATAM Trip 2026"
 
 items:
   - checklist:
-      - { status: "todo", description: "US / UK Visa" }
-      - { status: "todo", description: "Yellow Fever Vaccine (with official booklet)" }
+      - { status: "done", description: "US / UK Visa" }
+      - { status: "done", description: "Yellow Fever Vaccine (with official booklet)" }
       - { status: "todo", description: "Cash in USD, exchange in PEN/BOB/BRL locally" }
       - { status: "todo", description: "Order eSim" }
       - { status: "todo", description: "Purchase a travel insurance" }
