@@ -184,6 +184,15 @@ A floating theme selector sits in the top-right corner with two options:
 
 ---
 
+### Third-party licences and strings
+
+Credits live in `THIRD-PARTY-NOTICES.md`; per-service docs live in `docs/`. User-visible credit, consent and privacy text lives in `_data/strings/en.yml`.
+
+#### Check the strings file has no missing or unused keys
+```bash
+ruby scripts/check-strings.rb
+```
+
 ## Troubleshooting
 
 ### `bundle install` fails

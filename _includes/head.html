@@ -27,12 +27,4 @@
 <!-- Theme Selector JavaScript -->
 <script src="{{ '/assets/js/theme-selector.js' | relative_url }}"></script>
 
-{% if site.google_analytics %}
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', '{{ site.google_analytics }}');
-</script>
-{% endif %}
+<!-- Google Analytics is loaded by consent.html only after the visitor accepts. -->

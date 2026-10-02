@@ -1,0 +1,53 @@
+{%- assign s = site.data.strings.en -%}
+{%- if site.google_analytics -%}
+<div id="consent-banner" role="dialog" aria-label="{{ s.consent.label }}" hidden>
+  <p>{{ s.consent.message }} <a href="{{ '/privacy/' | relative_url }}">{{ s.consent.privacy_link }}</a></p>
+  <div class="consent-actions">
+    <button type="button" id="consent-accept">{{ s.consent.accept }}</button>
+    <button type="button" id="consent-decline">{{ s.consent.decline }}</button>
+  </div>
+</div>
+<style>
+  #consent-banner { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10000; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.75rem 1.5rem; padding: 0.8rem 1rem; background: #222; color: #fff; font-size: 0.9rem; }
+  #consent-banner[hidden] { display: none; }
+  #consent-banner p { margin: 0; }
+  #consent-banner a { color: #9cf; }
+  #consent-banner button { margin-left: 0.4rem; padding: 0.35rem 0.9rem; border: 1px solid #fff; border-radius: 4px; background: transparent; color: #fff; cursor: pointer; font: inherit; }
+  #consent-banner #consent-accept { background: #fff; color: #222; }
+</style>
+<script>
+(function () {
+  var GA_ID = "{{ site.google_analytics }}";
+  var KEY = "analytics-consent";
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function write(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+  function loadAnalytics() {
+    if (window.__gaLoaded) return;
+    window.__gaLoaded = true;
+    var tag = document.createElement("script");
+    tag.async = true;
+    tag.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+    document.head.appendChild(tag);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", GA_ID);
+  }
+  window.resetAnalyticsConsent = function () {
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    location.reload();
+  };
+  var banner = document.getElementById("consent-banner");
+  var choice = read();
+  if (choice === "granted") { loadAnalytics(); return; }
+  if (choice === "denied") return;
+  banner.hidden = false;
+  document.getElementById("consent-accept").addEventListener("click", function () {
+    write("granted"); banner.hidden = true; loadAnalytics();
+  });
+  document.getElementById("consent-decline").addEventListener("click", function () {
+    write("denied"); banner.hidden = true;
+  });
+})();
+</script>
+{%- endif -%}

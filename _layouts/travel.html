@@ -290,9 +290,10 @@ layout: default
     {% endfor %}
   };
 </script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+{% include travel-credits.html %}
 <script src="{{ '/assets/js/travel-panel-toggle.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-shared.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/travel-map.js' | relative_url }}"></script>

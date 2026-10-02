@@ -1,0 +1,17 @@
+{%- assign s = site.data.strings.en -%}
+<aside class="travel-credits" aria-label="{{ s.credits.heading }}">
+  <p>
+    {{ s.credits.weather_prefix }} <a href="{{ s.credits.weather_url }}" target="_blank" rel="noopener">{{ s.credits.weather_name }}</a>
+    (<a href="{{ s.credits.weather_licence_url }}" target="_blank" rel="noopener">{{ s.credits.weather_licence_name }}</a>).
+    {{ s.credits.places_prefix }} <a href="{{ s.credits.places_url }}" target="_blank" rel="noopener">{{ s.credits.places_name }}</a>
+    (<a href="{{ s.credits.places_licence_url }}" target="_blank" rel="noopener">{{ s.credits.places_licence_name }}</a>),
+    <a href="{{ s.credits.places_via_url }}" target="_blank" rel="noopener">{{ s.credits.places_via }}</a>.
+    {{ s.credits.map_prefix }} <a href="{{ s.credits.map_url }}" target="_blank" rel="noopener">{{ s.credits.map_name }}</a>
+    (<a href="{{ s.credits.map_licence_url }}" target="_blank" rel="noopener">{{ s.credits.map_licence_name }}</a>).
+    {{ s.credits.libraries_prefix }} <a href="{{ s.footer.notices_url }}" target="_blank" rel="noopener">{{ s.credits.libraries_link }}</a>.
+  </p>
+</aside>
+<style>
+  .travel-credits { margin: 2rem 0 1rem; font-size: 0.78rem; opacity: 0.8; text-align: center; }
+  .travel-credits p { margin: 0; }
+</style>

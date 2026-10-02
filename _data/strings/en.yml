@@ -1,0 +1,52 @@
+# User-visible text for the credits, consent banner, privacy page and footer
+# links. Add a language by adding a sibling file (e.g. fr.yml) with the same
+# keys. scripts/check-strings.rb fails if a key is used but undefined, or
+# defined but unused.
+
+credits:
+  heading: "Data credits"
+  weather_prefix: "Weather and air-quality data by"
+  weather_name: "Open-Meteo.com"
+  weather_url: "https://open-meteo.com/"
+  weather_licence_name: "CC BY 4.0"
+  weather_licence_url: "https://creativecommons.org/licenses/by/4.0/"
+  places_prefix: "Country, city and time-zone data from"
+  places_name: "GeoNames"
+  places_url: "https://www.geonames.org/"
+  places_via: "via countries.dev"
+  places_via_url: "https://countries.dev/"
+  places_licence_name: "CC BY 4.0"
+  places_licence_url: "https://creativecommons.org/licenses/by/4.0/"
+  map_prefix: "Map tiles and data ©"
+  map_name: "OpenStreetMap contributors"
+  map_url: "https://www.openstreetmap.org/copyright"
+  map_licence_name: "ODbL"
+  map_licence_url: "https://opendatacommons.org/licenses/odbl/"
+  libraries_prefix: "Maps drawn with Leaflet and charts with Chart.js; see"
+  libraries_link: "third-party notices"
+
+footer:
+  privacy: "Privacy"
+  notices: "Third-party notices"
+  notices_url: "https://github.com/josephinealinea/josephinealinea.github.io/blob/main/THIRD-PARTY-NOTICES.md"
+
+consent:
+  label: "Cookie consent"
+  message: "This site uses Google Analytics cookies to count visits. They are only set if you accept."
+  accept: "Accept"
+  decline: "Decline"
+  privacy_link: "Privacy"
+
+privacy:
+  title: "Privacy"
+  intro: "This is a personal site. It collects as little as possible, and the third parties below receive some data from your browser when you use the matching feature."
+  analytics_heading: "Analytics"
+  analytics_body: "If you accept the cookie banner, Google Analytics (Google LLC) records anonymous visit statistics such as pages viewed, approximate location and device type. Nothing is sent to Google Analytics until you accept. You can change your mind at any time with the link below."
+  analytics_reset: "Change my cookie choice"
+  contact_heading: "Contact form"
+  contact_body: "Messages sent through the contact form (name, email, message) are processed by Formspree, which forwards them to me. I only use them to reply to you."
+  travel_heading: "Travel pages"
+  travel_body: "The travel pages request weather data from Open-Meteo, country and city facts from countries.dev, and map tiles from OpenStreetMap. Your browser sends your IP address to those services to fetch the data. The project list on the home page is fetched from the GitHub API in the same way."
+  support_heading: "Support button"
+  support_body: "The Ko-fi support button is an image loaded from Ko-fi, which receives your IP address when it loads."
+  contact_me: "Questions? Email"
