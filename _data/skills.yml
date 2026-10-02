@@ -1,0 +1,100 @@
+# Technologies shown in the Expertise section (_includes/sections/skills.md).
+# One entry per category; add a technology by adding one line to `items`.
+#   id    - matches a title under skills.categories in strings/en.yml
+#   icon  - emoji shown beside the category title
+#   color - chip accent on the default theme (other themes use their own palette)
+#   items - name (required) and url (optional; https only, opens in a new tab)
+
+- id: languages
+  icon: "☕"
+  color: "#c2410c"
+  items:
+    - { name: "Java", url: "https://dev.java/" }
+    - { name: "Spring Boot", url: "https://spring.io/projects/spring-boot" }
+    - { name: "Quarkus", url: "https://quarkus.io/" }
+    - { name: "Project Lombok", url: "https://projectlombok.org/" }
+    - { name: "FreeMarker", url: "https://freemarker.apache.org/" }
+    - { name: "Bash", url: "https://www.gnu.org/software/bash/" }
+    - { name: "jq", url: "https://jqlang.org/" }
+    - { name: "JSON", url: "https://www.json.org/" }
+    - { name: "YAML", url: "https://yaml.org/" }
+    - { name: "REST API" }
+
+- id: testing
+  icon: "🧪"
+  color: "#047857"
+  items:
+    - { name: "Cucumber", url: "https://cucumber.io/" }
+    - { name: "Citrus", url: "https://citrusframework.org/" }
+    - { name: "Postman", url: "https://www.postman.com/" }
+    - { name: "Gatling", url: "https://gatling.io/" }
+    - { name: "SonarQube", url: "https://www.sonarsource.com/products/sonarqube/" }
+    - { name: "Checkmarx", url: "https://checkmarx.com/" }
+
+- id: messaging
+  icon: "🔀"
+  color: "#1d4ed8"
+  items:
+    - { name: "Kafka", url: "https://kafka.apache.org/" }
+    - { name: "RabbitMQ", url: "https://www.rabbitmq.com/" }
+    - { name: "Apache Camel", url: "https://camel.apache.org/" }
+    - { name: "Drools", url: "https://www.drools.org/" }
+    - { name: "Talend", url: "https://www.talend.com/" }
+    - { name: "Hazelcast", url: "https://hazelcast.com/" }
+    - { name: "Redis", url: "https://redis.io/" }
+
+- id: platform
+  icon: "📦"
+  color: "#0e7490"
+  items:
+    - { name: "Docker", url: "https://www.docker.com/" }
+    - { name: "Podman", url: "https://podman.io/" }
+    - { name: "Kubernetes", url: "https://kubernetes.io/" }
+    - { name: "OpenShift", url: "https://www.redhat.com/en/technologies/cloud-computing/openshift" }
+    - { name: "Helm", url: "https://helm.sh/" }
+    - { name: "Argo", url: "https://argoproj.github.io/" }
+    - { name: "HashiCorp Consul", url: "https://developer.hashicorp.com/consul" }
+
+- id: observability
+  icon: "📈"
+  color: "#b45309"
+  items:
+    - { name: "Splunk", url: "https://www.splunk.com/" }
+    - { name: "Grafana", url: "https://grafana.com/" }
+    - { name: "Prometheus", url: "https://prometheus.io/" }
+    - { name: "Elastic", url: "https://www.elastic.co/" }
+    - { name: "Jaeger", url: "https://www.jaegertracing.io/" }
+    - { name: "Dynatrace", url: "https://www.dynatrace.com/" }
+
+- id: databases
+  icon: "🗄️"
+  color: "#7c3aed"
+  items:
+    - { name: "Microsoft SQL Server", url: "https://www.microsoft.com/sql-server" }
+    - { name: "Oracle PL/SQL", url: "https://www.oracle.com/database/technologies/appdev/plsql.html" }
+    - { name: "MySQL", url: "https://www.mysql.com/" }
+    - { name: "MongoDB", url: "https://www.mongodb.com/" }
+
+- id: tooling
+  icon: "🛠️"
+  color: "#be185d"
+  items:
+    - { name: "Git", url: "https://git-scm.com/" }
+    - { name: "GitHub", url: "https://github.com/" }
+    - { name: "GitLab", url: "https://about.gitlab.com/" }
+    - { name: "Jekyll", url: "https://jekyllrb.com/" }
+    - { name: "Cursor", url: "https://cursor.com/" }
+    - { name: "Replit", url: "https://replit.com/" }
+
+- id: services
+  icon: "🌐"
+  color: "#4d7c0f"
+  items:
+    - { name: "Open-Meteo", url: "https://open-meteo.com/" }
+    - { name: "OpenStreetMap", url: "https://www.openstreetmap.org/" }
+    - { name: "GeoNames", url: "https://www.geonames.org/" }
+    - { name: "Leaflet", url: "https://leafletjs.com/" }
+    - { name: "Chart.js", url: "https://www.chartjs.org/" }
+    - { name: "Formspree", url: "https://formspree.io/" }
+    - { name: "Google Analytics", url: "https://marketingplatform.google.com/about/analytics/" }
+    - { name: "Ko-fi", url: "https://ko-fi.com/" }

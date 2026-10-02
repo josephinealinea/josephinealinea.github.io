@@ -13,7 +13,7 @@ end
 
 root = File.expand_path("..", __dir__)
 defined = flatten(YAML.load_file(File.join(root, "_data/strings/en.yml")))
-files = Dir.glob(File.join(root, "{_includes,_layouts}/**/*.html")) + Dir.glob(File.join(root, "*.{md,html}"))
+files = Dir.glob(File.join(root, "{_includes,_layouts}/**/*.{html,md}")) + Dir.glob(File.join(root, "*.{md,html}"))
 
 used = []
 files.each do |f|
@@ -24,6 +24,10 @@ files.each do |f|
     text.scan(/\bs\.([a-z_]+(?:\.[a-z_]+)*)/) { |m| used << [alias_prefix, m[0]].compact.join(".") }
   end
 end
+# Category titles are looked up dynamically (s.categories[cat.id]), so count
+# one key per category id in _data/skills.yml instead of the bare prefix.
+used.delete("skills.categories")
+YAML.load_file(File.join(root, "_data/skills.yml")).each { |c| used << "skills.categories.#{c['id']}" }
 used.uniq!
 
 missing = used - defined

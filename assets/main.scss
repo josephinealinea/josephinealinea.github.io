@@ -424,46 +424,77 @@ body {
   }
 }
 
-.skills-content {
+.skills-grid-cards {
   display: grid;
-  // minmax(0, 1fr), not a bare 1fr: an implicit grid track's default min
-  // size is auto (its content's min-content size), so a bare 1fr still
-  // lets a wide descendant (the tech-stack image below, min-width: 600px
-  // on mobile) balloon the column — and with it .skills-category,
-  // .skills-content, and the document itself — past the viewport instead
-  // of being clipped/scrolled inside .skills-image-scroll as intended.
-  grid-template-columns: minmax(0, 1fr);
-  gap: 3em;
+  // Two columns on desktop; minmax(0, 1fr) so a long chip row can never
+  // widen a track past the viewport. Collapses to one column on mobile.
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2em;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.skills-category {
-  background: rgba(255, 255, 255, 0.1);
-  // The tech-stack image (assets/img/techstack.png) is a flat white
-  // raster, baked-in background and all — it can't pick up theme colors.
-  // Padding keeps this card's own background/border visible as a frame
-  // around it, instead of the image covering the card edge-to-edge and
-  // reading as an unstyled foreign rectangle plastered over the theme.
-  padding: 1.5em;
+.skills-card {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 1.2em;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  text-align: center;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
   box-sizing: border-box;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
 }
 
-.skills-image-scroll img {
-  border-radius: 8px;
-}
-
-.category-title {
+.skills-card-title {
+  margin: 0 0 0.8em;
+  padding-bottom: 0.4em;
+  font-size: 1.1em;
   color: white;
-  font-size: 1.5em;
-  margin-bottom: 1.5em;
-  text-align: center;
-  border-bottom: 2px solid white;
-  padding-bottom: 0.5em;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.skill-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// Chip accent comes from --chip-color, set per category in skills.yml.
+.skill-chip {
+  display: inline-block;
+  background: #fff;
+  color: var(--chip-color, #333);
+  border: 2px solid var(--chip-color, #333);
+  border-radius: 999px;
+  padding: 0.25em 0.75em;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a.skill-chip:hover,
+a.skill-chip:focus-visible {
+  background: var(--chip-color, #333);
+  color: #fff;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .skills-grid {
@@ -701,16 +732,8 @@ body {
     gap: 2em;
   }
 
-  // The tech-stack image packs ~40 small logos; shrinking it to the full
-  // mobile width makes individual logos illegible. Hold it at a legible
-  // minimum width and let it scroll horizontally instead.
-  .skills-image-scroll {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .skills-image-scroll img {
-    min-width: 600px;
+  .skills-grid-cards {
+    grid-template-columns: minmax(0, 1fr);
   }
   
   .post-grid {

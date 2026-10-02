@@ -50,3 +50,16 @@ privacy:
   support_heading: "Support button"
   support_body: "The Ko-fi support button is an image loaded from Ko-fi, which receives your IP address when it loads."
   contact_me: "Questions? Email"
+
+skills:
+  heading: "Expertise"
+  new_tab: "(opens in a new tab)"
+  categories:
+    languages: "Languages & frameworks"
+    testing: "Testing & quality"
+    messaging: "Messaging & integration"
+    platform: "Containers & platform"
+    observability: "Observability"
+    databases: "Databases"
+    tooling: "Tooling & AI"
+    services: "Third-party services"

@@ -38,5 +38,6 @@ Per-service integration details are in `docs/`.
 
 ## Images and fonts
 
-- `assets/img/avatar*.png`, `me.jpg`, `techstack.png` and the favicons are the site owner's own work. `techstack.png` depicts product logos, which remain trademarks of their owners and are shown only to name technologies used.
+- `assets/img/avatar*.png`, `me.jpg` and the favicons are the site owner's own work.
+- The Expertise section lists technology names as text from `_data/skills.yml`, each optionally linking to its official site. Product names remain trademarks of their owners and are used only to name technologies used. No logos are shipped.
 - No web fonts are loaded; themes use system font stacks. Emoji render with the visitor's system fonts.

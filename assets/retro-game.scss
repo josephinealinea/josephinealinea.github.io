@@ -975,39 +975,78 @@ body.theme-retro-game .skills-section {
   min-height: auto !important;
 }
 
-// Skills Layout (same as minima)
-body.theme-retro-game .skills-content {
+// Skills cards, rendered from _data/skills.yml. Shared layout is repeated
+// here because main.scss never loads under this theme.
+body.theme-retro-game .skills-grid-cards {
   display: grid;
-  // See main.scss's matching rule: minmax(0, 1fr) so the tech-stack
-  // image's min-width: 600px can't balloon this grid track (and with it
-  // the whole document) past the viewport on mobile.
-  grid-template-columns: minmax(0, 1fr);
-  gap: 3em;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2em;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-body.theme-retro-game .skills-category {
-  background: var(--retro-bg);
-  border: 2px solid var(--retro-border);
-  box-shadow: 0 0 15px var(--retro-primary);
-  // The tech-stack image is a flat white raster and can't pick up theme
-  // colors; padding keeps the neon border visible as a frame around it
-  // instead of the image butting straight up against it.
-  padding: 1.5em;
-  border-radius: 12px;
-  text-align: center;
+@media (max-width: 768px) {
+  body.theme-retro-game .skills-grid-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+body.theme-retro-game .skills-card {
+  padding: 1.2em;
   box-sizing: border-box;
-}
-
-body.theme-retro-game .skills-category {
   background: var(--retro-bg);
   border: 2px solid var(--retro-border);
   box-shadow: 0 0 15px var(--retro-primary);
+  border-radius: 12px;
 }
 
-body.theme-retro-game .category-title {
+body.theme-retro-game .skills-card-title {
+  margin: 0 0 0.8em;
+  padding-bottom: 0.4em;
+  font-size: 1.1em;
   color: var(--retro-primary);
   text-shadow: 0 0 5px var(--retro-primary);
-  border-bottom-color: var(--retro-secondary);
+  border-bottom: 2px solid var(--retro-secondary);
+}
+
+body.theme-retro-game .skill-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body.theme-retro-game .skill-chip {
+  display: inline-block;
+  padding: 0.25em 0.75em;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-decoration: none;
+  background: transparent;
+  color: var(--retro-text);
+  border: 1px solid var(--retro-primary);
+  border-radius: 4px;
+}
+
+body.theme-retro-game a.skill-chip:hover,
+body.theme-retro-game a.skill-chip:focus-visible {
+  background: var(--retro-primary);
+  color: var(--retro-bg);
+  box-shadow: 0 0 10px var(--retro-primary);
+}
+
+body.theme-retro-game .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 body.theme-retro-game .skill-name {

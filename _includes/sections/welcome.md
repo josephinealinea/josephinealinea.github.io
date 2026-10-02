@@ -21,8 +21,10 @@ title: Welcome
     <div class="mission-statement">
       <h2 class="mission-heading">My Mission: "Your bridge to a digital future"</h2>
       <p class="mission-text">
-        In today's world, everything should be digitalised, yet not everyone has access to it. I aim to create affordable, user-friendly IT solutions for private or small companies, making technology accessible and easy to use. 
-        <br /> ..plus sharing the learnings along the way :)
+        In today's world, everything should be digitalised, yet not everyone has access to it. I aim to create affordable, user-friendly IT solutions for private or small companies, making technology accessible and very easy to use. 
+        <br /> ..plus sharing the learnings along the way :) <br />
+        <br /> I'm the proud creator of the "Travelling Llama 🦙" and "Cash on the hoof!", both began as personal projects built for my own use. Then I shared with close friends, who liked them enough to keep using them. 
+Whether you're a one-person shop or a small team, I'll do my best to make things efficient and to help your business thrive.
       </p>
     </div>
     <div class="welcome-actions">

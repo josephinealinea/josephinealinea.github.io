@@ -708,33 +708,76 @@ body.theme-manila-theme .skills-section {
   min-height: auto !important;
 }
 
-// .skills-content is a custom site rule in assets/main.scss that never
-// loads here — same reason as .post-grid/.about-content above.
-body.theme-manila-theme .skills-content {
+// Skills cards, rendered from _data/skills.yml. Shared layout is repeated
+// here because main.scss never loads under this theme.
+body.theme-manila-theme .skills-grid-cards {
   display: grid;
-  // See main.scss's matching rule: minmax(0, 1fr) so the tech-stack
-  // image's min-width: 600px can't balloon this grid track (and with it
-  // the whole document) past the viewport on mobile.
-  grid-template-columns: minmax(0, 1fr);
-  gap: 3em;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2em;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-body.theme-manila-theme .skills-category {
+@media (max-width: 768px) {
+  body.theme-manila-theme .skills-grid-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+body.theme-manila-theme .skills-card {
+  padding: 1.2em;
+  box-sizing: border-box;
   background: linear-gradient(180deg, #ffffff, var(--manila-gold-soft));
   border: 2px solid var(--manila-gold);
   border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0, 56, 168, 0.1);
-  // Horizontal padding too, not just vertical — otherwise the flat white
-  // tech-stack image still touches the gold border on both sides instead
-  // of sitting framed inside the card.
-  padding: 1.5em;
-  box-sizing: border-box;
-  text-align: center;
 }
 
-body.theme-manila-theme .category-title {
+body.theme-manila-theme .skills-card-title {
+  margin: 0 0 0.8em;
+  padding-bottom: 0.4em;
+  font-size: 1.1em;
   color: var(--manila-blue);
-  border-bottom-color: var(--manila-gold);
+  border-bottom: 2px solid var(--manila-gold);
+}
+
+body.theme-manila-theme .skill-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body.theme-manila-theme .skill-chip {
+  display: inline-block;
+  padding: 0.25em 0.75em;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-decoration: none;
+  background: #fff;
+  color: var(--manila-blue);
+  border: 2px solid var(--manila-blue);
+  border-radius: 999px;
+}
+
+body.theme-manila-theme a.skill-chip:hover,
+body.theme-manila-theme a.skill-chip:focus-visible {
+  background: var(--manila-blue);
+  color: #fff;
+}
+
+body.theme-manila-theme .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 body.theme-manila-theme .skill-name {
@@ -878,7 +921,7 @@ body.theme-manila-theme {
   --travel-border-accent: var(--manila-gold);
   --travel-heading-text: var(--manila-blue);
   // A soft gradient rather than flat white, matching .post-card/
-  // .highlight-item/.skills-category elsewhere in this theme.
+  // .highlight-item/.skills-card elsewhere in this theme.
   --travel-card-bg: linear-gradient(180deg, #ffffff, var(--manila-gold-soft));
   --travel-card-shadow: 0 4px 12px rgba(0, 56, 168, 0.1);
   --travel-highlight-card-bg: linear-gradient(180deg, #ffffff, var(--manila-gold-soft));
@@ -901,7 +944,7 @@ body.theme-manila-theme {
   --travel-warning-bg: var(--manila-gold-soft);
   --travel-warning-border: var(--manila-gold);
   // Slightly softer/rounder than the 8px default, matching the 16px used
-  // on .post-card/.highlight-item/.skills-category elsewhere in this theme
+  // on .post-card/.highlight-item/.skills-card elsewhere in this theme
   // for a more cartoonish silhouette.
   --travel-card-radius: 16px;
 }
