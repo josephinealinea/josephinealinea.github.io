@@ -1,100 +1,85 @@
-# Technologies shown in the Expertise section (_includes/sections/skills.md).
+# Technologies shown in the Expertise periodic table (_includes/sections/skills.md).
 # One entry per category; add a technology by adding one line to `items`.
 #   id    - matches a title under skills.categories in strings/en.yml
+#   columns - optional; 2 makes the category span two columns of the table
 #   icon  - emoji shown beside the category title
-#   color - chip accent on the default theme (other themes use their own palette)
-#   items - name (required) and url (optional; https only, opens in a new tab)
+#   items - name (required), symbol (optional 1-2 letter tile label, defaults to
+#           the first two letters of the name) and url (optional; https only,
+#           opens in a new tab)
 
 - id: languages
   icon: "☕"
-  color: "#c2410c"
   items:
-    - { name: "Java", url: "https://dev.java/" }
-    - { name: "Spring Boot", url: "https://spring.io/projects/spring-boot" }
-    - { name: "Quarkus", url: "https://quarkus.io/" }
-    - { name: "Project Lombok", url: "https://projectlombok.org/" }
-    - { name: "FreeMarker", url: "https://freemarker.apache.org/" }
-    - { name: "Bash", url: "https://www.gnu.org/software/bash/" }
-    - { name: "jq", url: "https://jqlang.org/" }
-    - { name: "JSON", url: "https://www.json.org/" }
-    - { name: "YAML", url: "https://yaml.org/" }
-    - { name: "REST API" }
+    - { name: "Java", symbol: "Jv", url: "https://dev.java/" }
+    - { name: "Spring Boot", symbol: "Sb", url: "https://spring.io/projects/spring-boot" }
+    - { name: "Bash", symbol: "Sh", url: "https://www.gnu.org/software/bash/" }
+    - { name: "JSON", symbol: "Js", url: "https://www.json.org/" }
+    - { name: "YAML", symbol: "Ym", url: "https://yaml.org/" }
+    - { name: "REST API", symbol: "Rs" }
 
 - id: testing
   icon: "🧪"
-  color: "#047857"
   items:
-    - { name: "Cucumber", url: "https://cucumber.io/" }
-    - { name: "Citrus", url: "https://citrusframework.org/" }
-    - { name: "Postman", url: "https://www.postman.com/" }
-    - { name: "Gatling", url: "https://gatling.io/" }
-    - { name: "SonarQube", url: "https://www.sonarsource.com/products/sonarqube/" }
-    - { name: "Checkmarx", url: "https://checkmarx.com/" }
+    - { name: "Cucumber", symbol: "Cu", url: "https://cucumber.io/" }
+    - { name: "Citrus", symbol: "Ci", url: "https://citrusframework.org/" }
+    - { name: "Postman", symbol: "Pm", url: "https://www.postman.com/" }
+    - { name: "Gatling", symbol: "Gt", url: "https://gatling.io/" }
+    - { name: "SonarQube", symbol: "Sq", url: "https://www.sonarsource.com/products/sonarqube/" }
+    - { name: "Checkmarx", symbol: "Cx", url: "https://checkmarx.com/" }
 
 - id: messaging
   icon: "🔀"
-  color: "#1d4ed8"
   items:
-    - { name: "Kafka", url: "https://kafka.apache.org/" }
-    - { name: "RabbitMQ", url: "https://www.rabbitmq.com/" }
-    - { name: "Apache Camel", url: "https://camel.apache.org/" }
-    - { name: "Drools", url: "https://www.drools.org/" }
-    - { name: "Talend", url: "https://www.talend.com/" }
-    - { name: "Hazelcast", url: "https://hazelcast.com/" }
-    - { name: "Redis", url: "https://redis.io/" }
+    - { name: "Kafka", symbol: "Kf", url: "https://kafka.apache.org/" }
+    - { name: "RabbitMQ", symbol: "Rb", url: "https://www.rabbitmq.com/" }
+    - { name: "Apache Camel", symbol: "Ac", url: "https://camel.apache.org/" }
+    - { name: "Drools", symbol: "Dr", url: "https://www.drools.org/" }
+    - { name: "Hazelcast", symbol: "Hz", url: "https://hazelcast.com/" }
+    - { name: "Redis", symbol: "Rd", url: "https://redis.io/" }
 
 - id: platform
   icon: "📦"
-  color: "#0e7490"
   items:
-    - { name: "Docker", url: "https://www.docker.com/" }
-    - { name: "Podman", url: "https://podman.io/" }
-    - { name: "Kubernetes", url: "https://kubernetes.io/" }
-    - { name: "OpenShift", url: "https://www.redhat.com/en/technologies/cloud-computing/openshift" }
-    - { name: "Helm", url: "https://helm.sh/" }
-    - { name: "Argo", url: "https://argoproj.github.io/" }
-    - { name: "HashiCorp Consul", url: "https://developer.hashicorp.com/consul" }
+    - { name: "Docker", symbol: "Dk", url: "https://www.docker.com/" }
+    - { name: "Kubernetes", symbol: "K8", url: "https://kubernetes.io/" }
+    - { name: "Helm", symbol: "He", url: "https://helm.sh/" }
+    - { name: "Argo", symbol: "Ar", url: "https://argoproj.github.io/" }
+    - { name: "Cloud Run", symbol: "Cr", url: "https://cloud.google.com/run" }
+    - { name: "Cloudflare", symbol: "Cf", url: "https://www.cloudflare.com/" }
 
 - id: observability
   icon: "📈"
-  color: "#b45309"
   items:
-    - { name: "Splunk", url: "https://www.splunk.com/" }
-    - { name: "Grafana", url: "https://grafana.com/" }
-    - { name: "Prometheus", url: "https://prometheus.io/" }
-    - { name: "Elastic", url: "https://www.elastic.co/" }
-    - { name: "Jaeger", url: "https://www.jaegertracing.io/" }
-    - { name: "Dynatrace", url: "https://www.dynatrace.com/" }
+    - { name: "Splunk", symbol: "Sp", url: "https://www.splunk.com/" }
+    - { name: "Grafana", symbol: "Gf", url: "https://grafana.com/" }
+    - { name: "Prometheus", symbol: "Pr", url: "https://prometheus.io/" }
+    - { name: "Elastic", symbol: "El", url: "https://www.elastic.co/" }
+    - { name: "Jaeger", symbol: "Jg", url: "https://www.jaegertracing.io/" }
+    - { name: "Dynatrace", symbol: "Dy", url: "https://www.dynatrace.com/" }
 
 - id: databases
   icon: "🗄️"
-  color: "#7c3aed"
   items:
-    - { name: "Microsoft SQL Server", url: "https://www.microsoft.com/sql-server" }
-    - { name: "Oracle PL/SQL", url: "https://www.oracle.com/database/technologies/appdev/plsql.html" }
-    - { name: "MySQL", url: "https://www.mysql.com/" }
-    - { name: "MongoDB", url: "https://www.mongodb.com/" }
-
-- id: tooling
-  icon: "🛠️"
-  color: "#be185d"
-  items:
-    - { name: "Git", url: "https://git-scm.com/" }
-    - { name: "GitHub", url: "https://github.com/" }
-    - { name: "GitLab", url: "https://about.gitlab.com/" }
-    - { name: "Jekyll", url: "https://jekyllrb.com/" }
-    - { name: "Cursor", url: "https://cursor.com/" }
-    - { name: "Replit", url: "https://replit.com/" }
+    - { name: "Microsoft SQL Server", symbol: "Ms", url: "https://www.microsoft.com/sql-server" }
+    - { name: "Oracle PL/SQL", symbol: "Pl", url: "https://www.oracle.com/database/technologies/appdev/plsql.html" }
+    - { name: "MySQL", symbol: "My", url: "https://www.mysql.com/" }
+    - { name: "MongoDB", symbol: "Mg", url: "https://www.mongodb.com/" }
+    - { name: "Postgres", symbol: "Pg", url: "https://www.postgresql.org/" }
+    - { name: "Neon", symbol: "Ne", url: "https://neon.com/" }
 
 - id: services
   icon: "🌐"
-  color: "#4d7c0f"
+  columns: 2
   items:
-    - { name: "Open-Meteo", url: "https://open-meteo.com/" }
-    - { name: "OpenStreetMap", url: "https://www.openstreetmap.org/" }
-    - { name: "GeoNames", url: "https://www.geonames.org/" }
-    - { name: "Leaflet", url: "https://leafletjs.com/" }
-    - { name: "Chart.js", url: "https://www.chartjs.org/" }
-    - { name: "Formspree", url: "https://formspree.io/" }
-    - { name: "Google Analytics", url: "https://marketingplatform.google.com/about/analytics/" }
-    - { name: "Ko-fi", url: "https://ko-fi.com/" }
+    - { name: "Open-Meteo", symbol: "Om", url: "https://open-meteo.com/" }
+    - { name: "OpenStreetMap", symbol: "Sm", url: "https://www.openstreetmap.org/" }
+    - { name: "GeoNames", symbol: "Gn", url: "https://www.geonames.org/" }
+    - { name: "Leaflet", symbol: "Lf", url: "https://leafletjs.com/" }
+    - { name: "Chart.js", symbol: "Cj", url: "https://www.chartjs.org/" }
+    - { name: "Formspree", symbol: "Fs", url: "https://formspree.io/" }
+    - { name: "countries.dev", symbol: "Cd", url: "https://countries.dev/" }
+    - { name: "Resend", symbol: "Re", url: "https://resend.com/" }
+    - { name: "News API", symbol: "Na", url: "https://newsapi.org/" }
+    - { name: "Currents", symbol: "Cn", url: "https://currentsapi.services/" }
+    - { name: "AviationStack", symbol: "As", url: "https://aviationstack.com/" }
+    - { name: "AeroDataBox", symbol: "Ad", url: "https://aerodatabox.com/" }

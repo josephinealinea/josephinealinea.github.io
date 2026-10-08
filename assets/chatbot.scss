@@ -39,8 +39,17 @@ html, body {
   padding: 0;
   background: transparent;
   display: block;
+  // Draggable: the pointer drag must not scroll or select, and shows a grab hand.
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+}
+#chatbot-icon.dragging {
+  cursor: grabbing;
 }
 #chatbot-icon img {
+  pointer-events: none;
   width: 100%;
   height: 100%;
 }
@@ -171,7 +180,7 @@ html, body {
      loads before main.css/retro-game.css, so it needs !important to win),
      making the links wrap into a cramped multi-column grid instead of
      stacking vertically. Y2K/Manila never set `display` on .page-link, so
-     only Minima/Retro-Game actually need this reset. */
+     only Papyrus/Retro-Game actually need this reset. */
   .site-nav .page-link {
     display: block !important;
     margin: 0 !important;
@@ -179,7 +188,7 @@ html, body {
 }
 
 /* ── Shared mobile layout ────────────────────────────────────────────
-   These rules must work for BOTH the Minima and FF7 themes. Because
+   These rules must work for BOTH the Papyrus and FF7 themes. Because
    theme switching disables main.css OR retro-game.css, any structural
    rule that needs to survive both themes lives here in chatbot.css,
    which is always loaded regardless of the active theme.
@@ -233,4 +242,116 @@ html, body {
    that happened to be active when it was written. */
 .site-header .wrapper {
   max-width: 1040px;
+}
+
+/* ── Home page width ─────────────────────────────────────────────────
+   The home page (index.html sets wrapper_class: wrapper-wide) holds the
+   expertise table, whose 8 tile columns need more than minima's ~740px
+   reading column to keep tile names at a legible size. Other pages keep
+   the narrow column. */
+.page-content .wrapper.wrapper-wide {
+  max-width: 1100px;
+}
+
+/* ── Tap targets ─────────────────────────────────────────────────────
+   Shared by every theme (this file is always loaded). Minimums follow the
+   platform guidance: 44pt on mobile, 28pt on desktop. Links inside running
+   text keep their size; standalone links and controls are padded up. */
+.footer-col-2 {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.social-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0.4rem;
+}
+
+.site-footer .footer-col a:not(.social-icon-link) {
+  display: inline-block;
+  padding: 0.45rem 0.25rem;
+}
+
+.back-link {
+  display: inline-block;
+  padding: 0.5rem 0;
+}
+
+.kofi-row {
+  text-align: center;
+}
+
+.kofi-link {
+  display: inline-block;
+  padding: 0.4rem 0;
+}
+
+.welcome-button,
+.latest-posts-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+}
+
+@media (max-width: 768px) {
+  .social-icon-link {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .site-footer .footer-col a:not(.social-icon-link) {
+    padding: 0.8rem 0.3rem;
+  }
+
+  .back-link {
+    padding: 0.8rem 0;
+  }
+
+  .theme-toggle {
+    min-height: 44px;
+  }
+
+  .kofi-link {
+    padding: 0.8rem 0;
+  }
+
+  .welcome-button,
+  .latest-posts-button {
+    min-height: 44px;
+  }
+}
+
+/* ── Reduced motion ──────────────────────────────────────────────────
+   Respect the system setting: no smooth scrolling, no hover lifts, and
+   transitions/animations collapse to an instant change. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .post-card:hover,
+  .highlight-item:hover,
+  .contact-item:hover,
+  .welcome-button:hover,
+  .latest-posts-button:hover,
+  .submit-button:hover,
+  .theme-toggle:hover,
+  a.element:hover,
+  a.element:focus-visible {
+    transform: none !important;
+  }
 }

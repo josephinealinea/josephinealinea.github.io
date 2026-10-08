@@ -148,7 +148,7 @@ josephinealinea.github.io/
 │   └── post.html            # Wraps blog posts
 ├── _posts/                  # Blog posts (YYYY-MM-DD-slug.md)
 ├── assets/
-│   ├── main.scss            # Primary stylesheet (Minima theme + custom CSS)
+│   ├── main.scss            # Primary stylesheet (Papyrus theme + custom CSS)
 │   ├── retro-game.scss      # Alternate Retro-Game theme
 │   └── js/theme-selector.js # Theme switching logic
 └── index.html               # Single-page homepage
@@ -179,7 +179,7 @@ Your post content here...
 ### Theme Selector
 
 A floating theme selector sits in the top-right corner with two options:
-- **Jekyll Minima** (default) — clean, modern design
+- **Papyrus** (default) — warm parchment paper, serif type, oxblood ink
 - **Retro-Game** — neon colors and pixel fonts
 
 ---

@@ -1,13 +1,118 @@
 ---
 ---
 
+@import "themes/papyrus";
+// Dark appearance is switched off for now (Papyrus is light only). The file is
+// kept: re-enable it by restoring the next line.
+// @import "themes/papyrus-dark";
 @import "minima";
 
 // Theme-specific body classes
-body.theme-minima {
-  // Default minima theme styles are already applied
-  background-color: #ffffff;
-  color: #333333;
+// The minima gem compiles its own colours; these hand the page, links and
+// gem components over to the --mn-* tokens so both appearances (light and
+// dark) apply everywhere, not just to this site's own sections.
+// Parchment: the whole page is one sheet of vellum, with foxing stains and
+// grain, and a fixed vignette dimming the corners of the viewport. There is no
+// box around the content. All of it is CSS, tokens in _sass/themes.
+body {
+  background-color: var(--mn-bg);
+  background-image: var(--mn-stains), var(--mn-grain);
+  color: var(--mn-text);
+  // Crisper, lighter-looking type: greyscale antialiasing avoids the heavy
+  // subpixel fattening, and legibility rendering turns on kerning/ligatures.
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
+  &::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    pointer-events: none;
+    background: var(--mn-vignette);
+  }
+}
+
+.page-content .wrapper {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+a {
+  color: var(--mn-accent);
+
+  &:visited {
+    color: var(--mn-accent-strong);
+  }
+
+  &:hover {
+    color: var(--mn-text);
+  }
+}
+
+.site-nav .page-link {
+  color: var(--mn-text);
+}
+
+.site-footer,
+.footer-col-wrapper,
+.footer-col {
+  color: var(--mn-muted);
+  border-top-color: var(--mn-border);
+}
+
+.svg-icon {
+  fill: var(--mn-muted);
+}
+
+.post-meta,
+blockquote {
+  color: var(--mn-muted);
+}
+
+blockquote {
+  border-left-color: var(--mn-border);
+}
+
+hr,
+table,
+th,
+td {
+  border-color: var(--mn-border);
+}
+
+@media (max-width: 600px) {
+  .site-nav {
+    background-color: var(--mn-bg);
+    border-color: var(--mn-border);
+  }
+}
+
+// Code: the gem colours tokens for a light page. These map each rouge token
+// group to a --mn-code-* token so light and dark both stay at AA contrast.
+pre,
+code,
+.highlight,
+div.highlighter-rouge,
+.highlighter-rouge .highlight {
+  background-color: var(--mn-code-bg);
+  color: var(--mn-code-text);
+  border-color: var(--mn-border);
+}
+
+.highlight {
+  [class^="c"] { color: var(--mn-code-comment); background: none; }
+  [class^="k"], .o, .ow { color: var(--mn-code-keyword); }
+  [class^="s"] { color: var(--mn-code-string); }
+  [class^="m"], .il { color: var(--mn-code-number); }
+  [class^="n"], [class^="v"], .bp { color: var(--mn-code-name); }
+  .err, [class^="g"] { color: var(--mn-code-error); background: none; }
+  .w { color: inherit; }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--mn-font-display);
 }
 
 body.theme-retro-game {
@@ -28,9 +133,10 @@ html {
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #e9ecef;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--mn-header-bg);
+  background-image: var(--mn-grain);
+  border-bottom: 1px solid var(--mn-border);
+  box-shadow: var(--mn-shadow);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
@@ -43,32 +149,40 @@ body {
 // Theme selector positioning adjustment for fixed header
 // Note: Theme selector positioning is handled in theme-selector.html
 
+// The serif face is wider than the sans one this nav was sized for, so the
+// links are spaced tighter and kept on one line on desktop.
 .site-nav {
   display: inline-block;
   vertical-align: middle;
   .page-link {
-    font-weight: bold;
-    padding: 8px 16px;
+    font-weight: 400;
+    padding: 8px 10px;
     transition: all 0.3s ease;
     display: inline-block;
-    margin: 0 0.5em;
+    margin: 0 0.1em;
     text-transform: uppercase !important;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+  }
+}
+
+@media (min-width: 769px) {
+  .site-nav {
+    white-space: nowrap;
   }
 }
 
 // Active menu highlighting
 .site-nav .page-link.active {
-  color: #007bff;
-  font-weight: bold;
-  border-bottom: 2px solid #007bff;
+  color: var(--mn-accent);
+  font-weight: 400;
+  border-bottom: 2px solid var(--mn-accent);
   text-decoration: underline !important;
-  padding: 8px 16px;
+  padding: 8px 10px;
   transition: all 0.3s ease;
   display: inline-block;
-  margin: 0 0.5em;
+  margin: 0 0.1em;
   text-transform: uppercase !important;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 // Section Styles
@@ -87,29 +201,28 @@ body {
 }
 
 .section-heading {
-  font-size: 2.5em;
+  font-size: 2rem;
   margin-bottom: 1em;
   text-align: center;
-  color: #333;
+  color: var(--mn-text);
   position: relative;
   
+  // A fleuron instead of a bar, as at the head of a manuscript chapter.
   &::after {
-    content: "";
+    content: "\2766";
     position: absolute;
-    bottom: -10px;
+    bottom: -1.5rem;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    border-radius: 2px;
+    color: var(--mn-accent);
+    font-size: 1.2rem;
+    line-height: 1;
   }
 }
 
 // Welcome Section
 .welcome-section {
-  background: linear-gradient(135deg, #5a6dd4 0%, #764ba2 100%);
-  color: white;
+  color: var(--mn-text);
   text-align: center;
   padding: 2em 0 !important;
   min-height: auto !important;
@@ -133,8 +246,8 @@ body {
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid white;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 4px solid var(--mn-accent);
+  box-shadow: var(--mn-shadow-hover);
 }
 
 .welcome-text-content {
@@ -144,7 +257,7 @@ body {
 }
 
 .welcome-intro {
-  font-size: 1.2em;
+  font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 1em;
 }
@@ -152,38 +265,31 @@ body {
 .mission-statement {
   margin: 2em 0;
   padding: 1.5em;
-  // A dark tint (not a light one) so the panel's white text keeps enough
-  // contrast against the gradient behind it — a light overlay would wash
-  // the background out and erode contrast instead of helping it.
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
+  background: var(--mn-card-bg);
+  border: 1px solid var(--mn-border-soft);
+  border-radius: var(--mn-radius-card);
+  box-shadow: var(--mn-shadow-card);
 }
 
 .mission-heading {
-  font-size: 1.8em;
+  font-size: 1.5rem;
   margin-bottom: 1em;
-  color: white;
+  color: var(--mn-accent-strong);
 }
 
 .mission-text {
-  font-size: 1.1em;
+  font-size: 1rem;
   line-height: 1.6;
-  color: white;
+  color: var(--mn-text);
 }
 
 .welcome-section .section-heading {
-  color: white;
-  font-size: 3.5em;
-  margin-bottom: 0.5em;
-  
-  &::after {
-    background: white;
-  }
+  font-size: 2.75rem;
+  margin-bottom: 1.1em;
 }
 
 .welcome-text {
-  font-size: 1.3em;
+  font-size: 1.15rem;
   line-height: 1.8;
   margin-bottom: 2em;
   max-width: 900px;
@@ -201,46 +307,43 @@ body {
 .welcome-button {
   display: inline-block;
   padding: 15px 30px;
-  border-radius: 30px;
+  border-radius: var(--mn-radius);
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1em;
+  font-weight: 500;
+  font-size: 1rem;
   transition: all 0.3s ease;
   border: 2px solid transparent;
 }
 
 .welcome-button.primary {
-  background: white;
-  // #667eea only hit 3.66:1 on white (below the 4.5:1 minimum for body-size
-  // text) — darkened along the same hue to 5265cc (~5.1:1) instead.
-  color: #5265cc;
-  border-color: white;
+  background: var(--mn-accent);
+  color: var(--mn-on-accent);
+  border-color: var(--mn-accent);
 }
 
 .welcome-button.primary:hover {
-  background: transparent;
-  color: white;
-  border-color: white;
+  background: var(--mn-accent-strong);
+  border-color: var(--mn-accent-strong);
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+  box-shadow: var(--mn-shadow-hover);
 }
 
 .welcome-button.secondary {
   background: transparent;
-  color: white;
-  border-color: white;
+  color: var(--mn-accent-strong);
+  border-color: var(--mn-accent);
 }
 
 .welcome-button.secondary:hover {
-  background: white;
-  color: #667eea;
+  background: var(--mn-accent);
+  color: var(--mn-on-accent);
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+  box-shadow: var(--mn-shadow-hover);
 }
 
 // Blog Section
 .latest-posts-section {
-  background-color: #f8f9fa;
+  background-color: transparent;
   padding: 2em 0 !important;
   min-height: auto !important;
 }
@@ -253,30 +356,28 @@ body {
 }
 
 .post-card {
-  background: white;
-  border-radius: 12px;
+  background: var(--mn-surface);
+  border-radius: var(--mn-radius);
   padding: 1.5em;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--mn-shadow);
   transition: all 0.3s ease;
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--mn-border);
 }
 
 .post-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--mn-shadow-hover);
 }
 
 .post-meta {
   margin-bottom: 1em;
-  // Minima's own $grey-color (#828282) only hits 3.84:1 on white, below the
-  // 4.5:1 minimum — this is what individual post pages use directly around
-  // their <time> element (no .post-date wrapper there). #666 matches the
-  // existing .post-date color already used in the post-card grid.
-  color: #666;
+  // Individual post pages use this directly around their <time> element (no
+  // .post-date wrapper there); --mn-muted keeps it at 4.5:1 or better.
+  color: var(--mn-muted);
 }
 
 .post-date {
-  color: #666;
+  color: var(--mn-muted);
   font-size: 0.9em;
 }
 
@@ -284,25 +385,25 @@ body {
   margin-bottom: 1em;
   
   .post-link {
-    color: #333;
+    color: var(--mn-text);
     text-decoration: none;
     
     &:hover {
-      color: #007bff;
+      color: var(--mn-accent);
     }
   }
 }
 
 .post-excerpt {
-  color: #666;
+  color: var(--mn-muted);
   line-height: 1.6;
   margin-bottom: 1em;
 }
 
 .read-more {
-  color: #007bff;
+  color: var(--mn-accent);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   
   &:hover {
     text-decoration: underline;
@@ -319,39 +420,39 @@ body {
 .latest-posts-button {
   display: inline-block;
   padding: 12px 24px;
-  border-radius: 25px;
+  border-radius: var(--mn-radius);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   transition: all 0.3s ease;
-  border: 2px solid #007bff;
+  border: 2px solid var(--mn-accent);
 }
 
 .latest-posts-button:not(.secondary) {
-  background: #007bff;
-  color: white;
+  background: var(--mn-accent);
+  color: var(--mn-on-accent);
 }
 
 .latest-posts-button:not(.secondary):hover {
-  background: #0056b3;
+  background: var(--mn-accent-strong);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+  box-shadow: var(--mn-shadow-hover);
 }
 
 .latest-posts-button.secondary {
   background: transparent;
-  color: #007bff;
+  color: var(--mn-accent-strong);
 }
 
 .latest-posts-button.secondary:hover {
-  background: #007bff;
-  color: white;
+  background: var(--mn-accent);
+  color: var(--mn-on-accent);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+  box-shadow: var(--mn-shadow-hover);
 }
 
 // About Section
 .about-section {
-  background-color: white;
+  background-color: transparent;
   padding: 2em 0 !important;
   min-height: auto !important;
 }
@@ -364,10 +465,10 @@ body {
 }
 
 .about-text p {
-  font-size: 1.1em;
+  font-size: 1rem;
   line-height: 1.8;
   margin-bottom: 1.5em;
-  color: #555;
+  color: var(--mn-muted);
 }
 
 .about-highlights {
@@ -378,16 +479,18 @@ body {
 .highlight-item {
   text-align: center;
   padding: 1.5em;
-  background: #f8f9fa;
-  border-radius: 12px;
-  border: 1px solid #e9ecef;
+  background: var(--mn-card-bg);
+  border: 1px solid var(--mn-border-soft);
+  border-radius: var(--mn-radius-card);
+  box-shadow: var(--mn-shadow-card);
   transition: all 0.3s ease;
 }
 
 .highlight-item:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--mn-shadow-card-hover);
 }
+
 
 .highlight-icon {
   font-size: 3em;
@@ -396,93 +499,139 @@ body {
 }
 
 .highlight-item h3 {
-  color: #333;
+  color: var(--mn-text);
   margin-bottom: 0.5em;
 }
 
 .highlight-item p {
-  color: #666;
+  color: var(--mn-muted);
   line-height: 1.6;
 }
 
 // Skills Section
 .skills-section {
-  background: linear-gradient(135deg, #5a6dd4 0%, #764ba2 100%);
-  color: white;
+  background: none;
   padding: 2em 0 !important;
   min-height: auto !important;
 }
 
-.skills-section .section-heading {
-  color: white;
-  font-size: 2.5em;
-  margin-bottom: 1em;
-  text-align: center;
-  
-  &::after {
-    background: white;
-  }
-}
-
-.skills-grid-cards {
+// Skills as a periodic table, rendered from _data/skills.yml.
+.periodic {
   display: grid;
-  // Two columns on desktop; minmax(0, 1fr) so a long chip row can never
-  // widen a track past the viewport. Collapses to one column on mobile.
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.2em;
-  max-width: 1000px;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  align-items: start;
+  gap: 0.4rem;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
-.skills-card {
-  background: rgba(255, 255, 255, 0.12);
-  padding: 1.2em;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-sizing: border-box;
-  transition: transform 0.2s ease;
-
-  &:hover {
-    transform: translateY(-3px);
+@media (max-width: 768px) {
+  .periodic {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
-.skills-card-title {
-  margin: 0 0 0.8em;
-  padding-bottom: 0.4em;
-  font-size: 1.1em;
-  color: white;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+@media (max-width: 480px) {
+  .periodic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-.skill-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45em;
+.periodic-group {
+  min-width: 0;
+  // A category with `columns: 2` in skills.yml spans two grid columns.
+  grid-column: span var(--span, 1);
+}
+
+.periodic-tiles {
+  display: grid;
+  grid-template-columns: repeat(var(--span, 1), minmax(0, 1fr));
+  gap: 0.4rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-// Chip accent comes from --chip-color, set per category in skills.yml.
-.skill-chip {
-  display: inline-block;
-  background: #fff;
-  color: var(--chip-color, #333);
-  border: 2px solid var(--chip-color, #333);
-  border-radius: 999px;
-  padding: 0.25em 0.75em;
-  font-size: 0.85em;
-  font-weight: 600;
+.periodic-title {
+  margin: 0 0 0.5em;
+  padding: 0.5em 0.15em;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.periodic-title span {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.15em;
+}
+
+.element {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  padding: 0.3em 0.2em 0.4em;
+  text-align: center;
   text-decoration: none;
 }
 
-a.skill-chip:hover,
-a.skill-chip:focus-visible {
-  background: var(--chip-color, #333);
-  color: #fff;
+.element-num {
+  position: absolute;
+  top: 0.25em;
+  left: 0.4em;
+  font-size: 0.65rem;
+  font-weight: 400;
+  opacity: 0.75;
+}
+
+.element-sym {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.element-name {
+  display: block;
+  margin-top: 0.2em;
+  font-size: 0.72rem;
+  font-weight: 400;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.periodic-title {
+  color: var(--mn-accent-strong);
+  border-bottom: 1px solid var(--mn-accent);
+}
+
+.element {
+  background: transparent;
+  color: var(--mn-accent);
+  border: 1px solid var(--mn-border);
+  border-radius: var(--mn-radius);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.element-name {
+  color: var(--mn-text);
+}
+
+a.element:hover,
+a.element:focus-visible {
+  background: var(--mn-accent);
+  color: var(--mn-on-accent);
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: var(--mn-shadow-hover);
+  outline: none;
+}
+
+a.element:hover .element-name,
+a.element:focus-visible .element-name {
+  color: var(--mn-on-accent);
 }
 
 .visually-hidden {
@@ -497,49 +646,16 @@ a.skill-chip:focus-visible {
   border: 0;
 }
 
-.skills-grid {
-  display: grid;
-  gap: 1.5em;
-}
-
-.skill-item {
-  display: flex;
-  align-items: center;
-  gap: 1em;
-}
-
-.skill-name {
-  min-width: 100px;
-  font-weight: 600;
-  color: #333;
-}
-
-.skill-level {
-  flex: 1;
-  height: 8px;
-  background: #e9ecef;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.skill-bar {
-  height: 100%;
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  border-radius: 4px;
-  transition: width 1s ease;
-  width: 0;
-}
-
 // Contact Section Styles
 .contact-section {
-  background-color: white;
+  background-color: transparent;
   padding: 2em 0 !important;
   min-height: auto !important;
 }
 
 .contact-intro {
-  font-size: 1.1em;
-  color: #666;
+  font-size: 1rem;
+  color: var(--mn-muted);
   margin-bottom: 2em;
   line-height: 1.6;
   text-align: center;
@@ -558,20 +674,22 @@ a.skill-chip:focus-visible {
 }
 
 .form-group label {
-  font-weight: 600;
-  color: #333;
+  font-weight: 500;
+  color: var(--mn-text);
   margin-bottom: 0.5em;
 }
 
 .required-mark {
-  color: #dc3545;
+  color: var(--mn-danger);
 }
 
 .contact-form input,
 .contact-form textarea {
   padding: 15px;
-  border: 2px solid #e9ecef;
-  border-radius: 8px;
+  background: var(--mn-surface);
+  color: var(--mn-text);
+  border: 2px solid var(--mn-border-control);
+  border-radius: var(--mn-radius);
   font-size: 1em;
   transition: all 0.3s ease;
   font-family: inherit;
@@ -580,8 +698,8 @@ a.skill-chip:focus-visible {
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+  border-color: var(--mn-accent);
+  box-shadow: var(--mn-focus-ring);
 }
 
 .contact-form textarea {
@@ -590,21 +708,21 @@ a.skill-chip:focus-visible {
 }
 
 .submit-button {
-  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-  color: white;
+  background: var(--mn-accent);
+  color: var(--mn-on-accent);
   border: none;
   padding: 15px 30px;
-  border-radius: 8px;
+  border-radius: var(--mn-radius);
   font-size: 1.1em;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .submit-button:hover {
-  background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+  background: var(--mn-accent-strong);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+  box-shadow: var(--mn-shadow-hover);
 }
 
 .contact-info {
@@ -617,32 +735,15 @@ a.skill-chip:focus-visible {
 .contact-item {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5em;
-  padding: 1em;
-  background: #f8f9fa;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  padding: 0.5em;
 }
 
-.contact-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-}
 
 .contact-icon {
   font-size: 1.5em;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
-}
-
-// Grow the footer social-icon tap target to a comfortable minimum without
-// shifting visible layout (negative margin offsets the added padding).
-.social-icon-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  margin: -10px;
 }
 
 // Theme dropdown label visibility: hide short label by default, show on mobile.
@@ -662,11 +763,11 @@ a.skill-chip:focus-visible {
   }
   
   .section-heading {
-    font-size: 2em;
+    font-size: 1.6rem;
   }
   
   .welcome-section .section-heading {
-    font-size: 2.5em;
+    font-size: 2.1rem;
   }
   
   .welcome-header {
@@ -691,7 +792,11 @@ a.skill-chip:focus-visible {
   }
   
   .mission-heading {
-    font-size: 1.5em;
+    font-size: 1.25rem;
+  }
+
+  .welcome-intro {
+    font-size: 1rem;
   }
   
   // Note: .site-header min-height, .site-title wrapping, and .site-nav
@@ -732,9 +837,6 @@ a.skill-chip:focus-visible {
     gap: 2em;
   }
 
-  .skills-grid-cards {
-    grid-template-columns: minmax(0, 1fr);
-  }
   
   .post-grid {
     grid-template-columns: 1fr;
@@ -768,19 +870,20 @@ a.skill-chip:focus-visible {
 .post-navigation {
   margin-top: 2em;
   padding-top: 1em;
-  border-top: 1px solid #eaecef;
+  border-top: 1px solid var(--mn-border);
   
   .prev, .next {
     display: inline-block;
-    padding: 0.5em 1em;
+    padding: 0.8em 1em;
     margin: 0.5em;
-    background-color: #f1f1f1;
+    background-color: var(--mn-surface-alt);
+    color: var(--mn-accent-strong);
     text-decoration: none;
-    border-radius: 3px;
+    border-radius: var(--mn-radius-sm);
     transition: background-color 0.2s;
     
     &:hover {
-      background-color: #e1e1e1;
+      background-color: var(--mn-border);
     }
   }
   
@@ -801,12 +904,12 @@ a.skill-chip:focus-visible {
 
 .post-list {
   .post-meta {
-    color: #666;
+    color: var(--mn-muted);
     font-size: 0.9em;
   }
   
   .post-link {
-    color: #333;
+    color: var(--mn-text);
     text-decoration: none;
     
     &:hover {
@@ -815,9 +918,10 @@ a.skill-chip:focus-visible {
   }
 }
 
-.site-title {
-  font-weight: bold;
-  color: #333;
+.site-title,
+.site-title:visited {
+  font-weight: 400;
+  color: var(--mn-text);
   text-transform: uppercase;
 }
 
@@ -830,11 +934,11 @@ a.skill-chip:focus-visible {
   
   .post-title {
     margin-bottom: 0.5em;
-    color: #333;
+    color: var(--mn-text);
   }
   
   .post-meta {
-    color: #666;
+    color: var(--mn-muted);
     font-size: 0.9em;
   }
 }
@@ -855,21 +959,21 @@ a.skill-chip:focus-visible {
 }
 
 .theme-toggle {
-  background: #007bff;
-  color: white;
+  background: var(--mn-accent);
+  color: var(--mn-on-accent);
   border: none;
   padding: 12px 16px;
-  border-radius: 8px;
+  border-radius: var(--mn-radius);
   cursor: pointer;
   font-size: 14px;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--mn-shadow);
   transition: all 0.3s ease;
   
   &:hover {
-    background: #0056b3;
+    background: var(--mn-accent-strong);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--mn-shadow-hover);
   }
 }
 
@@ -878,10 +982,10 @@ a.skill-chip:focus-visible {
   top: 100%;
   right: 0;
   margin-top: 8px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  border: 1px solid #e9ecef;
+  background: var(--mn-surface);
+  border-radius: var(--mn-radius);
+  box-shadow: var(--mn-shadow-hover);
+  border: 1px solid var(--mn-border);
   min-width: 180px;
   display: none;
   overflow: hidden;
@@ -896,20 +1000,20 @@ a.skill-chip:focus-visible {
   width: 100%;
   padding: 12px 16px;
   border: none;
-  background: white;
-  color: #333;
+  background: var(--mn-surface);
+  color: var(--mn-text);
   text-align: left;
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.2s ease;
   
   &:hover {
-    background: #f8f9fa;
+    background: var(--mn-surface-alt);
   }
   
   &.active {
-    background: #e3f2fd;
-    color: #1976d2;
+    background: var(--mn-surface-alt);
+    color: var(--mn-accent-strong);
     font-weight: 600;
   }
 }
@@ -924,5 +1028,45 @@ a.skill-chip:focus-visible {
   .theme-toggle {
     padding: 10px 14px;
     font-size: 12px;
+    min-height: 44px;
   }
+}
+
+// Travel pages read --travel-* tokens, with light-only fallbacks in the
+// markup. Map them onto the --mn-* tokens so the pages follow this theme's
+// paper palette and its dark appearance. Retro-Game sets its own values on
+// body.theme-retro-game (and main.css is not loaded under it).
+:root {
+  --travel-body-text: var(--mn-text);
+  --travel-secondary-text: var(--mn-muted);
+  --travel-note-text: var(--mn-muted);
+  --travel-sun-text: var(--mn-muted);
+  --travel-border-accent: var(--mn-border);
+  --travel-link-accent: var(--mn-accent);
+  --travel-link-accent-hover: var(--mn-accent-strong);
+  --travel-primary: var(--mn-accent);
+  --travel-active-toggle-bg: var(--mn-accent);
+  --travel-active-toggle-text: var(--mn-on-accent);
+  --travel-card-bg: var(--mn-surface);
+  --travel-card-radius: var(--mn-radius);
+  --travel-card-shadow: var(--mn-shadow);
+  --travel-highlight-card-bg: var(--mn-surface);
+  --travel-highlight-card-border: 1px solid var(--mn-border);
+  --travel-panel-border: 1px solid var(--mn-border);
+  --travel-modal-bg: var(--mn-surface);
+  --travel-warning-text: var(--mn-warning-text);
+  --travel-warning-bg: var(--mn-warning-bg);
+  --travel-warning-border: var(--mn-warning-border);
+}
+
+
+// Sections are separated by a faint centred hairline rather than boxes or
+// tinted bands, so the page reads as one sheet.
+.about-section,
+.skills-section,
+.contact-section {
+  background-image: linear-gradient(to right, transparent, var(--mn-border), transparent);
+  background-size: 70% 1px;
+  background-repeat: no-repeat;
+  background-position: top center;
 }

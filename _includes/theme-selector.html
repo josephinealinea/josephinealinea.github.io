@@ -6,17 +6,22 @@
   
   <div id="theme-dropdown" class="theme-dropdown">
     <button class="theme-option" data-theme="jekyll-minima">
-      <span class="label-full">Minima Theme</span><span class="label-short">Minima</span>
+      <span class="label-full">Papyrus Theme</span><span class="label-short">Papyrus</span>
     </button>
     <button class="theme-option" data-theme="retro-game">
       <span class="label-full">Retro-Game FF7</span><span class="label-short">FF7</span>
     </button>
+    {%- comment -%}
+    Y2K and Manila are switched off, not deleted: their stylesheets are still in
+    assets/. To bring one back, restore its button below, its entry in
+    THEME_REGISTRY (theme-selector.js) and its <link> in head.html.
     <button class="theme-option" data-theme="y2k-theme">
       <span class="label-full">Y2K Theme</span><span class="label-short">Y2K</span>
     </button>
     <button class="theme-option" data-theme="manila-theme">
       <span class="label-full">Manila Theme</span><span class="label-short">Manila</span>
     </button>
+    {%- endcomment -%}
   </div>
 </div>
 

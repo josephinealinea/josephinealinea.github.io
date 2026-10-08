@@ -1,6 +1,6 @@
 <!-- Avatar Chatbot -->
 <button type="button" id="chatbot-icon" aria-label="Chat with {{ site.bot_name | escape }}" aria-expanded="false" aria-controls="chatbot-window">
-  <img src="/assets/img/avatar.png" alt="">
+  <img src="/assets/img/avatar.png" alt="" draggable="false">
 </button>
 
 <div id="chatbot-window">
@@ -186,7 +186,8 @@ function findCollisionMinTop(iconRect) {
 }
 
 function clearTextUnderIcon() {
-  if (!mainContent) return;
+  // Once the visitor has placed the avatar themselves, their choice wins.
+  if (!mainContent || chatbotIcon.dataset.moved) return;
   chatbotIcon.style.bottom = '';
 
   // Stepping the icon up can put it right into the next paragraph up
@@ -220,4 +221,123 @@ function scheduleClearTextCheck(delay) {
 
 window.addEventListener('load', () => scheduleClearTextCheck(50));
 window.addEventListener('resize', () => scheduleClearTextCheck(150));
+
+// ── Draggable avatar ────────────────────────────────────────────────
+// The avatar can be dragged anywhere in the window (mouse, pen or touch) and
+// stays where it was left, remembered per browser. A press that barely moves
+// is still a click, which opens the chat. Keyboard: Arrow keys nudge it
+// (Shift for bigger steps) and Home puts it back in the corner, so moving it
+// never depends on a pointer. The chat window follows the avatar.
+const ICON_POS_KEY = 'chatbot-icon-pos';
+const DRAG_THRESHOLD = 6; // px a press must travel before it counts as a drag
+let suppressNextClick = false;
+
+function clampIcon(left, top) {
+  const w = chatbotIcon.offsetWidth, h = chatbotIcon.offsetHeight;
+  return {
+    left: Math.max(0, Math.min(left, window.innerWidth - w)),
+    top: Math.max(0, Math.min(top, window.innerHeight - h))
+  };
+}
+
+function placeChatWindowNextToIcon() {
+  if (!chatbotIcon.dataset.moved || chatbotWindow.style.display !== 'block') return;
+  const r = chatbotIcon.getBoundingClientRect();
+  const ww = chatbotWindow.offsetWidth, wh = chatbotWindow.offsetHeight, gap = 10;
+  // Left of the avatar when there is room, otherwise to its right.
+  const left = r.left - gap - ww >= 0 ? r.left - gap - ww : Math.min(r.right + gap, window.innerWidth - ww);
+  const bottom = Math.max(0, Math.min(window.innerHeight - r.bottom, window.innerHeight - wh));
+  chatbotWindow.style.right = (window.innerWidth - left - ww) + 'px';
+  chatbotWindow.style.bottom = bottom + 'px';
+}
+
+function setIconPosition(left, top, save) {
+  const p = clampIcon(left, top);
+  chatbotIcon.dataset.moved = '1';
+  chatbotIcon.style.left = p.left + 'px';
+  chatbotIcon.style.top = p.top + 'px';
+  chatbotIcon.style.right = 'auto';
+  chatbotIcon.style.bottom = 'auto';
+  placeChatWindowNextToIcon();
+  if (save) {
+    // Stored as a fraction of the free space, so it still makes sense after a
+    // resize or on a different screen size.
+    const fx = p.left / Math.max(1, window.innerWidth - chatbotIcon.offsetWidth);
+    const fy = p.top / Math.max(1, window.innerHeight - chatbotIcon.offsetHeight);
+    try { localStorage.setItem(ICON_POS_KEY, JSON.stringify({ fx, fy })); } catch (e) {}
+  }
+}
+
+function resetIconPosition() {
+  delete chatbotIcon.dataset.moved;
+  chatbotIcon.style.left = chatbotIcon.style.top = chatbotIcon.style.right = chatbotIcon.style.bottom = '';
+  chatbotWindow.style.right = chatbotWindow.style.bottom = '';
+  try { localStorage.removeItem(ICON_POS_KEY); } catch (e) {}
+  scheduleClearTextCheck(0);
+}
+
+function restoreIconPosition() {
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(ICON_POS_KEY)); } catch (e) {}
+  if (!saved || typeof saved.fx !== 'number' || typeof saved.fy !== 'number') return;
+  setIconPosition(
+    saved.fx * (window.innerWidth - chatbotIcon.offsetWidth),
+    saved.fy * (window.innerHeight - chatbotIcon.offsetHeight),
+    false
+  );
+}
+
+chatbotIcon.addEventListener('pointerdown', (e) => {
+  if (e.button !== undefined && e.button !== 0) return;
+  const start = chatbotIcon.getBoundingClientRect();
+  const grab = { x: e.clientX, y: e.clientY, left: start.left, top: start.top };
+  let dragging = false;
+
+  const onMove = (ev) => {
+    const dx = ev.clientX - grab.x, dy = ev.clientY - grab.y;
+    if (!dragging) {
+      if (Math.hypot(dx, dy) < DRAG_THRESHOLD) return;
+      dragging = true;
+      chatbotIcon.classList.add('dragging');
+    }
+    setIconPosition(grab.left + dx, grab.top + dy, false);
+  };
+  const onUp = () => {
+    chatbotIcon.removeEventListener('pointermove', onMove);
+    chatbotIcon.removeEventListener('pointerup', onUp);
+    chatbotIcon.removeEventListener('pointercancel', onUp);
+    if (dragging) {
+      chatbotIcon.classList.remove('dragging');
+      suppressNextClick = true; // the release would otherwise open the chat
+      setTimeout(() => { suppressNextClick = false; }, 0);
+      const r = chatbotIcon.getBoundingClientRect();
+      setIconPosition(r.left, r.top, true);
+    }
+  };
+  chatbotIcon.setPointerCapture(e.pointerId);
+  chatbotIcon.addEventListener('pointermove', onMove);
+  chatbotIcon.addEventListener('pointerup', onUp);
+  chatbotIcon.addEventListener('pointercancel', onUp);
+});
+
+// Capture phase on the target itself runs before the open/close handler.
+chatbotIcon.addEventListener('click', (e) => {
+  if (suppressNextClick) { e.stopImmediatePropagation(); e.preventDefault(); suppressNextClick = false; }
+}, true);
+
+chatbotIcon.addEventListener('keydown', (e) => {
+  if (e.key === 'Home') { resetIconPosition(); e.preventDefault(); return; }
+  const step = e.shiftKey ? 80 : 20;
+  const move = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] }[e.key];
+  if (!move) return;
+  e.preventDefault();
+  const r = chatbotIcon.getBoundingClientRect();
+  setIconPosition(r.left + move[0], r.top + move[1], true);
+});
+
+// Keep a placed avatar on screen when the window changes size, and keep the
+// chat window beside it whenever it opens.
+window.addEventListener('resize', () => { if (chatbotIcon.dataset.moved) restoreIconPosition(); });
+chatbotIcon.addEventListener('click', () => setTimeout(placeChatWindowNextToIcon, 0));
+restoreIconPosition();
 </script>

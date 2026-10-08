@@ -6,11 +6,11 @@ permalink: /bio/
 
 ## whoami ? 🧝🏽‍♀️
 
-# TL;DR (˶ᵔ ᵕ ᵔ˶)
+## TL;DR (˶ᵔ ᵕ ᵔ˶)
 
-From Manila’s 🇵🇭 hustle -> to Singapore’s 🇸🇬 skyline -> to Tallinn’s 🇪🇪 tech scene — I partner with people to understand requirements, design effective solutions, automate processes, and deliver robust, well-tested software that improves efficiency and drives business outcomes. With experienced across FinTech 📈, Banking 🏦, Telco 📡, and iGaming 🎲 industries, I bring cross-functional skills from concept to real-life value.
+From Manila’s 🇵🇭 hustle -> to Singapore’s 🇸🇬 skyline -> to Tallinn’s 🇪🇪 tech scene — I partner with people to understand requirements, design effective solutions, automate processes, and deliver robust, well-tested software that improves efficiency and drives business outcomes. With experience across FinTech 📈, Banking 🏦, Telco 📡, and iGaming 🎲, I bring cross-functional skills from concept to real-life value.
 
-# Long version ٩(ˊᗜˋ*)و
+## Long version ٩(ˊᗜˋ*)و
 
 Hey there!
 Thanks for stopping by — I’m guessing you want to know a little about me. 😊
@@ -25,7 +25,7 @@ I accepted a role at a major French corporate bank, building various in-house ba
 
 Over time, I wore many hats — from operations and development to starting projects from scratch, running proof-of-concepts, and leading as a Technical Lead. My team and I transformed monoliths into microservices, containerized applications, moved workloads to the cloud, and explored diverse tech stacks. It was an exciting, transformative chapter.
 
-Eventually, I accepted a new role in Singapore Telecommunications (SingTel), Asia’s largest telco. In the Network department, I helped orchestrate products and use cases for 5G technology — work that felt like helping to modernize the world! This was also when I dipped deeper into DevOps, expanding beyond pure coding into infrastructure coding, automation, and systems thinking.
+Eventually, I accepted a new role at Asia’s largest telco. Inside the Network department, I helped orchestrate products and use cases for 5G technology — work that felt like helping to modernize the world! This was also when I dipped deeper into DevOps, expanding beyond pure coding into infrastructure coding, automation, and systems thinking.
 
 Life then took me to the Northern Hemisphere — to Tallinn, Estonia 🇪🇪 — where I joined an MNC casino and lottery company in the iGaming division. Being new to the industry took me back to my teenage years, when I was obsessed with video games 🎮. I’d play adventure and RPG for hours without sleep, completely immersed in those worlds, (and btw I noticed that I'm still the same if I'm really hyperfocus at my work). Back then I vividly remember, I dreamt of building games. Now, I’m actually doing it — and that’s a dream come true. 
 

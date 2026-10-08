@@ -105,6 +105,14 @@ function updateBodyPadding() {
 
 function initializeNavigation() {
     updateBodyPadding();
+    // The header's height depends on the web fonts and theme CSS, which can
+    // finish after DOMContentLoaded; without a re-measure the page content
+    // starts underneath the fixed header (seen on Retro-Game post titles).
+    window.addEventListener('load', updateBodyPadding);
+    var siteHeader = document.querySelector('.site-header');
+    if (siteHeader && 'ResizeObserver' in window) {
+        new ResizeObserver(updateBodyPadding).observe(siteHeader);
+    }
     window.addEventListener('resize', function() {
         updateBodyPadding();
         // Re-render toggle label when viewport crosses the mobile breakpoint
@@ -145,7 +153,7 @@ function initializeNavigation() {
 
             window.scrollTo({
                 top: targetPosition,
-                behavior: 'smooth'
+                behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
             });
         });
     });
@@ -224,18 +232,22 @@ if (document.readyState === 'loading') {
        // theme-selector.html's dropdown, and one <link id="..." disabled>
        // in head.html — nothing else in this file needs to change.
        const THEME_REGISTRY = {
-           'jekyll-minima': { stylesheetId: 'main-css', labelFull: 'Minima Theme', labelShort: 'Minima' },
-           'retro-game': { stylesheetId: 'retro-game-css', labelFull: 'Retro-Game FF7', labelShort: 'FF7' },
-           'y2k-theme': { stylesheetId: 'y2k-theme-css', labelFull: 'Y2K Theme', labelShort: 'Y2K' },
-           'manila-theme': { stylesheetId: 'manila-theme-css', labelFull: 'Manila Theme', labelShort: 'Manila' }
+           'jekyll-minima': { stylesheetId: 'main-css', labelFull: 'Papyrus Theme', labelShort: 'Papyrus' },
+           'retro-game': { stylesheetId: 'retro-game-css', labelFull: 'Retro-Game FF7', labelShort: 'FF7' }
+           // Switched off, stylesheets kept in assets/ — restore these to bring them back:
+           // 'y2k-theme': { stylesheetId: 'y2k-theme-css', labelFull: 'Y2K Theme', labelShort: 'Y2K' },
+           // 'manila-theme': { stylesheetId: 'manila-theme-css', labelFull: 'Manila Theme', labelShort: 'Manila' }
        };
        const THEME_NAMES = Object.keys(THEME_REGISTRY);
 
        // Theme application function
        function applyTheme(theme) {
+           // A theme saved by a visitor but since switched off (y2k, manila)
+           // falls back to Papyrus instead of leaving an orphan body class.
+           if (!THEME_REGISTRY[theme]) theme = 'jekyll-minima';
            console.log('Applying theme:', theme);
 
-           const config = THEME_REGISTRY[theme] || THEME_REGISTRY['jekyll-minima'];
+           const config = THEME_REGISTRY[theme];
 
            // Remove existing theme classes
            document.body.classList.remove(...THEME_NAMES.map(name => `theme-${name}`));

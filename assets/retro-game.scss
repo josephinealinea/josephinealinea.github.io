@@ -17,7 +17,8 @@
 }
 
 .theme-toggle {
-  background: #007bff;
+  // White on #0062cc is 5.8:1; the old #007bff was 3.98:1.
+  background: #0062cc;
   color: white;
   border: none;
   padding: 12px 16px;
@@ -29,7 +30,7 @@
   transition: all 0.3s ease;
   
   &:hover {
-    background: #0056b3;
+    background: #004a9e;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
@@ -105,6 +106,9 @@
   --retro-border: #4a9eff;
   --retro-highlight: #ff8800;
   --retro-shadow: #1a4a8a;
+  // Code blocks: near-black panel, white text (19.8:1); token colours below
+  // are all 9:1 or better on it.
+  --retro-code-bg: #0a0a0a;
 }
 
 // Global Retro-Game Styles
@@ -280,8 +284,8 @@ body.theme-retro-game .site-title {
   }
   
   code {
-    background-color: var(--retro-shadow);
-    color: var(--retro-primary);
+    background-color: var(--retro-code-bg);
+    color: var(--retro-text);
     padding: 2px 6px;
     border-radius: 3px;
     font-family: 'Courier New', monospace;
@@ -289,7 +293,7 @@ body.theme-retro-game .site-title {
   }
   
   pre {
-    background-color: var(--retro-shadow);
+    background-color: var(--retro-code-bg);
     border: 2px solid var(--retro-primary);
     border-radius: 5px;
     padding: 20px;
@@ -661,7 +665,7 @@ body.theme-retro-game .welcome-text-content {
 }
 
 body.theme-retro-game .welcome-intro {
-  font-size: 1.2em;
+  font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 1em;
   color: var(--retro-text);
@@ -678,14 +682,14 @@ body.theme-retro-game .mission-statement {
 }
 
 body.theme-retro-game .mission-heading {
-  font-size: 1.2em;
+  font-size: 1.1rem;
   margin-bottom: 1em;
   color: var(--retro-primary);
   text-shadow: 2px 2px 0px var(--retro-shadow);
 }
 
 body.theme-retro-game .mission-text {
-  font-size: 1.1em;
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--retro-text);
   text-shadow: 0 0 3px var(--retro-primary);
@@ -694,7 +698,7 @@ body.theme-retro-game .mission-text {
 body.theme-retro-game .welcome-section .section-heading {
   color: var(--retro-primary);
   text-shadow: 2px 2px 0px var(--retro-shadow);
-  font-size: 3.5em;
+  font-size: 2.5rem;
   margin-bottom: 0.5em;
   
   &::after {
@@ -842,7 +846,7 @@ body.theme-retro-game .about-content {
 }
 
 body.theme-retro-game .about-text p {
-  font-size: 1.1em;
+  font-size: 1rem;
   line-height: 1.8;
   margin-bottom: 1.5em;
   color: var(--retro-text);
@@ -975,66 +979,126 @@ body.theme-retro-game .skills-section {
   min-height: auto !important;
 }
 
-// Skills cards, rendered from _data/skills.yml. Shared layout is repeated
-// here because main.scss never loads under this theme.
-body.theme-retro-game .skills-grid-cards {
+// Skills as a periodic table, rendered from _data/skills.yml. Shared layout is
+// repeated here because main.scss never loads under this theme.
+body.theme-retro-game .periodic {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.2em;
-  max-width: 1000px;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  align-items: start;
+  gap: 0.4rem;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
 @media (max-width: 768px) {
-  body.theme-retro-game .skills-grid-cards {
-    grid-template-columns: minmax(0, 1fr);
+  body.theme-retro-game .periodic {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
-body.theme-retro-game .skills-card {
-  padding: 1.2em;
-  box-sizing: border-box;
-  background: var(--retro-bg);
-  border: 2px solid var(--retro-border);
-  box-shadow: 0 0 15px var(--retro-primary);
-  border-radius: 12px;
+@media (max-width: 480px) {
+  body.theme-retro-game .periodic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-body.theme-retro-game .skills-card-title {
-  margin: 0 0 0.8em;
-  padding-bottom: 0.4em;
-  font-size: 1.1em;
-  color: var(--retro-primary);
-  text-shadow: 0 0 5px var(--retro-primary);
-  border-bottom: 2px solid var(--retro-secondary);
+body.theme-retro-game .periodic-group {
+  min-width: 0;
+  // A category with `columns: 2` in skills.yml spans two grid columns.
+  grid-column: span var(--span, 1);
 }
 
-body.theme-retro-game .skill-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45em;
+body.theme-retro-game .periodic-tiles {
+  display: grid;
+  grid-template-columns: repeat(var(--span, 1), minmax(0, 1fr));
+  gap: 0.4rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-body.theme-retro-game .skill-chip {
-  display: inline-block;
-  padding: 0.25em 0.75em;
-  font-size: 0.85em;
-  font-weight: 600;
+body.theme-retro-game .periodic-title {
+  margin: 0 0 0.5em;
+  padding: 0.5em 0.1em;
+  // Courier is wide, and h3 adds uppercase + letter-spacing: drop both here
+  // so titles like "Observability" fit a one-column header.
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  text-transform: none;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+body.theme-retro-game .periodic-title span {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.15em;
+}
+
+body.theme-retro-game .element {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  padding: 0.3em 0.2em 0.4em;
+  text-align: center;
   text-decoration: none;
+}
+
+body.theme-retro-game .element-num {
+  position: absolute;
+  top: 0.25em;
+  left: 0.4em;
+  font-size: 0.65rem;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+body.theme-retro-game .element-sym {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+body.theme-retro-game .element-name {
+  display: block;
+  margin-top: 0.2em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+body.theme-retro-game .periodic-title {
+  color: var(--retro-primary);
+  text-shadow: 0 0 5px var(--retro-primary);
+  border-bottom: 2px solid var(--retro-secondary);
+}
+
+body.theme-retro-game .element {
   background: transparent;
-  color: var(--retro-text);
+  color: var(--retro-primary);
   border: 1px solid var(--retro-primary);
   border-radius: 4px;
 }
 
-body.theme-retro-game a.skill-chip:hover,
-body.theme-retro-game a.skill-chip:focus-visible {
+body.theme-retro-game .element-name {
+  color: var(--retro-text);
+}
+
+body.theme-retro-game a.element:hover,
+body.theme-retro-game a.element:focus-visible {
   background: var(--retro-primary);
   color: var(--retro-bg);
   box-shadow: 0 0 10px var(--retro-primary);
+}
+
+body.theme-retro-game a.element:hover .element-name,
+body.theme-retro-game a.element:focus-visible .element-name {
+  color: var(--retro-bg);
 }
 
 body.theme-retro-game .visually-hidden {
@@ -1073,7 +1137,7 @@ body.theme-retro-game .contact-section {
 
 // Contact Layout (same as minima)
 body.theme-retro-game .contact-intro {
-  font-size: 1.1em;
+  font-size: 1rem;
   color: var(--retro-text);
   margin-bottom: 2em;
   line-height: 1.6;
@@ -1174,7 +1238,7 @@ body.theme-retro-game .contact-icon {
 body.theme-retro-game .section-heading {
   color: var(--retro-primary);
   text-shadow: 2px 2px 0px var(--retro-shadow);
-  font-size: 2.8em;
+  font-size: 2rem;
   
   &::after {
     background: var(--retro-secondary);
@@ -1284,5 +1348,55 @@ body.theme-retro-game .budget-toggle-btn:hover {
   body.theme-retro-game .site-nav {
     background: var(--retro-bg);
     border: 1px solid var(--retro-border);
+  }
+}
+
+// Type scale on small screens. The desktop heading rules above carry the
+// body.theme-retro-game prefix, which beats the unprefixed rules in the
+// earlier mobile block, so the phone sizes are set here with the same weight.
+@media (max-width: 768px) {
+  body.theme-retro-game .welcome-section .section-heading {
+    font-size: 1.75rem;
+  }
+
+  body.theme-retro-game .section-heading {
+    font-size: 1.4rem;
+  }
+
+  body.theme-retro-game .welcome-intro {
+    font-size: 1rem;
+  }
+
+  body.theme-retro-game .mission-heading {
+    font-size: 1rem;
+  }
+
+  body.theme-retro-game .mission-text,
+  body.theme-retro-game .about-text p,
+  body.theme-retro-game .contact-intro {
+    font-size: 0.95rem;
+  }
+}
+
+// Code blocks. The minima gem paints rouge code blocks pale lavender with
+// colours made for a light page (blue text on it came to 2.4:1); here they
+// sit on the dark panel with each token group recoloured to read on it.
+body.theme-retro-game {
+  pre,
+  .highlight,
+  div.highlighter-rouge,
+  .highlighter-rouge .highlight {
+    background: var(--retro-code-bg);
+    color: var(--retro-text);
+  }
+
+  .highlight {
+    [class^="c"] { color: #9fb3c8; background: none; }
+    [class^="k"], .o, .ow { color: #ff8fb8; }
+    [class^="s"] { color: var(--retro-accent); }
+    [class^="m"], .il { color: #7fdbff; }
+    [class^="n"], [class^="v"], .bp { color: #7fdbff; }
+    .err, [class^="g"] { color: #ff8f8f; background: none; }
+    .w { color: inherit; }
   }
 }

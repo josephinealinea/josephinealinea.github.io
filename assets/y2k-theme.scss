@@ -653,61 +653,109 @@ body.theme-y2k-theme .skills-section {
   min-height: auto !important;
 }
 
-// Skills cards, rendered from _data/skills.yml. Shared layout is repeated
-// here because main.scss never loads under this theme.
-body.theme-y2k-theme .skills-grid-cards {
+// Skills as a periodic table, rendered from _data/skills.yml. Shared layout is
+// repeated here because main.scss never loads under this theme.
+body.theme-y2k-theme .periodic {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.2em;
-  max-width: 1000px;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  align-items: start;
+  gap: 0.4rem;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
 @media (max-width: 768px) {
-  body.theme-y2k-theme .skills-grid-cards {
-    grid-template-columns: minmax(0, 1fr);
+  body.theme-y2k-theme .periodic {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
-body.theme-y2k-theme .skills-card {
-  padding: 1.2em;
-  box-sizing: border-box;
-  background: var(--y2k-window-bg);
-  @include win98-raised;
-  border-radius: 0;
+@media (max-width: 480px) {
+  body.theme-y2k-theme .periodic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-body.theme-y2k-theme .skills-card-title {
-  margin: 0 0 0.8em;
-  padding-bottom: 0.4em;
-  font-size: 1.1em;
-  color: var(--y2k-text);
-  border-bottom: 2px solid var(--y2k-face-dark);
+body.theme-y2k-theme .periodic-group {
+  min-width: 0;
+  // A category with `columns: 2` in skills.yml spans two grid columns.
+  grid-column: span var(--span, 1);
 }
 
-body.theme-y2k-theme .skill-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45em;
+body.theme-y2k-theme .periodic-tiles {
+  display: grid;
+  grid-template-columns: repeat(var(--span, 1), minmax(0, 1fr));
+  gap: 0.4rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-body.theme-y2k-theme .skill-chip {
-  display: inline-block;
-  padding: 0.25em 0.75em;
-  font-size: 0.85em;
-  font-weight: 600;
+body.theme-y2k-theme .periodic-title {
+  margin: 0 0 0.5em;
+  padding: 0.5em 0.15em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+body.theme-y2k-theme .periodic-title span {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.15em;
+}
+
+body.theme-y2k-theme .element {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  padding: 0.3em 0.2em 0.4em;
+  text-align: center;
   text-decoration: none;
+}
+
+body.theme-y2k-theme .element-num {
+  position: absolute;
+  top: 0.25em;
+  left: 0.4em;
+  font-size: 0.6rem;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+body.theme-y2k-theme .element-sym {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+body.theme-y2k-theme .element-name {
+  display: block;
+  margin-top: 0.2em;
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+body.theme-y2k-theme .periodic-title {
+  color: var(--y2k-text);
+  border-bottom: 2px solid var(--y2k-face-dark);
+}
+
+body.theme-y2k-theme .element {
   background: var(--y2k-face);
   @include win98-raised;
   color: var(--y2k-text);
   border-radius: 0;
 }
 
-body.theme-y2k-theme a.skill-chip:hover,
-body.theme-y2k-theme a.skill-chip:focus-visible {
+body.theme-y2k-theme a.element:hover,
+body.theme-y2k-theme a.element:focus-visible {
   background: var(--y2k-titlebar-start);
   color: var(--y2k-titlebar-text);
 }

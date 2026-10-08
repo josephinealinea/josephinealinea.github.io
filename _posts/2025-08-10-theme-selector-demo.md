@@ -3,7 +3,7 @@ layout: post
 title: "🎨 Theme Selector Demo - Try Both Themes!"
 date: 2025-08-10 19:20:00
 categories: [jekyll, themes, demo]
-tags: [theme-selector, minima, retro-game]
+tags: [theme-selector, papyrus, retro-game]
 ---
 
 # 🎨 Theme Selector Demo
@@ -14,11 +14,11 @@ Welcome to the **Theme Selector Demo**! This post showcases the new floating the
 
 Look for the **🎨 Theme** button in the **top right corner** of your screen. Click it to open the theme dropdown and choose between:
 
-### 🎯 Jekyll Minima (Default)
-- **Clean & Modern** design
-- Professional appearance
-- Easy to read typography
-- Subtle shadows and borders
+### 📜 Papyrus (Default)
+- **Warm parchment** design
+- Sepia ink on aged paper
+- Easy to read serif typography
+- Soft cards and gentle shadows
 
 ### 🕹️ Retro-Game
 - **Nostalgic Gaming** aesthetic
@@ -35,10 +35,10 @@ Look for the **🎨 Theme** button in the **top right corner** of your screen. C
 
 ## 🎭 Theme Features
 
-### Jekyll Minima Theme
-- Professional blog appearance
-- Clean typography
-- Subtle color scheme
+### Papyrus Theme
+- Warm parchment blog appearance
+- Classic serif typography
+- Earthy ink-and-paper colours
 - Responsive design
 - Perfect for business or personal blogs
 

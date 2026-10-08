@@ -39,8 +39,8 @@ title: Contact Me
           <span>Available for opportunities</span>
         </div>
       </div>
-      <div class="post-navigation">
-        <a href="https://ko-fi.com/P5P1U54E8" target="_blank" rel="noopener">
+      <div class="post-navigation kofi-row">
+        <a class="kofi-link" href="https://ko-fi.com/P5P1U54E8" target="_blank" rel="noopener">
           <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" />
         </a>
       </div>

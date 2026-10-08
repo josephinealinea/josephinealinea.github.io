@@ -6,8 +6,12 @@
 <link rel="stylesheet" href="{{ "/assets/chatbot.css" | relative_url }}" id="chatbot-css">
 <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}" id="main-css">
 <link rel="stylesheet" href="{{ "/assets/retro-game.css" | relative_url }}" id="retro-game-css" disabled>
+{%- comment -%}
+Y2K and Manila are switched off (see theme-selector.html); to bring one back,
+restore its link:
 <link rel="stylesheet" href="{{ "/assets/y2k-theme.css" | relative_url }}" id="y2k-theme-css" disabled>
 <link rel="stylesheet" href="{{ "/assets/manila-theme.css" | relative_url }}" id="manila-theme-css" disabled>
+{%- endcomment -%}
 <link rel="icon" type="image/x-icon" href="{{ "/favicon.ico" | relative_url }}">
 
 {%- feed_meta -%}

@@ -26,6 +26,7 @@ credits:
   libraries_link: "third-party notices"
 
 footer:
+  copyright: "©2026 Josephine Alinea. All rights reserved."
   privacy: "Privacy"
   notices: "Third-party notices"
   notices_url: "https://github.com/josephinealinea/josephinealinea.github.io/blob/main/THIRD-PARTY-NOTICES.md"
@@ -61,5 +62,4 @@ skills:
     platform: "Containers & platform"
     observability: "Observability"
     databases: "Databases"
-    tooling: "Tooling & AI"
     services: "Third-party services"

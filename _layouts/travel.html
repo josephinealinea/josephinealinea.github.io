@@ -361,8 +361,9 @@ layout: default
   .back-link { display: inline-block; margin-bottom: 1rem; color: var(--travel-primary, inherit); }
 
   .panel-toggle { display: flex; flex-wrap: wrap; gap: 1.1rem; align-items: center; margin: 0.5rem 0 1.25rem; font-size: 0.9rem; color: var(--travel-body-text, #444); }
-  .panel-toggle-option { display: inline-flex; align-items: center; gap: 0.3rem; cursor: pointer; }
-  .panel-toggle-option input[type="checkbox"] { accent-color: var(--travel-primary, auto); }
+  .panel-toggle-option { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 32px; cursor: pointer; }
+  .panel-toggle-option input[type="checkbox"] { width: 1.15rem; height: 1.15rem; accent-color: var(--travel-primary, auto); }
+  @media (max-width: 768px) { .panel-toggle-option { min-height: 44px; } }
   .panel-toggle-group { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
   .panel-toggle-group-label { color: var(--travel-secondary-text, #555); }
   .panel-hidden { display: none !important; }
