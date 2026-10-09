@@ -13,6 +13,9 @@ $grey-color-light: #bfa06a;
 $grey-color-dark: #2b1d0e;
 $base-font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
 
+// Fibre grain: an inline SVG noise tile, used as a background-image.
+$mn-grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35 0 0 0 0 .24 0 0 0 0 .1 0 0 0 .2 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+
 :root {
   --mn-desk: #d6bf8c;           // the surface the sheet lies on
   --mn-bg: #f2e5c4;             // the parchment sheet
@@ -44,13 +47,16 @@ $base-font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, se
   --mn-code-name: #1d5a6b;
   --mn-code-error: #a01818;
 
-  // Paper: fibre grain, foxing stains and an edge vignette.
-  --mn-grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35 0 0 0 0 .24 0 0 0 0 .1 0 0 0 .2 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  // Paper: foxing stains and an edge vignette. (The fibre grain is the Sass
+  // variable $mn-grain above: GitHub Pages' Sass cannot parse a url("data:...")
+  // inside a custom property.)
   --mn-stains: radial-gradient(circle at 12% 18%, rgba(150, 100, 40, 0.14), transparent 38%),
     radial-gradient(circle at 88% 62%, rgba(150, 100, 40, 0.12), transparent 42%),
     radial-gradient(circle at 30% 92%, rgba(130, 85, 30, 0.1), transparent 36%);
   --mn-sheet-edge: inset 0 0 70px rgba(120, 80, 30, 0.28);
   --mn-vignette: radial-gradient(ellipse at center, transparent 58%, rgba(90, 58, 20, 0.28) 100%);
+
+  --mn-photo-ring: #ffffff;     // outline of the profile photo
 
   --mn-font-display: Georgia, "Times New Roman", serif;
   --mn-radius: 4px;

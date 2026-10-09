@@ -16,7 +16,7 @@
 // box around the content. All of it is CSS, tokens in _sass/themes.
 body {
   background-color: var(--mn-bg);
-  background-image: var(--mn-stains), var(--mn-grain);
+  background-image: var(--mn-stains), $mn-grain;
   color: var(--mn-text);
   // Crisper, lighter-looking type: greyscale antialiasing avoids the heavy
   // subpixel fattening, and legibility rendering turns on kerning/ligatures.
@@ -134,7 +134,7 @@ html {
   right: 0;
   z-index: 1000;
   background-color: var(--mn-header-bg);
-  background-image: var(--mn-grain);
+  background-image: $mn-grain;
   border-bottom: 1px solid var(--mn-border);
   box-shadow: var(--mn-shadow);
   backdrop-filter: blur(10px);
@@ -246,7 +246,7 @@ body {
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid var(--mn-accent);
+  border: 4px solid var(--mn-photo-ring);
   box-shadow: var(--mn-shadow-hover);
 }
 
