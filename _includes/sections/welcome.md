@@ -23,7 +23,7 @@ title: Welcome
       <p class="mission-text">
         In today's world, everything should be digitalised, yet not everyone has access to it. I aim to create affordable, user-friendly IT solutions for private or small companies, making technology accessible and very easy to use. 
         <br /> ..plus sharing the learnings along the way :) <br />
-        <br /> I'm the proud creator of the "Travelling Llama 🦙" and "Cash on the hoof!", both began as personal projects built for my own use. Then I shared with close friends, who liked them enough to keep using them. 
+        <br /> I'm the proud creator of the "<a href="https://travellingllama.fun" target="_blank" rel="noopener noreferrer">Travelling Llama 🦙<span class="visually-hidden"> {{ site.data.strings.en.skills.new_tab }}</span></a>" and "<a href="https://cash-flow.travellingllama.fun" target="_blank" rel="noopener noreferrer">Cash on the hoof! 💰<span class="visually-hidden"> {{ site.data.strings.en.skills.new_tab }}</span></a>", both began as personal projects built for my own use. Then I shared with close friends, who liked them enough to keep using them. 
 Whether you're a one-person shop or a small team, I'll do my best to make things efficient and to help your business thrive.
       </p>
     </div>

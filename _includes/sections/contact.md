@@ -34,15 +34,15 @@ title: Contact Me
           <span class="contact-icon" aria-hidden="true">📍</span>
           <span>Tallinn, Estonia 🇪🇪</span>
         </div>
+        <div class="contact-item contact-kofi">
+          <a class="kofi-link" href="https://ko-fi.com/P5P1U54E8" target="_blank" rel="noopener">
+            <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" />
+          </a>
+        </div>
         <div class="contact-item">
           <span class="contact-icon" aria-hidden="true">💼</span>
           <span>Available for opportunities</span>
         </div>
-      </div>
-      <div class="post-navigation kofi-row">
-        <a class="kofi-link" href="https://ko-fi.com/P5P1U54E8" target="_blank" rel="noopener">
-          <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" />
-        </a>
       </div>
     </div>
   </div>

@@ -36,7 +36,7 @@ body {
 
 .page-content .wrapper {
   padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
 }
 
 a {
@@ -172,17 +172,12 @@ body {
 }
 
 // Active menu highlighting
+// The entry for the section or page the visitor is on. Only colour and an
+// inset bar under the text change (an inset shadow takes no space), so the
+// menu never shifts, and it does not rely on colour alone.
 .site-nav .page-link.active {
   color: var(--mn-accent);
-  font-weight: 400;
-  border-bottom: 2px solid var(--mn-accent);
-  text-decoration: underline !important;
-  padding: 8px 10px;
-  transition: all 0.3s ease;
-  display: inline-block;
-  margin: 0 0.1em;
-  text-transform: uppercase !important;
-  letter-spacing: 0.5px;
+  box-shadow: inset 0 -2px 0 var(--mn-accent);
 }
 
 // Section Styles
@@ -459,9 +454,33 @@ body {
 
 .about-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3em;
-  align-items: center;
+  // Six tracks, the same width as the Welcome and Technology sections. Each
+  // card spans two (three across). The .about-highlights groups dissolve into
+  // this grid (see below), so each group is a row and cards in a row share a
+  // height. The last row holds two cards, centred under the other six.
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-rows: 1fr; // every row as tall as the tallest, so all cards are one size
+  gap: 1.2em;
+  align-items: stretch;
+}
+
+.about-content .highlight-item {
+  grid-column: span 2;
+}
+
+.about-content .about-featured .highlight-item:first-child {
+  grid-column: 2 / span 2;
+}
+
+@media (max-width: 900px) {
+  .about-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-content .highlight-item,
+  .about-content .about-featured .highlight-item:first-child {
+    grid-column: auto;
+  }
 }
 
 .about-text p {
@@ -472,13 +491,12 @@ body {
 }
 
 .about-highlights {
-  display: grid;
-  gap: 1.5em;
+  display: contents;
 }
 
 .highlight-item {
   text-align: center;
-  padding: 1.5em;
+  padding: 0.9em 1.1em;
   background: var(--mn-card-bg);
   border: 1px solid var(--mn-border-soft);
   border-radius: var(--mn-radius-card);
@@ -492,20 +510,25 @@ body {
 }
 
 
+
 .highlight-icon {
-  font-size: 3em;
+  font-size: 2em;
+  line-height: 1.2;
   display: block;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.2em;
 }
 
 .highlight-item h3 {
   color: var(--mn-text);
-  margin-bottom: 0.5em;
+  font-size: 1.05rem;
+  margin-bottom: 0.25em;
 }
 
 .highlight-item p {
   color: var(--mn-muted);
-  line-height: 1.6;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  margin-bottom: 0;
 }
 
 // Skills Section
@@ -649,7 +672,7 @@ a.element:focus-visible .element-name {
 // Contact Section Styles
 .contact-section {
   background-color: transparent;
-  padding: 2em 0 !important;
+  padding: 2em 0 0.5em !important;
   min-height: auto !important;
 }
 
@@ -726,23 +749,29 @@ a.element:focus-visible .element-name {
 }
 
 .contact-info {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5em;
-  margin-top: 2em;
+  // One line, squeezed to the width of the form (and so of the Submit button).
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.25em 1em;
+  max-width: 700px;
+  margin: 2em auto 0;
+  font-size: 0.95rem;
 }
 
 .contact-item {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5em;
-  padding: 0.5em;
+  gap: 0.4em;
+  padding: 0.25em 0;
+  min-width: 0;
 }
 
 
 .contact-icon {
-  font-size: 1.5em;
+  font-size: 1.25em;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
 }
 
@@ -818,9 +847,12 @@ a.element:focus-visible .element-name {
   
   .latest-posts-section,
   .about-section,
-  .skills-section,
-  .contact-section {
+  .skills-section {
     padding: 1.5em 0 !important;
+  }
+
+  .contact-section {
+    padding: 1.5em 0 0.5em !important;
   }
   
   .welcome-button {
@@ -834,7 +866,8 @@ a.element:focus-visible .element-name {
   
   .about-content {
     grid-template-columns: 1fr;
-    gap: 2em;
+    grid-auto-rows: auto;
+    gap: 1em;
   }
 
   
@@ -858,7 +891,8 @@ a.element:focus-visible .element-name {
   }
   
   .contact-info {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    justify-content: center;
   }
   
   body {

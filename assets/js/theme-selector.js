@@ -158,31 +158,61 @@ function initializeNavigation() {
         });
     });
     
-    // Update active menu item based on scroll position
-    function updateActiveMenu() {
-        const scrollPosition = window.scrollY + 100; // Offset for header
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                // Remove active class from all links
-                navLinks.forEach(link => link.classList.remove('active'));
-                
-                // Add active class to corresponding link
-                const activeLink = document.querySelector(`[href="#${sectionId}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
-            }
+    // Highlight the menu entry for where the visitor is. On the home page that
+    // is the section in view; on any other page it is that page's own entry
+    // (Blogs, Projects, Travels). Nav hrefs look like "/#about-me" (the site's
+    // base URL comes first), so match on the "#id" ending, not the whole href.
+    function setActiveLink(link) {
+        navLinks.forEach(l => {
+            l.classList.remove('active');
+            l.removeAttribute('aria-current');
         });
+        if (link) {
+            link.classList.add('active');
+            link.setAttribute('aria-current', link.getAttribute('href').indexOf('#') !== -1 ? 'location' : 'page');
+        }
     }
-    
-    // Listen for scroll events
-    window.addEventListener('scroll', updateActiveMenu);
-    
+
+    function updateActiveMenu() {
+        if (!sections.length) {
+            // Not the home page: pick the entry whose path the page sits under.
+            const here = location.pathname.replace(/index\.html$/, '');
+            let match = null;
+            navLinks.forEach(l => {
+                const href = l.getAttribute('href');
+                if (!href || href.indexOf('#') !== -1) return;
+                const path = new URL(href, location.href).pathname;
+                if (path !== '/' && here.indexOf(path) === 0) match = l;
+            });
+            setActiveLink(match);
+            return;
+        }
+
+        const headerHeight = document.querySelector('.site-header')?.offsetHeight || 60;
+        const scrollPosition = window.scrollY + headerHeight + 24;
+        // Welcome counts as current until the next section reaches the header.
+        let current = sections[0];
+        sections.forEach(section => {
+            const top = section.getBoundingClientRect().top + window.scrollY;
+            if (scrollPosition >= top) current = section;
+        });
+        // The last section is often too short to ever reach the top of the
+        // screen, so at the very bottom of the page it counts as current.
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+            current = sections[sections.length - 1];
+        }
+        setActiveLink(current ? Array.from(navLinks).find(l => (l.getAttribute('href') || '').endsWith('#' + current.id)) : null);
+    }
+
+    // Listen for scroll events (once per frame)
+    let activeMenuQueued = false;
+    window.addEventListener('scroll', () => {
+        if (activeMenuQueued) return;
+        activeMenuQueued = true;
+        requestAnimationFrame(() => { activeMenuQueued = false; updateActiveMenu(); });
+    }, { passive: true });
+    window.addEventListener('resize', updateActiveMenu);
+
     // Initialize active menu on page load
     updateActiveMenu();
 }

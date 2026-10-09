@@ -286,10 +286,19 @@ html, body {
   text-align: center;
 }
 
-.kofi-link {
-  display: inline-block;
-  padding: 0.4rem 0;
+/* The badge is a fixed-size image; let it shrink if its box is narrow. */
+.kofi-link img {
+  max-width: 100%;
+  height: auto;
 }
+
+.kofi-link {
+  // Just tall enough to be a comfortable tap target; no extra padding around it.
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+}
+
 
 .welcome-button,
 .latest-posts-button {
@@ -318,13 +327,46 @@ html, body {
   }
 
   .kofi-link {
-    padding: 0.8rem 0;
+    min-height: 44px;
   }
 
   .welcome-button,
   .latest-posts-button {
     min-height: 44px;
   }
+}
+
+/* About-section cards that link out (the two projects): the whole card is the
+   link, so it must lay out as a block and not pick up link underline/colour. */
+a.highlight-item,
+a.highlight-item:hover,
+a.highlight-item:visited {
+  display: block;
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+}
+
+a.highlight-item::after {
+  content: "\2197";
+  position: absolute;
+  top: 0.55em;
+  right: 0.8em;
+  font-size: 0.95rem;
+  opacity: 0.6;
+}
+
+a.highlight-item:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* Links inside running text (the welcome mission, .inline-link) are underlined so they never depend on
+   colour alone to be found. */
+.mission-text a,
+.inline-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* ── Reduced motion ──────────────────────────────────────────────────

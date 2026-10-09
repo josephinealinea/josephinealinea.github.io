@@ -1,4 +1,4 @@
-# Technologies shown in the Expertise periodic table (_includes/sections/skills.md).
+# Technologies shown in the "Technology I've Used" periodic table (_includes/sections/skills.md).
 # One entry per category; add a technology by adding one line to `items`.
 #   id    - matches a title under skills.categories in strings/en.yml
 #   columns - optional; 2 makes the category span two columns of the table
@@ -71,6 +71,7 @@
   icon: "🌐"
   columns: 2
   items:
+    - { name: "Sentry", symbol: "Sn", url: "https://sentry.io/" }
     - { name: "Open-Meteo", symbol: "Om", url: "https://open-meteo.com/" }
     - { name: "OpenStreetMap", symbol: "Sm", url: "https://www.openstreetmap.org/" }
     - { name: "GeoNames", symbol: "Gn", url: "https://www.geonames.org/" }
@@ -80,6 +81,5 @@
     - { name: "countries.dev", symbol: "Cd", url: "https://countries.dev/" }
     - { name: "Resend", symbol: "Re", url: "https://resend.com/" }
     - { name: "News API", symbol: "Na", url: "https://newsapi.org/" }
-    - { name: "Currents", symbol: "Cn", url: "https://currentsapi.services/" }
     - { name: "AviationStack", symbol: "As", url: "https://aviationstack.com/" }
     - { name: "AeroDataBox", symbol: "Ad", url: "https://aerodatabox.com/" }

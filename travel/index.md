@@ -7,6 +7,7 @@ permalink: /travel/
 <a href="/" class="back-link">← Back to Main Page</a>
 
 <p>🌈 Trip - Checklist, Itineraries, Budget and Weather forecasts ✈️</p>
+<p>🦙 My Travels are now planned in <a class="inline-link" href="https://travellingllama.fun/" target="_blank" rel="noopener noreferrer">Travelling Llama<span class="visually-hidden"> {{ site.data.strings.en.skills.new_tab }}</span></a>, visit https://travellingllama.fun/</p>
 
 {% assign trips = site.pages | where: "layout", "travel" | sort: "start_date" | reverse %}
 {% if trips.size > 0 %}

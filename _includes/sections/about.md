@@ -41,6 +41,18 @@ title: About Me
           <p>When not working, I love to travel, take pictures, and experience life</p>
         </div>
       </div>
+      <div class="about-highlights about-featured">
+        <a class="highlight-item" href="https://travellingllama.fun" target="_blank" rel="noopener noreferrer">
+          <span class="highlight-icon" aria-hidden="true">🦙</span>
+          <h3>Travelling Llama<span class="visually-hidden"> {{ site.data.strings.en.skills.new_tab }}</span></h3>
+          <p>Creator of a collaborative trip-planning site that makes travelling with friends easier. Live today and used by a small community.</p>
+        </a>
+        <a class="highlight-item" href="https://cash-flow.travellingllama.fun" target="_blank" rel="noopener noreferrer">
+          <span class="highlight-icon" aria-hidden="true">💰</span>
+          <h3>Cash on the Hoof<span class="visually-hidden"> {{ site.data.strings.en.skills.new_tab }}</span></h3>
+          <p>Creator of a cash-flow tracker I first built to keep tabs on my own money. Live today and used by a small community.</p>
+        </a>
+      </div>
     </div>
     <div class="about-bio-link">
       <a href="/bio/" class="latest-posts-button secondary">Read My Bio →</a>
