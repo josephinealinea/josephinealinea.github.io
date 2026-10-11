@@ -659,32 +659,23 @@ body.theme-manila-theme .about-section {
   min-height: auto !important;
 }
 
-// .about-content (the outer 2-column split) and .about-highlights (each
-// column's own gap between its 3 stacked cards) are custom site rules in
-// assets/main.scss that never load here — same reason as .post-grid above.
-// Without them the 6 highlight-items just stack in one long single column.
+// Six tracks, each card spans two (three across). The .about-highlights groups
+// dissolve into this grid (main.scss never loads here), so each group is a row
+// and every card is the same size, project cards included.
 body.theme-manila-theme .about-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3em;
-  align-items: center;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 1.5em;
+  align-items: stretch;
+}
+
+body.theme-manila-theme .about-content .highlight-item {
+  grid-column: span 2;
 }
 
 body.theme-manila-theme .about-highlights {
-  display: grid;
-  gap: 1.5em;
-}
-
-// The project cards sit in a full-width row of three under the two columns.
-body.theme-manila-theme .about-highlights.about-featured {
-  grid-column: 1 / -1;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-@media (max-width: 900px) {
-  body.theme-manila-theme .about-highlights.about-featured {
-    grid-template-columns: 1fr;
-  }
+  display: contents;
 }
 
 body.theme-manila-theme .about-text p {
@@ -1102,7 +1093,11 @@ body.theme-manila-theme {
 
   body.theme-manila-theme .about-content {
     grid-template-columns: 1fr;
-    gap: 2em;
+    gap: 1.5em;
+  }
+
+  body.theme-manila-theme .about-content .highlight-item {
+    grid-column: auto;
   }
 
   body.theme-manila-theme .welcome-actions {

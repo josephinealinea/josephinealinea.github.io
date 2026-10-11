@@ -41,7 +41,7 @@ title: About Me
           <p>When not working, I love to travel, take pictures, and experience life</p>
         </div>
       </div>
-      <div class="about-highlights about-featured">
+      <div class="about-highlights">
         <a class="highlight-item" href="https://travellingllama.fun" target="_blank" rel="noopener noreferrer">
           <span class="highlight-icon" aria-hidden="true">🦙</span>
           <h3>Travelling Llama<span class="visually-hidden"> {{ site.data.strings.en.skills.new_tab }}</span></h3>
