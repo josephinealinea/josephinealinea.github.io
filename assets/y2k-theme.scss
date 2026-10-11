@@ -615,6 +615,18 @@ body.theme-y2k-theme .about-highlights {
   gap: 1.5em;
 }
 
+// The project cards sit in a full-width row of three under the two columns.
+body.theme-y2k-theme .about-highlights.about-featured {
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  body.theme-y2k-theme .about-highlights.about-featured {
+    grid-template-columns: 1fr;
+  }
+}
+
 body.theme-y2k-theme .about-text p {
   font-size: 1.05em;
   line-height: 1.7;
@@ -628,6 +640,10 @@ body.theme-y2k-theme .highlight-item {
   border-radius: 0;
   @include win98-raised;
   color: var(--y2k-text);
+}
+
+body.theme-y2k-theme .highlight-item--mcp {
+  background: color-mix(in srgb, var(--y2k-window-bg), #000 12%);
 }
 
 body.theme-y2k-theme .highlight-icon {

@@ -457,7 +457,7 @@ body {
   // Six tracks, the same width as the Welcome and Technology sections. Each
   // card spans two (three across). The .about-highlights groups dissolve into
   // this grid (see below), so each group is a row and cards in a row share a
-  // height. The last row holds two cards, centred under the other six.
+  // height. The last row holds the three project cards.
   grid-template-columns: repeat(6, minmax(0, 1fr));
   grid-auto-rows: 1fr; // every row as tall as the tallest, so all cards are one size
   gap: 1.2em;
@@ -468,17 +468,12 @@ body {
   grid-column: span 2;
 }
 
-.about-content .about-featured .highlight-item:first-child {
-  grid-column: 2 / span 2;
-}
-
 @media (max-width: 900px) {
   .about-content {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .about-content .highlight-item,
-  .about-content .about-featured .highlight-item:first-child {
+  .about-content .highlight-item {
     grid-column: auto;
   }
 }
@@ -507,6 +502,11 @@ body {
 .highlight-item:hover {
   transform: translateY(-3px);
   box-shadow: var(--mn-shadow-card-hover);
+}
+
+// The MCP connector card: the header menu's colour, to stand out.
+.highlight-item--mcp {
+  background: var(--mn-header-bg);
 }
 
 

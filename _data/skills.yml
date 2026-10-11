@@ -12,10 +12,10 @@
   items:
     - { name: "Java", symbol: "Jv", url: "https://dev.java/" }
     - { name: "Spring Boot", symbol: "Sb", url: "https://spring.io/projects/spring-boot" }
+    - { name: "TypeScript", symbol: "Ts", url: "https://www.typescriptlang.org" }
     - { name: "Bash", symbol: "Sh", url: "https://www.gnu.org/software/bash/" }
-    - { name: "JSON", symbol: "Js", url: "https://www.json.org/" }
-    - { name: "YAML", symbol: "Ym", url: "https://yaml.org/" }
-    - { name: "REST API", symbol: "Rs" }
+    - { name: "REST API", symbol: "Rs", url: "https://restfulapi.net" }
+    - { name: "MCP", symbol: "Mcp", url: "https://modelcontextprotocol.io" }
 
 - id: testing
   icon: "🧪"

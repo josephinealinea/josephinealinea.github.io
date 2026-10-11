@@ -675,6 +675,18 @@ body.theme-manila-theme .about-highlights {
   gap: 1.5em;
 }
 
+// The project cards sit in a full-width row of three under the two columns.
+body.theme-manila-theme .about-highlights.about-featured {
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  body.theme-manila-theme .about-highlights.about-featured {
+    grid-template-columns: 1fr;
+  }
+}
+
 body.theme-manila-theme .about-text p {
   font-size: 1.05em;
   line-height: 1.7;
@@ -689,6 +701,10 @@ body.theme-manila-theme .highlight-item {
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 56, 168, 0.08);
   color: var(--manila-text);
+}
+
+body.theme-manila-theme .highlight-item--mcp {
+  background: linear-gradient(180deg, color-mix(in srgb, #ffffff, #000 12%), color-mix(in srgb, var(--manila-gold-soft), #000 12%));
 }
 
 body.theme-manila-theme .highlight-item h3 {

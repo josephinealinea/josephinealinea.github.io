@@ -47,6 +47,11 @@ title: About Me
           <h3>Travelling Llama<span class="visually-hidden"> {{ site.data.strings.en.skills.new_tab }}</span></h3>
           <p>Creator of a collaborative trip-planning site that makes travelling with friends easier. Live today and used by a small community.</p>
         </a>
+        <a class="highlight-item highlight-item--mcp" href="https://mcp.travellingllama.fun/" target="_blank" rel="noopener noreferrer">
+          <span class="highlight-icon" aria-hidden="true">🔌</span>
+          <h3>Travelling Llama - MCP Connector<span class="visually-hidden"> {{ site.data.strings.en.skills.new_tab }}</span></h3>
+          <p>Creator of <b>travellingllama-mcp</b> that lets any AI app connects to Travelling Llama. Connect it today through custom connector in Claude, ChatGPT, Perplexity or Gemini CLI.</p>
+        </a>
         <a class="highlight-item" href="https://cash-flow.travellingllama.fun" target="_blank" rel="noopener noreferrer">
           <span class="highlight-icon" aria-hidden="true">💰</span>
           <h3>Cash on the Hoof<span class="visually-hidden"> {{ site.data.strings.en.skills.new_tab }}</span></h3>
