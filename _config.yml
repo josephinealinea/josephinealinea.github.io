@@ -4,7 +4,7 @@ email: josephinecodes@proton.me
 description: >- 
   Josephine Alinea | Software Ninja.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://josephinealinea.github.io" # the base hostname & protocol for your site
+url: "https://josephinealinea.dev" # the base hostname & protocol for your site
 bot_name: josibot
 nickname: Josephine
 
@@ -12,6 +12,8 @@ nickname: Josephine
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Collections
 collections:

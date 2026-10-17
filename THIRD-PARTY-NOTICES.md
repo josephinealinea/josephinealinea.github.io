@@ -19,6 +19,7 @@ Because both are served unmodified from the CDN with their licence headers intac
 | Jekyll 4.x | © 2008-present Tom Preston-Werner, Jekyll contributors | [MIT](https://github.com/jekyll/jekyll/blob/master/LICENSE) | Static site generator |
 | Minima 2.5 | © 2016-present Parker Moore and minima contributors | [MIT](https://github.com/jekyll/minima/blob/master/LICENSE.txt) | Base theme; its Sass is compiled into `main.css` and the theme stylesheets, so this notice is required |
 | jekyll-feed | © 2016-present GitHub, Inc. | [MIT](https://github.com/jekyll/jekyll-feed/blob/master/LICENSE.txt) | Generates the Atom feed |
+| jekyll-sitemap | © 2014-present GitHub, Inc. | [MIT](https://github.com/jekyll/jekyll-sitemap/blob/master/LICENSE.txt) | Generates `/sitemap.xml` |
 | jekyll-seo-tag | © 2015-present GitHub, Inc. | [MIT](https://github.com/jekyll/jekyll-seo-tag/blob/master/LICENSE.txt) | `{% seo %}` tag in `_includes/head.html` |
 | webrick | © Ruby contributors | [Ruby / BSD-2-Clause](https://github.com/ruby/webrick/blob/master/LICENSE.txt) | Local dev server only, not shipped |
 

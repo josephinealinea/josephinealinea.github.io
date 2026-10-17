@@ -193,6 +193,19 @@ Credits live in `THIRD-PARTY-NOTICES.md`; per-service docs live in `docs/`. User
 ruby scripts/check-strings.rb
 ```
 
+### Search Console and custom domain
+
+The site is served at `https://josephinealinea.dev` (see `CNAME`). `robots.txt` points crawlers at `/sitemap.xml`, which `jekyll-sitemap` generates. Setup steps are in `docs/google-search-console.md`.
+
+#### Build the site
+```bash
+bundle exec jekyll build
+```
+#### Check the sitemap was generated
+```bash
+head -20 _site/sitemap.xml
+```
+
 ## Troubleshooting
 
 ### `bundle install` fails
